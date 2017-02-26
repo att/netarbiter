@@ -1,9 +1,7 @@
 +----------+
 | Overview |
 +----------+
-NetArbiter is a framework for multi-site network emulation.
-Its goal is to emulate network delay and bandwidth between geographically distributed cloud sites.
-
+NetArbiter is a framework that stitches mutiple OpenStack clusters and emulates network delay and bandwidth between them.
 For details, see https://github.com/att/netarbiter/blob/master/netarbiter.pdf.
 
 +--------------+
