@@ -1,0 +1,19 @@
+---
+WANIP_PREFIXLEN: 172.16.17.102/24
+SITE_CIDR: 10.254.20.0/22
+SITE_GATEWAY: 10.254.20.1
+BRIDGE_NAME: br-multisite
+NET_NAME: multisite-net
+SUBNET_NAME: multisite-subnet
+ROUTER_NAME: multisite-router
+
+# Neutron-related
+os_env:
+  OS_PROJECT_NAME: admin
+  OS_TENANT_NAME: admin
+  OS_USERNAME: admin
+  OS_PASSWORD: yourpassword
+  OS_AUTH_URL: http://controller:35357
+  OS_VOLUME_API_VERSION: 2
+  OS_IMAGE_API_VERSION: 2
+

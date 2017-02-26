@@ -1,0 +1,12 @@
+# Author: Hee Won Lee <knowpd@research.att.com>
+# Created on Oct 1, 2015
+---
+
+- hosts: multisite_link 
+  remote_user: yourusername
+  sudo: yes
+  gather_facts: no
+  
+  roles:
+    - {role: route, subcommand: route_del}
+    - {role: tunnel, subcommand: tunnel_destroy}
