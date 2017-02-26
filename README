@@ -1,7 +1,7 @@
 +----------+
 | Overview |
 +----------+
-NetArbiter is a framwork that can stitche multiple OpenStack clusters and emulate the network delay and bandwidth.
+NetArbiter is a framwork that can stitch multiple OpenStack clusters and emulate the network delay and bandwidth.
 
 For details, see https://github.com/att/netarbiter/blob/master/netarbiter.pdf.
 
