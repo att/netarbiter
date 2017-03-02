@@ -22,7 +22,6 @@ $ sudo brew install ansible
   This file is for route-create.yml and route-destroy.yml
 
 2. Create/destroy a qrouter (and an ovs bridge)in a host
-
    ```
    $ ansible-playbook -K -i hosts/all qrouter-create.yml -e HOST=<hostname> 
    $ ansible-playbook -K -i hosts/all qrouter-destroy.yml -e HOST=<hostname> 
@@ -30,10 +29,10 @@ $ sudo brew install ansible
 
 3. Create/destroy routes (and tunnels) to connect two sites 
 
-```
-$ ansible-playbook -K -i hosts/<inventory> route-create.yml
-$ ansible-playbook -K -i hosts/<inventory> route-destroy.yml
-```
+ ```
+ $ ansible-playbook -K -i hosts/<inventory> route-create.yml
+ $ ansible-playbook -K -i hosts/<inventory> route-destroy.yml
+ ```
 
 4. Create delay, rate, and ceil with tc/netem
 
