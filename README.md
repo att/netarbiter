@@ -11,7 +11,7 @@ $ sudo apt-get install ansible
 ```
 For Mac OS X:
 ```
-$ sudo brew install ansible
+$ brew install ansible
 ```
 
 # How to run 
