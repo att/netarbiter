@@ -2,14 +2,14 @@
 # Overview 
 NetArbiter is a framwork that can stitch multiple OpenStack clusters and emulate the network delay and bandwidth.
 
-For details, see https://github.com/att/netarbiter/blob/master/netarbiter.pdf.
+For details, see <https://github.com/att/netarbiter/blob/master/netarbiter.pdf>.
 
-# Prerequisite |
-1.For Ubuntu Linux:
+# Prerequisite 
+## For Ubuntu Linux:
 ```
 $ sudo apt-get install ansible
 ```
-For Mac OS X:
+## For Mac OS X:
 ```
 $ sudo brew install ansible
 ```
@@ -18,8 +18,8 @@ $ sudo brew install ansible
 
 # How to run 
 0. Setup
-- Store all hosts' domain names (or IP addresses) to an inventory file "all"
-- Create an inventory file for each link between two sites. 
+..* Store all hosts' domain names (or IP addresses) to an inventory file "all"
+..* Create an inventory file for each link between two sites. 
  This file is for route-create.yml and route-destroy.yml
 
 1. Create/destroy a qrouter (and an ovs bridge)in a host
