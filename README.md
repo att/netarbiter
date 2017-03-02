@@ -1,11 +1,11 @@
 
 # Overview 
-NetArbiter is a framwork that can stitch multiple OpenStack clusters and emulate the network delay and bandwidth.
+NetArbiter is a framwork that allows you to stitch multiple OpenStack clusters and emulate the network delay and bandwidth.
 
 For details, see <https://github.com/att/netarbiter/blob/master/netarbiter.pdf>.
 
 # Pre-requisites
-For Ubuntu Linux:
+For Ubuntu:
 ```
 $ sudo apt-get install ansible
 ```
@@ -23,10 +23,10 @@ $ sudo brew install ansible
 
 2. Create/destroy a qrouter (and an ovs bridge)in a host
 
-```
-$ ansible-playbook -K -i hosts/all qrouter-create.yml -e HOST=<hostname> 
-$ ansible-playbook -K -i hosts/all qrouter-destroy.yml -e HOST=<hostname> 
-```
+   ```
+   $ ansible-playbook -K -i hosts/all qrouter-create.yml -e HOST=<hostname> 
+   $ ansible-playbook -K -i hosts/all qrouter-destroy.yml -e HOST=<hostname> 
+   ```
 
 3. Create/destroy routes (and tunnels) to connect two sites 
 
