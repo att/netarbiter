@@ -36,6 +36,6 @@ $ ansible-playbook -K -i hosts/<inventory> route-destroy.yml
 $ ansible-playbook -K -i hosts/<inventory> netemu-create.yml [-e DELAY=<delay> -e RATE=<rate> CEIL=<ceil>]
 $ ansible-playbook -K -i hosts/<inventory> netemu-destroy.yml [-e DELAY=<delay> -e RATE=<rate> CEIL=<ceil>]
 ```
-NOTE:
+## NOTE:
  - Delay and bandwidth are configured in each link's inventroy file. 
  - Refer to tc manual(i.e., $ man tc) for the units of <delay>, <rate>, and <ceil> 
