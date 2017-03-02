@@ -20,7 +20,7 @@ $ sudo brew install ansible
 1. Setup
  1. Store all hosts' domain names (or IP addresses) to an inventory file "all"
  2. Create an inventory file for each link between two sites. 
- This file is for route-create.yml and route-destroy.yml
+  This file is for route-create.yml and route-destroy.yml
 1. Create/destroy a qrouter (and an ovs bridge)in a host
 ```
 $ ansible-playbook -K -i hosts/all qrouter-create.yml -e HOST=<hostname> 
