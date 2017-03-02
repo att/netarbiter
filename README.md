@@ -18,8 +18,8 @@ $ sudo brew install ansible
 
 # How to run 
 1. Setup
-2. Store all hosts' domain names (or IP addresses) to an inventory file "all"
-3. Create an inventory file for each link between two sites. 
+ 1. Store all hosts' domain names (or IP addresses) to an inventory file "all"
+ 2. Create an inventory file for each link between two sites. 
  This file is for route-create.yml and route-destroy.yml
 1. Create/destroy a qrouter (and an ovs bridge)in a host
 ```
