@@ -7,11 +7,11 @@ For details, see https://github.com/att/netarbiter/blob/master/netarbiter.pdf.
 # Prerequisite |
 1.For Ubuntu Linux:
 ```
-apt-get install ansible
+$ sudo apt-get install ansible
 ```
 For Mac OS X:
 ```
-brew install ansible
+$ sudo brew install ansible
 ```
 
 2. Add your private key (e.g., id_rsa.pub) to each server's authorized_keys.
