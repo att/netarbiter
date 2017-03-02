@@ -4,22 +4,21 @@ NetArbiter is a framwork that can stitch multiple OpenStack clusters and emulate
 
 For details, see <https://github.com/att/netarbiter/blob/master/netarbiter.pdf>.
 
-# Prerequisite 
-## For Ubuntu Linux:
+# Pre-requisites
+For Ubuntu Linux:
 ```
 $ sudo apt-get install ansible
 ```
-## For Mac OS X:
+For Mac OS X:
 ```
 $ sudo brew install ansible
 ```
 
-2. Add your private key (e.g., id_rsa.pub) to each server's authorized_keys.
-
 # How to run 
 1. Setup
- 1. Store all hosts' domain names (or IP addresses) to an inventory file "all"
- 2. Create an inventory file for each link between two sites. 
+ 1. Add your private key (e.g., id_rsa.pub) to each server's authorized_keys.
+ 2. Store all hosts' domain names (or IP addresses) to an inventory file "all"
+ 3. Create an inventory file for each link between two sites. 
   This file is for route-create.yml and route-destroy.yml
 
 2. Create/destroy a qrouter (and an ovs bridge)in a host
