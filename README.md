@@ -1,23 +1,22 @@
-+----------+
-| Overview |
-+----------+
+
+# Overview 
 NetArbiter is a framwork that can stitch multiple OpenStack clusters and emulate the network delay and bandwidth.
 
 For details, see https://github.com/att/netarbiter/blob/master/netarbiter.pdf.
 
-+--------------+
-| Prerequisite |
-+--------------+
+# Prerequisite |
 1.For Ubuntu Linux:
-# apt-get install ansible
+```
+apt-get install ansible
+```
 For Mac OS X:
-# brew install ansible
+```
+brew install ansible
+```
 
 2. Add your private key (e.g., id_rsa.pub) to each server's authorized_keys.
 
-+------------+
-| How to run |
-+------------+
+# How to run 
 0. Setup
 - Store all hosts' domain names (or IP addresses) to an inventory file "all"
 - Create an inventory file for each link between two sites. 
