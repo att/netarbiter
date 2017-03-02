@@ -28,14 +28,12 @@ $ brew install ansible
    ```
 
 3. Create/destroy routes (and tunnels) to connect two sites 
-
    ```
    $ ansible-playbook -K -i hosts/<inventory> route-create.yml
    $ ansible-playbook -K -i hosts/<inventory> route-destroy.yml
    ```
 
 4. Create delay, rate, and ceil with tc/netem
-
    ```
    $ ansible-playbook -K -i hosts/<inventory> netemu-create.yml [-e DELAY=<delay> -e RATE=<rate> CEIL=<ceil>]
    $ ansible-playbook -K -i hosts/<inventory> netemu-destroy.yml [-e DELAY=<delay> -e RATE=<rate> CEIL=<ceil>]
