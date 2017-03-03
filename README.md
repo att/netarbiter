@@ -4,7 +4,7 @@ NetArbiter enables you to stitch multiple OpenStack clusters and emulate the net
 
 For details, see <https://github.com/att/netarbiter/blob/master/netarbiter.pdf>.
 
-# Pre-requisites
+# Prerequisites
 For Ubuntu:
 ```
 $ sudo apt-get install ansible
