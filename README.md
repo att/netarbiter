@@ -41,4 +41,4 @@ $ brew install ansible
 
    NOTE:
     - Default delay and bandwidth are configured in each link's inventroy file. 
-    - Refer to tc manual(i.e., $ man tc) for the units of delay, rate, and ceil 
+    - Refer to tc manual(i.e., $ man tc) for the units of delay, rate, and ceil. 
