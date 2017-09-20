@@ -7,11 +7,11 @@ For details, see <https://github.com/att/netarbiter/blob/master/netarbiter.pdf>.
 # Prerequisites
 For Ubuntu:
 ```
-$ sudo apt-get install ansible
+sudo apt-get install ansible
 ```
 For Mac OS X:
 ```
-$ brew install ansible
+brew install ansible
 ```
 
 # How to run 
@@ -23,20 +23,20 @@ $ brew install ansible
 
 2. Create/destroy a qrouter (and an ovs bridge) in a host
    ```
-   $ ansible-playbook -K -i hosts/all qrouter-create.yml -e HOST=<hostname> 
-   $ ansible-playbook -K -i hosts/all qrouter-destroy.yml -e HOST=<hostname> 
+   ansible-playbook -K -i hosts/all qrouter-create.yml -e HOST=<hostname> 
+   ansible-playbook -K -i hosts/all qrouter-destroy.yml -e HOST=<hostname> 
    ```
 
 3. Create/destroy routes (and tunnels) to connect two sites 
    ```
-   $ ansible-playbook -K -i hosts/<inventory> route-create.yml
-   $ ansible-playbook -K -i hosts/<inventory> route-destroy.yml
+   ansible-playbook -K -i hosts/<inventory> route-create.yml
+   ansible-playbook -K -i hosts/<inventory> route-destroy.yml
    ```
 
 4. Create delay, rate, and ceil with tc/netem
    ```
-   $ ansible-playbook -K -i hosts/<inventory> netemu-create.yml [-e DELAY=<delay> -e RATE=<rate> CEIL=<ceil>]
-   $ ansible-playbook -K -i hosts/<inventory> netemu-destroy.yml [-e DELAY=<delay> -e RATE=<rate> CEIL=<ceil>]
+   ansible-playbook -K -i hosts/<inventory> netemu-create.yml [-e DELAY=<delay> -e RATE=<rate> CEIL=<ceil>]
+   ansible-playbook -K -i hosts/<inventory> netemu-destroy.yml [-e DELAY=<delay> -e RATE=<rate> CEIL=<ceil>]
    ```
 
    NOTE:
