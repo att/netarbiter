@@ -2,7 +2,8 @@
 
 Trouble-shoot
 =============
-1. Fail to join a node
+1. Failing to join a node
+   - Symptom
    ```
    $ sudo kubeadm join --token 461371.ebfd9fbf7569cfa9 135.207.240.41:6443
    ...
