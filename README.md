@@ -42,3 +42,10 @@ brew install ansible
    NOTE:
     - Default delay and bandwidth are configured in each link's inventroy file. 
     - Refer to tc manual(i.e., $ man tc) for the units of delay, rate, and ceil. 
+
+5. Test
+```
+$ sudo kubeadm join --token 461371.ebfd9fbf7569cfa9 135.207.240.41:6443
+...
+[discovery] Failed to connect to API Server "135.207.240.41:6443": there is no JWS signed token in the cluster-info ConfigMap. This token id "461371" is invalid for this cluster, can't connect
+```
