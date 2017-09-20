@@ -16,9 +16,10 @@ $ brew install ansible
 
 # How to run 
 1. Setup
-   - Add your public key (i.e., id_rsa.pub) to each server's authorized_keys.
-   - Store all hosts' domain names (or IP addresses) to an inventory file "all"
-   - Create an inventory file for each link between two sites. This file is for route-create.yml and route-destroy.yml
+   1. Add your public key (i.e., id_rsa.pub) to each server's authorized_keys.
+   2. Store all hosts' domain names (or IP addresses) to an inventory file "all"
+   3. Create an inventory file for each link between two sites. 
+   This file is for route-create.yml and route-destroy.yml
 
 2. Create/destroy a qrouter (and an ovs bridge) in a host
    ```
