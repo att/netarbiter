@@ -16,15 +16,13 @@ helm serve &
 
 2. Run ceph-mon, mgr, etc. 
 ```
-cd ceph-docker/examples/helm
-./create-secret-kubeconfig.sh
-helm install ./ceph --name ceph --replace --namespace ceph
+./create-secret-kube-config.sh
+./helm-install-ceph.sh ceph
 ```
 
 3. Run an OSD chart
 - Usage:
 ```
-cd ceph-docker/examples/helm
 ./helm-ceph-osd.sh <node_label> <osd_device>
 ```
 
@@ -46,30 +44,11 @@ cd ceph-docker/examples/helm
 
 ### Namespace Activation
 
-To use Ceph Volumes in a namespace a secret containing the Client Key needs to be present, the bash function below helps create one:
-
-```
-ceph_activate_namespace() {
-  kube_namespace=$1
-  {
-  cat <<EOF
-apiVersion: v1
-kind: Secret
-metadata:
-  name: "pvc-ceph-client-key"
-type: kubernetes.io/rbd
-data:
-  key: |
-    $(kubectl get secret pvc-ceph-conf-combined-storageclass --namespace=ceph -o json | jq -r '.data | .[]')
-EOF
-  } | kubectl create --namespace ${kube_namespace} -f -
-}
-```
+To use Ceph Volumes in a namespace a secret containing the Client Key needs to be present.
 
 Once defined you can then activate Ceph for a namespace by running:
-
 ```
-ceph_activate_namespace default
+./activate-namespace.sh default
 ```
 
 Where `default` is the name of the namespace you wish to use Ceph volumes in.
