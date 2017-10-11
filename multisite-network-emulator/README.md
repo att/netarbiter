@@ -3,7 +3,7 @@ Overview
 ========
 NetArbiter enables you to stitch multiple OpenStack clusters and emulate the network delay and bandwidth.
 
-For details, see <https://github.com/att/netarbiter/blob/master/netarbiter.pdf>.
+For details, see <https://github.com/att/netarbiter/blob/master/multisite-network-emulator/netarbiter.pdf>.
 
 Prerequisites
 =============
