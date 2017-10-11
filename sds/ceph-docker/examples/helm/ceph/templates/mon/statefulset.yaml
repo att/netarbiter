@@ -1,0 +1,145 @@
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  labels:
+    version: {{ .Chart.Version }}
+    app: ceph
+    daemon: mon
+    release: {{ .Release.Name }}
+  name: ceph-mon
+spec:
+  serviceName: {{ .Values.service.mon.name | quote }}
+  replicas: {{ .Values.resources.mon.replicas }}
+  template:
+    metadata:
+      name: ceph-mon
+      labels:
+        version: {{ .Chart.Version }}
+        app: ceph
+        daemon: mon
+        release: {{ .Release.Name }}
+      annotations:
+        scheduler.alpha.kubernetes.io/affinity: >
+          {
+            "podAntiAffinity": {
+              "RequiredDuringSchedulingIgnoredDuringExecution": [{
+                "labelSelector": {
+                  "matchExpressions": [{
+                    "key": "daemon",
+                    "operator": "In",
+                    "values":["mon"]
+                  }]
+                },
+              "topologyKey": "kubernetes.io/hostname"
+              }]
+            }
+          }
+    spec:
+      serviceAccount: default
+      hostNetwork: true                                         # HLEE
+      dnsPolicy: ClusterFirstWithHostNet                        # HLEE
+      containers:
+        - name: main
+          image: {{ .Values.images.daemon }}
+          imagePullPolicy: {{ .Values.image_policy.pull }}
+          lifecycle:
+            preStop:
+                exec:
+                  command:
+                    - /remove-mon.sh
+          ports:
+            - containerPort: {{ .Values.service.mon.port }}
+          env:
+            - name: CEPH_DAEMON
+              value: MON
+            - name: KV_TYPE
+              value: k8s
+            - name: NETWORK_AUTO_DETECT # HLEE: For calico, network auto detect fails.
+              value: "0"                # HLEE: "0": manual setup, "4"(default): auto detection of MON_IP & CEPH_PUBLIC_NETWORK
+            - name: CEPH_PUBLIC_NETWORK # HLEE: used in start_mon.sh of docker image
+              value: {{ .Values.network.public }} 	# HLEE: added
+            - name: MON_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: CLUSTER
+              value: {{ .Values.ceph.cluster }}
+          {{- if .Values.debug_level }}
+            - name: DEBUG
+              value: {{ .Values.debug_level }}
+          {{- end }}
+          volumeMounts:
+            - name: ceph-conf
+              mountPath: /etc/ceph/ceph.conf
+              subPath: ceph.conf
+              readOnly: true
+            - name: ceph-client-admin-keyring
+              mountPath: /etc/ceph/ceph.client.admin.keyring
+              subPath: ceph.client.admin.keyring
+              readOnly: true
+            - name: ceph-mon-keyring
+              mountPath: /etc/ceph/ceph.mon.keyring
+              subPath: ceph.mon.keyring
+              readOnly: false
+            - name: ceph-bootstrap-osd-keyring
+              mountPath: /var/lib/ceph/bootstrap-osd/ceph.keyring
+              subPath: ceph.keyring
+              readOnly: false
+            - name: ceph-bootstrap-mds-keyring
+              mountPath: /var/lib/ceph/bootstrap-mds/ceph.keyring
+              subPath: ceph.keyring
+              readOnly: false
+            - name: ceph-bootstrap-rgw-keyring
+              mountPath: /var/lib/ceph/bootstrap-rgw/ceph.keyring
+              subPath: ceph.keyring
+              readOnly: false
+            - name: ceph-bootstrap-rbd-keyring                          # HLEE
+              mountPath: /var/lib/ceph/bootstrap-rbd/ceph.keyring       # HLEE
+              subPath: ceph.keyring                                     # HLEE
+              readOnly: false                                           # HLEE
+            - name: kube-config                                         # HLEE
+              mountPath: /root/.kube/config                             # HLEE
+              subPath: config                                           # HLEE
+              readOnly: true                                            # HLEE
+          livenessProbe:
+              tcpSocket:
+                port: {{ .Values.service.mon.port }}
+              initialDelaySeconds: 60
+              timeoutSeconds: 5
+          readinessProbe:
+              tcpSocket:
+                port: {{ .Values.service.mon.port }}
+              timeoutSeconds: 5
+          resources:
+            requests:
+              memory: {{ .Values.resources.mon.requests.memory | quote }}
+              cpu: {{ .Values.resources.mon.requests.cpu | quote }}
+            limits:
+              memory: {{ .Values.resources.mon.limits.memory | quote }}
+              cpu: {{ .Values.resources.mon.limits.cpu | quote }}
+      volumes:
+        - name: ceph-conf
+          configMap:
+            name: ceph-conf
+        - name: ceph-client-admin-keyring
+          secret:
+            secretName: {{ .Values.secrets.keyrings.admin }}
+        - name: ceph-mon-keyring
+          secret:
+            secretName: {{ .Values.secrets.keyrings.mon }}
+        - name: ceph-bootstrap-osd-keyring
+          secret:
+            secretName: {{ .Values.secrets.keyrings.osd }}
+        - name: ceph-bootstrap-mds-keyring
+          secret:
+            secretName: {{ .Values.secrets.keyrings.mds }}
+        - name: ceph-bootstrap-rgw-keyring
+          secret:
+            secretName: {{ .Values.secrets.keyrings.rgw }}
+        - name: ceph-bootstrap-rbd-keyring                              # HLEE
+          secret:                                                       # HLEE
+            secretName: {{ .Values.secrets.keyrings.rbd }}              # HLEE
+        - name: kube-config                                              # HLEE
+          secret:                                                       # HLEE
+            secretName: kube-config                                      # HLEE

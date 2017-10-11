@@ -1,0 +1,26 @@
+# Created and Maintained by Confd
+
+[global]
+  fsid = {{getv "/auth/fsid"}}
+{{range gets "/global/*"}}
+  {{base .Key}} = {{.Value}}{{end}}
+
+[mon]
+{{range gets "/mon/*"}}
+  {{base .Key}} = {{.Value}}{{end}}
+{{range gets "/mon_host/*"}}
+    [mon.{{base .Key}}]
+      host = {{base .Key}}
+      mon_addr = {{.Value}}{{end}}
+
+[osd]
+{{range gets "/osd/*"}}
+  {{base .Key}} = {{.Value}}{{end}}
+
+[mds]
+{{range gets "/mds/*"}}
+  {{base .Key}} = {{.Value}}{{end}}
+
+[client]
+{{range gets "/client/*"}}
+  {{base .Key}} = {{.Value}}{{end}}

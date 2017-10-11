@@ -1,0 +1,17 @@
+#!/bin/bash
+# Author: Hee Won Lee <knowpd@research.att.com>
+# Created on 9/12/2017
+# src: https://kubernetes.io/docs/tasks/tools/install-kubectl
+# note: To clean, run 
+#   sudo rm -f /usr/local/bin/kubectl 
+
+set -x
+
+### [option 1] To install the latest release of kubectl
+sudo curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+
+### [option 2] To install a specific release of kubectl
+#sudo curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.7.2/bin/linux/amd64/kubectl
+
+sudo mv ./kubectl /usr/local/bin/kubectl
+sudo chmod +x /usr/local/bin/kubectl
