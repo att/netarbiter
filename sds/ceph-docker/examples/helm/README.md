@@ -5,8 +5,11 @@
 Assuming you have a Kubeadm managed Kubernetes 1.7+ cluster and Helm 2.6 setup, you can get going straight away! [1]
 
 1. Install helm and tiller
-(src: https://github.com/ceph/ceph-docker/tree/master/examples/helm)
 ```
+curl -O https://storage.googleapis.com/kubernetes-helm/helm-v2.6.1-linux-amd64.tar.gz
+tar xzvf helm-v2.6.1-linux-amd64.tar.gz 
+sudo cp linux-amd64/helm /usr/local/bin
+
 helm init       # or helm init --upgrade
 helm serve &
 ```
