@@ -22,7 +22,7 @@ metadata:
   name: "pvc-ceph-client-key"
 type: kubernetes.io/rbd
 data:
-  key: |
+  key:
     $(kubectl get secret pvc-ceph-conf-combined-storageclass --namespace=ceph -o json | jq -r '.data | .[]')
 EOF
 } | kubectl create --namespace ${kube_namespace} -f -
