@@ -1,4 +1,8 @@
 # Ceph Helm
+Author: Hee Won Lee <knowpd@research.att.com>  
+Created on 10/1/2017  
+Adapted for Ubuntu 16.04 and Ceph Luminous  
+Based on https://github.com/ceph/ceph-docker/tree/master/examples/helm  
 
 ### Qucikstart
 
