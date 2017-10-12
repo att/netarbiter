@@ -21,7 +21,7 @@ data:
     mon_osd_full_ratio = {{ .Values.ceph.config.global.mon_osd_full_ratio | default ".95" | quote }}
     mon_osd_nearfull_ratio = {{ .Values.ceph.config.global.mon_osd_nearfull_ratio | default ".85" | quote }}
 
-    mon_host = {{ .Values.service.mon.name | default "ceph-mon" | quote }}
+    mon_host = {{ .Values.service.mon.name | default "ceph-mon" | quote }}.{{ .Release.Namespace }}
 
     [mon]
     mon_osd_down_out_interval = {{ .Values.ceph.config.mon.mon_osd_down_out_interval | default "600" | quote }}
