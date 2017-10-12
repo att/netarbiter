@@ -2,7 +2,7 @@
 
 ### Qucikstart
 
-Assuming you have a Kubeadm managed Kubernetes 1.7+ cluster and Helm 2.6 setup, you can get going straight away! [1]
+Assuming you have a Kubeadm managed Kubernetes 1.7+ cluster and Helm 2.6.1 setup, you can get going straight away! [1]
 
 1. Install helm and tiller
 ```
