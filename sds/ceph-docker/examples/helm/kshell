@@ -1,0 +1,25 @@
+#!/bin/bash
+# src: https://github.com/kubernetes/kubernetes/issues/13585
+# Modified: 6/20/2017 by knowpd@research.att.com
+
+if [ "$#" -lt 2 ]; then
+  echo "Usage: kshell <pod> <namespace>"
+  exit 1
+fi
+
+#set -x
+
+POD=$1
+NAMESPACE=$2
+shift; shift
+
+COLUMNS=`tput cols`
+LINES=`tput lines`
+TERM=xterm
+
+if [ "$#" == 0 ]; then
+    kubectl -n $NAMESPACE exec -i -t $POD env COLUMNS=$COLUMNS LINES=$LINES TERM=$TERM -- /bin/bash
+else
+    kubectl -n $NAMESPACE  exec -i -t $POD env COLUMNS=$COLUMNS LINES=$LINES TERM=$TERM -- /bin/bash -c "$*"
+fi
+
