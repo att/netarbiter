@@ -81,12 +81,12 @@ nameserver 135.207.240.13	# External DNS IP; You would have a different IP.
 search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.att.com research.att.com
 ```
 
-[2] To generate ceph keys, `ceph/templates/jobs/job.yaml` uses a docker image created by `docker-image-kubectl-ubuntu-16.04/Dockerfile`.
-
-[3] Setting Up RBAC  
- Kubernetes >=v1.6 makes RBAC the default admission controller. We does not currently have RBAC roles and permissions for each
+[2] Setting Up RBAC  
+Kubernetes >=v1.6 makes RBAC the default admission controller. We does not currently have RBAC roles and permissions for each
 component, so you need to relax the access control rules:
    ```
    kubectl update -f https://raw.githubusercontent.com/openstack/openstack-helm/master/tools/kubeadm-aio/assets/opt/rbac/dev.yaml
    ```
 
+[3] About `docker-image-kubectl-ubuntu-16.04/Dockerfile`  
+To generate ceph keys, `ceph/templates/jobs/job.yaml` uses a docker image created by `docker-image-kubectl-ubuntu-16.04/Dockerfile`.
