@@ -23,24 +23,22 @@ helm serve &
 3. Run an OSD chart
 - Usage:
 ```
-./helm-ceph-osd.sh <node_label> <osd_device>
+./helm-install-ceph-osd.sh <node_label> <osd_device>
 ```
 
 - Example:
    - bluestore:
    ```
-   ./helm-ceph-osd.sh voyager1 /dev/sdc
+   ./helm-install-ceph-osd.sh voyager1 /dev/sdc
    ```
 
    - filestore
    ```
-   OSD_FILESTORE=1 ./helm-ceph-osd.sh voyager1 /dev/sdc
+   OSD_FILESTORE=1 ./helm-install-ceph-osd.sh voyager1 /dev/sdc
    ```
 
    - filestore with journal
    ```
-   Prepare for journal disk partitions in each host
-   ./diskpart.sh /dev/sdb1 10 1 8 ceph-journal 
    OSD_FILESTORE=1 OSD_JOURNAL=/dev/sdb1 ./helm-ceph-osd.sh voyager1 /dev/sdc
    ```
       
