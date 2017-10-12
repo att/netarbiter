@@ -44,11 +44,11 @@ helm serve &
    OSD_FILESTORE=1 OSD_JOURNAL=/dev/sdb1 ./helm-ceph-osd.sh voyager1 /dev/sdc
    ```
       
-      - NOTE: Use `diskpart.sh` to prepare for journal disk partitions in each host.
-         - Example
-         ```
-         ./diskpart.sh /dev/sdb1 10 1 8 ceph-journal 
-         ```
+      - NOTE: Use diskpart.sh to prepare for journal disk partitions in each host.
+      ```
+      # Example
+      ./diskpart.sh /dev/sdb1 10 1 8 ceph-journal 
+      ```
    
 ### Namespace Activation
 
