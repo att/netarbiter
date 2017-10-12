@@ -83,7 +83,7 @@ search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.at
 
 [2] To generate ceph keys, `ceph/templates/jobs/job.yaml` uses a docker image created by `docker-image-kubectl-ubuntu-16.04/Dockerfile`.
 
-[3] Setting Up RBAC
+[3] Setting Up RBAC  
 Kubernetes >=v1.6 makes RBAC the default admission controller. OpenStack
 Helm does not currently have RBAC roles and permissions for each
 component so we relax the access control rules:
