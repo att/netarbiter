@@ -77,4 +77,4 @@ nameserver 135.207.240.13	# External DNS IP; You would have a different IP.
 search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.att.com research.att.com
 ```
 
-[2] In `ceph/templates/jobs/job.yaml`, the job uses a docker image created by `docker-image-kubectl-ubuntu-16.04`.
+[2] To generate ceph keys, `ceph/templates/jobs/job.yaml` uses a docker image created by `docker-image-kubectl-ubuntu-16.04/Dockerfile`.
