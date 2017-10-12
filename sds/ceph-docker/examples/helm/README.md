@@ -29,19 +29,27 @@ helm serve &
 - Example:
    - bluestore:
    ```
-   ./helm-ceph-osd.sh voyager1 sdb
+   ./helm-ceph-osd.sh voyager1 /dev/sdc
    ```
 
    - filestore
    ```
-   OSD_FILESTORE=1 ./helm-ceph-osd.sh voyager1 sdb
+   OSD_FILESTORE=1 ./helm-ceph-osd.sh voyager1 /dev/sdc
    ```
 
    - filestore with journal
    ```
-   OSD_FILESTORE=1 OSD_JOURNAL=/dev/sdb1 ./helm-ceph-osd.sh voyager1 sdc
+   Prepare for journal disk partitions in each host
+   ./diskpart.sh /dev/sdb1 10 1 8 ceph-journal 
+   OSD_FILESTORE=1 OSD_JOURNAL=/dev/sdb1 ./helm-ceph-osd.sh voyager1 /dev/sdc
    ```
-
+      
+   NOTE: Use `diskpart.sh` to prepare for journal disk partitions in each host.
+      - Example
+      ```
+      ./diskpart.sh /dev/sdb1 10 1 8 ceph-journal 
+      ```
+   
 ### Namespace Activation
 
 To use Ceph Volumes in a namespace a secret containing the Client Key needs to be present.
