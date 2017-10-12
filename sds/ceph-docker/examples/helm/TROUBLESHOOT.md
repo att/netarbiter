@@ -1,7 +1,7 @@
 Troubleshoot
 ============
-Author: Hee Won Lee <knowpd@research.att.com> 
-Created on : 10/1/2017 
+Author: Hee Won Lee <knowpd@research.att.com>  
+Created on : 10/1/2017  
 
 
 ## Problem: [ceph-docker/exmaples/helm] tiller issue
