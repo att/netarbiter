@@ -73,7 +73,6 @@ kubectl create -R -f tests/ceph
 ```
 $ cat /etc/resolv.conf
 nameserver 10.96.0.10		# K8s DNS IP
-nameserver 135.207.240.13	# External DNS IP
-nameserver 135.207.240.14
+nameserver 135.207.240.13	# External DNS IP; You would have a different IP.
 search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.att.com research.att.com
 ```
