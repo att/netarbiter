@@ -19,10 +19,16 @@ helm serve &
 ```
 
 2. Run ceph-mon, mgr, etc. 
+- Usage:
 ```
 ./create-secret-kube-config.sh
-./helm-install-ceph.sh ceph
+./helm-install-ceph.sh <release_name> <public_network> <cluster_network>
 ```
+
+- Example
+   ```
+   ./helm-install-ceph.sh ceph 172.31.0.0/20 172.31.0.0/20
+   ```
 
 3. Run an OSD chart
 - Usage:
