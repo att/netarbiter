@@ -88,5 +88,5 @@ component, so you need to relax the access control rules:
    kubectl update -f https://raw.githubusercontent.com/openstack/openstack-helm/master/tools/kubeadm-aio/assets/opt/rbac/dev.yaml
    ```
 
-[3] About `docker-image-kubectl-ubuntu-16.04/Dockerfile`  
+[3] About `docker-image-kubectl-ubuntu-16.04`  
 To generate ceph keys, `ceph/templates/jobs/job.yaml` uses a docker image created by `docker-image-kubectl-ubuntu-16.04/Dockerfile`.
