@@ -6,7 +6,7 @@ Based on https://github.com/ceph/ceph-docker/tree/master/examples/helm
 
 ### Qucikstart
 
-Assuming you have a Kubeadm managed Kubernetes 1.7+ cluster and Helm 2.6.1 setup on Ubuntu 16.04, you can get going straight away for installing Ceph Luminous! [1]
+Assuming you have a Kubeadm managed Kubernetes 1.7+ cluster and Helm 2.6.1 setup, you can get going straight away! [1]
 
 1. Install helm and tiller
 ```
