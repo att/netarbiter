@@ -33,8 +33,8 @@ service:
 
 #When undefined here, it both networks default to: 10.244.0.0/16 (flannel)
 network:
-  cluster: 10.10.0.0/24		# HLEE: 192.168.0.0/16 for Kubernetes CNI
-  public: 10.10.0.0/24		# HLEE: 192.168.0.0/16 for Kubernetes CNI
+  #cluster: 10.10.0.0/24			# HLEE: input from helm install --set
+  #public: 10.10.0.0/24				# HLEE: input from helm install --set
 
 secrets:
   keyrings:

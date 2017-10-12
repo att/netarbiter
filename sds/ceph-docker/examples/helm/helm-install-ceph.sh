@@ -16,4 +16,4 @@ RELEASE_NAME=$1
 PUBLIC_NETWORK=$2
 CLUSTER_NETWORK=$3
 
-helm install ./ceph --replace --namespace ceph -n $RELEASE_NAME $PUBLIC_NETWORK $CLUSTER_NETWORK
+helm install ./ceph --replace --namespace ceph -n $RELEASE_NAME --set network.public=$PUBLIC_NETWORK --set network.cluster=$CLUSTER_NETWORK
