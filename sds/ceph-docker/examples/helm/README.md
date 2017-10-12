@@ -2,7 +2,7 @@
 
 ### Qucikstart
 
-Assuming you have a Kubeadm managed Kubernetes 1.7+ cluster and Helm 2.6.1 setup on Ubuntu 16.04, you can get going straight away! [1]
+Assuming you have a Kubeadm managed Kubernetes 1.7+ cluster and Helm 2.6.1 setup on Ubuntu 16.04, you can get going straight away for installing Ceph Luminous! [1]
 
 1. Install helm and tiller
 ```
@@ -76,3 +76,5 @@ nameserver 10.96.0.10		# K8s DNS IP
 nameserver 135.207.240.13	# External DNS IP; You would have a different IP.
 search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.att.com research.att.com
 ```
+
+[2] In `ceph/templates/jobs/job.yaml`, the job uses a docker image created by `docker-image-kubectl-ubuntu-16.04`.
