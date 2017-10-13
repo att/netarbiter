@@ -61,17 +61,17 @@ Create a secret so that a K8s job could run `kubectl` inside the container.
 - Example:
    - bluestore:
    ```
-   ./helm-install-ceph-osd.sh voyager1 /dev/sdc
+   ./helm-install-ceph-osd.sh myhostname /dev/sdc
    ```
 
    - filestore
    ```
-   OSD_FILESTORE=1 ./helm-install-ceph-osd.sh voyager1 /dev/sdc
+   OSD_FILESTORE=1 ./helm-install-ceph-osd.sh myhostname /dev/sdc
    ```
 
    - filestore with journal (recommended for production environment)
    ```
-   OSD_FILESTORE=1 OSD_JOURNAL=/dev/sdb1 ./helm-ceph-osd.sh voyager1 /dev/sdc
+   OSD_FILESTORE=1 OSD_JOURNAL=/dev/sdb1 ./helm-ceph-osd.sh myhostname /dev/sdc
    ```
    
 ### Namespace Activation
