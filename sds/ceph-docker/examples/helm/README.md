@@ -6,7 +6,7 @@ Based on https://github.com/ceph/ceph-docker/tree/master/examples/helm
 
 ### Qucikstart
 
-Assuming you have a Kubeadm managed Kubernetes 1.7+ cluster and Helm 2.6.1 setup, you can get going straight away! [1]
+Assuming you have a Kubeadm managed Kubernetes 1.7+ cluster and Helm 2.6.1 setup, you can get going straight away! 
 
 0. Preflight checklist
 ```
@@ -86,7 +86,7 @@ kubectl replace -f relax-rbac-k8s1.7.yaml
 # For Kubernetes 1.8+
 kubectl replace -f relax-rbac-k8s1.8.yaml
 ```
-You need to have the K8s nodes setup to access the cluster network, and `/etc/resolv.conf` setup similar to the following:
+You need to have the K8s nodes setup to access the cluster network, and `/etc/resolv.conf` would be similar to the following:
 ```
 $ cat /etc/resolv.conf
 nameserver 10.96.0.10           # K8s DNS IP
