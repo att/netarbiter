@@ -111,7 +111,7 @@ nameserver 10.96.0.10		# K8s DNS IP
 nameserver 135.207.240.13	# External DNS IP; You would have a different IP.
 search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.att.com research.att.com
 ```
-Otherwise, you can simply replace K8s nodes' `/etc/resolv.conf` with `/etc/resolv.conf` in a ceph-mon pod (e.g., ceph-mon-0) by Ctrl-C & Ctrl-V.
+Otherwise, you may replace K8s nodes' `/etc/resolv.conf` with `/etc/resolv.conf` in a ceph-mon pod (e.g., ceph-mon-0) by Ctrl-C & Ctrl-V.
 
 [2] About `docker-image-kubectl-ubuntu-16.04`: 
 To generate ceph keys (`ceph/templates/jobs/job.yaml`), we create a docker image with `docker-image-kubectl-ubuntu-16.04/Dockerfile`.
