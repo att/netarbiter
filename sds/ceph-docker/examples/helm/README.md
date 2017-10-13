@@ -39,7 +39,7 @@ Create a secret so that a K8s job could run `kubectl` inside the container.
 ./helm-install-ceph.sh ceph 172.31.0.0/20 172.31.0.0/20
 ```
 
-3. Run an OSD chart
+3. Run ceph-osd
 - Preparation:  
    * For each osd device, you should zap/erase/destroy the device's partition table and contents.
    ```
