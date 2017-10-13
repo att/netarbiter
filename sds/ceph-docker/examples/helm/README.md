@@ -75,7 +75,8 @@ Once defined you can then activate Ceph for a namespace by running:
 
 Where `default` is the name of the namespace you wish to use Ceph volumes in.
 
-### Functional testing
+
+### Additional Configuration for Dynamic Provisioning
 
 Kubernetes >=v1.6 makes RBAC the default admission controller. We does not currently have RBAC roles and permissions for each
 component, so you need to relax the access control rules:
@@ -96,6 +97,7 @@ search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.at
    - You may replace K8s nodes' `/etc/resolv.conf` with `/etc/resolv.conf` in a ceph-mon pod (e.g., ceph-mon-0) by Ctrl-C & Ctrl-V.
    - This step allows K8s nodes to use the DNS service (i.e., kubedns) of your Kubernetes cluster. That is, you can run `ping ceph-mon.ceph`. When creating an rbd device (e.g., /dev/rbd0), kubelet executes `rbd map ...`, which then connects to ceph-mon by domain name `ceph-mon.ceph`.
 
+### Functional Testing
 Once Ceph deployment has been performed you can functionally test the environment by running the jobs in the tests directory.
 ```
 # Create a pool from a ceph-mon pod (e.g., ceph-mon-0):
