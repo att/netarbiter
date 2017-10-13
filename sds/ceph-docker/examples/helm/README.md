@@ -116,7 +116,7 @@ ceph osd pool create rbd 100 100
 # When mounting a pvc to a pod, you may encounter dmesg errors as follows: 
 #    libceph: mon0 172.31.8.199:6789 feature set mismatch
 #    libceph: mon0 172.31.8.199:6789 missing required protocol features
-# Avoid them by running the following:
+# Avoid them by running the following from a ceph-mon pod:
 ceph osd crush tunables legacy
 
 # Create a pvc and attach it to a job:
