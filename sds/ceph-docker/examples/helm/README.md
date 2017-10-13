@@ -113,5 +113,5 @@ kubectl create -R -f tests/ceph
 
 ### Troubleshoot
 
-Refer to https://github.com/att/netarbiter/blob/master/sds/ceph-docker/examples/helm/TROUBLESHOOT.md
+Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 
