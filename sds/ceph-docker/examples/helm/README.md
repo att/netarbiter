@@ -36,7 +36,7 @@ Create a `.kube/config` secret so that a K8s job could run `kubectl` inside the 
 ./helm-install-ceph.sh <release_name> <public_network> <cluster_network>
 
 # Example
-./helm-install-ceph.sh ceph 172.31.0.0/20 172.31.0.0/20
+./helm-install-ceph.sh my_ceph_chart 172.31.0.0/20 172.31.0.0/20
 ```
 
 3. Run ceph-osd
