@@ -107,7 +107,7 @@ ceph osd pool create rbd 100 100
 # Avoid them by running the following:
 ceph osd crush tunables legacy
 
-# Create a pvc and a job:
+# Create a pvc and attach it to a job:
 kubectl create -R -f tests/ceph
 ```
 
