@@ -1,8 +1,10 @@
+# Docker image for running kubectl
 Author: Hee Won Lee <knowpd@research.att.com>  
 Created on: 10/12/2017  
 
 ### Purpose
 This image is used in `ceph/templates/jobs/job.yaml`.
+This job generates ceph keys and stores them as K8s secrets.
 
 ### Build 
 1. Create an account in `https://hub.docker.com`.
