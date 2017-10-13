@@ -45,7 +45,7 @@ Create a secret so that a K8s job could run `kubectl` inside the container.
    ```
    ceph-disk zap <osd_device>
    ```
-   * If you use a separate SSD journal, you should prepare for the journal disk partition.
+   * If you use a separate SSD journal, you should prepare for the journal disk partitions.
    ```
    ./diskpart.sh <dev> <part_size> <part_num> <num_of_parts> [typecode]
    
