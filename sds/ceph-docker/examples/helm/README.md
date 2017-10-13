@@ -35,7 +35,6 @@ Create a secret so that a K8s job could run `kubectl` inside the container.
 ```
 ./helm-install-ceph.sh <release_name> <public_network> <cluster_network>
 ```
-
    - Example
    ```
    ./helm-install-ceph.sh ceph 172.31.0.0/20 172.31.0.0/20
