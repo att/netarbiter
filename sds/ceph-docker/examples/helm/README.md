@@ -73,12 +73,6 @@ Create a secret so that a K8s job could run `kubectl` inside the container.
    ```
    OSD_FILESTORE=1 OSD_JOURNAL=/dev/sdb1 ./helm-ceph-osd.sh voyager1 /dev/sdc
    ```
-      
-      - NOTE: Use `diskpart.sh` to prepare for journal disk partitions in each host.
-         Example: Create 8 journal partitions in /dev/sdb with the size of 10GiB.
-         ```
-         ./diskpart.sh /dev/sdb 10 1 8 ceph-journal 
-         ```
    
 ### Namespace Activation
 
