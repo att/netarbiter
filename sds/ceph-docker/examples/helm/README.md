@@ -6,7 +6,7 @@ Based on https://github.com/ceph/ceph-docker/tree/master/examples/helm
 
 ### Qucikstart
 
-Assuming you have a Kubeadm managed Kubernetes 1.7+ cluster and Helm 2.6.1 setup, you can get going straight away! 
+Assuming you have a Kubeadm managed Kubernetes 1.7+ cluster (../../../install-kubeadm) , you can get going straight away! 
 
 0. Preflight checklist
 ```
