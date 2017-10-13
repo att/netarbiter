@@ -102,6 +102,9 @@ ceph osd crush tunables legacy
 kubectl create -R -f tests/ceph
 ```
 
+### Troubleshoot
+
+Refer to https://github.com/att/netarbiter/blob/master/sds/ceph-docker/examples/helm/TROUBLESHOOT.md
 
 #### Notes
 [1] You actually need to have the nodes setup to access the cluster network, and `/etc/resolv.conf` setup similar to the following:
