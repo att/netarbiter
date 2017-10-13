@@ -114,16 +114,3 @@ kubectl create -R -f tests/ceph
 
 Refer to https://github.com/att/netarbiter/blob/master/sds/ceph-docker/examples/helm/TROUBLESHOOT.md
 
-#### Notes
-[1] You actually need to have the nodes setup to access the cluster network, and `/etc/resolv.conf` setup similar to the following:
-```
-$ cat /etc/resolv.conf
-nameserver 10.96.0.10		# K8s DNS IP
-nameserver 135.207.240.13	# External DNS IP; You would have a different IP.
-search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.att.com research.att.com
-```
-Otherwise, you may replace K8s nodes' `/etc/resolv.conf` with `/etc/resolv.conf` in a ceph-mon pod (e.g., ceph-mon-0) by Ctrl-C & Ctrl-V.
-
-[2] About `docker-image-kubectl-ubuntu-16.04/Dockerfile`:   
-This image is used in `ceph/templates/jobs/job.yaml`.
-
