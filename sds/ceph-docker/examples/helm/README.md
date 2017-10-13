@@ -41,7 +41,7 @@ Create a secret so that a K8s job could run `kubectl` inside the container.
 
 3. Run an OSD chart
 - Preparation:  
-   * For each osd device, you should zap/erase/destroy a device's partition table and contents
+   * For each osd device, you should zap/erase/destroy the device's partition table and contents.
    ```
    ceph-disk zap <osd_device>
    ```
