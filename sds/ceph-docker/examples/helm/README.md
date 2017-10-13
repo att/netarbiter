@@ -116,6 +116,6 @@ search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.at
 ```
 Otherwise, you may replace K8s nodes' `/etc/resolv.conf` with `/etc/resolv.conf` in a ceph-mon pod (e.g., ceph-mon-0) by Ctrl-C & Ctrl-V.
 
-[2] About `docker-image-kubectl-ubuntu-16.04`:   
-To generate ceph keys (`ceph/templates/jobs/job.yaml`), we create a docker image with `docker-image-kubectl-ubuntu-16.04/Dockerfile`.
+[2] About `docker-image-kubectl-ubuntu-16.04/Dockerfile`:   
+This image is used in `ceph/templates/jobs/job.yaml`.
 
