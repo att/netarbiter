@@ -41,19 +41,17 @@ Create a secret so that a K8s job could run `kubectl` inside the container.
 
 3. Run an OSD chart
 - Preparation:  
-For each osd device, you should zap/erase/destroy a device's partition table and contents
-```
-ceph-disk zap <osd_device>
-```
-If you use a separate SSD journal, you should prepare for the journal disk partition.
-```
-diskpart.sh <dev> <part_size> <part_num> <num_of_parts> [typecode]
-```
-Example: Create 8 journal partitions in /dev/sdb with the size of 10GiB.
-```
-# Create 8 journal partitions in /dev/sdb with the size of 10GiB.
-./diskpart.sh /dev/sdb 10 1 8 ceph-journal 
-```
+   * For each osd device, you should zap/erase/destroy a device's partition table and contents
+   ```
+   ceph-disk zap <osd_device>
+   ```
+   * If you use a separate SSD journal, you should prepare for the journal disk partition.
+   ```
+   ./diskpart.sh <dev> <part_size> <part_num> <num_of_parts> [typecode]
+   
+   # Example: Create 8 journal partitions in /dev/sdb with the size of 10GiB.
+   ./diskpart.sh /dev/sdb 10 1 8 ceph-journal 
+   ```
 
 - Usage:
 ```
