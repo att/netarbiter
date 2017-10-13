@@ -1,8 +1,7 @@
+# Install Kubernetes by `kubeadm`
 Author: Hee Won Lee <knowpd@research.att.com>
 Created on 9/12/2017
 
-Install
-=======
 ## In master node:
 ```
 install-docker
