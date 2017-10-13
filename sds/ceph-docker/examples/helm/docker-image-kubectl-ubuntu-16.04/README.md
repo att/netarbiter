@@ -3,7 +3,7 @@ Author: Hee Won Lee <knowpd@research.att.com>
 Created on: 10/12/2017  
 
 ### Purpose
-This image is used in `ceph/templates/jobs/job.yaml`, which generates ceph keys and stores them in K8s secrets.
+This image is used in `ceph/templates/jobs/job.yaml`, which generates ceph keys in K8s secrets.
 
 ### Build 
 1. Create your account in `https://hub.docker.com`.
