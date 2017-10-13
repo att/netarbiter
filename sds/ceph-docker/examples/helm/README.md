@@ -25,7 +25,7 @@ helm serve &
 ```
 
 2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner 
-- Preparation: 
+- Preparation:   
 Create a secret so that a K8s job could run `kubectl` inside the container.
 ```
 ./create-secret-kube-config.sh
@@ -42,7 +42,7 @@ Example
 ```
 
 3. Run an OSD chart
-- Preparation:
+- Preparation:  
 For each osd device, you should zap/erase/destroy a device's partition table and contents
 ```
 ceph-disk zap <osd_device>
