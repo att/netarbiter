@@ -10,7 +10,7 @@ Assuming you have a Kubeadm managed Kubernetes 1.7+ cluster and Helm 2.6.1 setup
 
 0. Preflight checklist
 ```
-sudo apt install ceph-common
+sudo apt install ceph-common		# for every K8s nodes
 sudo apt install jq			# used in activate-namespace.sh
 ```
 
@@ -86,6 +86,14 @@ kubectl replace -f relax-rbac-k8s1.7.yaml
 # For Kubernetes 1.8+
 kubectl replace -f relax-rbac-k8s1.8.yaml
 ```
+You need to have the K8s nodes setup to access the cluster network, and `/etc/resolv.conf` setup similar to the following:
+```
+$ cat /etc/resolv.conf
+nameserver 10.96.0.10           # K8s DNS IP
+nameserver 135.207.240.13       # External DNS IP; You would have a different IP.
+search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.att.com research.att.com
+```
+   - Or you may replace K8s nodes' `/etc/resolv.conf` with `/etc/resolv.conf` in a ceph-mon pod (e.g., ceph-mon-0) by Ctrl-C & Ctrl-V.
 
 Once Ceph deployment has been performed you can functionally test the environment by running the jobs in the tests directory.
 ```
