@@ -1,4 +1,4 @@
-# Docker image for running kubectl
+# Docker image for kubectl on Ubuntu 16.04
 Author: Hee Won Lee <knowpd@research.att.com>  
 Created on: 10/12/2017  
 
