@@ -49,7 +49,7 @@ Create a secret so that a K8s job could run `kubectl` inside the container.
    ```
    ./diskpart.sh <dev> <part_size> <part_num> <num_of_parts> [typecode]
    
-   # Example: Create 8 journal partitions in /dev/sdb with the size of 10GiB.
+   # Example: Create 8 journal partitions each with the size of 10GiB in /dev/sdb.
    ./diskpart.sh /dev/sdb 10 1 8 ceph-journal 
    ```
 
