@@ -56,7 +56,7 @@ in the namespace "default". (get secrets ceph-client-admin-keyring)
 can't open /var/lib/ceph/bootstrap-rbd/ceph.keyring: can't open /var/lib/ceph/bootstrap-rbd/ceph.keyring: (2) No such file or directory
 ```
 
-- Solution: Create a secret of ceph-bootstrap-rbd-keyring and use it in mon/statefulset.yaml.
+- Solution: Create a secret of ceph-bootstrap-rbd-keyring and use it in mon/statefulset.yaml.  
 The files that should be modified are as follows: 
    - jobs/configmap.yaml
    - jobs/job.yaml
@@ -74,7 +74,8 @@ sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 [kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10255/healthz' failed with error: Get http://localhost:10255/healthz: dial tcp [::1]:10255: getsockopt: connection refused.
 ```
 
-- Solution: https://github.com/kubernetes/kubernetes/issues/53333
+- Solution:   
+(src: https://github.com/kubernetes/kubernetes/issues/53333 )
 ```
 kubeadm reset
 add "Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"" to /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
@@ -107,8 +108,8 @@ Events:
   7m            2s              32      persistentvolume-controller                     Warning         ProvisioningFailed      Failed to provision volume with StorageClass "general": failed to create rbd image: executable file not found in $PATH, command output: 
 ```
 
-- Solution: 
-Modify ceph/templates/storageclass.yaml as follows: 
+- Solution   
+Modify ceph/templates/storageclass.yaml as follows:   
 From:
 ```
 provisioner: kubernetes.io/rbd
@@ -142,9 +143,9 @@ Events:
   47s           1s              5       persistentvolume-controller                     Normal          ExternalProvisioning    waiting for a volume to be created, either by external provisioner "ceph.com/rbd" or manually created by system administrator
 ```
 
-- Solution: Run a rbd-provisioner pod in the namespace of "ceph"
-(src: https://github.com/kubernetes/kubernetes/issues/38923 )
-(src: https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/rbd )
+- Solution: Run a rbd-provisioner pod in the namespace of "ceph"  
+(src: https://github.com/kubernetes/kubernetes/issues/38923 )  
+(src: https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/rbd )  
 
 ### Problem: [ceph-docker/exmaples/helm] Failure to attach a volume using PVC 
 - Symptom
@@ -163,13 +164,26 @@ Events:
   26s           9s              6       kubelet, voyager1                       Warning         FailedMount             MountVolume.SetUp failed for volume "pvc-63e7fc39-add8-11e7-855a-d4ae52a3acc1" : rbd: image kubernetes-dynamic-pvc-6cb96404-add8-11e7-a387-eaccdc8b6118 is locked by other nodes
 ```
 
+- Solution  
+You may encounter dmesg errors as follows:
+```
+libceph: mon0 172.31.8.199:6789 feature set mismatch
+libceph: mon0 172.31.8.199:6789 missing required protocol features
+```
+Avoid them by running the following from a ceph-mon pod:
+```
+ceph osd crush tunables legacy
+```
+
 ### Problem: [AWS][ceph-docker/exmaples/helm]
-- Symptom
+- Symptom  
 Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods in the namespace "default". (get pods)
 
-- Solution
-(src: https://github.com/kubernetes/dashboard/issues/1800 )
+- Solution  
+(src: https://github.com/kubernetes/dashboard/issues/1800 )  
+```
 kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
+```
 
 ### Bug Fix
 (src: https://stackoverflow.com/questions/15540635/what-is-the-use-of-pipe-symbol-in-yaml )
@@ -208,7 +222,7 @@ In https://raw.githubusercontent.com/ceph/ceph-docker/master/examples/helm/ceph/
 ```
 
 ### Problem: [ceph-docker/exmaples/helm] Failure of attaching a PVC to a pod
-- Symptom
+- Symptom  
 When mouting a rbd volume, kubelet would try to run "rbd map ..." of a Kubernetes node.
 However, the host machine cannot solve the IP of ceph-mon.ceph.
 ```
@@ -225,7 +239,7 @@ unable to parse addrs in 'ceph-mon.ceph'
 rbd: couldn't connect to the cluster!
 ```
 
-- Solution 1: Temporary
+- Solution 1: Temporary  
 ```
 $ kubectl -n ceph exec -it ceph-mon-0 -- cat /etc/resolv.conf 
 nameserver 10.96.0.10
@@ -233,7 +247,7 @@ search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.at
 ```
 Set up each Kubernetes node's /etc/resov.conf as above.
  
-- Solution 2: Permanent 
+- Solution 2: Permanent   
 Set up each Kubernetes node's /etc/network/interfaces as follows:
 ```
 auto enp66s0f0
@@ -250,8 +264,8 @@ $ /etc/init.d/networking restart
 ```
 
 ### Problem: after attaching pvc, a new rbd device is not shown as /dev/rbd0
-- Solution: reload udevadm rules
-(src: https://unix.stackexchange.com/questions/39370/how-to-reload-udev-rules-without-reboot )
+- Solution: reload udevadm rules  
+(src: https://unix.stackexchange.com/questions/39370/how-to-reload-udev-rules-without-reboot )  
 ```
 sudo udevadm control --reload-rules && udevadm trigger 
 ```
