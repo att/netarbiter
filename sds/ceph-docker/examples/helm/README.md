@@ -28,7 +28,7 @@ helm serve &
 - Preparation:   
 Create a `.kube/config` secret so that a K8s job could run `kubectl` inside the container.
 ```
-./create-secret-kube-config.sh
+./create-secret-kube-config.sh ceph
 ```
 
 - Usage:
