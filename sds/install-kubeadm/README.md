@@ -15,17 +15,16 @@ Created on: 9/12/2017
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 ```
 
-3. Follow the instruction from the output of `kubeadm init`: 
+3. Follow the instruction from the output of `kubeadm init` as follows:
 ```
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+# Put aside the last line for worker node.
+# However, you should have a different token and IP address.
+#    kubeadm join --token 461371.ebfd9fbf7569cfa9 135.207.240.41:6443
 ```
-   - For work node, put aside the last line.
-   ```
-   kubeadm join --token 461371.ebfd9fbf7569cfa9 135.207.240.41:6443
-   ```
-   Note that you should have a different token and IP address.
 
 3. Install Calico
 ```
