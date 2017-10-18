@@ -21,7 +21,7 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
-   For work node, put aside the last line.
+   - For work node, put aside the last line.
    ```
    kubeadm join --token 461371.ebfd9fbf7569cfa9 135.207.240.41:6443
    ```
