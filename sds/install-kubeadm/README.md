@@ -2,8 +2,8 @@
 Author: Hee Won Lee <knowpd@research.att.com> and Yu Xiang <yxiang@research.att.com>  
 Created on: 9/12/2017
 
-## Install
-### Master node:
+## Installation
+### In master node:
 1. Install docker, kubectl, kubelet, and kubeadm
 ```
 ./install-docker
@@ -38,7 +38,7 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 ```
 
 
-### Worker node:
+### In worker node:
 1. Install docker, kubelet, and kubeadm
 ```
 install-docker
@@ -54,14 +54,14 @@ sudo kubeadm join --token 461371.ebfd9fbf7569cfa9 136.201.240.41:6443
 ## Cleanup  
 (src: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#tear-down )
 
-### Master node:
+### In master node:
 
 Reset all kubeadm installed state:
 ```
 kubeadm reset
 ```
 
-### Worker node:
+### In worker node:
 Talking to the master with the appropriate credentials, run:
 ```
 kubectl drain <node name> --delete-local-data --force --ignore-daemonsets
