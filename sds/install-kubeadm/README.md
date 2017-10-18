@@ -23,7 +23,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 # Put aside the last line for worker node.
 # You will have a token and IP address different from:
-#    kubeadm join --token 461371.ebfd9fbf7569cfa9 135.207.240.41:6443
+#    kubeadm join --token 461371.ebfd9fbf7569cfa9 136.201.240.41:6443
 ```
 
 3. Install Calico
@@ -47,7 +47,7 @@ install-kubelet-kubeadm
 2. Join the K8s cluster.
 The command would be similar to the following:
 ```
-sudo kubeadm join --token 461371.ebfd9fbf7569cfa9 135.207.240.41:644
+sudo kubeadm join --token 461371.ebfd9fbf7569cfa9 136.201.240.41:6443
 ```
 
 Cleanup
