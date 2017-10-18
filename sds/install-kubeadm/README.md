@@ -10,7 +10,7 @@ Created on: 9/12/2017
 ./install-kubelet-kubeadm
 ```
 
-2. Initialize the master node
+2. Initialize a master node
 ```
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 ```
