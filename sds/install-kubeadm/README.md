@@ -22,7 +22,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 # Put aside the last line for worker node.
-# However, you should have a different token and IP address.
+# You will have a token and IP address different from:
 #    kubeadm join --token 461371.ebfd9fbf7569cfa9 135.207.240.41:6443
 ```
 
