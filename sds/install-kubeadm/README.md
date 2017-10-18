@@ -27,7 +27,8 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 #    kubeadm join --token 461371.ebfd9fbf7569cfa9 136.201.240.41:6443
 ```
 
-3. Install Calico
+3. Install Calico  
+(src: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm )
 ```
 kubectl apply -f http://docs.projectcalico.org/v2.4/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
 ```
