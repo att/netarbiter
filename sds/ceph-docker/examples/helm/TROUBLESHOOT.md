@@ -62,28 +62,6 @@ The files that should be modified are as follows:
    - jobs/job.yaml
    - mon/statefulset.yaml.
 
-## Problem: [install-kubeadm] 'kubeadm init' fails.
-Written by: Yu Xiang <yxiang@research.att.com>
-Added on: 10/3/2017
-
-- Symptom
-```
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16
-...
-[kubelet-check] It seems like the kubelet isn't running or healthy.
-[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10255/healthz' failed with error: Get http://localhost:10255/healthz: dial tcp [::1]:10255: getsockopt: connection refused.
-```
-
-- Solution:   
-(src: https://github.com/kubernetes/kubernetes/issues/53333 )
-```
-kubeadm reset
-add "Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"" to /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-systemctl daemon-reload
-systemctl restart kubelet
-kubeadm init --pod-network-cidr=192.168.0.0/16 --skip-preflight-checks
-```
-
 ### Problem: [ceph-docker/exmaples/helm] pvc pending with "executable file not found in $PATH"
 - Symptom
 ```
