@@ -4,7 +4,7 @@ Author: Hee Won Lee <knowpd@research.att.com>
 Created on : 10/1/2017  
 
 
-## Problem: [ceph-docker/exmaples/helm] tiller issue
+### Problem: [ceph-docker/exmaples/helm] tiller issue
 - Symptom
 ```
 $ helm install ./ceph
@@ -21,7 +21,7 @@ $ kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"templ
 deployment "tiller-deploy" patched
 ```
 
-## Problem: [ceph-docker/exmaples/helm] failure of job.yaml
+### Problem: [ceph-docker/exmaples/helm] failure of job.yaml
 - Symptom
 ```
 # bash ./ceph-keys.sh 
@@ -49,7 +49,7 @@ in the namespace "default". (get secrets ceph-client-admin-keyring)
    sudo kubectl create secret generic kubeconfig --from-file=/etc/kubernetes/admin.conf
    ```
 
-## Problem: [ceph-docker/exmaples/helm] ceph-mon does not work.
+### Problem: [ceph-docker/exmaples/helm] ceph-mon does not work.
 - Symptom
 ```
 +start_mon.sh:136: start_mon(): ceph-authtool /etc/ceph/ceph.mon.keyring --import-keyring /var/lib/ceph/bootstrap-rbd/ceph.keyring
