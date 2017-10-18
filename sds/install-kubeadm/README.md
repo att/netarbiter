@@ -3,18 +3,61 @@ Author: Hee Won Lee <knowpd@research.att.com> and Yu Xiang <yxiang@research.att.
 Created on: 9/12/2017
 
 ## In master node:
+1. Install docker, kubectl, kubelet, and kubeadm
 ```
 install-docker
 install-kubectl  
 install-kubelet-kubeadm
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16
-kubeadm-init-thereafter
 ```
+
+2. Initialize the master node
+```
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+```
+The output shows the follow-up steps:
+```
+Your Kubernetes master has initialized successfully!
+
+To start using your cluster, you need to run (as a regular user):
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  http://kubernetes.io/docs/admin/addons/
+
+You can now join any number of machines by running the following on each node
+as root:
+
+  kubeadm join --token 461371.ebfd9fbf7569cfa9 135.207.240.41:6443
+```
+- Note that you would see a differnt token and an IP address in the last line.
+
+3. Install Calico
+```
+kubectl apply -f http://docs.projectcalico.org/v2.4/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
+```
+
+4. If you want to schedule pods in the master node, run the following:
+```
+kubectl taint nodes --all node-role.kubernetes.io/master-
+```
+
+
 ## In worker node:
+1. Install docker, kubelet, and kubeadm
 ```
 install-docker
 install-kubelet-kubeadm
-sudo kubeadm join --token 8ed09e.07990953c22fb689 135.207.240.41:6443
+```
+
+2. Join the K8s cluster.
+The command would be similar to the following:
+```
+# Note: the token and IP address should be yours.
+sudo kubeadm join --token 461371.ebfd9fbf7569cfa9 135.207.240.41:644
 ```
 
 Cleanup
