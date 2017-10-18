@@ -20,7 +20,7 @@ add "Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"" to /etc/systemd/syst
 systemctl daemon-reload
 systemctl restart kubelet
 kubeadm init --pod-network-cidr=192.168.0.0/16 --skip-preflight-checks
-
+```
 
 ### Problem: Fails to join a node
 - Symptom
