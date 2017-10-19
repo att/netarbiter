@@ -33,9 +33,10 @@ kubectl create namespace ceph
 ```
 
 - Usage:   
-For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.
 ```
 ./helm-install-ceph.sh <release_name> <public_network> <cluster_network>
+# Note
+# For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.
 
 # Example
 ./helm-install-ceph.sh my_ceph_chart 172.31.0.0/20 172.31.0.0/20
