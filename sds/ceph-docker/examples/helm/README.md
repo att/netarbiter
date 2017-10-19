@@ -32,7 +32,7 @@ kubectl create namespace ceph
 ./create-secret-kube-config.sh ceph
 ```
 
-- Usage [[1](#notes)]:   
+- Usage [[1](#notes)][[2](#notes)]:   
 ```
 ./helm-install-ceph.sh <release_name> <public_network> <cluster_network>
 
@@ -128,4 +128,13 @@ kubectl create -R -f tests/ceph
 Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 
 ### Notes
-[1] For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.
+[1] For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.   
+
+[2] If you encounter the follwing message:
+```
+Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods in the namespace "default". (get pods)
+```
+Run the following: 
+```
+kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
+```
