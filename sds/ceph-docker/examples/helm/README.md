@@ -127,5 +127,5 @@ kubectl create -R -f tests/ceph
 ### Troubleshoot
 Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 
-###Notes
+#Notes
 [1] For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.
