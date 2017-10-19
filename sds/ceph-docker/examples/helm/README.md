@@ -32,7 +32,8 @@ kubectl create namespace ceph
 ./create-secret-kube-config.sh ceph
 ```
 
-- Usage:
+- Usage:   
+For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.
 ```
 ./helm-install-ceph.sh <release_name> <public_network> <cluster_network>
 
