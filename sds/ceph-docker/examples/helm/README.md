@@ -27,7 +27,7 @@ helm serve &
 
 2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner 
 - Preparation:   
-Create a `.kube/config` secret so that a K8s job could run `kubectl` inside the container.
+Create a secret for `.kube/config` so that a K8s job could run `kubectl` inside the container.
 ```
 kubectl create namespace ceph
 ./create-secret-kube-config.sh ceph
