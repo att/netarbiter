@@ -133,8 +133,8 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 
 If you encounter the message below:
 ```
-Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods 
-in the namespace "default". (get pods)
+Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods in the namespace i
+"default". (get pods)
 ```
 Run the following: 
 ```
