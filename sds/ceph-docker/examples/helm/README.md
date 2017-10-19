@@ -131,9 +131,10 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 ### Notes
 [1] For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.   
 
-If you encounter the follwing message:
+If you encounter the message below:
 ```
-Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods in the namespace "default". (get pods)
+Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods 
+in the namespace "default". (get pods)
 ```
 Run the following: 
 ```
