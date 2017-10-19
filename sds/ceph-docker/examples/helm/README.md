@@ -37,8 +37,7 @@ kubectl create namespace ceph
 ./helm-install-ceph.sh <release_name> <public_network> <cluster_network>
 
 # Example:
-#   Note that the public and cluster network will be your VM's network
-#  for public cloud services (AWS, GCE, etc).
+# The public and cluster network will be your VM's network for public cloud services (AWS, GCE, etc).
 ./helm-install-ceph.sh my_ceph_chart 172.31.0.0/20 172.31.0.0/20
 ```
 
