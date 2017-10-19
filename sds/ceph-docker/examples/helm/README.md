@@ -32,11 +32,13 @@ kubectl create namespace ceph
 ./create-secret-kube-config.sh ceph
 ```
 
-- Usage [[1](#notes)][[2](#notes)]:   
+- Usage [[1](#notes)]:   
 ```
 ./helm-install-ceph.sh <release_name> <public_network> <cluster_network>
 
-# Example
+# Example:
+#   Note that the public and cluster network will be your VM's network
+#  for public cloud services (AWS, GCE, etc).
 ./helm-install-ceph.sh my_ceph_chart 172.31.0.0/20 172.31.0.0/20
 ```
 
@@ -130,7 +132,7 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 ### Notes
 [1] For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.   
 
-[2] If you encounter the follwing message:
+If you encounter the follwing message:
 ```
 Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods in the namespace "default". (get pods)
 ```
