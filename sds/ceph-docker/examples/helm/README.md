@@ -16,6 +16,7 @@ sudo apt install jq			# used in activate-namespace.sh
 
 1. Install helm and tiller
 ```
+# Note: we do not require a specific helm version.
 curl -O https://storage.googleapis.com/kubernetes-helm/helm-v2.6.1-linux-amd64.tar.gz
 tar xzvf helm-v2.6.1-linux-amd64.tar.gz 
 sudo cp linux-amd64/helm /usr/local/bin
