@@ -39,14 +39,14 @@ kubectl create namespace ceph
 
 # Example:
 #   The public and cluster network will be your VM's network for public cloud services (AWS, GCE, etc).
-./helm-install-ceph.sh my_ceph_chart 172.31.0.0/20 172.31.0.0/20
+./helm-install-ceph.sh ceph 172.31.0.0/20 172.31.0.0/20
 ```
 
 3. Run ceph-osd
 - Preparation:  
    * For each osd device, you should zap/erase/destroy the device's partition table and contents.
    ```
-   ceph-disk zap <osd_device>
+   sudo ceph-disk zap <osd_device>
    ```
    * If you use a separate SSD journal, you should prepare for the journal disk partitions.
    ```
