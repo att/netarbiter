@@ -32,7 +32,7 @@ kubectl create namespace ceph
 ./create-secret-kube-config.sh ceph
 ```
 
-- Usage [1](#note1):   
+- Usage [1](#notes):   
 ```
 ./helm-install-ceph.sh <release_name> <public_network> <cluster_network>
 
