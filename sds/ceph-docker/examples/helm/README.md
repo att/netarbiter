@@ -95,7 +95,7 @@ root@yourhostname:/# ceph -s
 
    - filestore with journal (recommended for production environment)
    ```
-   OSD_FILESTORE=1 OSD_JOURNAL=/dev/sdb1 ./helm-ceph-osd.sh myhostname /dev/sdc
+   OSD_FILESTORE=1 OSD_JOURNAL=/dev/sdb1 ./helm-install-ceph-osd.sh myhostname /dev/sdc
    ```
 
 - Test
