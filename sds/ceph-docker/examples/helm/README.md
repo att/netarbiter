@@ -95,6 +95,19 @@ root@yourhostname:/# ceph -s
    ```
    OSD_FILESTORE=1 OSD_JOURNAL=/dev/sdb1 ./helm-ceph-osd.sh myhostname /dev/sdc
    ```
+
+- Test
+```
+# To check the pod status of ceph-osd
+kubectl get pods -n ceph
+
+# To enter the ceph-mon pod
+./kshell ceph-mon-0 ceph
+
+# To check ceph health status and osd tree
+root@yourhostname:/# ceph -s
+root@yourhostname:/# ceph osd tree
+```
    
 ### Namespace Activation
 
