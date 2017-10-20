@@ -3,7 +3,7 @@ Authors: Hee Won Lee <knowpd@research.att.com> and Yu Xiang <yxiang@research.att
 Created on 10/1/2017  
 Adapted for Ubuntu 16.04 and Ceph Luminous  
 Based on https://github.com/ceph/ceph-docker/tree/master/examples/helm  
-
+ 
 ### Qucikstart
 
 Assuming you have a [Kubeadm managed Kubernetes](../../../install-kubeadm) 1.7+ cluster, you can get going straight away! 
@@ -40,6 +40,22 @@ kubectl create namespace ceph
 # Example:
 #   The public and cluster network will be your VM's network for public cloud services (AWS, GCE, etc).
 ./helm-install-ceph.sh ceph 172.31.0.0/20 172.31.0.0/20
+```
+
+- Test
+```
+# To list your helm release
+helm ls
+
+# To check the pod status of ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner
+#   The status is not "RUNNING", then see [3].
+kubectl get pods -n ceph
+
+# To enter the ceph-mon pod
+./kshell ceph-mon-0 ceph
+
+# To check ceph health status
+root@yourhostname:/# ceph -s
 ```
 
 3. Run ceph-osd
@@ -132,7 +148,7 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 ### Notes
 [1] For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.   
 
-If you encounter the message below:
+[2]If you encounter the message below:
 ```
 Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods in the namespace in
 "default". (get pods)
@@ -141,3 +157,5 @@ Run the following:
 ```
 kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 ```
+
+[3] For public cloud services (e.g., AWS, GCE, etc.), you should open up ports for mon (6789), mgr (7000), and osd (6800~7100).
