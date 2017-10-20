@@ -40,6 +40,9 @@ kubectl create namespace ceph
 # Example:
 #   The public and cluster network will be your VM's network for public cloud services (AWS, GCE, etc).
 ./helm-install-ceph.sh ceph 172.31.0.0/20 172.31.0.0/20
+
+# To reinstall, first delete the release.
+helm delete <release_name>
 ```
 
 - Test
@@ -48,7 +51,7 @@ kubectl create namespace ceph
 helm ls
 
 # To check the pod status of ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner
-#   The status is not "RUNNING", then see [3].
+#   The status is not "RUNNING", then see [2].
 kubectl get pods -n ceph
 
 # To enter the ceph-mon pod
@@ -148,7 +151,7 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 ### Notes
 [1] For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.   
 
-[2]If you encounter the message below:
+If you encounter the message below:
 ```
 Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods in the namespace in
 "default". (get pods)
@@ -158,4 +161,4 @@ Run the following:
 kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 ```
 
-[3] For public cloud services (e.g., AWS, GCE, etc.), you should open up ports for mon (6789), mgr (7000), and osd (6800~7100).
+[2] For public cloud services (e.g., AWS, GCE, etc.), you should open up ports for mon (6789), mgr (7000), and osd (6800~7100).
