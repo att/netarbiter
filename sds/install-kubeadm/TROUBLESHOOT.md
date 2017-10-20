@@ -35,7 +35,7 @@ $ sudo kubeadm join --token 461371.ebfd9fbf7569cfa9 135.207.240.41:6443
 sudo kubeadm token list
 ```
 
-### Problem: Kubernetes kube-dns pod is pending (when running a single vcpu VM in GCE)
+### Problem: Kubernetes kube-dns pod is pending, when running a single vcpu VM in GCE.
 - Symptom
 ```
 $ kubectl get pods --all-namespaces
@@ -57,7 +57,7 @@ $ kubectl -n kube-system describe pod kube-dns-545bc4bfd4-g7zsg
 
 ```
 
-- Solution: Kubernetes kube-dns pod is pending
+- Solution: Kubernetes kube-dns pod is pending  
 (src: https://stackoverflow.com/questions/42222513/kubernetes-kube-dns-pod-is-pending )
 
 
