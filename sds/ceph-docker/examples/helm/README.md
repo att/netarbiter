@@ -41,7 +41,7 @@ kubectl create namespace ceph
 #   The public and cluster network will be your VM's network for public cloud services (AWS, GCE, etc).
 ./helm-install-ceph.sh ceph 172.31.0.0/20 172.31.0.0/20
 
-# To reinstall, first delete the release.
+# To reinstall, first delete the helm release.
 helm delete <release_name>
 ```
 
