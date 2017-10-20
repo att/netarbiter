@@ -38,6 +38,11 @@ kubectl apply -f http://docs.projectcalico.org/v2.4/getting-started/kubernetes/i
 kubectl taint nodes --all node-role.kubernetes.io/master-
 ```
 
+5. Test  
+```
+# To check if all pods' status is "Running".
+kubectl get pods --all-namespaces
+```
 
 ### In worker node:
 1. Install docker, kubelet, and kubeadm
