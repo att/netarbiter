@@ -101,10 +101,8 @@ root@yourhostname:/# ceph -s
 # To check the pod status of ceph-osd
 kubectl get pods -n ceph
 
-# To enter the ceph-mon pod
-./kshell ceph-mon-0 ceph
-
 # To check ceph health status and osd tree
+./kshell ceph-mon-0 ceph
 root@yourhostname:/# ceph -s
 root@yourhostname:/# ceph osd tree
 ```
