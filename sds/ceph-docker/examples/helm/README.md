@@ -35,7 +35,7 @@ kubectl create namespace ceph
 
 - Usage [[1](#notes)]:   
 ```
-# For release_name, underscores (i.e. "_") are not allowed.
+# For release-name, dash (or -) is allowed, but underscore (or _) is not.
 # For public_network and cluster_network, refer to [1].
 ./helm-install-ceph.sh <release-name> <public_network> <cluster_network>
 
