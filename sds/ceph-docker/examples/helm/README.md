@@ -35,7 +35,9 @@ kubectl create namespace ceph
 
 - Usage [[1](#notes)]:   
 ```
-./helm-install-ceph.sh <release_name> <public_network> <cluster_network>
+# For release_name, underscores (i.e. "_") are not allowed.
+# For public_network and cluster_network, refer to [1].
+./helm-install-ceph.sh <release-name> <public_network> <cluster_network>
 
 # Example:
 #   The public and cluster network will be your VM's network for public cloud services (AWS, GCE, etc).
