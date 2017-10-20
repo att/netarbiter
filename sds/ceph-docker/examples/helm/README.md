@@ -158,7 +158,7 @@ ceph osd crush tunables legacy
 kubectl create -R -f tests/ceph/pvc.yaml
 kubectl create -R -f tests/ceph/job.yaml
 
-# To check if the job was successful (i.e., 1)
+# To check if the job is successful (i.e., 1)
 kubectl get jobs ceph-secret-generator -n ceph
 ```
 
