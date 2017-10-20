@@ -155,7 +155,11 @@ ceph osd pool create rbd 100 100
 ceph osd crush tunables legacy
 
 # Create a pvc and attach it to a job:
-kubectl create -R -f tests/ceph
+kubectl create -R -f tests/ceph/pvc.yaml
+kubectl create -R -f tests/ceph/job.yaml
+
+# To check if the job was successful (i.e., 1)
+kubectl get jobs ceph-secret-generator -n ceph
 ```
 
 ### Troubleshoot
