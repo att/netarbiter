@@ -10,7 +10,7 @@ Assuming you have a [Kubeadm managed Kubernetes](../../../install-kubeadm) 1.7+ 
 
 0. Preflight checklist
 ```
-sudo apt install ceph-common		# for every K8s nodes
+sudo apt install ceph ceph-common	# for every K8s nodes
 sudo apt install jq			# used in activate-namespace.sh
 ```
 
