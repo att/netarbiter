@@ -47,7 +47,10 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 
 5. Test  
 ```
-# To check if all pods are "Running".
+# To check if your master node is "Ready"
+kubectl get nodes
+
+# To check if all pods are "Running"
 kubectl get pods --all-namespaces
 ```
 
