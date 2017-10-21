@@ -6,8 +6,11 @@ Created on: 9/12/2017
 ### In master node:
 0. Install all in one by:  
 ```
-# Note: it may take a minute or so to get to the "Ready" status
 ./install-allinone-masternode.sh
+
+# To check if your master node is "Ready"
+#   (it may take a minute to get to the "Ready" status)
+kubectl get nodes
 ```
 Otherwise, take the following steps.
 
