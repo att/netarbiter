@@ -4,7 +4,7 @@ Created on: 9/12/2017
 
 ## Installation
 ### In master node:
-0. Install all in one by:  
+0. Install all in one step by:  
 ```
 ./install-allinone-masternode.sh
 
