@@ -255,6 +255,6 @@ $ kubectl describe pod ceph-mon-0 -n ceph
   Warning  FailedScheduling  3m (x26 over 10m)  default-scheduler  No nodes are available that match all of the predicates: PodFitsHostPorts (1).
 ```
 
-- Solution
-This problem occurs when running a K8s cluster with a single VM in GCE.
+- Solution  
+This problem occurs when running a K8s cluster with a single VM in GCE.  
 You should use at least two nodes in a K8s cluster because ceph-mon and ceph-mon-check use a same port number (6789).
