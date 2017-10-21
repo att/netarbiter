@@ -10,7 +10,7 @@ Assuming you have a [Kubeadm managed Kubernetes](../../../install-kubeadm) 1.7+ 
 
 0. Install all in one by:
 ```
-./install-allinone-ceph-mon.sh 
+./install-allinone-ceph-mon.sh <public_network> <cluster_network>
 ```
 Otherwise, take the following steps.
 
