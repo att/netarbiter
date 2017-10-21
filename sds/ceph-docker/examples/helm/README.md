@@ -11,7 +11,7 @@ In addition, the Kubernetes cluster should have at least two nodes because ceph-
 
 1. Preparation
 ```
-# Prepare helm
+# Prepare helm and tiller
 ./install-helm.sh
 helm init                    # or helm init --upgrade
 helm serve &
