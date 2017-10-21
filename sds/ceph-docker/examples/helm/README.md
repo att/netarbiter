@@ -124,8 +124,11 @@ nameserver 10.96.0.10           # K8s DNS IP
 nameserver 135.207.240.13       # External DNS IP; You would have a different IP.
 search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.att.com research.att.com
 ```
-   - You may replace K8s nodes' `/etc/resolv.conf` with `/etc/resolv.conf` in a ceph-mon pod (e.g., ceph-mon-0) by Ctrl-C & Ctrl-V.
-   - This step allows K8s nodes to use the DNS service (i.e., kubedns) of your Kubernetes cluster. That is, you can run `ping ceph-mon.ceph`. When creating an rbd device (e.g., /dev/rbd0), kubelet executes `rbd map ...` that connects to ceph-mon by domain name `ceph-mon.ceph`.
+   - You may replace K8s nodes' `/etc/resolv.conf` with `/etc/resolv.conf` of a ceph-mon pod (e.g., ceph-mon-0):
+   ```
+   kubectl -n ceph exec -it ceph-mon-0 -- cat /etc/resolv.conf
+   ```
+   - This step allows K8s nodes to use the DNS service (i.e., kubedns) of your Kubernetes cluster. That is, you can run `ping ceph-mon`. When creating an rbd device (e.g., /dev/rbd0), kubelet executes `rbd map ...` that connects to ceph-mon by domain name `ceph-mon`.
 
 ### Functional Testing
 Once Ceph deployment has been performed you can functionally test the environment by running the jobs in the tests directory.
