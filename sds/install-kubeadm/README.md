@@ -72,7 +72,7 @@ sudo kubeadm join --token <token_string> <master_node_ip>:6443
 # Example:
 sudo kubeadm join --token 461371.ebfd9fbf7569cfa9 136.201.240.41:6443
 ```
-- From the master node, you can also find your token string by running `sudo kubeadm token list`.
+- You can also find your token string by running `sudo kubeadm token list` from the master node.
 
 ## Cleanup  
 (src: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#tear-down )
