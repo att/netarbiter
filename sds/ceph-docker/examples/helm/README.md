@@ -114,11 +114,8 @@ Where `default` is the name of the namespace you wish to use Ceph volumes in.
 Kubernetes >=v1.6 makes RBAC the default admission controller. We does not currently have RBAC roles and permissions for each
 component, so you need to relax the access control rules:
 ```
-# For Kubernetes 1.6 and 1.7
-kubectl replace -f relax-rbac-k8s1.7.yaml
-
-# For Kubernetes 1.8+
 kubectl replace -f relax-rbac-k8s1.8.yaml
+# Note: for Kubernetes 1.7, use relax-rbac-k8s1.7.yaml instead.
 ```
 You need to have the K8s nodes setup to access the cluster network, and `/etc/resolv.conf` would be similar to the following:
 ```
