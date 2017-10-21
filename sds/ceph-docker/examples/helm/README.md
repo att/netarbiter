@@ -10,16 +10,13 @@ Assuming you have a [Kubeadm managed Kubernetes](../../../install-kubeadm) 1.7+ 
 
 0. Prerequisites
 ```
-sudo apt install ceph ceph-common	# for every K8s nodes
-sudo apt install jq			# used in activate-namespace.sh
+sudo apt install -y ceph ceph-common jq		# for every K8s nodes
 ```
 
 1. Install helm and tiller
 ```
 # Note: we do not require a specific helm version.
-curl -O https://storage.googleapis.com/kubernetes-helm/helm-v2.6.1-linux-amd64.tar.gz
-tar xzvf helm-v2.6.1-linux-amd64.tar.gz 
-sudo cp linux-amd64/helm /usr/local/bin
+./install-helm.sh
 
 helm init       # or helm init --upgrade
 helm serve &
