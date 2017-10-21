@@ -15,19 +15,13 @@ sudo apt install -y ceph ceph-common jq		# for every K8s nodes
 ```
 1. Preparation
 ```
-# Note: we do not require a specific helm version.
+# Prepare helm
 ./install-helm.sh
 helm init                    # or helm init --upgrade
 helm serve &
 
-# Create a namespace for ceph
-kubectl create namespace ceph
-
-# Create a secret for `.kube/config` so that a K8s job could run `kubectl` inside the container.
-./create-secret-kube-config.sh ceph
-
-# Allow user "system:serviceaccount:kube-system:default" to list pods in the namespace "default"
-kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
+# Prepare a ceph namespace
+./prep-ceph-ns.sh
 ```
 
 2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner
