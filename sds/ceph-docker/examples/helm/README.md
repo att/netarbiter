@@ -9,10 +9,6 @@ Based on https://github.com/ceph/ceph-docker/tree/master/examples/helm
 We assume that you have a [Kubeadm managed Kubernetes](../../../install-kubeadm) 1.7+ cluster. 
 In addition, the Kubernetes cluster should have at least two nodes because ceph-mon and ceph-mon-check use a same port number (6789).
 
-0. Prerequisites
-```
-sudo apt install -y ceph ceph-common jq		# for every K8s nodes
-```
 1. Preparation
 ```
 # Prepare helm
@@ -58,6 +54,7 @@ You need this procedure for each OSD.
 1. Preparation:  
    * For each osd device, you should zap/erase/destroy the device's partition table and contents.
    ```
+   sudo apt install -y ceph
    sudo ceph-disk zap <osd_device>
    ```
    * If you use a separate SSD journal, you should prepare for the journal disk partitions.
