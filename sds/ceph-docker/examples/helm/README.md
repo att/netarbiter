@@ -54,9 +54,8 @@ helm ls
 #   The status is not "RUNNING", then see [2].
 kubectl get pods -n ceph
 
-# To enter the ceph-mon pod and check ceph health status
-./kshell ceph-mon-0 ceph
-root@yourhostname:/# ceph -s
+# To enter the ceph-mon pod [3] and check ceph health status
+kubectl -n ceph exec -it ceph-mon-0 -- ceph -s
 ```
 
 ### Install OSDs
@@ -103,9 +102,8 @@ You need this procedure for each OSD.
 kubectl get pods -n ceph
 
 # To check ceph health status and osd tree
-./kshell ceph-mon-0 ceph
-root@yourhostname:/# ceph -s
-root@yourhostname:/# ceph osd tree
+kubectl -n ceph exec -it ceph-mon-0 -- ceph -s
+kubectl -n ceph exec -it ceph-mon-0 -- ceph osd tree
 ```
    
 ### Namespace Activation
@@ -168,3 +166,8 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 [1] For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.   
 
 [2] For public cloud services (e.g., AWS, GCE, etc.), you should open up ports for mon (6789), mgr (7000), and osd (6800~7100).
+
+[3] You can also use a script `kshell` to enter a pod:
+```
+Usage: kshell <pod> <namespace>
+```
