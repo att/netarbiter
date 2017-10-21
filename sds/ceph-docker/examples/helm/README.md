@@ -35,14 +35,14 @@ kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-adm
 ```
 # For release-name, dash (or -) is allowed, but underscore (or _) is not.
 # For public_network and cluster_network, refer to [1].
-./helm-install-ceph.sh <release-name> <public_network> <cluster_network>
+./helm-install-ceph.sh <helm-release-name> <public_network> <cluster_network>
 
 # Example:
 #   The public and cluster network will be your VM's network for public cloud services (AWS, GCE, etc).
 ./helm-install-ceph.sh ceph 172.31.0.0/20 172.31.0.0/20
 
 # To reinstall, first delete the helm release.
-helm delete <release_name>
+helm delete <helm-release-name>
 ```
 
 - Test
