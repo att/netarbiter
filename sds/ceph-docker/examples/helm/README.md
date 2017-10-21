@@ -12,19 +12,13 @@ Assuming you have a [Kubeadm managed Kubernetes](../../../install-kubeadm) 1.7+ 
 ```
 sudo apt install -y ceph ceph-common jq		# for every K8s nodes
 ```
-
-1. Install helm and tiller
+1. Preparation
 ```
 # Note: we do not require a specific helm version.
 ./install-helm.sh
-
-helm init       # or helm init --upgrade
+helm init                    # or helm init --upgrade
 helm serve &
-```
 
-2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner 
-- Preparation:   
-```
 # Create a namespace for ceph
 kubectl create namespace ceph
 
@@ -35,7 +29,8 @@ kubectl create namespace ceph
 kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 ```
 
-- Usage [[1](#notes)]:   
+2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner
+- Usage [[1](#notes)]:
 ```
 # For release-name, dash (or -) is allowed, but underscore (or _) is not.
 # For public_network and cluster_network, refer to [1].
