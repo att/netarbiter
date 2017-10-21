@@ -4,6 +4,13 @@ Created on: 9/12/2017
 
 ## Installation
 ### In master node:
+0. One-click install by:  
+```
+./install-masternode-oneclick.sh
+```
+Otherwise, take the following steps.
+
+
 1. Install docker, kubectl, kubelet, and kubeadm
 ```
 ./install-docker
