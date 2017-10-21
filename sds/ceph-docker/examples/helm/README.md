@@ -8,19 +8,13 @@ Based on https://github.com/ceph/ceph-docker/tree/master/examples/helm
 
 Assuming you have a [Kubeadm managed Kubernetes](../../../install-kubeadm) 1.7+ cluster, you can get going straight away! 
 
-0. Install all in one by:
-```
-./install-allinone-ceph-mon.sh <public_network> <cluster_network>
-```
-Otherwise, take the following steps.
-
-1. Prerequisites
+0. Prerequisites
 ```
 sudo apt install ceph ceph-common	# for every K8s nodes
 sudo apt install jq			# used in activate-namespace.sh
 ```
 
-2. Install helm and tiller
+1. Install helm and tiller
 ```
 # Note: we do not require a specific helm version.
 curl -O https://storage.googleapis.com/kubernetes-helm/helm-v2.6.1-linux-amd64.tar.gz
@@ -31,7 +25,7 @@ helm init       # or helm init --upgrade
 helm serve &
 ```
 
-3. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner 
+2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner 
 - Preparation:   
 Create a secret for `.kube/config` so that a K8s job could run `kubectl` inside the container.
 ```
