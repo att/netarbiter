@@ -258,3 +258,17 @@ $ kubectl describe pod ceph-mon-0 -n ceph
 - Solution  
 This problem occurs when running a K8s cluster with a single VM in GCE.  
 You should use at least two nodes in a K8s cluster because ceph-mon and ceph-mon-check use a same port number (6789).
+
+### Problem:
+- Symptom
+If you encounter the message below:
+```
+Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods in the namespace in
+"default". (get pods)
+```
+
+- Solution: Run the following:
+```
+kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
+```
+
