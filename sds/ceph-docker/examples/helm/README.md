@@ -137,19 +137,20 @@ search ceph.svc.cluster.local svc.cluster.local cluster.local client.research.at
 Once Ceph deployment has been performed you can functionally test the environment by running the jobs in the tests directory.
 ```
 # Create a pool from a ceph-mon pod (e.g., ceph-mon-0):
-ceph osd pool create rbd 100 100
+kubectl -n ceph exec -it ceph-mon-0 -- ceph osd pool create rbd 100 100
 
 # When mounting a pvc to a pod, you may encounter dmesg errors as follows: 
 #    libceph: mon0 172.31.8.199:6789 feature set mismatch
 #    libceph: mon0 172.31.8.199:6789 missing required protocol features
 # Avoid them by running the following from a ceph-mon pod:
-ceph osd crush tunables legacy
+kubectl -n ceph exec -it ceph-mon-0 -- ceph osd crush tunables legacy
 
-# Create a pvc and attach it to a job:
-kubectl create -R -f tests/ceph/pvc.yaml
-kubectl create -R -f tests/ceph/job.yaml
+# Create a pvc and check if the pvc status is "Bound"
+kubectl create -f tests/ceph/pvc.yaml
+kubectl get pvc ceph-test
 
-# To check if the job is successful (i.e., 1)
+# Attach the pvc to a job and check if the job is successful (i.e., 1)
+kubectl create -f tests/ceph/job.yaml
 kubectl get jobs ceph-secret-generator -n ceph
 ```
 
