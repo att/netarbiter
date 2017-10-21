@@ -6,6 +6,7 @@ Created on: 9/12/2017
 ### In master node:
 0. Install all in one by:  
 ```
+# Note: it may take a minute or so to get to the "Ready" status
 ./install-allinone-masternode.sh
 ```
 Otherwise, take the following steps.
