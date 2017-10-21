@@ -71,6 +71,9 @@ sudo kubeadm join --token <token_string> <master_node_ip>:6443
 
 # Example:
 sudo kubeadm join --token 461371.ebfd9fbf7569cfa9 136.201.240.41:6443
+
+# To check if a new worker node is "Ready"
+kubectl get nodes
 ```
 - You can also find your token string by running `sudo kubeadm token list` from the master node.
 
