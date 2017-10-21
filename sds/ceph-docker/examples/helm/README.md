@@ -26,7 +26,7 @@ kubectl create namespace ceph
 # Create a secret for `.kube/config` so that a K8s job could run `kubectl` inside the container.
 ./create-secret-kube-config.sh ceph
 
-# Relax the access control (RBAC) rules
+# Allow user "system:serviceaccount:kube-system:default" to list pods in the namespace "default"
 kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 ```
 
@@ -169,15 +169,5 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 
 ### Notes
 [1] For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.   
-
-If you encounter the message below:
-```
-Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods in the namespace in
-"default". (get pods)
-```
-Run the following: 
-```
-kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
-```
 
 [2] For public cloud services (e.g., AWS, GCE, etc.), you should open up ports for mon (6789), mgr (7000), and osd (6800~7100).
