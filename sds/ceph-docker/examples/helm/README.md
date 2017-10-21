@@ -159,7 +159,7 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 
 [2] For public cloud services (e.g., AWS, GCE, etc.), you should open up ports for mon (6789), mgr (7000), and osd (6800~7100).
 
-[3] You can also use script `./kshell` to enter a pod:
+[3] You can enter a pod by `./kshell`:
 ```
 Usage: kshell <pod> <namespace>
 ```
