@@ -11,6 +11,9 @@ Created on: 9/12/2017
 # To check if your master node is "Ready"
 #   (it may take a minute to get to the "Ready" status)
 kubectl get nodes
+
+# To check if all pods are "Running"
+kubectl get pods --all-namespaces
 ```
 Otherwise, take the following steps.
 
@@ -47,15 +50,6 @@ kubectl apply -f http://docs.projectcalico.org/v2.4/getting-started/kubernetes/i
 4. If you want to schedule pods in the master node, run the following:
 ```
 kubectl taint nodes --all node-role.kubernetes.io/master-
-```
-
-5. Test  
-```
-# To check if your master node is "Ready"
-kubectl get nodes
-
-# To check if all pods are "Running"
-kubectl get pods --all-namespaces
 ```
 
 ### In worker node:
