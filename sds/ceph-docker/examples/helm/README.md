@@ -4,17 +4,23 @@ Created on 10/1/2017
 Adapted for Ubuntu 16.04 and Ceph Luminous  
 Based on https://github.com/ceph/ceph-docker/tree/master/examples/helm  
  
-### Qucikstart
+### Install Ceph Monitor
 
 Assuming you have a [Kubeadm managed Kubernetes](../../../install-kubeadm) 1.7+ cluster, you can get going straight away! 
 
-0. Preflight checklist
+0. Install all in one by:
+```
+./install-allinone-ceph-mon.sh 
+```
+Otherwise, take the following steps.
+
+1. Prerequisites
 ```
 sudo apt install ceph ceph-common	# for every K8s nodes
 sudo apt install jq			# used in activate-namespace.sh
 ```
 
-1. Install helm and tiller
+2. Install helm and tiller
 ```
 # Note: we do not require a specific helm version.
 curl -O https://storage.googleapis.com/kubernetes-helm/helm-v2.6.1-linux-amd64.tar.gz
@@ -25,7 +31,7 @@ helm init       # or helm init --upgrade
 helm serve &
 ```
 
-2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner 
+3. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner 
 - Preparation:   
 Create a secret for `.kube/config` so that a K8s job could run `kubectl` inside the container.
 ```
@@ -63,8 +69,8 @@ kubectl get pods -n ceph
 root@yourhostname:/# ceph -s
 ```
 
-3. Run ceph-osd
-- Preparation:  
+### Install OSDs
+1. Preparation:  
    * For each osd device, you should zap/erase/destroy the device's partition table and contents.
    ```
    sudo ceph-disk zap <osd_device>
@@ -77,6 +83,7 @@ root@yourhostname:/# ceph -s
    ./diskpart.sh /dev/sdb 10 1 8 ceph-journal 
    ```
 
+2. You need this step for each OSD.
 - Usage:
 ```
 ./helm-install-ceph-osd.sh <hostname> <osd_device>
@@ -101,6 +108,7 @@ root@yourhostname:/# ceph -s
 - Test
 ```
 # To check the pod status of ceph-osd
+helm ls
 kubectl get pods -n ceph
 
 # To check ceph health status and osd tree
