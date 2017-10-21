@@ -63,14 +63,13 @@ kubectl get pods --all-namespaces
 ```
 
 2. Join the K8s cluster.
-The command would be similar to the following:
 ```
 sudo kubeadm join --token <token_string> <master_node_ip>:6443
 
 # Example:
 sudo kubeadm join --token 461371.ebfd9fbf7569cfa9 136.201.240.41:6443
 ```
-- To find a token string for your master node, run `sudo kubeadm token list`.
+- From your master node, you can also find the token string by running `sudo kubeadm token list`.
 
 ## Cleanup  
 (src: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#tear-down )
