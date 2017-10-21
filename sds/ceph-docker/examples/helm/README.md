@@ -7,7 +7,7 @@ Based on https://github.com/ceph/ceph-docker/tree/master/examples/helm
 ### Install Ceph Monitor
 
 We assume that you have a [Kubeadm managed Kubernetes](../../../install-kubeadm) 1.7+ cluster. 
-In addition, the Kubernetes cluster should have at least two nodes becasue ceph-mon and ceph-mon-check use a same port number (6789).
+In addition, the Kubernetes cluster should have at least two nodes because ceph-mon and ceph-mon-check use a same port number (6789).
 
 0. Prerequisites
 ```
