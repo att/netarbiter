@@ -70,6 +70,8 @@ root@yourhostname:/# ceph -s
 ```
 
 ### Install OSDs
+You need this procedure for each OSD.
+
 1. Preparation:  
    * For each osd device, you should zap/erase/destroy the device's partition table and contents.
    ```
@@ -83,7 +85,7 @@ root@yourhostname:/# ceph -s
    ./diskpart.sh /dev/sdb 10 1 8 ceph-journal 
    ```
 
-2. You need this step for each OSD.
+2. Add an OSD
 - Usage:
 ```
 ./helm-install-ceph-osd.sh <hostname> <osd_device>
