@@ -20,7 +20,7 @@ sudo apt install -y ceph ceph-common jq		# for every K8s nodes
 helm init                    # or helm init --upgrade
 helm serve &
 
-# Prepare a ceph namespace
+# Prepare a ceph namespace in the K8s cluster
 ./prep-ceph-ns.sh
 ```
 
