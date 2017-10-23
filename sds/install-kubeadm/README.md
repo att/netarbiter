@@ -4,7 +4,7 @@ Created on: 9/12/2017
 
 ## Installation
 ### In master node:
-0. Install all in one step by:  
+0. Assuming you are in a clean state (no docker, kubectl, kubeclt, or kubeadm), install a master node in one step by:  
 ```
 ./install-allinone-masternode.sh
 
