@@ -106,7 +106,7 @@ Once defined you can then activate Ceph for a namespace by running:
 ./activate-namespace.sh default
 ```
 
-Where `default` is the name of the namespace you wish to use Ceph volumes in.
+where `default` is the name of the namespace you wish to use Ceph volumes in.
 
 
 ### Additional Configuration for Dynamic Provisioning
