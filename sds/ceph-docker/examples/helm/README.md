@@ -158,7 +158,7 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 [1] For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.   
 
 [2] For AWS, you should open up ports for mon (6789) and osd (6800~7100).  
-For GCE, by default, incoming traffic from outside your network is blocked, while all ports are open for internal IPs. Hence, you don’t have to worry about ports when you use internal IPs (e.g., 10.142.0.2) for Ceph’s cluster and public network.  
+For GCE, by default, incoming traffic from outside your network is blocked, while all ports are open for internal IPs. Hence, you don’t have to worry about ports if you use internal IPs (e.g., 10.142.0.2) for Ceph’s cluster and public network.  
 
 [3] You can enter a pod by `./kshell`:
 ```
