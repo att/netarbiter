@@ -94,4 +94,4 @@ kubeadm reset
 Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 
 ### Note
-[1] If you are installing in a single vcpu VM, the kube-dns pod will be a "Pending" status. To make it "Running", you need to install a mster node on 2+ vcpu VMs; or you may add 1+ work nodes later.
+[1] If you are installing in a single vcpu VM, the kube-dns pod will be a "Pending" status. To make it "Running", you need to install a mster node on a 2+ vcpu VM; or you may add 1+ work nodes later.
