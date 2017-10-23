@@ -12,7 +12,7 @@ Created on: 9/12/2017
 #   (it may take a minute to get to the "Ready" status)
 kubectl get nodes
 
-# To check if all pods are "Running"
+# To check if all pods are "Running" [1]
 kubectl get pods --all-namespaces
 ```
 Otherwise, take the following steps.
@@ -93,3 +93,5 @@ kubeadm reset
 
 Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 
+### Note
+[1] If you are installing in a single vcpu VM, Kubernetes' kube-dns pod will be "Pending". To make it "Running", you may install a mster node on 2+ vcpu VMs. Otherwise, you may add 1+ work nodes later.
