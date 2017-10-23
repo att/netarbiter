@@ -117,7 +117,7 @@ component, so you need to relax the access control rules:
 kubectl replace -f relax-rbac-k8s1.8.yaml
 # Note: for Kubernetes 1.7, use relax-rbac-k8s1.7.yaml instead.
 ```
-You need to have the K8s nodes setup to access the cluster network, and `/etc/resolv.conf` would be similar to the following:
+You need to have the K8s nodes setup to access the cluster network, and `/etc/resolv.conf` would be similar to the following [4]:
 ```
 $ cat /etc/resolv.conf
 nameserver 10.96.0.10           # K8s DNS IP
@@ -163,4 +163,10 @@ For GCE, by default, incoming traffic from outside your network is blocked, whil
 [3] You can enter a pod by `./kshell`:
 ```
 Usage: kshell <pod> <namespace>
+```
+
+[4] Make sure that your `/etc/resolv.conf` includes the following:
+```
+nameserver 10.96.0.10
+search ceph.svc.cluster.local svc.cluster.local cluster.local
 ```
