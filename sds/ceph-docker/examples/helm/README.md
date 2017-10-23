@@ -28,7 +28,7 @@ helm serve &
 ./helm-install-ceph.sh <helm-release-name> <public_network> <cluster_network>
 
 # Example:
-#   Use your VM's internal network for AWS, GCE, etc.
+#   Use your VMs' internal network for AWS, GCE, etc.
 ./helm-install-ceph.sh ceph 172.31.0.0/20 172.31.0.0/20
 
 # To reinstall, first delete the helm release.
