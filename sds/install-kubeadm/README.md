@@ -6,7 +6,7 @@ Created on: 9/12/2017
 ### In master node:
 0. Assuming you are in a clean state (i.e., no docker, kubectl, kubelet, or kubeadm), install a master node in one step by:  
 ```
-./install-allinone-masternode.sh
+./install-masternode.sh
 
 # To check if your master node is "Ready"
 #   (it may take a minute to get to the "Ready" status)
@@ -55,8 +55,7 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 ### In worker node:
 1. Install docker, kubelet, and kubeadm
 ```
-./install-docker
-./install-kubelet-kubeadm
+./install-workernode
 ```
 
 2. Join the K8s cluster.
