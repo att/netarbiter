@@ -21,6 +21,9 @@ EOF'
 sudo apt-get update
 sudo apt-get install -y --allow-unauthenticated kubeadm kubelet kubectl
 
+# Install kshell
+sudo cp ./kshell /usr/local/bin
+
 # Initialize your master
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 mkdir -p $HOME/.kube
