@@ -160,7 +160,7 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 [2] For AWS, you should open up ports for mon (6789) and osd (6800~7100).  
 For GCE, by default, incoming traffic from outside your network is blocked, while all ports are open for internal IPs. Hence, you don’t have to worry about ports when you use internal network (e.g., 10.142.0.0/20) for Ceph’s cluster and public network.  
 
-[3] You can enter a pod by `./kshell`:
+[3] You can use `kshell` to enter a pod:
 ```
 Usage: kshell <pod> <namespace>
 ```
