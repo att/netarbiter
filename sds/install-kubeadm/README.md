@@ -6,7 +6,8 @@ Created on: 9/12/2017
 ### In master node:
 1. Assuming you are in a clean state (i.e., no docker, kubectl, kubelet, or kubeadm), install a master node by:  
 ```
-./install-masternode.sh
+./install-masternode-calico.sh
+# Note: For flannel, run ./install-masternode-flannel.sh instead.
 
 # To check if your master node is "Ready"
 #   (it may take a minute to get to the "Ready" status)
