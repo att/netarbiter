@@ -4,10 +4,6 @@
 
 set -x
 
-#./install-docker
-#./install-kubectl
-#./install-kubelet-kubeadm
-
 # Install docker
 function install_docker {
   sudo apt-get update
@@ -49,14 +45,4 @@ function kubeadm_init_flannel {
   # Install flannel
   kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.0/Documentation/kube-flannel.yml
 }
-
-source common_functions.sh
-
-install_docker
-install_kubexxx
-kubeadm_init_calico
-#kubeadm_init_flannel
-
-# Schedule a pod on the master
-kubectl taint nodes --all node-role.kubernetes.io/master-
 
