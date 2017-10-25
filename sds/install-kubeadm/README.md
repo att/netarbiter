@@ -4,7 +4,7 @@ Created on: 9/12/2017
 
 ## Installation
 ### In master node:
-0. Assuming you are in a clean state (i.e., no docker, kubectl, kubelet, or kubeadm), install a master node in one step by:  
+1. Assuming you are in a clean state (i.e., no docker, kubectl, kubelet, or kubeadm), install a master node by:  
 ```
 ./install-masternode.sh
 
@@ -15,41 +15,12 @@ kubectl get nodes
 # To check if all pods are "Running" [1]
 kubectl get pods --all-namespaces
 ```
-Otherwise, take the following steps.
 
+2. From the output of `./install-masternode.sh`, put aside a line similar to the following:
+```
+kubeadm join --token 19b3d3.2a94bdb1d53c9515 10.150.0.6:6443 --discovery-token-ca-cert-hash sha256:e61a4ab6c6506d75061c813f4f6826e6d7bdec5aee1bc801ecf15c8ca0ac5ab1
 
-1. Install docker, kubectl, kubelet, and kubeadm
-```
-./install-docker
-./install-kubectl  
-./install-kubelet-kubeadm
-```
-
-2. Initialize a master node
-```
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16
-```
-
-3. Follow the instruction from the output of `kubeadm init` as follows:
-```
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-# Put aside the last line for worker node.
-# You will have a different token and IP address.
-#    kubeadm join --token 461371.ebfd9fbf7569cfa9 136.201.240.41:6443
-```
-
-3. Install Calico  
-(src: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm )
-```
-kubectl apply -f http://docs.projectcalico.org/v2.4/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
-```
-
-4. If you want to schedule pods in the master node, run the following:
-```
-kubectl taint nodes --all node-role.kubernetes.io/master-
+# Note: this will be used when a worker node joins this cluster later.
 ```
 
 ### In worker node:
