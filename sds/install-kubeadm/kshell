@@ -2,16 +2,17 @@
 # src: https://github.com/kubernetes/kubernetes/issues/13585
 # Modified: 6/20/2017 by knowpd@research.att.com
 
-if [ "$#" -lt 2 ]; then
-  echo "Usage: kshell <pod> <namespace>"
+if [ "$#" -lt 1 ]; then
+  echo "Usage: kshell <pod> [-n <namespace>]"
   exit 1
 fi
 
 #set -x
 
 POD=$1
-NAMESPACE=$2
-shift; shift
+NAMESPACE=$3
+NAMESPACE=${NAMESPACE:-default}
+shift; shift; shift
 
 COLUMNS=`tput cols`
 LINES=`tput lines`
