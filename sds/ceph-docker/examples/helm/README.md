@@ -162,7 +162,7 @@ For GCE, by default, incoming traffic from outside your network is blocked, whil
 
 [3] You can use `kshell` to enter a pod:
 ```
-Usage: kshell <pod> <namespace>
+Usage: kshell <pod> [-n <namespace>]
 ```
 
 [4] Make sure that your `/etc/resolv.conf` includes the following:
