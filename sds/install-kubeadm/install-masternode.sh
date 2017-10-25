@@ -8,8 +8,8 @@ source common-functions.sh
 
 install_docker
 install_kubexxx 	# i.e., kubeadm, kubelet, and kubectl
-kubeadm_init_calico
-#kubeadm_init_flannel
+#kubeadm_init_calico
+kubeadm_init_flannel
 
 # Schedule a pod on the master
 kubectl taint nodes --all node-role.kubernetes.io/master-
