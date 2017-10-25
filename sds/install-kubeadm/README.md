@@ -55,7 +55,7 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 ### In worker node:
 1. Install docker, kubelet, and kubeadm
 ```
-./install-workernode
+./install-workernode.sh
 ```
 
 2. Join the K8s cluster.
