@@ -68,3 +68,18 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 
 ### Note
 [1] If you are installing on a single vcpu VM, the kube-dns pod is likely to be a "Pending" status due to insufficient cpu. To make it "Running", you need to install a mster node on a 2+ vcpu VM; or you may add 1+ work nodes later.
+
+[2] To check if pods are correctly using the nameserver (10.96.0.10), take the following step:
+```
+# Create two pods
+kubectl create -f ktest.yaml
+
+# Get two pods, each of which will run in different K8s nodes
+kubectl get pods -o wide
+
+# Check if two pods can connect to the nameserver (10.96.0.10) 
+kshell <pod1>
+root@pod1:/# nslookup google.com
+kshell <pod2>
+root@pod2:/# nslookup google.com
+```
