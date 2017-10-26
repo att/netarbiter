@@ -16,7 +16,7 @@ In addition, the Kubernetes cluster should have at least two nodes because ceph-
 helm init                    # or helm init --upgrade
 helm serve &
 
-# Prepare a ceph namespace in the K8s cluster
+# Prepare a ceph namespace in your K8s cluster
 ./prep-ceph-ns.sh
 ```
 
@@ -44,14 +44,14 @@ helm ls
 #   The status is not "RUNNING", then see [2].
 kubectl get pods -n ceph
 
-# To enter the ceph-mon pod [3] and check ceph health status
+# To check ceph health status [3]
 kubectl -n ceph exec -it ceph-mon-0 -- ceph -s
 ```
 
 ### Install OSDs
 You need this procedure for each OSD.
 
-1. Preparation:  
+1. Preparation (from the worker nodes of your K8s cluster)  
    * For each osd device, you should zap/erase/destroy the device's partition table and contents.
    ```
    sudo apt install -y ceph
@@ -65,7 +65,7 @@ You need this procedure for each OSD.
    ./diskpart.sh /dev/sdb 10 1 8 ceph-journal 
    ```
 
-2. Add an OSD
+2. Add an OSD (from the master node of your K8s cluster)
 - Usage:
 ```
 ./helm-install-ceph-osd.sh <hostname> <osd_device>
@@ -92,7 +92,7 @@ You need this procedure for each OSD.
 # To check the pod status of ceph-osd
 kubectl get pods -n ceph
 
-# To check ceph health status and osd tree
+# To check ceph health status and osd tree [3]
 kubectl -n ceph exec -it ceph-mon-0 -- ceph -s
 kubectl -n ceph exec -it ceph-mon-0 -- ceph osd tree
 ```
