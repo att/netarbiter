@@ -41,7 +41,7 @@ helm delete <helm-release-name>
 helm ls
 
 # To check the pod status of ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner
-#   The status is not "RUNNING", then see [2].
+# Note: the  status is not "RUNNING", then check if necessary ports are open [2].
 kubectl get pods -n ceph
 
 # To check ceph health status [3]
