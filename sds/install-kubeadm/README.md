@@ -77,7 +77,7 @@ kubectl create -f ktest.yaml
 # Get two pods, each of which will run in different K8s nodes
 kubectl get pods -o wide
 
-# Check if two pods can connect to the nameserver (10.96.0.10) 
+# Check if two pods can connect to the nameserver 
 kshell <pod1>
 root@pod1:/# nslookup google.com
 kshell <pod2>
