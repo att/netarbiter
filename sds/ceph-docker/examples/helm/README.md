@@ -51,7 +51,7 @@ kubectl -n ceph exec -it ceph-mon-0 -- ceph -s
 ### Install OSDs
 You need this procedure for each OSD.
 
-1. Preparation (from the **worker nodes** of your K8s cluster)
+1. Preparation (only this step should be done from the **worker nodes** of your K8s cluster)
    * For each osd device, you should zap/erase/destroy the device's partition table and contents.
    ```
    sudo apt install -y ceph
