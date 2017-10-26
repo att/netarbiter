@@ -51,7 +51,7 @@ kubectl -n ceph exec -it ceph-mon-0 -- ceph -s
 ### Install OSDs
 You need this procedure for each OSD.
 
-1. Preparation (note: take this step from the worker nodes of your K8s cluster)
+1. Preparation (`*` take this step from the worker nodes of your K8s cluster)
    * For each osd device, you should zap/erase/destroy the device's partition table and contents.
    ```
    sudo apt install -y ceph
@@ -65,7 +65,7 @@ You need this procedure for each OSD.
    ./diskpart.sh /dev/sdb 10 1 8 ceph-journal 
    ```
 
-2. Add an OSD (note: take this step from the master node of your K8s cluster)
+2. Add an OSD (`*` take this step from the master node of your K8s cluster)
 - Usage:
 ```
 ./helm-install-ceph-osd.sh <hostname> <osd_device>
