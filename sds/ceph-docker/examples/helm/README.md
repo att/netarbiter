@@ -20,7 +20,7 @@ helm serve &
 ./prep-ceph-ns.sh
 ```
 
-2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner (from the master node of your K8s cluster)
+2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner
 - Usage [[1](#notes)]:
 ```
 # For helm-release-name, dash (or -) is allowed, but underscore (or _) is not.
