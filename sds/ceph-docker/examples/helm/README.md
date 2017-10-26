@@ -23,7 +23,7 @@ helm serve &
 2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner
 - Usage [[1](#notes)]:
 ```
-# For release-name, dash (or -) is allowed, but underscore (or _) is not.
+# For helm-release-name, dash (or -) is allowed, but underscore (or _) is not.
 # For public_network and cluster_network, refer to [1].
 ./helm-install-ceph.sh <helm-release-name> <public_network> <cluster_network>
 
