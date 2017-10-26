@@ -157,8 +157,9 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 ### Notes
 [1] For the public and cluster network setup, refer to http://docs.ceph.com/docs/hammer/rados/configuration/network-config-ref.   
 
-[2] For AWS, you should open up ports for mon (6789) and osd (6800~7100).  
+[2] For AWS, all ports are blocked by default, so you may need allow all protocol and ports for your internal IPs through VPC. 
 For GCE, by default, incoming traffic from outside your network is blocked, while all ports are open for internal IPs. Hence, you don’t have to worry about ports when you use internal network (e.g., 10.142.0.0/20) for Ceph’s cluster and public network.  
+Note that we need to open the following ports: kubeadm (TCP 6443), kubelet healthcheck (TCP 10250), Flannel (UDP 8285/8472), Calico (TCP 179), ETCD (TCP 2379-2380), ceph-mon (TCP 6789) and ceph-osd (TCP 6800~7100), etc.  
 
 [3] You can use `kshell` to enter a pod:
 ```
