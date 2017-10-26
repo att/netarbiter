@@ -9,7 +9,7 @@ Based on https://github.com/ceph/ceph-docker/tree/master/examples/helm
 We assume that you have a [Kubeadm managed Kubernetes](../../../install-kubeadm) 1.7+ cluster. 
 In addition, the Kubernetes cluster should have at least two nodes because ceph-mon and ceph-mon-check use a same port number (6789).
 
-1. Preparation
+1. Preparation (from the master node of your K8s cluster)
 ```
 # Prepare helm and tiller
 ./install-helm.sh
@@ -20,7 +20,7 @@ helm serve &
 ./prep-ceph-ns.sh
 ```
 
-2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner
+2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner (from the master node of your K8s cluster)
 - Usage [[1](#notes)]:
 ```
 # For helm-release-name, dash (or -) is allowed, but underscore (or _) is not.
