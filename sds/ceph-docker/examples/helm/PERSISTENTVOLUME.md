@@ -26,7 +26,7 @@ parameters:
 provisioner: ceph.com/rbd
 ```
 
-- adminId: Ceph client ID that is capable of creating images in the pool (i.e., `admin`) 
+- adminId (`admin`): Ceph client ID that is capable of creating images in the pool 
    ```
    $ kubectl -n ceph exec -it ceph-mon-0 -- cat /etc/ceph/ceph.client.admin.keyring
    [client.admin]
@@ -37,7 +37,7 @@ provisioner: ceph.com/rbd
      caps osd = "allow *"
    ```
 
-- adminSecret: Secret Name for adminId (i.e., `pvc-ceph-conf-combined-storageclass`)
+- adminSecret (i.e., `pvc-ceph-conf-combined-storageclass`): Secret Name for adminId 
    ```
    $ kubectl get secrets pvc-ceph-conf-combined-storageclass -n ceph -o yaml
    apiVersion: v1
@@ -55,7 +55,9 @@ provisioner: ceph.com/rbd
    QVFBWEZOcFpBQUFBQUJBQW9PdURtK21HSS9FbUs4OUJOb2FlaUE9PQo=
    ```
 
-- userId: Ceph client ID that is used to map the RBD image. (i.e., `admin`) 
+- userId (`admin`): Ceph client ID that is used to map the RBD image 
+
+- userSecretName (`pvc-ceph-client-key`): The name of Ceph Secret for userId to map RBD image. It must exist in the same namespace as PVCs. 
    ```
    $ kubectl get secret pvc-ceph-client-key -o yaml
    apiVersion: v1
@@ -132,5 +134,6 @@ spec:
 status:
   phase: Bound
 ```
-[KEY POINT] **The secret `pvc-ceph-client-key` should be present in a namespace where this PV exists.**
+
+NOTE: **The secret `pvc-ceph-client-key` should be present in a namespace where the PVC exists.**
 
