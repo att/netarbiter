@@ -136,5 +136,5 @@ status:
   phase: Bound
 ```
 
-NOTE: **The secret `pvc-ceph-client-key` should be present in a namespace where the PVC exists.**
+**NOTE: The secret `pvc-ceph-client-key` should be present in a namespace where the PVC exists.**
 
