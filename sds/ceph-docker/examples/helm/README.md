@@ -99,7 +99,7 @@ kubectl -n ceph exec -it ceph-mon-0 -- ceph osd tree
    
 ### Namespace Activation
 
-To use Ceph Volumes in a namespace a secret containing the Client Key needs to be present.
+To use Ceph Volumes in a namespace, a secret containing the Client Key needs to be present. For details, refer to [PERSISTENTVOLUME.md](./PERSISTENTVOLUME.md).
 
 Once defined you can then activate Ceph for a namespace by running:
 ```
