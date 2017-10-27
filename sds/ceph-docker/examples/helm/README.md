@@ -20,7 +20,7 @@ helm serve &
 ./prep-ceph-ns.sh
 ```
 
-2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner
+2. Run ceph-mon, ceph-mgr, ceph-mon-check, and rbd-provisioner (from the master node of your K8s cluster)
 - Usage [[1](#notes)]:
 ```
 # For helm-release-name, dash (-) is allowed, but underscore (_) is not.
@@ -51,7 +51,7 @@ kubectl -n ceph exec -it ceph-mon-0 -- ceph -s
 ### Install OSDs
 You need this procedure for each OSD.
 
-1. Preparation (only this step should be done from the **worker nodes** of your K8s cluster)
+1. Preparation (this step should be done from the master/worker nodes of your K8s cluster where OSDs are running)
    * For each osd device, you should zap/erase/destroy the device's partition table and contents.
    ```
    sudo apt install -y ceph
