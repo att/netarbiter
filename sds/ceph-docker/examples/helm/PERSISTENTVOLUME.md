@@ -26,8 +26,7 @@ parameters:
 provisioner: ceph.com/rbd
 ```
 
-- adminId: Ceph client ID that is capable of creating images in the pool.  
-   You can find adminId `admin` from:
+- adminId: Ceph client ID that is capable of creating images in the pool (i.e., `admin`) 
    ```
    $ kubectl -n ceph exec -it ceph-mon-0 -- cat /etc/ceph/ceph.client.admin.keyring
    [client.admin]
@@ -38,38 +37,37 @@ provisioner: ceph.com/rbd
      caps osd = "allow *"
    ```
 
-- adminSecret: Secret Name for adminId
-```
-$ kubectl get secrets pvc-ceph-conf-combined-storageclass -n ceph -o yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: pvc-ceph-conf-combined-storageclass
-  namespace: ceph
-data:
-  key: QVFBWEZOcFpBQUFBQUJBQW9PdURtK21HSS9FbUs4OUJOb2FlaUE9PQo=
-type: kubernetes.io/rbd
-```
-Note: This key is encoded based on the key of ceph.client.admin.keyring.
-```
-$ echo "AQAXFNpZAAAAABAAoOuDm+mGI/EmK89BNoaeiA==" |base64 -
-QVFBWEZOcFpBQUFBQUJBQW9PdURtK21HSS9FbUs4OUJOb2FlaUE9PQo=
-```
+- adminSecret: Secret Name for adminId (i.e., `pvc-ceph-conf-combined-storageclass`)
+   ```
+   $ kubectl get secrets pvc-ceph-conf-combined-storageclass -n ceph -o yaml
+   apiVersion: v1
+   kind: Secret
+   metadata:
+     name: pvc-ceph-conf-combined-storageclass
+     namespace: ceph
+   data:
+     key: QVFBWEZOcFpBQUFBQUJBQW9PdURtK21HSS9FbUs4OUJOb2FlaUE9PQo=
+   type: kubernetes.io/rbd
+   ```
+   Note: This key is encoded based on the key of ceph.client.admin.keyring.
+   ```
+   $ echo "AQAXFNpZAAAAABAAoOuDm+mGI/EmK89BNoaeiA==" |base64 -
+   QVFBWEZOcFpBQUFBQUJBQW9PdURtK21HSS9FbUs4OUJOb2FlaUE9PQo=
+   ```
 
-- userId: Ceph client ID that is used to map the RBD image. Default is the same as adminId.
-
-```
-$ kubectl get secret pvc-ceph-client-key -o yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: pvc-ceph-client-key
-  namespace: default
-data:
-  key: QVFBWEZOcFpBQUFBQUJBQW9PdURtK21HSS9FbUs4OUJOb2FlaUE9PQo=
-type: kubernetes.io/rbd
-```
-Note: This key is the same as the key of pvc-ceph-conf-combined-storageclass.
+- userId: Ceph client ID that is used to map the RBD image. (i.e., `admin`) 
+   ```
+   $ kubectl get secret pvc-ceph-client-key -o yaml
+   apiVersion: v1
+   kind: Secret
+   metadata:
+     name: pvc-ceph-client-key
+     namespace: default
+   data:
+     key: QVFBWEZOcFpBQUFBQUJBQW9PdURtK21HSS9FbUs4OUJOb2FlaUE9PQo=
+   type: kubernetes.io/rbd
+   ```
+   Note: This key is the same as the key of pvc-ceph-conf-combined-storageclass.
 
 
 ### Persistent Volume Claim (PVC)
