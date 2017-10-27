@@ -74,17 +74,17 @@ You need this procedure for each OSD.
 - Example:
    - bluestore:
    ```
-   ./helm-install-ceph-osd.sh myhostname /dev/sdc
+   ./helm-install-ceph-osd.sh yourhostname /dev/sdc
    ```
 
    - filestore
    ```
-   OSD_FILESTORE=1 ./helm-install-ceph-osd.sh myhostname /dev/sdc
+   OSD_FILESTORE=1 ./helm-install-ceph-osd.sh yourhostname /dev/sdc
    ```
 
    - filestore with journal (recommended for production environment)
    ```
-   OSD_FILESTORE=1 OSD_JOURNAL=/dev/sdb1 ./helm-install-ceph-osd.sh myhostname /dev/sdc
+   OSD_FILESTORE=1 OSD_JOURNAL=/dev/sdb1 ./helm-install-ceph-osd.sh yourhostname /dev/sdc
    ```
 
 - Test
