@@ -57,7 +57,7 @@ provisioner: ceph.com/rbd
 
 - userId (`admin`): Ceph client ID that is used to map the RBD image 
 
-- userSecretName (`pvc-ceph-client-key`): The name of Ceph Secret for userId to map RBD image. It must exist in the same namespace as PVCs. 
+- userSecretName (`pvc-ceph-client-key`): The name of Ceph Secret for userId to map RBD image. **It must exist in the same namespace as PVCs.**
    ```
    $ kubectl get secret pvc-ceph-client-key -o yaml
    apiVersion: v1
