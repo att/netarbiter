@@ -27,16 +27,16 @@ provisioner: ceph.com/rbd
 ```
 
 - adminId: Ceph client ID that is capable of creating images in the pool.  
-You can find it from:
-```
-$ kubectl -n ceph exec -it ceph-mon-0 -- cat /etc/ceph/ceph.client.admin.keyring
-[client.admin]
-  key = AQAXFNpZAAAAABAAoOuDm+mGI/EmK89BNoaeiA==
-  auid = 0
-  caps mds = "allow"
-  caps mon = "allow *"
-  caps osd = "allow *"
-```
+   You can find it from:
+   ```
+   $ kubectl -n ceph exec -it ceph-mon-0 -- cat /etc/ceph/ceph.client.admin.keyring
+   [client.admin]
+     key = AQAXFNpZAAAAABAAoOuDm+mGI/EmK89BNoaeiA==
+     auid = 0
+     caps mds = "allow"
+     caps mon = "allow *"
+     caps osd = "allow *"
+   ```
 
 - adminSecret: Secret Name for adminId
 ```
