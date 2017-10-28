@@ -117,7 +117,7 @@ component, so you need to relax the access control rules:
 kubectl replace -f relax-rbac-k8s1.8.yaml
 # Note: for Kubernetes 1.7, use relax-rbac-k8s1.7.yaml instead.
 ```
-You need to have the K8s nodes setup to access the cluster network, and `/etc/resolv.conf` would be similar to the following [4]:
+You need to have the K8s nodes setup to access the cluster network, and `/etc/resolv.conf` would be similar to the following [3]:
 ```
 $ cat /etc/resolv.conf
 nameserver 10.96.0.10           # K8s DNS IP
@@ -164,12 +164,7 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 For AWS, all ports are blocked by default, so you need to set up a security group for your VMs in order to allow all traffic for your internal network.  
 For GCE, by default, incoming traffic from outside your network is blocked, while all ports are open for internal IPs. Hence, you don’t have to worry about ports when you use internal network (e.g., 10.142.0.0/20) for Ceph’s cluster and public network.  
 
-[3] You can use `kshell` to enter a pod:
-```
-Usage: kshell <pod> [-n <namespace>]
-```
-
-[4] Make sure that your `/etc/resolv.conf` includes the following:
+[3] Make sure that your `/etc/resolv.conf` includes the following:
 ```
 nameserver 10.96.0.10
 search ceph.svc.cluster.local svc.cluster.local cluster.local
