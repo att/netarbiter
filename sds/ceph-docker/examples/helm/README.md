@@ -44,7 +44,7 @@ helm ls
 # Note: the  status is not "RUNNING", then check if necessary ports are open [2].
 kubectl get pods -n ceph
 
-# To check ceph health status [3]
+# To check if health status is HEALTH_OK/HEALTH_WARN 
 kubectl -n ceph exec -it ceph-mon-0 -- ceph -s
 ```
 
@@ -92,7 +92,7 @@ You need this procedure for each OSD.
 # To check the pod status of ceph-osd
 kubectl get pods -n ceph
 
-# To check if health is HEALTH_OK/HEALTH_WARN and your osds are up
+# To check if your osds are up
 kubectl -n ceph exec -it ceph-mon-0 -- ceph -s
 kubectl -n ceph exec -it ceph-mon-0 -- ceph osd tree
 ```
