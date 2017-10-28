@@ -92,7 +92,7 @@ You need this procedure for each OSD.
 # To check the pod status of ceph-osd
 kubectl get pods -n ceph
 
-# To check ceph health status and osd tree [3]
+# To check if health is HEALTH_OK/HEALTH_WARN and your osds are up
 kubectl -n ceph exec -it ceph-mon-0 -- ceph -s
 kubectl -n ceph exec -it ceph-mon-0 -- ceph osd tree
 ```
