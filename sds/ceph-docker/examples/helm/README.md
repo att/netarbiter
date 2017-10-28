@@ -146,9 +146,12 @@ kubectl -n ceph exec -it ceph-mon-0 -- ceph osd crush tunables legacy
 kubectl create -f tests/ceph/pvc.yaml
 kubectl get pvc ceph-test
 
-# Attach the pvc to a job and check if the job is successful (i.e., 1)
+# Attach the pvc to a job
 kubectl create -f tests/ceph/job.yaml
-kubectl get jobs ceph-secret-generator -n ceph
+
+# Check if the job is successful (i.e., 1)
+kubectl get jobs ceph-test-job
+kubectl describe job ceph-test-job
 ```
 
 ### Troubleshoot
