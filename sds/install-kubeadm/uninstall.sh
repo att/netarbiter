@@ -5,4 +5,4 @@
 set -x
 
 sudo kubeadm reset
-sudo apt-get purge -y docker.io kubelet kubectl
+sudo apt-get purge -y kubelet kubectl
