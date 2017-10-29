@@ -7,4 +7,4 @@ set -x
 source common-functions.sh
 
 install_docker
-install_kubexxx 	# i.e., kubeadm, kubelet, and kubectl
+install_kubexxx 1.7.6-00  	# i.e., kubeadm, kubelet, and kubectl
