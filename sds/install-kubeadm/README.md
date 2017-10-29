@@ -44,8 +44,8 @@ kubectl get nodes
 ```
 - You can also find your token string by running `sudo kubeadm token list` from the master node.
 
-## Delete a work node
-(src: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#tear-down )
+## Delete a work node  
+(src: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#tear-down )  
 From the master node
 ```
 kubectl drain <node_name> --delete-local-data --force --ignore-daemonsets
