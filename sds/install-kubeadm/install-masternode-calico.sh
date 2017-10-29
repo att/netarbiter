@@ -12,9 +12,11 @@ sudo apt-get install -y docker.io
 
 # Install kubeadm, kubelet, and kubectl 
 install_kubexxx				# for latest version
-# or you can find a specific version from: 
+# Note:
+#   You can find a specific version from: 
 #   https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages
-#install_kubexxx 1.7.6-00 
+#   Then, for instance, add the version as follows:
+#   install_kubexxx 1.7.6-00
 
 # kubeadm init and install calico
 kubeadm_init_calico
