@@ -4,12 +4,6 @@
 
 set -x
 
-# Install docker
-#function install_docker {
-#  sudo apt-get update
-#  sudo apt-get install -y docker.io
-#}
-
 # Install kubeadm, kubelet, and kubectl
 function install_kubexxx {
   if [ -n "$1" ]; then
