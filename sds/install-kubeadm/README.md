@@ -8,7 +8,7 @@ Created on: 9/12/2017
 ```
 ./install-masternode-calico.sh
 # Note:
-#   If you install K8s on AWS, GCE, etc., you may encounter a nameserver issue with Caclio [2].
+#   If you install K8s on AWS, GCE, etc., you may encounter a nameserver issue with Calico [2].
 #   Then, use flannel instead by:
 #   ./install-masternode-flannel.sh
 
