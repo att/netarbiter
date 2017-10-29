@@ -24,7 +24,7 @@ function install_kubexxx {
 deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF'
   sudo apt-get update
-  sudo apt-get install -y --allow-unauthenticated kubeadm=$VERSION kubelet=$VERSION kubectl=$VERSION
+  sudo apt-get install -y --allow-unauthenticated kubeadm$VERSION kubelet$VERSION kubectl$VERSION
 
   # Install kshell
   sudo cp ./kshell /usr/local/bin
