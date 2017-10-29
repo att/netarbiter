@@ -7,7 +7,10 @@ Created on: 9/12/2017
 1. Assuming you are in a clean state (i.e., no docker, kubectl, kubelet, or kubeadm), install a master node by:  
 ```
 ./install-masternode-calico.sh
-# Note: To use flannel instead, run ./install-masternode-flannel.sh
+# Note:
+#   If you install K8s on AWS, GCE, etc., you may encounter a nameserver issue with Caclio [2].
+#   Then, use flannel instead by:
+#   ./install-masternode-flannel.sh
 
 # To check if your master node is "Ready"
 #   (it may take a minute to get to the "Ready" status)
