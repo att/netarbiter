@@ -44,7 +44,7 @@ kubectl get nodes
 ```
 - You can also find your token string by running `sudo kubeadm token list` from the master node.
 
-## Delete a work node  
+## Delete a work node from your K8s cluster 
 (src: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#tear-down )  
 From the master node
 ```
