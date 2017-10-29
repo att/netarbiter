@@ -46,7 +46,7 @@ kubectl get nodes
 
 ## Delete a work node from your K8s cluster 
 (src: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#tear-down )  
-From the master node
+In the master node
 ```
 kubectl drain <node_name> --delete-local-data --force --ignore-daemonsets
 kubectl delete node <node_name>
