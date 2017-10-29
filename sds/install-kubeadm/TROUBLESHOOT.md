@@ -14,12 +14,13 @@ sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 
 - Solution:   
 (src: https://github.com/kubernetes/kubernetes/issues/53333 )
+
 ```
-kubeadm reset
-add "Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"" to /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-systemctl daemon-reload
-systemctl restart kubelet
-kubeadm init --pod-network-cidr=192.168.0.0/16 --skip-preflight-checks
+sudo iptables -F
+sudo swapoff -a
+sudo free -m
+sudo kubeadm reset
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 ```
 
 ### Problem: Fails to join a node
