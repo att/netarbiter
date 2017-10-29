@@ -44,22 +44,18 @@ kubectl get nodes
 ```
 - You can also find your token string by running `sudo kubeadm token list` from the master node.
 
-## Cleanup  
+## Delete a work node
 (src: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#tear-down )
-
-### In master node:
-
-Reset all kubeadm installed state:
+From the master node
 ```
-kubeadm reset
+kubectl drain <node_name> --delete-local-data --force --ignore-daemonsets
+kubectl delete node <node_name>
 ```
 
-### In worker node:
-Talking to the master with the appropriate credentials, run:
+### Uninstall (for re-install)
+In master/work nodes, run:
 ```
-kubectl drain <node name> --delete-local-data --force --ignore-daemonsets
-kubectl delete node <node name>
-kubeadm reset
+./uninstall.sh
 ```
 
 ## Troubleshoot   
