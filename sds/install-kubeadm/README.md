@@ -2,7 +2,7 @@
 Authors: Hee Won Lee <knowpd@research.att.com> and Yu Xiang <yxiang@research.att.com>  
 Created on: 9/12/2017
 
-## Installation
+## Install
 ### In master node:
 1. Assuming you are in a clean state (i.e., no docker, kubectl, kubelet, or kubeadm), install a master node by:  
 ```
@@ -52,7 +52,7 @@ kubectl drain <node_name> --delete-local-data --force --ignore-daemonsets
 kubectl delete node <node_name>
 ```
 
-### Uninstall (for re-install)
+## Uninstall (for re-install)
 In master/work nodes, run:
 ```
 ./uninstall.sh
