@@ -96,6 +96,19 @@ kubectl get pods -n ceph
 kubectl -n ceph exec -it ceph-mon-0 -- ceph -s
 kubectl -n ceph exec -it ceph-mon-0 -- ceph osd tree
 ```
+
+3. Delete an OSD
+```
+# From your deployed helm chart, find a chart for an OSD that you want to delete
+helm ls
+
+# Delete the OSD chart
+helm delete <osd-chart-name>
+
+# Find and remove the OSD from crushmap
+kubectl -n ceph exec -it ceph-mon-0 -- ceph osd tree
+./remove-osd.sh <osd_id> ceph
+```
    
 ### Namespace Activation
 
