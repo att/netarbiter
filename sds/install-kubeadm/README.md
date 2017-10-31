@@ -6,10 +6,10 @@ Created on: 9/12/2017
 ### In master node:
 1. Assuming you are in a clean state (i.e., no docker, kubectl, kubelet, or kubeadm), install a master node by:  
 ```
-./install-masternode-calico.sh <kubernetes-version>
+./install-masternode-calico.sh latest
 # Note:
-#   - kubernetes-version:    e.g. latest, 1.7.5-00, 1.7.6-00, 1.8.2-00, etc. 
-#     You can find available versions at:
+#   - Instead of `latest`, you can use a specific Kubernetes version (e.g., 1.7.5-00, 1.7.6-00, 1.8.2-00, etc).
+#     Find available versions at:
 #     https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages
 #
 #   - If you install K8s on AWS, GCE, etc., you may encounter a nameserver issue with Calico [1].
@@ -34,10 +34,10 @@ kubeadm join --token 19b3d3.2a94bdb1d53c9515 10.150.0.6:6443 --discovery-token-c
 ### In worker node:
 1. Install docker, kubelet, and kubeadm
 ```
-./install-workernode.sh <kubernetes-version>
+./install-workernode.sh latest
 # Note:
-#   kubernetes-version:    e.g. latest, 1.7.5-00, 1.7.6-00, 1.8.2-00, etc.
-#   You can find available versions at:
+#   Instead of `latest`, you can use a specific Kubernetes version (e.g., 1.7.5-00, 1.7.6-00, 1.8.2-00, etc).
+#   Find available versions at:
 #   https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages
 ```
 
