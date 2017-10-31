@@ -14,7 +14,7 @@ Created on: 9/12/2017
 #
 #   - If you install K8s on AWS, GCE, etc., you may encounter a nameserver issue with Calico [1].
 #     Then, use flannel instead by:
-#     ./install-masternode-flannel.sh
+#     ./install-masternode-flannel.sh <kubernetes-version>
 
 # To check if your master node is "Ready"
 #   (it may take a minute to get to the "Ready" status)
@@ -34,7 +34,7 @@ kubeadm join --token 19b3d3.2a94bdb1d53c9515 10.150.0.6:6443 --discovery-token-c
 ### In worker node:
 1. Install docker, kubelet, and kubeadm
 ```
-./install-workernode.sh
+./install-workernode.sh <kubernetes-version>
 ```
 
 2. Join the K8s cluster.

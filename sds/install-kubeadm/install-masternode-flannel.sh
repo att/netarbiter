@@ -27,9 +27,6 @@ if [[ "$1" == "latest" ]]; then
 else
   install_kubexxx $KUBERNETES_VERSION
 fi
-# Note:
-#   You can find a specific version from: 
-#   https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages
 
 # kubeadm init and install flannel
 kubeadm_init_flannel
