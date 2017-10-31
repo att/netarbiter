@@ -99,7 +99,7 @@ kubectl -n ceph exec -it ceph-mon-0 -- ceph osd tree
 
 3. Delete an OSD
 ```
-# From your helm chart, find a chart for an OSD that you want to delete
+# From your helm chart, find a osd chart that you want to delete
 helm ls
 
 # Delete the OSD chart
