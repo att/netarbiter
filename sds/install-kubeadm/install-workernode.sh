@@ -13,6 +13,8 @@ fi
 
 set -x
 
+KUBERNETES_VERSION=$1
+
 source common-functions.sh
 
 # Install docker
