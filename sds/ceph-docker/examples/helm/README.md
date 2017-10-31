@@ -107,7 +107,7 @@ helm delete <osd-chart-name>
 
 # Find and remove the OSD from crushmap
 kubectl -n ceph exec -it ceph-mon-0 -- ceph osd tree
-./remove-osd.sh <osd_id> ceph
+./remove-osd.sh ceph <osd_id>
 ```
    
 ### Namespace Activation
