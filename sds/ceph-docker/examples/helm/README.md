@@ -97,7 +97,7 @@ kubectl -n ceph exec -it ceph-mon-0 -- ceph -s
 kubectl -n ceph exec -it ceph-mon-0 -- ceph osd tree
 ```
 
-3. Delete an OSD
+3. Delete an OSD (from the master node of your K8s cluster)
 ```
 # From your helm chart, find an OSD chart that you want to delete
 helm ls
