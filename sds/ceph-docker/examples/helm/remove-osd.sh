@@ -3,16 +3,16 @@
 # Created on 6/19/2017
 
 if [[ "$#" -ne 2 ]]; then
-    echo "Usage: $0 <osd_id> <namespace>"
-    echo "  osd_id:    e.g. 1"
+    echo "Usage: $0 <namespace> <osd_id>"
     echo "  namespace: e.g. ceph"
+    echo "  osd_id:    e.g. 1"
     exit 1
 fi
 
 set -x
 
-OSD_ID=$1
-NAMESPACE=$2
+NAMESPACE=$1
+OSD_ID=$2
 
 MON="kubectl -n $NAMESPACE exec -it ceph-mon-0 -- "
 
