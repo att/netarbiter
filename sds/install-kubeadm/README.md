@@ -7,13 +7,14 @@ Created on: 9/12/2017
 1. Assuming you are in a clean state (i.e., no docker, kubectl, kubelet, or kubeadm), install a master node by:  
 ```
 ./install-masternode-calico.sh <kubernetes-version>
-# kubernetes-version:    e.g. latest, 1.7.5-00, 1.7.6-00, 1.8.2-00, etc. 
-#   You can find available versions at:
-#   https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages
 # Note:
-#   If you install K8s on AWS, GCE, etc., you may encounter a nameserver issue with Calico [1].
-#   Then, use flannel instead by:
-#   ./install-masternode-flannel.sh
+#   - kubernetes-version:    e.g. latest, 1.7.5-00, 1.7.6-00, 1.8.2-00, etc. 
+#     You can find available versions at:
+#     https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages
+#
+#   - If you install K8s on AWS, GCE, etc., you may encounter a nameserver issue with Calico [1].
+#     Then, use flannel instead by:
+#     ./install-masternode-flannel.sh
 
 # To check if your master node is "Ready"
 #   (it may take a minute to get to the "Ready" status)
