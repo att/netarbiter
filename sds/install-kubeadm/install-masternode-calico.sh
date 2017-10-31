@@ -3,7 +3,11 @@
 # Created on 10/20/2017
 if [[ "$#" -ne 1 ]]; then
     echo "Usage: $0 <kubernetes-version>"
-    echo "  kubernetes-version:    e.g. latest, 1.7.6-00, 1.8.2-00, etc. "
+    echo "  kubernetes-version:    e.g. latest, 1.7.5-00, 1.7.6-00, 1.8.2-00, etc. "
+    echo ""
+    echo "Note:"
+    echo "  You can find available versions at:"
+    echo "  https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages"
     exit 1
 fi
 
