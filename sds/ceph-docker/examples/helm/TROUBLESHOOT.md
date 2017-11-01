@@ -4,7 +4,7 @@ Author: Hee Won Lee <knowpd@research.att.com>
 Created on : 10/1/2017  
 
 
-### Problem: [ceph-docker/exmaples/helm] tiller issue
+### Problem: tiller issue
 - Symptom
 ```
 $ helm install ./ceph
@@ -21,7 +21,7 @@ $ kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"templ
 deployment "tiller-deploy" patched
 ```
 
-### Problem: [ceph-docker/exmaples/helm] failure of job.yaml
+### Problem: failure of job.yaml
 - Symptom
 ```
 # bash ./ceph-keys.sh 
@@ -49,7 +49,7 @@ in the namespace "default". (get secrets ceph-client-admin-keyring)
    sudo kubectl create secret generic kubeconfig --from-file=/etc/kubernetes/admin.conf
    ```
 
-### Problem: [ceph-docker/exmaples/helm] ceph-mon does not work.
+### Problem: ceph-mon does not work.
 - Symptom
 ```
 +start_mon.sh:136: start_mon(): ceph-authtool /etc/ceph/ceph.mon.keyring --import-keyring /var/lib/ceph/bootstrap-rbd/ceph.keyring
@@ -62,7 +62,7 @@ The files that should be modified are as follows:
    - jobs/job.yaml
    - mon/statefulset.yaml.
 
-### Problem: [ceph-docker/exmaples/helm] pvc pending with "executable file not found in $PATH"
+### Problem: PVC Pending with "executable file not found in $PATH"
 - Symptom
 ```
 $ kubectl get pvc
@@ -97,7 +97,7 @@ To:
 provisioner: ceph.com/rbd
 ```
 
-### Problem: [ceph-docker/exmaples/helm] PVC Pending with "waiting for a volume to be created"
+### Problem: PVC Pending with "waiting for a volume to be created"
 - Symptom
 ```
 $ kubectl get pvc
@@ -125,7 +125,7 @@ Events:
 (src: https://github.com/kubernetes/kubernetes/issues/38923 )  
 (src: https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/rbd )  
 
-### Problem: [ceph-docker/exmaples/helm] Failure to attach a volume using PVC 
+### Problem: Failure of attaching a volume using PVC 
 - Symptom
 ```
 $ kubectl get pods
@@ -138,11 +138,11 @@ Events:
   FirstSeen     LastSeen        Count   From                    SubObjectPath   Type            Reason                  Message
   ---------     --------        -----   ----                    -------------   --------        ------                  -------
   27s           27s             1       default-scheduler                       Normal          Scheduled               Successfully assigned kubectl-ubnt16-deploy-4058341149-gj97h to voyager1
-  26s           26s             1       kubelet, voyager1                       Normal          SuccessfulMountVolume   MountVolume.SetUp succeeded for volume "default-token-z6gvr" 
+  26s           26s             1       kubelet, voyager1                       Normal          SuccessfulMountVolume   MountVolume.SetUp succeeded for volume "default-token-z6gvr"
   26s           9s              6       kubelet, voyager1                       Warning         FailedMount             MountVolume.SetUp failed for volume "pvc-63e7fc39-add8-11e7-855a-d4ae52a3acc1" : rbd: image kubernetes-dynamic-pvc-6cb96404-add8-11e7-a387-eaccdc8b6118 is locked by other nodes
 ```
 
-- Solution  
+- Solution
 You may encounter dmesg errors as follows:
 ```
 libceph: mon0 172.31.8.199:6789 feature set mismatch
@@ -153,53 +153,7 @@ Avoid them by running the following from a ceph-mon pod:
 ceph osd crush tunables legacy
 ```
 
-### Problem: [AWS][ceph-docker/exmaples/helm]
-- Symptom  
-Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods in the namespace "default". (get pods)
-
-- Solution  
-(src: https://github.com/kubernetes/dashboard/issues/1800 )  
-```
-kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
-```
-
-### Bug Fix
-(src: https://stackoverflow.com/questions/15540635/what-is-the-use-of-pipe-symbol-in-yaml )
-
-In Kubernetes 1.8.0, jobs.yaml fails to create a secret-generator-deployment pod.
-This is due to a bug in configmap.yaml. Please fix two lines as follows:
-
-In https://raw.githubusercontent.com/ceph/ceph-docker/master/examples/helm/ceph/templates/jobs/configmap.yaml,
-```
-          cat <<EOF
-    ---
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: ${KUBE_SECRET_NAME}
-    type: Opaque
-    data:
-      ${CEPH_KEYRING_NAME}: |                                               ### BUG: "|" should be removed
-        $( kube_ceph_keyring_gen ${CEPH_KEYRING} ${CEPH_KEYRING_TEMPLATE} )
-    EOF
-
-          cat <<EOF
-    ---
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: ${KUBE_SECRET_NAME}
-    type: kubernetes.io/rbd
-    data:
-      key: |                                                                ### BUG: "|" should be removed
-        $( echo ${CEPH_KEYRING} | base64 | tr -d '\n' )
-    EOF
-        } | kubectl create --namespace {{ .Release.Namespace }} -f -
-      fi
-    }
-```
-
-### Problem: [ceph-docker/exmaples/helm] Failure of attaching a PVC to a pod
+### Problem: Failure of attaching a PVC to a pod
 - Symptom  
 When mouting a rbd volume, kubelet would try to run "rbd map ..." of a Kubernetes node.
 However, the host machine cannot solve the IP of ceph-mon.ceph.
@@ -270,5 +224,68 @@ Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods
 - Solution: Run the following:
 ```
 kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
+```
+
+### Problem [AWS]:
+- Symptom  
+Forbidden 403: User "system:serviceaccount:kube-system:default" cannot list pods in the namespace "default". (get pods)
+
+- Solution  
+(src: https://github.com/kubernetes/dashboard/issues/1800 )  
+```
+kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
+```
+
+### Bug Fix
+(src: https://stackoverflow.com/questions/15540635/what-is-the-use-of-pipe-symbol-in-yaml )
+
+In Kubernetes 1.8.0, jobs.yaml fails to create a secret-generator-deployment pod.
+This is due to a bug in configmap.yaml. Please fix two lines as follows:
+
+In https://raw.githubusercontent.com/ceph/ceph-docker/master/examples/helm/ceph/templates/jobs/configmap.yaml,
+```
+          cat <<EOF
+    ---
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: ${KUBE_SECRET_NAME}
+    type: Opaque
+    data:
+      ${CEPH_KEYRING_NAME}: |                                               ### BUG: "|" should be removed
+        $( kube_ceph_keyring_gen ${CEPH_KEYRING} ${CEPH_KEYRING_TEMPLATE} )
+    EOF
+
+          cat <<EOF
+    ---
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: ${KUBE_SECRET_NAME}
+    type: kubernetes.io/rbd
+    data:
+      key: |                                                                ### BUG: "|" should be removed
+        $( echo ${CEPH_KEYRING} | base64 | tr -d '\n' )
+    EOF
+        } | kubectl create --namespace {{ .Release.Namespace }} -f -
+      fi
+    }
+```
+
+### Debugging: Creating an rbd device manually
+
+```
+# To check if there exists a pool named “rbd”
+kubectl -n ceph exec -it ceph-mon-0 -- ceph osd lspools
+
+# To list rbd images
+kubectl -n ceph exec -it ceph-mon-0 -- rbd ls
+
+# Now, try to manually create an rbd device as follows:
+kubectl -n ceph exec -it ceph-mon-0 -- rbd create --size 4096 --pool rbd vol01
+kubectl -n ceph exec -it <your_osd_pod> -- rbd map vol01 --pool rbd
+
+# To check if an rbd device is created
+kubectl -n ceph exec -it <your_osd_pod> -- ls -al /dev/rbd0
 ```
 
