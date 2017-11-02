@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ceph-test-deploy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ceph-test
+      namespace: default
+    spec:
+      #hostNetwork: true 
+      #dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: ceph-test
+          image: docker.io/knowpd/ceph:kubectl-ubuntu-16.04
+          imagePullPolicy: Always
+          args:
+            - /bin/bash
+          stdin: true
+          tty: true
+          volumeMounts:
+            - name: ceph-mount
+              mountPath: /mnt/ceph
+      volumes:
+        - name: ceph-mount
+          persistentVolumeClaim:
+            claimName: ceph-test
