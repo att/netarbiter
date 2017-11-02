@@ -35,7 +35,7 @@ kubeadm join --token 19b3d3.2a94bdb1d53c9515 10.150.0.6:6443 --discovery-token-c
 1. Install docker, kubelet, and kubeadm
 ```
 ./install-workernode.sh latest
-# In your master node, if you have used a specific Kubernetes version instead of `latest`, you should use it.
+# In your master node, if you have used a specific Kubernetes version instead of `latest`, you should use it here.
 ```
 
 2. Join the K8s cluster.
