@@ -3,7 +3,7 @@ Authors: Hee Won Lee <knowpd@research.att.com>
 Created on 11/3/2017
 
 ### Fio testing
-We assume that you created a ceph pool `rbd` with a proper `pg_num`.    
+We assume that you created a ceph pool `rbd` with a proper `pg_num` depending on your number of OSDs.    
 To choose the value of `pg_num`, refer to <http://docs.ceph.com/docs/master/rados/operations/placement-groups>.
 ```
 # Create a pvc
