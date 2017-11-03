@@ -2,7 +2,9 @@
 Authors: Hee Won Lee <knowpd@research.att.com>  
 Created on 11/3/2017
 
-### Creating a pod for fio testing
+### Fio testing
+Assuming that you created a pool with a right pg\_num, create a pvc and pod.  
+To choose the value of pg\_num, refer to <http://docs.ceph.com/docs/master/rados/operations/placement-groups>.
 ```
 # Create a pvc
 kubectl create -f samples/pvc-sample.yaml 
