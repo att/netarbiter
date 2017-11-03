@@ -17,7 +17,7 @@ Now you can find a pod with a mounted volume as follows:
 # To find your pod (e.g, deploy-sample-6d7679d6c9-942zq)
 kubectl get pods
 
-# To check the new volume `rbd0` and a newly-mounted directory `myvol`
+# To check a new volume `rbd0` and a newly-mounted directory `myvol`
 kubectl exec -it <pod> -- lsblk
 kubectl exec -it <pod> -- ls /mnt
 ```
