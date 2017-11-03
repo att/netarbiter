@@ -3,7 +3,7 @@ Authors: Hee Won Lee <knowpd@research.att.com>
 Created on 11/3/2017
 
 ### Fio testing
-Assuming that you created a pool with a right pg\_num, create a pvc and pod.  
+We assume that you created a pool with a proper pg\_num.    
 To choose the value of pg\_num, refer to <http://docs.ceph.com/docs/master/rados/operations/placement-groups>.
 ```
 # Create a pvc
