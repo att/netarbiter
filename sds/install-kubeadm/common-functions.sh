@@ -35,17 +35,6 @@ function kubeadm_init_calico {
   kubectl apply -f https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
 }
 
-# Initialize your master with calico
-function kubeadm_init_calico_mtu1460 {
-  sudo kubeadm init --pod-network-cidr=192.168.0.0/16
-  mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
-  
-  # Install calico
-  kubectl apply -f calico-mtu1460.yaml
-}
-
 # Initialize your master with flannel
 function kubeadm_init_flannel {
   sudo kubeadm init --pod-network-cidr=10.244.0.0/16
