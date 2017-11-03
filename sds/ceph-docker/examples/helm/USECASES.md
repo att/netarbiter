@@ -19,4 +19,7 @@ kubectl get pods
 kubectl exec -it <pod> -- lsblk
 kubectl exec -it <pod> -- ls /mnt
 ```
-
+You can delete the pod and pvc as follows:
+```
+kubectl delete -f samples/deploy-sample.yaml -f samples/pvc-sample.yaml
+```
