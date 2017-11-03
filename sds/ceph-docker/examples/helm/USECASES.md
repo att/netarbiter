@@ -1,5 +1,5 @@
-# Use Cases
-Authors: Hee Won Lee <knowpd@research.att.com>
+# Use Cases  
+Authors: Hee Won Lee <knowpd@research.att.com>  
 Created on 11/3/2017
 
 ### Creating a pod for fio testing
@@ -10,7 +10,7 @@ kubectl create -f samples/pvc-sample.yaml
 # Create a pod with the pvc attached
 kubectl create -f samples/deploy-sample.yaml
 ```
-Now you can find a mounted volume as follows:
+Now you can find a pod with a mounted volume as follows:
 ```
 # To find your pod (e.g, deploy-sample-6d7679d6c9-942zq)
 kubectl get pods
