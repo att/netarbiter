@@ -167,6 +167,9 @@ kubectl get jobs ceph-test-job
 kubectl describe job ceph-test-job
 ```
 
+### Use Cases
+Refer to [USECASES.md](./USECASES.md)
+
 ### Troubleshoot
 Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 
