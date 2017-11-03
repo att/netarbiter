@@ -195,6 +195,17 @@ And then, restart networking as follows:
 $ /etc/init.d/networking restart
 ```
 
+### Problem: Failure of attaching a PVC to a pod
+- Symptom:   
+If ceph-test-job fails and you see the error “rbd: map failed exit status 110 rbd: sysfs write failed” in the output of “kubectl describe pods --namespace default”.
+
+- Solution:  
+```
+kubectl -n ceph exec -it ceph-mon-0 -- ceph osd crush tunables legacy
+```
+If this is not working for you, try to replace “legacy” with “hammer” or “optimal”.
+
+
 ### Problem: after attaching pvc, a new rbd device is not shown as /dev/rbd0
 - Solution: reload udevadm rules  
 (src: https://unix.stackexchange.com/questions/39370/how-to-reload-udev-rules-without-reboot )  
