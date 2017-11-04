@@ -46,11 +46,7 @@ kubeadm join --token 19b3d3.2a94bdb1d53c9515 10.150.0.6:6443 --discovery-token-c
 2. Join the K8s cluster.
 ```
 sudo kubeadm join --token <token_string> <master_node_ip>:6443
-
-# Example:
-sudo kubeadm join --token 19b3d3.2a94bdb1d53c9515 10.150.0.6:6443
-or
-sudo kubeadm join --token 19b3d3.2a94bdb1d53c9515 10.150.0.6:6443 --discovery-token-ca-cert-hash sha256:e61a4ab6c6506d75061c813f4f6826e6d7bdec5aee1bc801ecf15c8ca0ac5ab1
+# You can readily get this from the output of `./install-masternode-calico.sh latest`.
 
 # To check if a new worker node is "Ready"
 kubectl get nodes
