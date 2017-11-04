@@ -86,8 +86,8 @@ root@pod1:/# nslookup google.com
 kshell <pod2>
 root@pod2:/# nslookup google.com
 ```
-When deploying Calico and Kubernetes on AWS or GCE, refer to:  
-<https://docs.projectcalico.org/v2.0/getting-started/kubernetes/installation/aws>   
+When deploying Calico and Kubernetes on AWS/GCE, refer to:  
+<https://docs.projectcalico.org/v2.0/getting-started/kubernetes/installation/aws> or     
 <https://docs.projectcalico.org/v2.0/getting-started/kubernetes/installation/gce>
 
 [2] If you are installing on a single vcpu VM, the kube-dns pod is likely to be a "Pending" status due to insufficient cpu. To make it "Running", you need to install a mster node on a 2+ vcpu VM; or you may add 1+ work nodes later.
