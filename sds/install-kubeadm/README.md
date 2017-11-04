@@ -33,7 +33,7 @@ kubeadm join --token 19b3d3.2a94bdb1d53c9515 10.150.0.6:6443
 # For Kubernetes v1.8+
 kubeadm join --token 19b3d3.2a94bdb1d53c9515 10.150.0.6:6443 --discovery-token-ca-cert-hash sha256:e61a4ab6c6506d75061c813f4f6826e6d7bdec5aee1bc801ecf15c8ca0ac5ab1
 
-# Note: this will be used later when a worker node joins the K8s cluster.
+# Note: this will be used later when a new worker node joins the K8s cluster.
 ```
 
 ### In worker node:
