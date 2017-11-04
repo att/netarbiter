@@ -25,7 +25,7 @@ kubectl get nodes
 kubectl get pods --all-namespaces
 ```
 
-2. From the output of `./install-masternode.sh`, put aside a line similar to the following:
+2. From the output of `./install-masternode-calico.sh latest`, put aside a line similar to the following:
 ```
 kubeadm join --token 19b3d3.2a94bdb1d53c9515 10.150.0.6:6443 --discovery-token-ca-cert-hash sha256:e61a4ab6c6506d75061c813f4f6826e6d7bdec5aee1bc801ecf15c8ca0ac5ab1
 
