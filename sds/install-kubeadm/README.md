@@ -14,7 +14,7 @@ Created on: 9/12/2017
 #
 #   - If you install K8s on AWS or GCE, you may encounter a nameserver issue with Calico [1].
 #     Different from Calico (based on L3), Flannel (based on L2)  works without any additional 
-#     configuration. You can use flannel by:
+#     configuration. Instead of Calico, you can use flannel by:
 #     ./install-masternode-flannel.sh <kubernetes-version>
 
 # To check if your master node is "Ready"
