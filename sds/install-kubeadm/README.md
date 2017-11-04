@@ -12,8 +12,9 @@ Created on: 9/12/2017
 #     Find available versions at:
 #     https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages
 #
-#   - If you install K8s on AWS, GCE, etc., you may encounter a nameserver issue with Calico [1].
-#     Then, use flannel instead by:
+#   - If you install K8s on AWS or GCE, you may encounter a nameserver issue with Calico [1].
+#     Different from Calico (based on L3), Flannel (based on L2)  works without any additional 
+#     configuration. You can use flannel by:
 #     ./install-masternode-flannel.sh <kubernetes-version>
 
 # To check if your master node is "Ready"
@@ -85,6 +86,7 @@ root@pod1:/# nslookup google.com
 kshell <pod2>
 root@pod2:/# nslookup google.com
 ```
+When deploying Calico and Kubernetes on AWS, refer to <https://docs.projectcalico.org/v2.0/getting-started/kubernetes/installation/aws>. When deploying Calico and Kubernetes on GCE, refer to <https://docs.projectcalico.org/v2.0/getting-started/kubernetes/installation/gce>.
 
 [2] If you are installing on a single vcpu VM, the kube-dns pod is likely to be a "Pending" status due to insufficient cpu. To make it "Running", you need to install a mster node on a 2+ vcpu VM; or you may add 1+ work nodes later.
 
