@@ -8,7 +8,7 @@ Created on: 9/12/2017
 ```
 ./install-masternode-calico.sh latest
 # Note:
-#   - Instead of `latest`, you can install a specific Kubernetes version (e.g., 1.7.5-00, 1.7.6-00, 1.8.2-00, etc).
+#   - Instead of `latest`, you can install a specific Kubernetes version (e.g., 1.7.5-00, 1.8.2-00, etc).
 #     Find available versions at:
 #     https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages
 #
