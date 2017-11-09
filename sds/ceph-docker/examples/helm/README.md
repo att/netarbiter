@@ -9,7 +9,10 @@ Based on <https://github.com/ceph/ceph-container/tree/master/examples/helm>
 We assume that you have a [Kubeadm managed Kubernetes](../../../install-kubeadm) 1.7+ cluster. 
 In addition, the Kubernetes cluster should have at least two nodes because ceph-mon and ceph-mon-check use a same port number (6789).
 
-1. Preparation (from the master node of your K8s cluster)
+1. Preparation (from the master node of your K8s cluster)  
+Unless you create a Kuberentes cluster, fist follow the steps at:  
+<https://github.com/att/netarbiter/tree/master/sds/install-kubeadm>
+
 ```
 # Prepare helm and tiller
 ./install-helm.sh
