@@ -12,7 +12,7 @@ Created on: 9/12/2017
 #     Find available versions at:
 #     https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages
 #
-#   - If you install K8s on AWS or GCE, you may encounter a nameserver issue with Calico [1].
+#   - If you install K8s on AWS, GCE or Azure, you may encounter a nameserver issue with Calico [1].
 #     Different from Calico (based on L3), Flannel (based on L2)  works without any additional 
 #     configuration. Instead of Calico, you can use flannel by:
 #     ./install-masternode-flannel.sh latest
@@ -53,7 +53,7 @@ kubectl get nodes
 ```
 - You can also find your token string by running `sudo kubeadm token list` from the master node.
 
-## Delete a work node from your K8s cluster 
+## Delete a worker node from your K8s cluster 
 (src: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#tear-down )  
 In the master node
 ```
@@ -89,6 +89,7 @@ root@pod2:/# nslookup google.com
 When deploying Calico and Kubernetes on AWS and GCE, refer to:  
 <https://docs.projectcalico.org/v2.0/getting-started/kubernetes/installation/aws> and    
 <https://docs.projectcalico.org/v2.0/getting-started/kubernetes/installation/gce> respectively.
+For Azure, it is unknown whether Calico works there.
 
 [2] If you are installing on a single vcpu VM, the kube-dns pod is likely to be a "Pending" status due to insufficient cpu. To make it "Running", you need to install a mster node on a 2+ vcpu VM; or you may add 1+ work nodes later.
 
