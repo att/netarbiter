@@ -69,7 +69,7 @@ $ kubectl -n kube-system describe pod kube-dns-545bc4bfd4-g7zsg
 ```
 $ sudo kubeadm token create --description eternity --ttl 0 77d8cd.c57e28e040760db2
 ```
-Now you can find your new token from your master node:
+Now you can find the new token from your master node:
 ```
 $ sudo kubeadm token list
 TOKEN                     TTL         EXPIRES   USAGES                   DESCRIPTION   EXTRA GROUPS
