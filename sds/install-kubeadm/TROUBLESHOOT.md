@@ -1,7 +1,10 @@
 Troubleshoot
 ============
-Author: Hee Won Lee <knowpd@research.att.com> and Yu Xiang <yxiang@research.att.com> 
-Created on : 10/1/2017 
+Contributors:   
+  - Hee Won Lee <knowpd@research.att.com>  
+  - Yu Xiang <yxiang@research.att.com>   
+  - Yih-Farn (Robin) Chen <chen@research.att.com>   
+  - Bryan Sullivan <bryan.sullivan@research.att.com>  
 
 ## Problem: [install-kubeadm] 'kubeadm init' fails.
 - Symptom
@@ -61,4 +64,20 @@ $ kubectl -n kube-system describe pod kube-dns-545bc4bfd4-g7zsg
 - Solution: Kubernetes kube-dns pod is pending  
 (src: https://stackoverflow.com/questions/42222513/kubernetes-kube-dns-pod-is-pending )
 
-
+### Problem: couldn’t join the original K8S cluster as the old token expired.  
+- Solution: create a new token on the master node:
+```
+~$
+ sudo kubeadm token create --description eternity --ttl 0
+77d8cd.c57e28e040760db2
+```
+Now you can find your new token from your master node:
+```
+$ sudo kubeadm token list
+TOKEN                     TTL         EXPIRES   USAGES                   DESCRIPTION   EXTRA GROUPS
+77d8cd.c57e28e040760db2   <forever>   <never>   authentication,signing   eternity      system:bootstrappers:kubeadm:default-node-token
+```
+From your work node, run the following:
+```
+$ sudo kubeadm join --token 77d8cd.c57e28e040760db2 10.142.0.2:6443
+```
