@@ -4,7 +4,6 @@ Contributors:
   - Hee Won Lee <knowpd@research.att.com>  
   - Yu Xiang <yxiang@research.att.com>   
   - Yih-Farn (Robin) Chen <chen@research.att.com>   
-  - Bryan Sullivan <bryan.sullivan@research.att.com>  
 
 ## Problem: [install-kubeadm] 'kubeadm init' fails.
 - Symptom
