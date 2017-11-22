@@ -67,9 +67,7 @@ $ kubectl -n kube-system describe pod kube-dns-545bc4bfd4-g7zsg
 ### Problem: couldn’t join the original K8S cluster as the old token expired.  
 - Solution: create a new token on the master node:
 ```
-~$
- sudo kubeadm token create --description eternity --ttl 0
-77d8cd.c57e28e040760db2
+$ sudo kubeadm token create --description eternity --ttl 0 77d8cd.c57e28e040760db2
 ```
 Now you can find your new token from your master node:
 ```
