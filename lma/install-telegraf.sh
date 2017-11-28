@@ -5,7 +5,7 @@
 
 if [[ "$#" -ne 1 ]]; then
     echo "Usage: $0 <version>"
-    echo "  version:    e.g. latest, 1.2.1, 1.4.4-1, etc."
+    echo "  version:    e.g. latest, 1.4.4-1, etc."
     exit 1
 fi
 
