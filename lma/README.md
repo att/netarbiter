@@ -80,13 +80,14 @@ tagKey
 machine
 type
 >
-> show tag keys
+> show tag keys from cpu
 name: cpu
 tagKey
 ------
 host
 region
-
+>
+> show tag keys from temperature
 name: temperature
 tagKey
 ------
