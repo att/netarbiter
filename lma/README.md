@@ -2,7 +2,25 @@
 Authors: Hee Won Lee <knowpd@research.att.com>  
 Created on: 9/12/2017  
 
-## InfluxDB  
+## InfluxDB
+
+### Key Concepts
+src: <https://docs.influxdata.com/influxdb/v1.3/concepts/key_concepts>  
+- Fields are a required piece of InfluxDB’s data structure.
+- Fields are not indexed, so they should not contain commonly-queried metadata.
+- Tags are optional and indexed.
+- A measurement is conceptually similar to a table.
+- A single measurement can belong to different retention policies. 
+- A retention policy describes how long InfluxDB keeps data (DURATION) and how many copies of those data are stored in the cluster (REPLICATION). 
+```
+> show retention policies
+name    duration shardGroupDuration replicaN default
+----    -------- ------------------ -------- -------
+autogen 0s       168h0m0s           1        true
+```
+- InfluxDB is a schemaless database which means it’s easy to add new measurements, tags, and fields at any time.
+
+  
 ### Getting Started  
 src: <http://docs.influxdata.com/influxdb/v1.3/introduction/getting_started>  
 
