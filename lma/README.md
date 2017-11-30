@@ -30,7 +30,7 @@ $ influx -precision rfc3339
 > show databases
 > use mydb
 > insert cpu,host=serverA,region=us_west value=0.64
-> select "host", "region", "value" FROM "cpu"
+> select "host", "region", "value" from "cpu"
 > INSERT temperature,machine=unit42,type=assembly external=25,internal=37
 > SELECT * FROM /.*/ LIMIT 1
 ```
