@@ -33,9 +33,9 @@ time                host    region  value
 >
 > select * from temperature
 name: temperature
-time                external internal machine type
-----                -------- -------- ------- ----
-1511909562261175903 25       37       unit42  assembly
+time                           external internal machine type
+----                           -------- -------- ------- ----
+2017-11-28T22:52:42.261175903Z 25       37       unit42  assembly
 >
 >
 > show series
