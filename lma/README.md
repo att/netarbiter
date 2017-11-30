@@ -6,9 +6,9 @@ Created on: 9/12/2017
 
 ### Key Concepts
 src: <https://docs.influxdata.com/influxdb/v1.3/concepts/key_concepts>  
-- Fields are a required piece of InfluxDB’s data structure.
+- Fields are a *required* piece of InfluxDB’s data structure.
 - Fields are not indexed, so they should not contain commonly-queried metadata.
-- Tags are optional and indexed.
+- Tags are *optional* and indexed.
 - A measurement is conceptually similar to a table.
 - A single measurement can belong to different retention policies. 
 - A retention policy describes how long InfluxDB keeps data (DURATION) and how many copies of those data are stored in the cluster (REPLICATION). 
