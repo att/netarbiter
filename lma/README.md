@@ -36,7 +36,7 @@ $ influx -precision rfc3339
 ```
 
 ### Schema Exploration  
-src: <https://docs.influxdata.com/influxdb/v1.3/query_language/schema_exploration/>
+src: <https://docs.influxdata.com/influxdb/v1.3/query_language/schema_exploration>
 ```
 $ influx -precision rfc3339
 > show databases
