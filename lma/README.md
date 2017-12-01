@@ -11,7 +11,7 @@ ref.: <https://docs.influxdata.com/influxdb/v1.3/concepts/key_concepts>
 - Tags are *optional* and indexed.
 - A measurement is conceptually similar to a table.
 - A single measurement can belong to different retention policies. 
-- A retention policy describes how long InfluxDB keeps data (DURATION) and how many copies of those data are stored in the cluster (REPLICATION). 
+- A retention policy describes how long InfluxDB keeps data (DURATION) and how many copies of those data are stored in the cluster (REPLICATION). InfluxDB automatically creates a retention policy (duration = infinite and replication factor = 1).
 ```
 > show retention policies
 name    duration shardGroupDuration replicaN default
