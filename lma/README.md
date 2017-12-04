@@ -54,7 +54,7 @@ To set up a username and password in InfluxDB
 ```
 
 ### Configure
-You will need to edit Telegraf’s configuration file `/etc/telegraf/telegraf.conf`.
+Edit `/etc/telegraf/telegraf.conf`.  
 In `[[outputs.influxdb]]` section, uncomment the username and password lines and make sure their values match those which you set in InfluxDB:
 ```
   username = "influx"
