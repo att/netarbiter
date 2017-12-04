@@ -1,8 +1,6 @@
-# Loggging, Monitoring and Alerting  
+## InfluxDB  
 Authors: Hee Won Lee <knowpd@research.att.com>  
 Created on: 9/12/2017  
-
-## InfluxDB
 
 ### Key Concepts
 ref.: <https://docs.influxdata.com/influxdb/v1.3/concepts/key_concepts>  
