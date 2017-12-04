@@ -9,6 +9,7 @@ Created on: 9/12/2017
 ./install-influxdb.sh latest 
 ```
 
+### Create user/password  
 Authorization is only enforced once you’ve enabled authentication. By default, authentication is disabled, all credentials are silently ignored, and all users have all privileges.  
 
 InfuxDB configuration files is  `/etc/influxdb/influxdb.conf`.  
