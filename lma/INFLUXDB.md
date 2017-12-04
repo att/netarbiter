@@ -149,4 +149,8 @@ To set up a username and password in InfluxDB
 ```
 
 
-
+### Queries
+```
+> select * from cpu where time > now() - 1h;
+> select last(*) from cpu;
+```
