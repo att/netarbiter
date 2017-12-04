@@ -64,3 +64,13 @@ Restart the Telegraf service:
 ```
 sudo systemctl restart telegraf
 ```
+
+## Grafana
+### Install
+```
+./install-grafana.sh latest
+```
+
+### Configure
+Browse to `http://<server_ip>:3000/login`  and log in with the username `admin` and password `admin`.
+
