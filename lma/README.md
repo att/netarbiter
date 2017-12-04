@@ -3,7 +3,6 @@ Authors: Hee Won Lee <knowpd@research.att.com>
 Created on: 9/12/2017  
 
 ## InfluxDB
-
 ### Install
 ```
 ./install-influxdb.sh latest 
@@ -48,5 +47,20 @@ To set up a username and password in InfluxDB
 > show users
 ```
 
+## Telegraf
+### Install
+```
+./install-telegraf.sh latest
+```
 
-
+### Configure
+You will need to edit Telegraf’s configuration file `/etc/telegraf/telegraf.conf`.
+In `[[outputs.influxdb]]` section, uncomment the username and password lines and make sure their values match those which you set in InfluxDB:
+```
+  username = "influx"
+  password = "influx_pw"
+```
+Restart the Telegraf service:
+```
+sudo systemctl restart telegraf
+```
