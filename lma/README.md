@@ -1,7 +1,7 @@
 # Loggging, Monitoring and Alerting  
 Authors: Hee Won Lee <knowpd@research.att.com>  
-Created on: 9/12/2017 
-Ref: <http://www.oznetnerd.com/installing-setting-up-influxdb-telegraf-grafana>
+Created on: 9/12/2017   
+Ref: <http://www.oznetnerd.com/installing-setting-up-influxdb-telegraf-grafana>  
 
 ## InfluxDB
 ### Install
