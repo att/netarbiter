@@ -19,10 +19,10 @@ brew install ansible
 How to run
 ==========
 1. Setup
-   1. Add your public key (i.e., id_rsa.pub) to each server's authorized_keys.
+   1. Add your public key (i.e., `id_rsa.pub`) to each server's `authorized_keys`.
    2. Store all hosts' domain names (or IP addresses) to an inventory file "all"
    3. Create an inventory file for each link between two sites. 
-   This file is for route-create.yml and route-destroy.yml
+   This file is for `route-create.yml` and `route-destroy.yml`.
 
 2. Create/destroy a qrouter (and an ovs bridge) in a host
    ```
@@ -44,4 +44,4 @@ How to run
 
    NOTE:
     - Default delay and bandwidth are configured in each link's inventroy file. 
-    - Refer to tc manual(i.e., $ man tc) for the units of delay, rate, and ceil. 
+    - Refer to tc manual(i.e., `$ man tc`) for the units of delay, rate, and ceil. 
