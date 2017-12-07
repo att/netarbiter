@@ -29,6 +29,7 @@ data:
     mon_clock_drift_allowed = {{ .Values.ceph.config.mon.mon_clock_drift_allowed | default "0.15" | quote }}
     mon_clock_drift_warn_backoff = {{ .Values.ceph.config.mon.mon_clock_drift_warn_backoff | default "30" | quote }}
     mon_osd_report_timeout = {{ .Values.ceph.config.mon.mon_osd_report_timeout | default "300" | quote }}
+    mon_allow_pool_delete = {{ .Values.ceph.config.mon.mon_allow_pool_delete | default "true" | quote }} 
 
 
     [osd]
