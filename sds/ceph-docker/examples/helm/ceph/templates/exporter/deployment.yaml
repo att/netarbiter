@@ -33,7 +33,7 @@ spec:
           - name: ceph-conf
             mountPath: /etc/ceph/ceph.conf
             subPath: ceph.conf
-            readOnly: true
+            #readOnly: true
           - name: ceph-client-admin-keyring
             mountPath: /etc/ceph/ceph.client.admin.keyring
             subPath: ceph.client.admin.keyring
