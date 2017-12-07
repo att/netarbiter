@@ -83,6 +83,7 @@ ceph:
       mon_clock_drift_allowed: .15
       mon_clock_drift_warn_backoff: 30
       mon_osd_report_timeout: 300
+      mon_allow_pool_delete: true               # HLEE
     osd:
       journal_size: 100
       osd_mkfs_type: xfs

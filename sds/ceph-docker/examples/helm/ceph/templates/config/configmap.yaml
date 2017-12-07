@@ -31,7 +31,6 @@ data:
     mon_osd_report_timeout = {{ .Values.ceph.config.mon.mon_osd_report_timeout | default "300" | quote }}
     mon_allow_pool_delete = {{ .Values.ceph.config.mon.mon_allow_pool_delete | default "true" | quote }} 
 
-
     [osd]
     # network
     cluster_network = {{ .Values.network.cluster | default "10.244.0.0/16" | quote }}
