@@ -1,4 +1,4 @@
-## InfluxDB  
+# InfluxDB HOWTO 
 Authors: Hee Won Lee <knowpd@research.att.com>  
 Created on: 9/12/2017  
 
