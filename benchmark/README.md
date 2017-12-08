@@ -1,7 +1,13 @@
-# Fio Benchmarking  
+# Benchmarking - FIO 
 Authors: Hee Won Lee <knowpd@research.att.com>  
 Created on: 12/1/2017   
 
-### Install
+### Prerequisites
+1. Install InfluxDB and Grafana in a monitoring server.
+2. Install Telegraf in host machines where you want to collect metrics.
 
-### Configure
+### Single node test
+TBA
+
+### Multiple node test
+TBA
