@@ -8,4 +8,4 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 - [Multi-site Network Emulation](./multisite-netemu)
 
-- [Logging, Monitoring and Alerting](./log-monitor-alert): Telegraf, InfluxDB and Grafana
+- [Logging, Monitoring and Alerting](./log-monitor-alert) (Telegraf, InfluxDB and Grafana)
