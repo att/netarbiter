@@ -1,4 +1,4 @@
-# InfluxDB/Telegraf/Grafana  
+# InfluxDB, Telegraf and Grafana  
 Authors: Hee Won Lee <knowpd@research.att.com>  
 Created on: 12/1/2017   
 Ref: <http://www.oznetnerd.com/installing-setting-up-influxdb-telegraf-grafana>  
