@@ -49,5 +49,3 @@ echo "rw=$rw bs=$bs readratio=$readratio iodepth=$iodepth" >> $logfile
 
 # Parse fio output and send it to InfluxDB server
 ../parse_and_report_influxdb.py $outfile >> $logfile
-
-
