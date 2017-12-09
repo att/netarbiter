@@ -1,0 +1,22 @@
+# Configuration
+influxdb:
+  enabled: true
+  env:
+    ip: 10.1.2.3
+    port: 8086
+    dbname: telegraf
+    user: influx
+    password: "influx_pw@"
+fio:
+  enabled: true
+  env:
+    devlist: "sdb sdc"
+    randbslist: "4k 8k 32k"
+    seqbslist: "128k 1024k 4096k"
+    readratiolist: "0 30 50 70 100"
+    iodepthlist: "1 8 16 32 64"
+cosbench:
+  enabled: false
+  env:
+    var1: tba
+    var2: tba

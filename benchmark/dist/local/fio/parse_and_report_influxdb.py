@@ -6,12 +6,16 @@ import sys, os, socket, subprocess, json
 from pprint import pprint
 
 filename = sys.argv[1]
-#filename ='direct/res/out/randrw-4k-30-32.txt'     # for debugging
+rw = sys.argv[2]
+bs = sys.argv[3]
+readratio = sys.argv[4]
+iodepth = sys.argv[5]
 
-influxdbip = os.getenv('INFLUXDBIP', 'yourmonitor.research.att.com') 
-dbname = os.getenv('DBNAME', 'telegraf')
-user = os.getenv('USER', 'influx')
-password = os.getenv('PASSWORD', 'yourpassword')
+ip = os.getenv('INFLUXDB_IP', '10.1.2.3')
+port = os.getenv('INFLUXDB_PORT', '8086')
+dbname = os.getenv('INFLUXDB_DBNAME', 'telegraf')
+user = os.getenv('INFLUXDB_USER', 'influx')
+password = os.getenv('INFLUXDB_PASSWORD', 'influx_pw')
 
 def run_bash(cmd):
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, executable='/bin/bash')
@@ -27,8 +31,9 @@ with open(filename) as data_file:
 # Create a query
 query = ''
 for job in fio_output['jobs']:
-    e = ('fio,hostname=' + socket.gethostname() +
-         ',jobname=' + job['jobname'] +
+    e = ('fio,host=' + socket.gethostname() +
+         ',jobname=' + job['jobname'] + ',rw=' + rw +
+         ',bs=' + str(bs) +  ',readratio=' + str(readratio) + ',iodepth=' + str(iodepth) +
          ' sys_cpu=' + str(job['sys_cpu']) +
          ',usr_cpu=' + str(job['usr_cpu']) +
          ',read_bw=' + str(job['read']['bw']) +
@@ -45,11 +50,10 @@ for job in fio_output['jobs']:
     query = query + e + '\n'
 
 # Send data to InfluxDB
-cmd = ("curl -i -XPOST 'http://" + influxdbip + ":8086/write?db=" + dbname +
+cmd = ("curl -i -XPOST 'http://" + ip + ":" + port + "/write?db=" + dbname +
        "&u=" + user + "&p=" + password + "'"
        " --data-binary " + "'" + query.rstrip() + "'")
+print cmd   # required for logging
 run_bash(cmd)
-
-#print cmd              # for debugging
 #print run_bash(cmd)    # for debugging
 
