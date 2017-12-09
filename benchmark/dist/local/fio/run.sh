@@ -5,23 +5,21 @@
 #set -x
 set -e
 
-# For debugging
+# Default variables
 FIO_RANDBSLIST=${FIO_RANDBSLIST:-"4k 8k 32k"}
 FIO_SEQBSLIST=${FIO_SEQBSLIST:-"128k 1024k 4096k"}
 FIO_READRATIOLIST=${FIO_READRATIOLIST:-"0 30 50 70 100"}
 FIO_IODEPTHLIST=${FIO_IODEPTHLIST:-"1 8 16 32 64"}
 
-# Create directories for results
+# Prepare for result dirs
 n=0
 while ! mkdir ../res-$n
 do
     n=$((n+1))
 done
-
 mkdir ../res-$n/job
 mkdir ../res-$n/log
 mkdir ../res-$n/out
-
 export res_dir=../res-$n
 
 # random test
