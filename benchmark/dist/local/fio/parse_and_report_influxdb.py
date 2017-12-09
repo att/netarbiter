@@ -45,6 +45,7 @@ for job in fio_output['jobs']:
          ',write_bw=' + str(job['write']['bw']) +
          ',write_iops=' + str(job['write']['iops']) +
          ',write_lat_mean=' + str(job['write']['lat']['mean']) +
+         ',write_lat_stddev=' + str(job['write']['lat']['stddev']) +
          ',write_clat_percentile_95=' + str(job['write']['clat']['percentile']['95.000000']) +
          ',write_clat_percentile_99=' + str(job['write']['clat']['percentile']['99.000000']))
     query = query + e + '\n'
