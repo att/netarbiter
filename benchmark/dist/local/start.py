@@ -42,11 +42,11 @@ def load_config(config_file):
 
     # Preclude items that are `enabled = false`
     myconf = copy.deepcopy(config)
-    conf_disabled= []
     for k1, v1 in config.iteritems():
         for k2, v2 in v1.iteritems():
             if k2 == 'enabled' and v2 == False:
-                conf_disabled.append(k1)
+                var = k1.upper() + '_' + k2.upper()
+                os.environ[var] = 'false'
                 myconf.pop(k1)
     # For debugging
     #print conf_disabled
@@ -69,9 +69,43 @@ def load_config(config_file):
     #print os.environ.get('INFLUXDB_IP')
     #print os.environ
 
+def eta():
+    cnt = 0
+    randbslist = os.environ.get('FIO_RANDBSLIST')
+    seqbslist = os.environ.get('FIO_SEQBSLIST')
+    readratiolist = os.environ.get('FIO_READRATIOLIST')
+    iodepthlist = os.environ.get('FIO_IODEPTHLIST')
+    numjobslist = os.environ.get('FIO_NUMJOBSLIST')
+    runtime = os.environ.get('FIO_RUNTIME')
+
+    factor1 =  len(readratiolist.split()) * len(iodepthlist.split()) * \
+                 len(numjobslist.split())
+    if randbslist is not None:
+        cnt = cnt + len(randbslist.split()) * factor1
+    if seqbslist is not None:
+        cnt = cnt + len(seqbslist.split()) * factor1
+
+    eta = int(runtime) * cnt
+    eta_unit = 'sec'
+
+    if eta >= 86400:
+        eta = eta / 86400.
+        eta_unit = 'day'
+    elif eta >= 3600:
+        eta = eta / 3600.
+        eta_unit = 'hr'
+    elif eta >= 60:
+        eta = eta / 60.
+        eta_unit = 'min'
+
+    return eta, eta_unit
+
 def main(args):
-    #print args
+    # Generate env variables
     load_config(args.config)
+
+    # ETA
+    print("ETA: %.1f %s" % eta())
 
     # Run
     cmd = ('cd ' +  args.benchmark_tool + '; ./run.sh')

@@ -9,17 +9,17 @@ rw=$1
 bs=$2
 readratio=$3
 iodepth=$4
+numjobs=$5
 
 # Default variables
 FIO_DEVLIST=${FIO_DEVLIST:-"sdf sdg"}
-FIO_NUMOFJOBS=${FIO_NUMOFJOBS:-"1"}
 FIO_DIRECT=${FIO_DIRECT:-"1"}
 FIO_SIZE=${FIO_SIZE:-"400G"}
 FIO_RUNTIME=${FIO_RUNTIME:-"60"}
 
 # Prepare for result files
-jobfile="$res_dir/job/$rw-$bs-$readratio-$iodepth.fio"
-outfile="$res_dir/out/$rw-$bs-$readratio-$iodepth.json"
+jobfile="$res_dir/job/$rw-$bs-$readratio-$iodepth-$numjobs.fio"
+outfile="$res_dir/out/$rw-$bs-$readratio-$iodepth-$numjobs.json"
 logfile="$res_dir/fio-summary.log"
 
 # Create a fio job file
@@ -38,7 +38,7 @@ echo "" >> $jobfile
 
 # Note: `DEVLIST` is defined in `../start.sh`.
 for i in $FIO_DEVLIST; do
-    for j in $(seq 1 $FIO_NUMOFJOBS); do
+    for j in $(seq 1 $numjobs); do
         echo "[$i]" >> $jobfile
         echo "filename=/dev/$i" >> $jobfile
         echo "" >> $jobfile
@@ -46,12 +46,17 @@ for i in $FIO_DEVLIST; do
 done
 
 # Run fio
-sudo su -c 'echo 3 > /proc/sys/vm/drop_caches'
 sudo fio --output-format=json --output=$outfile $jobfile
+
+# Drop caches
+if [ $FIO_DIRECT == '1' ]; then
+    echo "drop caches!!!"
+    sudo su -c 'echo 3 > /proc/sys/vm/drop_caches'
+fi 
 
 # Log current setup
 printf "\nCompleted: "
-echo "rw=$rw bs=$bs readratio=$readratio iodepth=$iodepth" #| tee -a $logfile
+echo "rw=$rw bs=$bs readratio=$readratio iodepth=$iodepth numjobs=$numjobs" #| tee -a $logfile
 
 # Translate bs into a number
 #   e.g., 4k or 4K -> 4, 256b or 256B -> 0.256
@@ -65,5 +70,5 @@ if [ "$unit" = "B" ] || [ "$unit" = "b" ]; then
 fi
 
 # Parse fio output and send it to InfluxDB server
-./parse_and_report_influxdb.py $outfile $rw $bs $readratio $iodepth | tee -a $logfile
+./parse_and_report_influxdb.py $outfile $rw $bs $readratio $iodepth $numjobs | tee -a $logfile
 echo '' >> $logfile

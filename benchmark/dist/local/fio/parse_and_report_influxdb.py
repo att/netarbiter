@@ -10,6 +10,7 @@ rw = sys.argv[2]
 bs = sys.argv[3]
 readratio = sys.argv[4]
 iodepth = sys.argv[5]
+numjobs = sys.argv[6]
 
 # Default variables
 ip = os.getenv('INFLUXDB_IP', '10.1.2.3')
@@ -43,19 +44,20 @@ for job in fio_output['jobs']:
     total_write_bw = total_write_bw + job['write']['bw']
     total_read_lat = total_read_lat + job['read']['lat']['mean']
     total_write_lat = total_write_lat + job['write']['lat']['mean']
-total_read_lat = total_read_lat / len(fio_output['jobs']) 
-total_write_lat = total_write_lat / len(fio_output['jobs']) 
+total_read_lat = total_read_lat / len(fio_output['jobs'])
+total_write_lat = total_write_lat / len(fio_output['jobs'])
 
 total_iops = total_read_iops + total_write_iops
 total_bw = total_read_bw + total_write_bw
 #total_lat = (total_read_lat + total_write_lat) / 2
-# note: total_lat seems not meaningful; for read only (total_write_lat = 0), 
+# note: total_lat seems not meaningful; for read only (total_write_lat = 0),
 #      total_lat = total_read_lat / 2, which is incorrect!
 
 # Add a query for total iops/bw/lat
 query = ''
 e = ('fio,host=' + socket.gethostname() + ',rw=' + rw +
-     ',bs=' + str(bs) +  ',readratio=' + str(readratio) + ',iodepth=' + str(iodepth) +
+     ',bs=' + str(bs) +  ',readratio=' + str(readratio) +
+     ',iodepth=' + str(iodepth) + ',numjobs=' + str(numjobs) +
      ' total_iops=' + str(total_iops) +
      ',total_bw=' + str(total_bw) +
      ',total_read_lat=' + str(total_read_lat) +
@@ -65,7 +67,8 @@ query = query + e + '\n'
 # Add queries per fio job
 for job in fio_output['jobs']:
     e = ('fio,host=' + socket.gethostname() + ',jobname=' + job['jobname'] + ',rw=' + rw +
-         ',bs=' + str(bs) +  ',readratio=' + str(readratio) + ',iodepth=' + str(iodepth) +
+         ',bs=' + str(bs) +  ',readratio=' + str(readratio) +
+         ',iodepth=' + str(iodepth) + ',numjobs=' + str(numjobs) +
          ' sys_cpu=' + str(job['sys_cpu']) +
          ',usr_cpu=' + str(job['usr_cpu']) +
          ',read_bw=' + str(job['read']['bw']) +
@@ -87,6 +90,10 @@ cmd = ("curl -i -XPOST 'http://" + ip + ":" + port + "/write?db=" + dbname +
        "&u=" + user + "&p=" + password + "'"
        " --data-binary " + "'" + query.rstrip() + "'")
 print cmd   # required for logging
-run_bash(cmd)
-#print run_bash(cmd)    # for debugging
+
+if os.environ.get('INFLUXDB_ENABLED') == 'false':
+    print("InfluxDB is not enabled, so this data is not trasmitted.")
+else:
+    run_bash(cmd)
+    #print run_bash(cmd)    # for debugging
 

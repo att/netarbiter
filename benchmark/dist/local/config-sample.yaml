@@ -6,19 +6,19 @@ influxdb:
     port: 8086
     dbname: telegraf
     user: influx
-    password: "@influx_pw@"
+    password: "@influx@"
 fio:
   enabled: true
   env:
-    runtime: 60                  # unit: sec.
+    runtime: 300                  # unit: sec.
     direct: 1
-    numofjobs: 1
     size: 400G
     devlist: "sdb"
     randbslist: "4k 8k 32k"
     seqbslist: "128k 1024k 4096k"
     readratiolist: "0 30 50 70 100"
     iodepthlist: "1 8 16 32 64"
+    numjobslist: "1 8 16 32"
 cosbench:
   enabled: false
   env:
