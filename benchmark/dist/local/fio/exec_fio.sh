@@ -36,7 +36,6 @@ echo "rwmixread=$readratio" >> $jobfile
 echo "iodepth=$iodepth" >> $jobfile
 echo "" >> $jobfile
 
-# Note: `DEVLIST` is defined in `../start.sh`.
 for i in $FIO_DEVLIST; do
     for j in $(seq 1 $numjobs); do
         echo "[$i]" >> $jobfile
