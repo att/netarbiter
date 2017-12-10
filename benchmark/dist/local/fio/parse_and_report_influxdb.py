@@ -11,6 +11,7 @@ bs = sys.argv[3]
 readratio = sys.argv[4]
 iodepth = sys.argv[5]
 
+# Default variables
 ip = os.getenv('INFLUXDB_IP', '10.1.2.3')
 port = os.getenv('INFLUXDB_PORT', '8086')
 dbname = os.getenv('INFLUXDB_DBNAME', 'telegraf')
@@ -28,11 +29,42 @@ with open(filename) as data_file:
 
 #pprint(fio_output)         # for debugging
 
-# Create a query
-query = ''
+# Calculate total iops/lat/bw
+total_read_iops = 0
+total_write_iops = 0
+total_read_lat = 0
+total_write_lat = 0
+total_read_bw = 0
+total_write_bw = 0
 for job in fio_output['jobs']:
-    e = ('fio,host=' + socket.gethostname() +
-         ',jobname=' + job['jobname'] + ',rw=' + rw +
+    total_read_iops = total_read_iops + job['read']['iops']
+    total_write_iops = total_write_iops + job['write']['iops']
+    total_read_bw = total_read_bw + job['read']['bw']
+    total_write_bw = total_write_bw + job['write']['bw']
+    total_read_lat = total_read_lat + job['read']['lat']['mean']
+    total_write_lat = total_write_lat + job['write']['lat']['mean']
+total_read_lat = total_read_lat / len(fio_output['jobs']) 
+total_write_lat = total_write_lat / len(fio_output['jobs']) 
+
+total_iops = total_read_iops + total_write_iops
+total_bw = total_read_bw + total_write_bw
+#total_lat = (total_read_lat + total_write_lat) / 2
+# note: total_lat seems not meaningful; for read only (total_write_lat = 0), 
+#      total_lat = total_read_lat / 2, which is incorrect!
+
+# Add a query for total iops/bw/lat
+query = ''
+e = ('fio,host=' + socket.gethostname() + ',rw=' + rw +
+     ',bs=' + str(bs) +  ',readratio=' + str(readratio) + ',iodepth=' + str(iodepth) +
+     ' total_iops=' + str(total_iops) +
+     ',total_bw=' + str(total_bw) +
+     ',total_read_lat=' + str(total_read_lat) +
+     ',total_write_lat=' + str(total_write_lat))
+query = query + e + '\n'
+
+# Add queries per fio job
+for job in fio_output['jobs']:
+    e = ('fio,host=' + socket.gethostname() + ',jobname=' + job['jobname'] + ',rw=' + rw +
          ',bs=' + str(bs) +  ',readratio=' + str(readratio) + ',iodepth=' + str(iodepth) +
          ' sys_cpu=' + str(job['sys_cpu']) +
          ',usr_cpu=' + str(job['usr_cpu']) +

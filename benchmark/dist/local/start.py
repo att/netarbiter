@@ -4,13 +4,9 @@
 
 config_file = 'config.yaml'
 
-import os, sys, subprocess, copy, yaml
+import os, sys, subprocess, copy, argparse, yaml
 
 def run_bash(cmd):
-    #proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,  shell=True, executable='/bin/bash')
-    #(stdout, stderr) = proc.communicate()
-    #return stdout + stderr
-
     # Refer to http://stackoverflow.com/questions/4417546/constantly-print-subprocess-output-while-process-is-running
     process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
@@ -30,38 +26,56 @@ def run_bash(cmd):
     else:
         raise exitCode
 
-# Read config.yaml
-with open(config_file) as stream:
-    config = yaml.load(stream)
+def arg_handler():
+    parser = argparse.ArgumentParser(description='This program runs various benchmark \
+            tools with a single config file.')
+    parser.add_argument("benchmark_tool", help="options: fio")
+    parser.add_argument("-c", "--config", default="config.yaml", help="config file (default: %(default)s)")
+    args = parser.parse_args()
+    main(args)
 
-# Preclude items that are `enabled = false`
-myconf = copy.deepcopy(config)
-conf_disabled= []
-for k1, v1 in config.iteritems():
-    for k2, v2 in v1.iteritems():
-        if k2 == 'enabled' and v2 == False:
-            conf_disabled.append(k1)
-            myconf.pop(k1)
-# For debugging
-#print conf_disabled
-#print myconf
 
-# Add to environment variables
-myenv = {}
-for k1, v1 in myconf.iteritems():
-    for k2, v2 in v1.iteritems():
-        if k2 == 'env':
-            for k3, v3 in v2.iteritems():
-                var = k1.upper() + '_' + k3.upper()
-                myenv[var] = str(v3)
-                os.environ[var] = str(v3)
-                #print  var + ' = ' + str(v3)
+def load_config(config_file):
+    # Read config.yaml
+    with open(config_file) as stream:
+        config = yaml.load(stream)
 
-# For debugging
-#print myenv
-#print os.getenv('INFLUXDB_IP', '')
-#print os.environ.get('INFLUXDB_IP')
-#print os.environ
+    # Preclude items that are `enabled = false`
+    myconf = copy.deepcopy(config)
+    conf_disabled= []
+    for k1, v1 in config.iteritems():
+        for k2, v2 in v1.iteritems():
+            if k2 == 'enabled' and v2 == False:
+                conf_disabled.append(k1)
+                myconf.pop(k1)
+    # For debugging
+    #print conf_disabled
+    #print myconf
 
-# Run
-run_bash('cd fio; ./run.sh')
+    # Add to environment variables
+    myenv = {}
+    for k1, v1 in myconf.iteritems():
+        for k2, v2 in v1.iteritems():
+            if k2 == 'env':
+                for k3, v3 in v2.iteritems():
+                    var = k1.upper() + '_' + k3.upper()
+                    myenv[var] = str(v3)
+                    os.environ[var] = str(v3)
+                    #print  var + ' = ' + str(v3)
+
+    # For debugging
+    #print myenv
+    #print os.getenv('INFLUXDB_IP', '')
+    #print os.environ.get('INFLUXDB_IP')
+    #print os.environ
+
+def main(args):
+    #print args
+    load_config(args.config)
+
+    # Run
+    cmd = ('cd ' +  args.benchmark_tool + '; ./run.sh')
+    run_bash(cmd)
+
+if __name__ == "__main__":
+    arg_handler()
