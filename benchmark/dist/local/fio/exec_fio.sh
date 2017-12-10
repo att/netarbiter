@@ -17,21 +17,10 @@ FIO_DIRECT=${FIO_DIRECT:-"1"}
 FIO_SIZE=${FIO_SIZE:-"400G"}
 FIO_RUNTIME=${FIO_RUNTIME:-"60"}
 
-# Prepare for result dirs/files
-n=0
-while ! mkdir ../res-$n
-do
-    n=$((n+1))
-done
-res_dir=../res-$n
-
-mkdir $res_dir/job
-mkdir $res_dir/log
-mkdir $res_dir/out
-
+# Prepare for result files
 jobfile="$res_dir/job/$rw-$bs-$readratio-$iodepth.fio"
-logfile="$res_dir/log/fio-summary.log"
 outfile="$res_dir/out/$rw-$bs-$readratio-$iodepth.json"
+logfile="$res_dir/fio-summary.log"
 
 # Create a fio job file
 echo "[global]" > $jobfile
@@ -49,11 +38,11 @@ echo "" >> $jobfile
 
 # Note: `DEVLIST` is defined in `../start.sh`.
 for i in $FIO_DEVLIST; do
-  for j in $(seq 1 $FIO_NUMOFJOBS); do
-    echo "[$i]" >> $jobfile
-    echo "filename=/dev/$i" >> $jobfile
-    echo "" >> $jobfile
-  done
+    for j in $(seq 1 $FIO_NUMOFJOBS); do
+        echo "[$i]" >> $jobfile
+        echo "filename=/dev/$i" >> $jobfile
+        echo "" >> $jobfile
+    done
 done
 
 # Run fio
@@ -70,10 +59,9 @@ str=$2
 i=$((${#str}-1))
 unit="${str:$i:1}"
 bs=$(echo $2 | sed -e "s/[KkBb]$//")
-if [ "$unit" = "B" ] || [ "$unit" = "b" ]
-then
-        parsed=$(echo "scale=3; $bs/1000" | bc)
-        bs=`echo "0"$parsed`
+if [ "$unit" = "B" ] || [ "$unit" = "b" ]; then
+    parsed=$(echo "scale=3; $bs/1000" | bc)
+    bs=`echo "0"$parsed`
 fi
 
 # Parse fio output and send it to InfluxDB server
