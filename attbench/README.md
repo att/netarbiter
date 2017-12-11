@@ -1,7 +1,7 @@
 # ATTBench 
 Authors: 
   - Hee Won Lee <knowpd@research.att.com>  
-  - Moo-Ryong Ra <mra@research.att.com>
+  - Moo-Ryong Ra <mra@research.att.com>  
 Created on: 12/1/2017   
 
 ### Prerequisites
