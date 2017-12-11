@@ -4,9 +4,9 @@ influxdb:
   env:
     ip: 10.1.2.3
     port: 8086
-    dbname: telegraf
-    user: influx
-    password: "@influx@"
+    dbname: yourdb      # note: create a database in InfluxDB server
+    user: yourid
+    password: yourpw
 fio:
   enabled: true
   env:

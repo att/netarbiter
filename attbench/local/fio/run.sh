@@ -30,7 +30,7 @@ if [ -n "$FIO_RANDBSLIST" ]; then
         for readratio in $FIO_READRATIOLIST; do
             for iodepth in $FIO_IODEPTHLIST; do
                 for numjobs in $FIO_NUMJOBSLIST; do
-                    ./exec_fio.sh randrw $bs $readratio $iodepth $numjobs
+                    ./exec-fio.sh randrw $bs $readratio $iodepth $numjobs
 		done
             done
         done
@@ -43,7 +43,7 @@ if [ -n "$FIO_SEQBSLIST" ]; then
         for readratio in $FIO_READRATIOLIST; do
             for iodepth in $FIO_IODEPTHLIST; do
                 for numjobs in $FIO_NUMJOBSLIST; do
-                    ./exec_fio.sh rw $bs $readratio $iodepth $numjobs
+                    ./exec-fio.sh rw $bs $readratio $iodepth $numjobs
 		done
             done
         done

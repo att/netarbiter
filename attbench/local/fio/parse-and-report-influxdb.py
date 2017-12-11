@@ -94,6 +94,6 @@ print cmd   # required for logging
 if os.environ.get('INFLUXDB_ENABLED') == 'false':
     print("InfluxDB is not enabled, so this data is not trasmitted.")
 else:
-    run_bash(cmd)
-    #print run_bash(cmd)    # for debugging
+    #run_bash(cmd)
+    print run_bash(cmd)    # for debugging
 

@@ -69,5 +69,5 @@ if [ "$unit" = "B" ] || [ "$unit" = "b" ]; then
 fi
 
 echo "Parse fio output and send it to InfluxDB server:"
-./parse_and_report_influxdb.py $outfile $rw $bs $readratio $iodepth $numjobs | tee -a $logfile
+./parse-and-report-influxdb.py $outfile $rw $bs $readratio $iodepth $numjobs | tee -a $logfile
 echo '' >> $logfile

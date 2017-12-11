@@ -2,8 +2,6 @@
 # Author: Hee Won Lee <knowpd@research.att.com>
 # Created on 12/8/2017
 
-config_file = 'config.yaml'
-
 import os, sys, subprocess, copy, argparse, yaml
 
 def run_bash(cmd):
@@ -106,7 +104,7 @@ def main(args):
 
     # ETA
     if args.benchmark_tool == 'fio': 
-        print("ETA: %.1f %s (each runtime: %d sec, count:  %d)" % fio_eta())
+        print("ETA: %.1f+ %s (each runtime: %d sec, count:  %d)" % fio_eta())
 
     # Run
     cmd = ('cd ' +  args.benchmark_tool + '; ./run.sh')
