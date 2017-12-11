@@ -26,6 +26,8 @@ ref: <http://docs.influxdata.com/influxdb/v1.3/introduction/getting_started>
 
 ```
 $ influx -precision rfc3339
+# If you have id/pw:
+#   $ influx -precision rfc3339 -username=admin -password=admin_pw
 > create database mydb
 > show databases
 > use mydb
