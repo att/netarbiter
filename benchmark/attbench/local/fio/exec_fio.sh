@@ -47,15 +47,15 @@ done
 # Run fio
 sudo fio --output-format=json --output=$outfile $jobfile
 
+# Log current setup
+printf "\nFio completed: "
+echo "rw=$rw bs=$bs readratio=$readratio iodepth=$iodepth numjobs=$numjobs" #| tee -a $logfile
+
 # Drop caches
 if [ $FIO_DIRECT == '1' ]; then
-    echo "drop caches!!!"
+    echo "Drop caches!"
     sudo su -c 'echo 3 > /proc/sys/vm/drop_caches'
 fi 
-
-# Log current setup
-printf "\nCompleted: "
-echo "rw=$rw bs=$bs readratio=$readratio iodepth=$iodepth numjobs=$numjobs" #| tee -a $logfile
 
 # Translate bs into a number
 #   e.g., 4k or 4K -> 4, 256b or 256B -> 0.256
@@ -68,6 +68,6 @@ if [ "$unit" = "B" ] || [ "$unit" = "b" ]; then
     bs=`echo "0"$parsed`
 fi
 
-# Parse fio output and send it to InfluxDB server
+echo "Parse fio output and send it to InfluxDB server:"
 ./parse_and_report_influxdb.py $outfile $rw $bs $readratio $iodepth $numjobs | tee -a $logfile
 echo '' >> $logfile

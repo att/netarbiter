@@ -69,7 +69,7 @@ def load_config(config_file):
     #print os.environ.get('INFLUXDB_IP')
     #print os.environ
 
-def eta():
+def fio_eta():
     cnt = 0
     randbslist = os.environ.get('FIO_RANDBSLIST')
     seqbslist = os.environ.get('FIO_SEQBSLIST')
@@ -98,14 +98,15 @@ def eta():
         eta = eta / 60.
         eta_unit = 'min'
 
-    return eta, eta_unit
+    return eta, eta_unit, int(runtime), cnt
 
 def main(args):
     # Generate env variables
     load_config(args.config)
 
     # ETA
-    print("ETA: %.1f %s" % eta())
+    if args.benchmark_tool == 'fio': 
+        print("ETA: %.1f %s (each runtime: %d sec, count:  %d)" % fio_eta())
 
     # Run
     cmd = ('cd ' +  args.benchmark_tool + '; ./run.sh')

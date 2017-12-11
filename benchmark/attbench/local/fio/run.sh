@@ -19,6 +19,7 @@ do
     n=$((n+1))
 done
 export res_dir=../res-$n
+echo "mkdir: create directory ‘$res_dir’"
 mkdir $res_dir/job
 mkdir $res_dir/out
 
