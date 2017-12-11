@@ -3,7 +3,7 @@ Authors: Hee Won Lee <knowpd@research.att.com>
 Created on: 9/12/2017  
 
 ### Key Concepts
-ref.: <https://docs.influxdata.com/influxdb/v1.3/concepts/key_concepts>  
+ref: <https://docs.influxdata.com/influxdb/v1.3/concepts/key_concepts>  
 - Fields are a *required* piece of InfluxDB’s data structure.
 - Fields are not indexed, so they should not contain commonly-queried metadata.
 - Tags are *optional* and indexed.
@@ -22,7 +22,7 @@ autogen 0s       168h0m0s           1        true
 
   
 ### Getting Started  
-ref.: <http://docs.influxdata.com/influxdb/v1.3/introduction/getting_started>  
+ref: <http://docs.influxdata.com/influxdb/v1.3/introduction/getting_started>  
 
 ```
 $ influx -precision rfc3339
@@ -36,7 +36,7 @@ $ influx -precision rfc3339
 ```
 
 ### Schema Exploration  
-ref.: <https://docs.influxdata.com/influxdb/v1.3/query_language/schema_exploration>
+ref: <https://docs.influxdata.com/influxdb/v1.3/query_language/schema_exploration>
 ```
 $ influx -precision rfc3339
 > show databases
@@ -107,8 +107,15 @@ external float
 internal float 
 ```
 
+### Database Management
+ref: <https://docs.influxdata.com/influxdb/v1.3/query_language/database_management/#delete-measurements-with-drop-measurement>
+```
+> drop measurement cpu
+```
+
+
 ### Authentication and Authorization  
-ref.: <https://docs.influxdata.com/influxdb/v1.3/query_language/authentication_and_authorization>
+ref <https://docs.influxdata.com/influxdb/v1.3/query_language/authentication_and_authorization>
 
 Authorization is only enforced once you’ve enabled authentication. By default, authentication is disabled, all credentials are silently ignored, and all users have all privileges.  
 
