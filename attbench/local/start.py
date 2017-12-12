@@ -29,7 +29,7 @@ def run_bash(cmd):
 def arg_handler():
     parser = argparse.ArgumentParser(description='This program runs various benchmark \
             tools with a single config file.')
-    parser.add_argument("benchmark_tool", help="options: fio")
+    parser.add_argument("benchmark_tool", help="options: fio, cosbench")
     parser.add_argument("-c", "--config", default="config.yaml", help="config file (default: %(default)s)")
     args = parser.parse_args()
     main(args)
