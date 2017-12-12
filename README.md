@@ -6,6 +6,6 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 - [Kubeadm-managed Kubernetes](./install-kubeadm)
 
-- [Logging, Monitoring and Alerting](./log-monitor-alert): Telegraf, InfluxDB and Grafana
+- [InfluxDB, Telegraf, Grafana](./log-monitor-alert)
 
 - [Multi-site Network Emulation](./multisite-netemu)
