@@ -2,6 +2,8 @@
 # Author: Hee Won Lee <knowpd@research.att.com>
 # Created on 12/8/2017
 
+supported_benchmark_tool = ['fio', 'cosbench']
+
 import os, sys, subprocess, copy, argparse, yaml
 
 def run_bash(cmd):
@@ -107,8 +109,12 @@ def main(args):
         print("ETA: %.1f+ %s (each runtime: %d sec, count:  %d)" % fio_eta())
 
     # Run
-    cmd = ('cd ' +  args.benchmark_tool + '; ./run.sh')
-    run_bash(cmd)
+    if args.benchmark_tool in supported_benchmark_tool:
+        cmd = ('cd ' +  args.benchmark_tool + '; ./run.sh')
+        run_bash(cmd)
+    else:
+        print("`%s` is not supported." % args.benchmark_tool)
+        print("Supported benchmark tools: %s" % ', '.join(map(str, supported_benchmark_tool)))
 
 if __name__ == "__main__":
     arg_handler()
