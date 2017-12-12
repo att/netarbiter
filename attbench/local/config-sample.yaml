@@ -22,5 +22,5 @@ fio:
 cosbench:
   enabled: false
   env:
-    var1: tba
-    var2: tba
+    var1: TBD
+    var2: TBD
