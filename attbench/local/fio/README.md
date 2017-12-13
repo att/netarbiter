@@ -4,7 +4,7 @@ Authors: Moo-Ryong Ra <mra@research.att.com> and Hee Won Lee <knowpd@research.at
 * [run.sh](run.sh): 
   - Main script to run a test for various blocksizes, r/w ratio, iodepth, numjobs 
  
-* [exec-fio.sh](exec_fio.sh): 
+* [exec-fio.sh](exec-fio.sh): 
   - Used by run.sh. 
   - Generate fio configuration, run, and trigger the report script (below).
 
