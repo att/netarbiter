@@ -19,7 +19,7 @@ To run ATTBench from a local host,
 ```
 cp config-sample.yaml config.yaml
 ```
-For configuration details, refer to [config-sample.yaml](local/config-sample.yaml).
+  For configuration details, refer to [config-sample.yaml](local/config-sample.yaml).
 
 3. Run
 ```
