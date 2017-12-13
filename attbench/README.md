@@ -3,8 +3,10 @@ Authors: Hee Won Lee <knowpd@research.att.com> and Moo-Ryong Ra <mra@research.at
 Created on: 12/1/2017   
 
 ### Prerequisites
-1. Install *InfluxDB* and *Grafana* (optional) in a monitoring server, and *Telegraf* in host machines where you want to collect metrics. Refer to <https://github.com/att/netarbiter/tree/master/influxdb-telegraf-grafana>
-3. Install Python's yaml module in a host/container where you run attbench (i.e., `start.py`).
+- Install *InfluxDB* and *Grafana* (optional) in a monitoring server, and *Telegraf* in host machines where you want to collect metrics.  
+Refer to <https://github.com/att/netarbiter/tree/master/influxdb-telegraf-grafana>
+
+- Install Python's yaml module in a host/container where you run attbench (i.e., `start.py`).
 ```
 sudo apt-get install python-pip
 sudo pip install pyaml
