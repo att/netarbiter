@@ -6,8 +6,9 @@ Created on: 12/1/2017
 - Install *InfluxDB* (and *Grafana*) in a monitoring server, and *Telegraf* in host machines where you want to collect metrics.  
 Refer to <https://github.com/att/netarbiter/tree/master/influxdb-telegraf-grafana>
 
-- Install Python's yaml module in a host (or container) where you run ATTBench.
+- Install fio, bc and python's yaml module in a host (or container) where you run ATTBench.
 ```
+sudo apt-get install fio bc
 sudo apt-get install python-pip
 sudo pip install pyaml
 ```
