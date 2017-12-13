@@ -22,6 +22,8 @@ cp config-sample.yaml config.yaml
 3. Run
 ```
 ./start.py <benchmark_tool>
+# For fio, run:
+#   ./start.py fio
 ```
 
 As of now, ATTBench supports: 
