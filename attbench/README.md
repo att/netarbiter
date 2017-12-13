@@ -1,8 +1,5 @@
 # ATTBench 
-Authors: 
-  - Hee Won Lee <knowpd@research.att.com>  
-  - Moo-Ryong Ra <mra@research.att.com>   
-
+Authors: Hee Won Lee <knowpd@research.att.com> and Moo-Ryong Ra <mra@research.att.com>   
 Created on: 12/1/2017   
 
 ### Prerequisites
@@ -15,7 +12,7 @@ sudo pip install pyaml
 ```
 
 ### Local test
-You can run *ATTBench* from a local host. 
+You can run ATTBench from a local host. 
 ```
 # Go to directory `local'.
 cd local
@@ -28,9 +25,9 @@ cp config-sample.yaml config.yaml
 ./start.py <benchmark_tool>
 ```
 
-* Note: As of now, avaialbel benchamrk tools are 
+* As of now, ATTBench supports: 
   - Fio
   - COSBench (to be supported)
 
 ### Distributed test
-You can concurrently run *ATTBench* on mutiple hosts. 
+You can concurrently run ATTBench on mutiple hosts. 
