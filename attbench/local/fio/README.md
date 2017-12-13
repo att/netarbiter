@@ -1,4 +1,4 @@
-# FIO
+# FIO Tester
 Authors: Moo-Ryong Ra <mra@research.att.com> and Hee Won Lee <knowpd@research.att.com>  
 
 * [run.sh](run.sh): 
