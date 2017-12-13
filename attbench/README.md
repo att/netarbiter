@@ -23,7 +23,7 @@ cp config-sample.yaml config.yaml
 ```
 ./start.py <benchmark_tool>
 
-# Fio Example:
+# Example:
 ./start.py fio
 ```
 
