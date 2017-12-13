@@ -15,11 +15,11 @@ sudo pip install pyaml
 ### Local test
 To run ATTBench from a local host, 
 1. Go to directory `local'
-2. Create your own config file.  For configuration details, refer to [config-sample.yaml](local/config-sample.yaml).  
+2. Create your own config file.  
+For configuration details, refer to [config-sample.yaml](local/config-sample.yaml).  
 ```
 cp config-sample.yaml config.yaml
 ```  
-For configuration details, refer to [config-sample.yaml](local/config-sample.yaml).
 3. Run
 ```
 ./start.py <benchmark_tool>
