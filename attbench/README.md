@@ -25,8 +25,8 @@ cp config-sample.yaml config.yaml
 ```
 
 As of now, ATTBench supports: 
-  - Fio
-  - COSBench (to be supported)
+  - Fio: `./start.py fio`
+  - COSBench (to be supported): `./start.py cosbench`
 
 ### Distributed test
 You can concurrently run ATTBench on mutiple hosts.   
