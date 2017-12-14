@@ -75,6 +75,9 @@ sudo systemctl restart telegraf
 ### Start
 Browse to `http://<server_ip>:3000/login`  and log in with the username `admin` and password `admin`.
 
+### Sample Bashboard
+Go to Dashboards/Import and import [grafana-dashboard-fio-sample.json](grafana-dashboard-fio-sample.json).
+
 
 ## Notes
 [1] Find more information in [INFLUXDB_HOWTO.md](INFLUXDB_HOWTO.md)
