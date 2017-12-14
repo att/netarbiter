@@ -26,7 +26,7 @@ cp config-sample.yaml yourconfig.yaml
 ```  
 
 3. Edit yourconfig.yaml for your environment.  
-For configuration details, refer to [config-sample.yaml](local/config-sample.yaml).
+For details, refer to [config-sample.yaml](local/config-sample.yaml).
 
 4. Run
 ```
@@ -41,47 +41,40 @@ Note: Currently ATTBench supports Fio.
 ## Distributed test
 You can concurrently run ATTBench on mutiple hosts.
 
+### Prerequisite: Ansible
+```
+sudo apt install ansible
+```
+
 ### Configure
 1. Set up Ansible inventory:
-  - [option 1] Edit /etc/ansible/hosts
-  - [option 2] Create your own inventory file as follows:
-  ```
-  [hostgroup]
-  yourhostname1
-  yourhostname2
-  
-  [hostgroup:vars]
-  user=yourid  
-  ```
+  - [option 1] Edit /etc/ansible/hosts.
+  - [option 2] Create your own inventory file (e.g., `yourhosts.ini`) as follows. For details, refer to [hosts-sample](hosts-sample).
 
 2. Configure InfluxDB and Fio variables in `group_vars/hostgroup`.
 ```
----
-env:
-#  INFLUXDB_IP: 10.1.2.3     # (influxdb) IP or domain name
-#  INFLUXDB_PORT: 8086       # (influxdb) Port
-#  INFLUXDB_DBNAME: yourdb   # (influxdb) Database name (which should be created beforehand)
-#  INFLUXDB_USER: yourid     # (influxdb) User ID
-#  INFLUXDB_PASSWORD: yourpw # (influxdb) Password
-
-#  FIO_RUNTIME: 300                    # FIO runtime (unit: sec)
-#  FIO_DIRECT: 1                       # 1: Direct IO, 2: Buffered IO
-#  FIO_SIZE: 400G                      # io size
-  FIO_DEVLIST: "sdc"              # block list
-#  FIO_RANDBSLIST: "4k 8k 32k"         # random block size list (optional)
-#  FIO_SEQBSLIST: "128k 1024k 4096k"   # sequential block size list (optional)
-#  FIO_READRATIOLIST: "0 30 50 70 100" # read/write ratio: e.g., 30 means read 30% and write 70%
-#  FIO_IODEPTHLIST: "1 8 16 32 64"     # io depth list
-#  FIO_NUMJOBSLIST: "1 8 16 32"        # number of jobs list
+cd group_vars; cp hostgroup-sample hostgroup
 ```
+
+3. Edit `hostgroup` for your environment.  
+For details, refer to [group_vars/hostgroup-sample](group_vars/hostgroup-sample).
    
-### Install prerequisites
+### Install
 To automatically install prerequisites (fio, bc, pyaml) in a group of hosts, run:
 ```
-ansible-playbook -i hosts install-prerequisites.yaml
+# For /etc/ansible/hosts:
+ansible-playbook install-prerequisites.yaml
+
+# For your own inventory file (e.g., yourhosts.ini)
+ansible-playbook -i yourhosts.ini install-prerequisites.yaml
+
 ```
 
 ### Run
 ```
-ansible-playbook -i hosts start-fio.yaml
+# For /etc/ansible/hosts:
+ansible-playbook start-fio.yaml
+
+# For your own inventory file (e.g., yourhosts.ini)
+ansible-playbook -i yourhosts.ini start-fio.yaml
 ```
