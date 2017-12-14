@@ -16,15 +16,10 @@ To collect *disk.tps*, *network.rxkB_per_s*, *network.rxkB_per_s*, etc., take th
    2. In `/etc/default/sysstat`, change `ENABLED=”false”` to `ENABLED=”true”`.
    
    3. In `/etc/cron.d/sysstat`, change the collection interval from every 10 minutes to every 2 minutes.  
-   Change
-   ```
-   5-55/10 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1
-   ```
-   To
-   ```
-   */2 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1
-   ```
-   4. Restart `sysstat`:
+   Change `5-55/10 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1`  
+   To `*/2 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1`
+   
+   4. Restart "sysstat":
    ```
    systemctl restart sysstat
    ```
