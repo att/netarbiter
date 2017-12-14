@@ -49,7 +49,8 @@ sudo apt install ansible
 ### Configure
 1. Set up an Ansible inventory:
   - [option 1] Edit /etc/ansible/hosts.
-  - [option 2] Create your own inventory file (e.g., `yourhosts.ini`) as follows. For details, refer to [hosts-sample.ini](hosts-sample.ini).
+  - [option 2] Create your own inventory file (e.g., `yourhosts.ini`) as follows.  
+For details, refer to [hosts-sample.ini](hosts-sample.ini).
 
 2. Configure InfluxDB and Fio variables in `group_vars/hostgroup`.
 ```
