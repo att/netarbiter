@@ -2,14 +2,12 @@
 Authors: Hee Won Lee <knowpd@research.att.com> and Moo-Ryong Ra <mra@research.att.com>   
 Created on: 12/1/2017   
 
-### Preparation
-- Install *InfluxDB* (and *Grafana*) in a monitoring server, and *Telegraf* in host machines where you want to collect metrics.  
-Refer to <https://github.com/att/netarbiter/tree/master/influxdb-telegraf-grafana>
-
+### Prerequisites
+Install *InfluxDB* (and *Grafana*) in a monitoring server, and *Telegraf* in host machines where you want to collect metrics. For details, refer to <https://github.com/att/netarbiter/tree/master/influxdb-telegraf-grafana>
 
 ## Local test
 
-### Install prerequisites
+### Dependencies
 Install fio, bc and python's yaml module in a host (or container) where you run ATTBench.
 ```
 sudo apt-get install fio bc
@@ -17,7 +15,7 @@ sudo apt-get install python-pip
 sudo pip install pyaml
 ```
 
-### Configure and Run
+### Configure
 1. Go to directory `local'
 
 2. Create your own config file. 
@@ -28,7 +26,7 @@ cp config-sample.yaml yourconfig.yaml
 3. Edit yourconfig.yaml for your environment.  
 For details, refer to [config-sample.yaml](local/config-sample.yaml).
 
-4. Run
+### Run
 ```
 ./start.py -c yourconfig.yaml <benchmark_tool>
 
@@ -41,7 +39,8 @@ Note: Currently ATTBench supports Fio.
 ## Distributed test
 You can concurrently run ATTBench on mutiple hosts.
 
-### Prerequisite: Ansible
+### Dependencies
+You require `Ansible`.
 ```
 sudo apt install ansible
 ```
@@ -60,14 +59,13 @@ cd group_vars; cp hostgroup-sample hostgroup
 For details, refer to [group_vars/hostgroup-sample](group_vars/hostgroup-sample).
    
 ### Install
-To automatically install prerequisites (fio, bc, pyaml) in a group of hosts, run:
+To automatically install dependencies (fio, bc, pyaml) in a group of hosts, run:
 ```
 # For /etc/ansible/hosts:
 ansible-playbook install-prerequisites.yaml
 
 # For your own inventory file (e.g., yourhosts.ini)
 ansible-playbook -i yourhosts.ini install-prerequisites.yaml
-
 ```
 
 ### Run
