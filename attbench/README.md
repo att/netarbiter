@@ -54,7 +54,7 @@ sudo apt install ansible
 2. Configure InfluxDB and Fio variables in `group_vars/hostgroup`.
 ```
 cd group_vars; cp hostgroup-sample hostgroup
-``
+```
 
 3. Edit `group_vars/hostgroup` for your environment.  
 For details, refer to [group_vars/hostgroup-sample](group_vars/hostgroup-sample).
