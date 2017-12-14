@@ -7,7 +7,7 @@ Ref: <https://www.crybit.com/sysstat-sar-on-ubuntu-debian>
 
 To collect *disk.tps*, *network.rxkB_per_s*, *network.rxkB_per_s*, etc., take the following steps:
 
-1. Install `sysstat`:
+1. Install "sysstat":
    1. Install the SAR utility:
    ```
    apt-get install sysstat
@@ -40,7 +40,7 @@ To collect *disk.tps*, *network.rxkB_per_s*, *network.rxkB_per_s*, etc., take th
        "-n ALL" = "network"
    ```
    
-   2. Restart `telegraf`:
+   2. Restart "telegraf":
    ```
    systemctl restart telegraf
    ```
