@@ -1,0 +1,6 @@
+[hostgroup]
+yourhostname1
+yourhostname2
+
+[hostgroup:vars]
+user=yourid
