@@ -59,7 +59,7 @@ cd group_vars; cp hostgroup-sample hostgroup
 For details, refer to [group_vars/hostgroup-sample](group_vars/hostgroup-sample).
    
 ### Install
-To automatically install dependencies (fio, bc, pyaml) in your group of hosts, run:
+To install dependencies (fio, bc, pyaml) in your group of hosts, run:
 ```
 # For /etc/ansible/hosts:
 ansible-playbook install-prerequisites.yaml
