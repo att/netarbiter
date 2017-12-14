@@ -1,7 +1,11 @@
 # InfluxDB, Telegraf and Grafana  
 Authors: Hee Won Lee <knowpd@research.att.com>  
 Created on: 12/1/2017   
-Ref: <http://www.oznetnerd.com/installing-setting-up-influxdb-telegraf-grafana>  
+Ref: <http://www.oznetnerd.com/installing-setting-up-influxdb-telegraf-grafana> 
+
+Find more information in the follwing documents:  
+- [TELEGRAF_HOWTO.md](TELEGRAF_HOWTO.md)
+- [INFLUXDB_HOWTO.md](INFLUXDB_HOWTO.md)
 
 ## InfluxDB
 ### Install
