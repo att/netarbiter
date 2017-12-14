@@ -1,6 +1,6 @@
 # InfluxDB HOWTO 
 Authors: Hee Won Lee <knowpd@research.att.com>  
-Created on: 9/12/2017  
+Created on: 12/1/2017  
 
 ### Key Concepts
 ref: <https://docs.influxdata.com/influxdb/v1.3/concepts/key_concepts>  
