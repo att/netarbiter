@@ -3,11 +3,7 @@ Authors: Hee Won Lee <knowpd@research.att.com>
 Created on: 12/1/2017   
 Ref: <http://www.oznetnerd.com/installing-setting-up-influxdb-telegraf-grafana> 
 
-Find more information in the follwing documents:  
-- [TELEGRAF_HOWTO.md](TELEGRAF_HOWTO.md)
-- [INFLUXDB_HOWTO.md](INFLUXDB_HOWTO.md)
-
-## InfluxDB
+## InfluxDB [1]
 ### Install
 ```
 ./install-influxdb.sh latest 
@@ -52,7 +48,7 @@ To set up a username and password in InfluxDB
 > show users
 ```
 
-## Telegraf
+## Telegraf [2]
 ### Install
 ```
 ./install-telegraf.sh latest
@@ -79,3 +75,8 @@ sudo systemctl restart telegraf
 ### Configure
 Browse to `http://<server_ip>:3000/login`  and log in with the username `admin` and password `admin`.
 
+
+## Notes
+[1] Find more information in [TELEGRAF_HOWTO.md](TELEGRAF_HOWTO.md)
+
+[2] Find more information in [INFLUXDB_HOWTO.md](INFLUXDB_HOWTO.md)
