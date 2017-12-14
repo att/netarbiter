@@ -1739,8 +1739,8 @@
     ]
   },
   "time": {
-    "from": "now-30m",
-    "to": "now"
+    "from": "2017-12-13T18:48:50.966Z",
+    "to": "2017-12-13T20:29:35.932Z"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -1769,5 +1769,5 @@
   },
   "timezone": "",
   "title": "voyager_test",
-  "version": 31
+  "version": 32
 }
