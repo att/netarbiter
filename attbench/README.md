@@ -55,8 +55,6 @@ sudo apt install ansible
 ```
 cd group_vars; cp hostgroup-sample hostgroup
 ```
-
-3. Edit `group_vars/hostgroup` for your environment.  
 For details, refer to [group_vars/hostgroup-sample](group_vars/hostgroup-sample).
    
 ### Install
