@@ -3,7 +3,8 @@ Authors: Hee Won Lee <knowpd@research.att.com> and Moo-Ryong Ra <mra@research.at
 Created on: 12/1/2017   
 
 ### Prerequisites
-Install *InfluxDB* (and *Grafana*) in a monitoring server, and *Telegraf* in host machines where you want to collect metrics. For details, refer to <https://github.com/att/netarbiter/tree/master/influxdb-telegraf-grafana>
+Install *InfluxDB* (and *Grafana*) in a monitoring server, and *Telegraf* in host machines where you want to collect metrics.  
+For details, refer to <https://github.com/att/netarbiter/tree/master/influxdb-telegraf-grafana>
 
 ## Local test
 
@@ -16,9 +17,9 @@ sudo pip install pyaml
 ```
 
 ### Configure
-1. Go to directory `local'
+1. Go to directory `local`.
 
-2. Create your own config file. 
+2. Create your own config file:
 ```
 cp config-sample.yaml yourconfig.yaml
 ```  
@@ -33,29 +34,29 @@ For details, refer to [config-sample.yaml](local/config-sample.yaml).
 # Example:
 ./start.py fio
 ```
-Note: Currently ATTBench supports Fio.
+* Note: ATTBench currently supports Fio and plans to support COSBench.
 
 
 ## Distributed test
 You can concurrently run ATTBench on mutiple hosts.
 
 ### Dependencies
-You require `Ansible`.
+You require *Ansible*.
 ```
 sudo apt install ansible
 ```
 
 ### Configure
-1. Set up Ansible inventory:
+1. Set up an Ansible inventory:
   - [option 1] Edit /etc/ansible/hosts.
-  - [option 2] Create your own inventory file (e.g., `yourhosts.ini`) as follows. For details, refer to [hosts-sample](hosts-sample).
+  - [option 2] Create your own inventory file (e.g., `yourhosts.ini`) as follows. For details, refer to [hosts-sample.ini](hosts-sample.ini).
 
 2. Configure InfluxDB and Fio variables in `group_vars/hostgroup`.
 ```
 cd group_vars; cp hostgroup-sample hostgroup
-```
+``
 
-3. Edit `hostgroup` for your environment.  
+3. Edit `group_vars/hostgroup` for your environment.  
 For details, refer to [group_vars/hostgroup-sample](group_vars/hostgroup-sample).
    
 ### Install
