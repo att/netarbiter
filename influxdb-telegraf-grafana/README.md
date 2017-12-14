@@ -77,6 +77,7 @@ Browse to `http://<server_ip>:3000/login`  and log in with the username `admin` 
 
 
 ## Notes
-[1] Find more information in [TELEGRAF_HOWTO.md](TELEGRAF_HOWTO.md)
+[1] Find more information in [INFLUXDB_HOWTO.md](INFLUXDB_HOWTO.md)
 
-[2] Find more information in [INFLUXDB_HOWTO.md](INFLUXDB_HOWTO.md)
+[2] Find more information in [TELEGRAF_HOWTO.md](TELEGRAF_HOWTO.md)
+
