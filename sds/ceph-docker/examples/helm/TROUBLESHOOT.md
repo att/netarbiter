@@ -300,7 +300,7 @@ kubectl -n ceph exec -it <your_osd_pod> -- rbd map vol01 --pool rbd
 kubectl -n ceph exec -it <your_osd_pod> -- ls -al /dev/rbd0
 ```
 
-###  Problem: About straw\_calc\_version 
+###  Problem: HEALTH\_WARN caused by `straw\_calc\_version 0` 
 Written by Robin Chen <chen@research.att.com>  
 
 - Symptom: For 2 nodes with 4 OSDs, Ceph health is HEALTH\_WARN.
