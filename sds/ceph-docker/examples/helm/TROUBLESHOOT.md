@@ -301,16 +301,18 @@ kubectl -n ceph exec -it <your_osd_pod> -- ls -al /dev/rbd0
 ```
 
 ###  Problem: About straw\_calc\_version 
+Written by Robin Chen <chen@research.att.com>  
+
 - Symptom: For 2 nodes with 4 OSDs, Ceph health is HEALTH\_WARN.
 
 - Solution:
 ```
 kubectl -n ceph exec -it ceph-mon-0 -- ceph osd pool set rbd size 2
+# Note: `ceph osd pool application enable <pool-name> <application-name>`
 kubectl -n ceph exec -it ceph-mon-0 -- ceph osd pool application enable rbd rbd
 kubectl -n ceph exec -it ceph-mon-0 -- rbd pool init rbd
 kubectl -n ceph exec -it ceph-mon-0 -- ceph osd crush set-tunable straw_calc_version 1
 ```
-Syntax: `ceph osd pool application enable <pool-name> <application-name>`
 
 
 
