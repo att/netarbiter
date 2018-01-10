@@ -1,6 +1,6 @@
 # Kubeadm-managed Kubernetes
 Authors: Hee Won Lee <knowpd@research.att.com>  
-Created on: 9/12/2017
+Created on: 9/12/2017  
 Contributors:
    - Yu Xiang <yxiang@research.att.com> 
    - Jon Wright <jrw@research.att.com> 
