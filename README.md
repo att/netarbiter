@@ -6,7 +6,7 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 - [Kubeadm-managed Kubernetes](./install-kubeadm)
 
-- [InfluxDB, Telegraf and Grafana](./influxdb-telegraf-grafana)
+- [Monitor & Alert](./monitor-alert)
 
 - [ATTBench](./attbench)
 
