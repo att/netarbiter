@@ -7,7 +7,7 @@ Contributors:
 ## Updates
 - 01/10/2018: Upgraded Calico version from v2.6 to v3.0
    * Modified files:  common-functions.sh
-   * Note: Kubernetes version 1.9+ requires this update. Without this update, you may encounter status `ContainerCreating` for your kube-dns container.
+   * Kubernetes version 1.9+ requires this update. Without this update, you may encounter status `ContainerCreating` for your kube-dns container.
 
 ## Install
 ### In master node:
