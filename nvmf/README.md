@@ -21,6 +21,7 @@ Lossy fabric
 Lossless fabric
 - Adapter: [Lossless RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2881)
 - Switch: [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3017)
+
 Lossy fabric
 - Adapter: [RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2882)
 - Switch: [RoCE Configuration for MLNX-OS Switches in PCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3016)
