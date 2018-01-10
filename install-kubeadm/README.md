@@ -2,6 +2,11 @@
 Authors: Hee Won Lee <knowpd@research.att.com> and Yu Xiang <yxiang@research.att.com>  
 Created on: 9/12/2017
 
+## Updates
+- 01/10/2018 (common-functions.sh) Upgraded calico version from v2.6 to v3.0
+   * Kubernetes version 1.9+ requires this update. Without this update, you may encounter status `ContainerCreating` for your kube-dns container.
+   * Contributor: Jon Wright <jrw@research.att.com>
+
 ## Install
 ### In master node:
 1. Assuming you are in a clean state (i.e., no docker, kubectl, kubelet, or kubeadm), install a master node by:  

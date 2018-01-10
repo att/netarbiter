@@ -32,7 +32,7 @@ function kubeadm_init_calico {
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
   
   # Install calico
-  kubectl apply -f https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
+  kubectl apply -f https://docs.projectcalico.org/v3.0/getting-started/kubernetes/installation/hosted/kubeadm/1.7/calico.yaml
 }
 
 # Initialize your master with flannel
