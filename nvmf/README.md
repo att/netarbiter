@@ -27,6 +27,7 @@ Lossy fabric (requires ECN)
 - Switch: [RoCE Configuration for MLNX-OS Switches in PCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3016)
 
 ### Terminology
+source: https://community.mellanox.com/docs/DOC-2321  
 - RP (Reaction Point, injector): the end node that performs rate limitation to prevent congestion
 - NP (Notification Point): the end node that receives the packets from the injector and sends back notifications to the injector for indications regarding the congestion situation
 - CP (Congestion Point): the switch queue in which congestion happens
