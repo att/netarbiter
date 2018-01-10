@@ -31,7 +31,7 @@ Lossy fabric (requires ECN)
       - It is recommended to enable RoCE congestion control (ECN) as well as PFC. However, PFC or general flow control is not a must requirement.
    * Lossless RoCE: requires PFC or global pause, but recommend PFC
 
-- Terminology
+- Terminology  
 source: https://community.mellanox.com/docs/DOC-2321  
    * RP (Reaction Point, injector): the end node that performs rate limitation to prevent congestion
    * NP (Notification Point): the end node that receives the packets from the injector and sends back notifications to the injector for indications regarding the congestion situation
