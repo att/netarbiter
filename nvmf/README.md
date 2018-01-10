@@ -1,7 +1,7 @@
 ## NVMe over Fabrics
 
-[HowTo Configure NVMe over Fabrics](https://community.mellanox.com/docs/DOC-2504)  
-[HowTo Enable, Verify and Troubleshoot RDMA](https://community.mellanox.com/docs/DOC-2086)
+- [HowTo Configure NVMe over Fabrics](https://community.mellanox.com/docs/DOC-2504)  
+- [HowTo Enable, Verify and Troubleshoot RDMA](https://community.mellanox.com/docs/DOC-2086)
 
 ## RDMA/RoCE
 
