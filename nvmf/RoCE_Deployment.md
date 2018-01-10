@@ -24,9 +24,12 @@ Lossy fabric (requires ECN)
 
 ### Tutorials
 - [RoCE v2 Considerations](https://community.mellanox.com/docs/DOC-1451)
-   * What is RoCE?
-   * Difference between RoCE v1 and RoCE v2
-   * [Resilient RoCE](https://community.mellanox.com/docs/DOC-2499)
+   * Difference between RoCE v1 and RoCE v2: RoCE v2 operates on UDP/IP.
+   * [Resilient RoCE](https://community.mellanox.com/docs/DOC-2499) 
+      - the ability to send RoCE traffic over a lossy network (a network without flow control enabled), without the need to enable flow control on the network
+      - Resilient RoCE is supported on ConnectX-4/Lx adapters and onward on the hardware level.
+      - It is recommended to enable RoCE congestion control (ECN) as well as PFC. However, PFC or general flow control is not a must requirement.
+   * Lossless RoCE: requires PFC or global pause, but recommend PFC
 
 - Terminology
 source: https://community.mellanox.com/docs/DOC-2321  
