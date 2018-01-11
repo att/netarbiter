@@ -80,7 +80,9 @@ After login on your browser, go to `Dashboards/Import` and import [grafana-dashb
 
 
 ## Notes
-[1] Find more information in [INFLUXDB_HOWTO.md](INFLUXDB_HOWTO.md)
+[1] Find more information in [InfluxDB\_HOWTO.md](./InfluxDB_HOWTO.md)
 
-[2] Find more information in [TELEGRAF_HOWTO.md](TELEGRAF_HOWTO.md)
+[2] Find more information in [Telegraf\_HOWTO.md](./Telegraf_HOWTO.md)
+
+[3] Find more information in [Prometheus\_HOWTO.md](./Prometheus_HOWTO.md)
 
