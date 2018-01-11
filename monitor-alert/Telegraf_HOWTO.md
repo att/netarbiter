@@ -1,5 +1,5 @@
 # Telegraf HOWTO 
-Authors: Hee Won Lee <knowpd@research.att.com>
+Authors: Hee Won Lee <knowpd@research.att.com>  
 Created on: 12/1/2017
 
 ### Collect Disk IOPS and Network Interface Traffic
