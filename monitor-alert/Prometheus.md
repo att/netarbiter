@@ -8,6 +8,8 @@ Ref: <https://prometheus.io/docs/prometheus/latest/getting_started>
 ```
 # Install
 ./install-prometheus.sh <version>
+# You can also run:
+#   ./install-prometheus.sh latest
 
 # Start
 cd ~/prometheus/prometheus-<version>.linux-amd64/
@@ -22,9 +24,11 @@ Ref: <https://prometheus.io/docs/introduction/first_steps>
 ```
 # Install
 ./install-node-exporter.sh <version>
+# You can also run:
+#   ./install-node-exporter.sh latest
 
 # Start
-cd ~/prometheus/node_exporter-0.15.2.linux-amd64/
+cd ~/prometheus/node_exporter-<version>.linux-amd64/
 ./node_exporter
 ```
 Add a new job definition to the scrape_configs section in your `prometheus.yml`:
