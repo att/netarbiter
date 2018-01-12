@@ -2,7 +2,7 @@
 Authors: Hee Won Lee <knowpd@research.att.com>  
 Created on: 1/11/2018
 
-### Install/Start Prometheus 
+### Install Prometheus 
 Ref: <https://prometheus.io/docs/prometheus/latest/getting_started>  
 
 ```
@@ -17,7 +17,7 @@ cd ~/prometheus/prometheus-<version>.linux-amd64/
 - Browse to a status page about itself at `localhost:9090`.   
 - Browse to its metrics endpoint at `localhost:9090/metrics`.
 
-### Install/Start Node Exporter
+### Install Node Exporter
 Ref: <https://prometheus.io/docs/introduction/first_steps>
 ```
 # Install
