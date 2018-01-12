@@ -2,22 +2,22 @@
 Authors: Hee Won Lee <knowpd@research.att.com>  
 Created on: 12/1/2017   
 
-## InfluxDB and Telegraf
+### InfluxDB and Telegraf
 Refer to [InfluxDB-Telegraf.md](./InfluxDB-Telegraf.md)
 
-## Prometheus
+### Prometheus
 Refer to [Prometheus.md](./Prometheus.md)
 
-## Grafana
-### Install
+### Grafana
+* Install   
 ```
 ./install-grafana.sh latest
 ```
 
-### Start
+* Start  
 Browse to `http://<server_ip>:3000/login`  and log in with the username `admin` and password `admin`.
 
-### Dashboard: Sample
+* Dashboard: Sample  
 After login on your browser, go to `Dashboards/Import` and import [grafana-dashboard-fio-sample.json](grafana-dashboard-fio-sample.json).
 
 
