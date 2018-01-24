@@ -6,6 +6,15 @@
 ### Option Two: Layer 3
 Lossless fabric (requires PFC)
 - Adapter: [Lossless RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2881)
+   ```
+   # Find a mapping between interface and device:
+   lshw -c network -businfo
+   ls -al /sys/class/infiniband 
+   
+   # Set up
+   ./setup-nic-lossless-layer3.sh <interface> <device>
+   ```
+
 - Switch (advanced mode): [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode (advanced mode)](https://community.mellanox.com/docs/DOC-2884)
    * For basic mode (requires MLNX-OS = 3.6.5000+), refer to [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3017)
    ```
@@ -25,8 +34,6 @@ Lossless fabric (requires PFC)
    switch (config) # interface ethernet 1/13-1/16 qos trust L3
    switch (config) # interface ethernet 1/13-1/16 dcb priority-flow-control mode on force
    ```
-
-
 
 Lossy fabric (requires ECN)
 - Adapter: [RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2882)
