@@ -7,7 +7,7 @@
 Lossless fabric (requires PFC)
 - Adapter: [Lossless RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2881)
 - Switch (MLNX-OS < 3.6.5000): [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode (advanced mode)](https://community.mellanox.com/docs/DOC-2884)
-- Switch (MLNX-OS = 3.6.5000+): [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3017)
+   * For MLNX-OS = 3.6.5000+, refer to [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3017)
 
 Lossy fabric (requires ECN)
 - Adapter: [RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2882)
