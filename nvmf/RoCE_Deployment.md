@@ -7,7 +7,7 @@
 Lossless fabric (requires PFC)
 - Adapter: [Lossless RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2881)
    ```
-   # Find a mapping between interface and device:
+   # Find a mapping between interface and device by:
    lshw -c network -businfo
    ls -al /sys/class/infiniband 
    
