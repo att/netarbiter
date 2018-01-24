@@ -3,6 +3,17 @@
 ### Guide  
 - [Recommended Network Configuration Examples for RoCE Deployment](https://community.mellanox.com/docs/DOC-2855)
 
+### Option Two: Layer 3
+Lossless fabric (requires PFC)
+- Adapter: [Lossless RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2881)
+- Switch (MLNX-OS < 3.6.5000): [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode (advanced mode)](https://community.mellanox.com/docs/DOC-2884)
+- Switch (MLNX-OS = 3.6.5000+): [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3017)
+
+Lossy fabric (requires ECN)
+- Adapter: [RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2882)
+- Switch: [RoCE Configuration for MLNX-OS Switches in PCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3016)
+
+
 ### Option One: Layer 2
 Lossless fabric (requires PFC)
 - Adapter: [RoCE Configuration on Mellanox Adapters (PCP-Based Lossless Traffic)](https://community.mellanox.com/docs/DOC-2843) 
@@ -10,16 +21,6 @@ Lossless fabric (requires PFC)
 
 Lossy fabric (requires ECN)
 - Adapter: [RoCE Configuration for Mellanox Adapters (PCP-Based)](https://community.mellanox.com/docs/DOC-2883)
-- Switch: [RoCE Configuration for MLNX-OS Switches in PCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3016)
-
-### Option Two: Layer 3
-Lossless fabric (requires PFC)
-- Adapter: [Lossless RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2881)
-- Switch: [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode (advanced mode)](https://community.mellanox.com/docs/DOC-2884): for MLNX-OS < 3.6.5000
-- Switch: [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3017): for MLNX-OS = 3.6.5000+
-
-Lossy fabric (requires ECN)
-- Adapter: [RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2882)
 - Switch: [RoCE Configuration for MLNX-OS Switches in PCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3016)
 
 
