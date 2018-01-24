@@ -6,8 +6,27 @@
 ### Option Two: Layer 3
 Lossless fabric (requires PFC)
 - Adapter: [Lossless RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2881)
-- Switch (MLNX-OS < 3.6.5000): [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode (advanced mode)](https://community.mellanox.com/docs/DOC-2884)
-   * For MLNX-OS = 3.6.5000+, refer to [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3017)
+- Switch (advanced mode): [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode (advanced mode)](https://community.mellanox.com/docs/DOC-2884)
+   * For basic mode (requires MLNX-OS = 3.6.5000+), refer to [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3017)
+   ```
+   switch (config) # interface ethernet 1/13-1/16 traffic-class 3 congestion-control ecn minimum-absolute 150 maximum-absolute 1500
+   switch (config) # pool ePool1 direction egress-mc size 16777000 type dynamic
+   switch (config) # pool ePool0 direction egress size 5242880 type dynamic
+   switch (config) # pool iPool1 direction ingress size 5242880 type dynamic
+   switch (config) # pool iPool0 direction ingress size 5242880 type dynamic
+   
+   switch (config) # interface ethernet 1/13-1/16 ingress-buffer iPort.pg6 bind switch-priority 6
+   switch (config) # interface ethernet 1/13-1/16 ingress-buffer iPort.pg3 bind switch-priority 3
+   
+   switch (config) # interface ethernet 1/13-1/16 ingress-buffer iPort.pg3 map pool iPool1 type lossless reserved 67538 xoff 18432 xon 18432 shared alpha 2
+   switch (config) # interface ethernet 1/13-1/16 ingress-buffer iPort.pg6 map pool iPool0 type lossy reserved 10240 shared alpha 8
+   switch (config) # interface ethernet 1/13-1/16 egress-buffer ePort.tc3 map pool ePool1 reserved 1500 shared alpha inf
+   switch (config) # interface ethernet 1/13-1/16 traffic-class 6 dcb ets strict
+   switch (config) # interface ethernet 1/13-1/16 qos trust L3
+   switch (config) # interface ethernet 1/13-1/16 dcb priority-flow-control mode on force
+   ```
+
+
 
 Lossy fabric (requires ECN)
 - Adapter: [RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2882)
