@@ -17,6 +17,6 @@ DEVICE=$2
 
 mlnx_qos -i $INTERFACE --trust dscp
 sudo sh -c " echo 106 > /sys/class/infiniband/${DEVICE}/tc/1/traffic_class"
-cma_roce_tos -d $DEVICE -t 106
+sudo cma_roce_tos -d $DEVICE -t 106
 sudo sysctl -w net.ipv4.tcp_ecn=1
 mlnx_qos -i $INTERFACE --pfc 0,0,0,1,0,0,0,0 
