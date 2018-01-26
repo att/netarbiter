@@ -16,13 +16,13 @@ Lossless fabric (requires PFC)
    ```
 
 - Switch (advanced mode): [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode (advanced mode)](https://community.mellanox.com/docs/DOC-2884)
-   * For basic mode (requires MLNX-OS = 3.6.5000+), refer to [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3017)
+   * For basic mode, refer to [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3017)
    ```
    switch (config) # interface ethernet 1/13-1/16 traffic-class 3 congestion-control ecn minimum-absolute 150 maximum-absolute 1500
-   switch (config) # pool ePool1 direction egress-mc size 16777000 type dynamic
-   switch (config) # pool ePool0 direction egress size 5242880 type dynamic
-   switch (config) # pool iPool1 direction ingress size 5242880 type dynamic
-   switch (config) # pool iPool0 direction ingress size 5242880 type dynamic
+   switch (config) # pool ePool1 size 16777000 type dynamic
+   switch (config) # pool ePool0 size 5242880 type dynamic
+   switch (config) # pool iPool1 size 5242880 type dynamic
+   switch (config) # pool iPool0 size 5242880 type dynamic
    
    switch (config) # interface ethernet 1/13-1/16 ingress-buffer iPort.pg6 bind switch-priority 6
    switch (config) # interface ethernet 1/13-1/16 ingress-buffer iPort.pg3 bind switch-priority 3
