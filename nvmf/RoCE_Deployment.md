@@ -71,9 +71,9 @@ Lossy fabric (requires ECN)
    * Priority code point (PCP): 3bits
 
 - Explicit Congestion Notification (ECN)
-   * ECN-Echo (ECE) and Congestion Window Reduced (CWR)
-     00 – Non ECN-Capable Transport, Non-ECT
-     10 – ECN Capable Transport, ECT(0)
-     01 – ECN Capable Transport, ECT(1)
-     11 – Congestion Encountered, CE.
+   * ECN-Echo (ECE) and Congestion Window Reduced (CWR)  
+     00 – Non ECN-Capable Transport, Non-ECT  
+     10 – ECN Capable Transport, ECT(0)  
+     01 – ECN Capable Transport, ECT(1)  
+     11 – Congestion Encountered, CE.  
 
