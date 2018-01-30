@@ -26,6 +26,7 @@ Lossless fabric (requires PFC)
    # Configure the buffer pool allocating
    #   - pool 1 for lossless RoCE traffic, and 
    #   - pool 0 for lossy traffic.
+   advanced buffer management force
    pool iPool1 size 5242880 type dynamic
    pool ePool1 size 16777000 type dynamic
    pool iPool0 size 5242880 type dynamic
