@@ -50,7 +50,7 @@ Lossy fabric (requires ECN)
 - Switch: [RoCE Configuration for MLNX-OS Switches in PCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3016)
 
 
-### Tutorials
+### References 
 - [RoCE v2 Considerations](https://community.mellanox.com/docs/DOC-1451)
    * Difference between RoCE v1 and RoCE v2
       - RoCE v2 runs on UDP/IP.
@@ -60,17 +60,17 @@ Lossy fabric (requires ECN)
       - It is recommended to enable RoCE congestion control (ECN) as well as PFC. However, PFC or general flow control is not a must requirement.
    * Lossless RoCE: requires PFC or global pause, but recommend PFC
 
-- Terminology  
-ref: https://community.mellanox.com/docs/DOC-2321  
+### Terminology  
+- Ref: https://community.mellanox.com/docs/DOC-2321  
    * RP (Reaction Point, injector): the end node that performs rate limitation to prevent congestion
    * NP (Notification Point): the end node that receives the packets from the injector and sends back notifications to the injector for indications regarding the congestion situation
    * CP (Congestion Point): the switch queue in which congestion happens
    * CNP (The RoCEv2 Congestion Notification Packet): The notification message an NP sends to the RP when it receives CE marked packets.
 
-IEEE 802.1Q
+- IEEE 802.1Q
    * Priority code point (PCP): 3bits
 
-Explicit Congestion Notification (ECN)
+- Explicit Congestion Notification (ECN)
    * ECN-Echo (ECE) and Congestion Window Reduced (CWR)
      00 – Non ECN-Capable Transport, Non-ECT
      10 – ECN Capable Transport, ECT(0)
