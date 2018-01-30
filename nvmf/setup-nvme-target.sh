@@ -9,7 +9,6 @@ if [[ "$#" -ne 4 ]]; then
     echo "  nvme-dev:            e.g. /dev/nvme0n1"
     echo "  nvme-subsystem-name: e.g. nvme-eris101"
     echo "  port-id:             e.g. 1"
-    echo ""
     exit 1
 fi
 
