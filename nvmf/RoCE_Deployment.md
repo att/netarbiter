@@ -3,7 +3,7 @@
 ### Guide  
 - [Recommended Network Configuration Examples for RoCE Deployment](https://community.mellanox.com/docs/DOC-2855)
 
-### Option Two: Layer 3
+### Option One: Layer 3 (DSCP-based)
 Lossless fabric (requires PFC)
 - Adapter: [Lossless RoCE Configuration for Linux Drivers in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-2881)
    ```
@@ -40,7 +40,7 @@ Lossy fabric (requires ECN)
 - Switch: [RoCE Configuration for MLNX-OS Switches in PCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3016)
 
 
-### Option One: Layer 2
+### Option Two: Layer 2 (PCP-based)
 Lossless fabric (requires PFC)
 - Adapter: [RoCE Configuration on Mellanox Adapters (PCP-Based Lossless Traffic)](https://community.mellanox.com/docs/DOC-2843) 
 - Switch: [Lossless RoCE Configuration for MLNX-OS Switches in PCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3018)
