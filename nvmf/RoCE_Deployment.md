@@ -50,17 +50,7 @@ Lossy fabric (requires ECN)
 - Switch: [RoCE Configuration for MLNX-OS Switches in PCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3016)
 
 
-### References 
-- [RoCE v2 Considerations](https://community.mellanox.com/docs/DOC-1451)
-   * Difference between RoCE v1 and RoCE v2
-      - RoCE v2 runs on UDP/IP.
-   * [Resilient RoCE](https://community.mellanox.com/docs/DOC-2499) 
-      - the ability to send RoCE traffic over a lossy network (a network without flow control enabled), without the need to enable flow control on the network
-      - Resilient RoCE is supported on ConnectX-4/Lx adapters and onward on the hardware level.
-      - It is recommended to enable RoCE congestion control (ECN) as well as PFC. However, PFC or general flow control is not a must requirement.
-   * Lossless RoCE: requires PFC or global pause, but recommend PFC
-
-### Terminology  
+### Terminologies  
 - Ref: https://community.mellanox.com/docs/DOC-2321  
    * RP (Reaction Point, injector): the end node that performs rate limitation to prevent congestion
    * NP (Notification Point): the end node that receives the packets from the injector and sends back notifications to the injector for indications regarding the congestion situation
@@ -76,4 +66,14 @@ Lossy fabric (requires ECN)
      10 – ECN Capable Transport, ECT(0)  
      01 – ECN Capable Transport, ECT(1)  
      11 – Congestion Encountered, CE.  
+
+### References 
+- [RoCE v2 Considerations](https://community.mellanox.com/docs/DOC-1451)
+   * Difference between RoCE v1 and RoCE v2
+      - RoCE v2 runs on UDP/IP.
+   * [Resilient RoCE](https://community.mellanox.com/docs/DOC-2499) 
+      - the ability to send RoCE traffic over a lossy network (a network without flow control enabled), without the need to enable flow control on the network
+      - Resilient RoCE is supported on ConnectX-4/Lx adapters and onward on the hardware level.
+      - It is recommended to enable RoCE congestion control (ECN) as well as PFC. However, PFC or general flow control is not a must requirement.
+   * Lossless RoCE: requires PFC or global pause, but recommend PFC
 
