@@ -1,4 +1,4 @@
-# NVMe over Fabrics
+# NVMe over Fabrics/RoCE
 Author: Hee Won Lee <knowpd@research.att.com>
 
 ### RoCE Deployment
