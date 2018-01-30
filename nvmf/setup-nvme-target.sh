@@ -3,11 +3,12 @@
 # Created on 11/11/2017
 # Ref: https://community.mellanox.com/docs/DOC-2504
 
-if [[ "$#" -ne 4 ]]; then
-    echo "Usage: $0 <target-address> <nvme-dev> <nvme-subsystem-name> <port-id>"
+if [[ "$#" -ne 5 ]]; then
+    echo "Usage: $0 <target-address> <nvme-dev> <nvme-subsystem-name> <namespace-num> <port-id>"
     echo "  target-address:      e.g. 10.154.0.61"
     echo "  nvme-dev:            e.g. /dev/nvme0n1"
     echo "  nvme-subsystem-name: e.g. nvme-eris101"
+    echo "  namespace-num:       e.g. 10"
     echo "  port-id:             e.g. 1"
     exit 1
 fi
@@ -18,7 +19,8 @@ set -e
 TARGET_ADDRESS=$1
 NVME_DEV=$2
 NVME_SUBSYSTEM_NAME=$3
-PORT_ID=$4
+NAMESPACE_NUM=$4		# namespace number is similar to lun.
+PORT_ID=$5
 
 # Prerequisites
 sudo modprobe mlx5_core
@@ -30,7 +32,7 @@ sudo modprobe nvme-rdma
 SUBSYSTEM_PATH=/sys/kernel/config/nvmet/subsystems/$NVME_SUBSYSTEM_NAME
 sudo mkdir -p $SUBSYSTEM_PATH
 sudo bash -c "echo 1 > $SUBSYSTEM_PATH/attr_allow_any_host"
-sudo mkdir -p $SUBSYSTEM_PATH/namespaces/10
+sudo mkdir -p $SUBSYSTEM_PATH/namespaces/$NAMESPACE_NUM
 sudo bash -c "echo -n $NVME_DEV > $SUBSYSTEM_PATH/namespaces/10/device_path"
 sudo bash -c "echo 1 > $SUBSYSTEM_PATH/namespaces/10/enable"
 
