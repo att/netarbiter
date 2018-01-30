@@ -9,24 +9,38 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
 - NVME Target Configuration
 ```
 ./setup-nvme-target.sh <target-address> <nvme-dev> <nvme-subsystem-name> <port-id>
-#  target-address:      e.g. 10.154.0.61
-#  nvme-dev:            e.g. /dev/nvme0n1
-#  nvme-subsystem-name: e.g. nvme-eris101
-#  port-id:             e.g. 1
+./setup-nvme-target.sh 10.154.0.61 /dev/nvme0n1 nvme-eris101 1	# for instance
 ```
 
 - NVMe Client (Initiator) Configuration
-```
-git clone https://github.com/linux-nvme/nvme-cli.git
-cd nvme-cli
-make
-make install
-```
-Re-check that nvme-rdma module is loaded. If not, load it using `modprobe nvme-rdma`.
-```
-sudo nvme discover -t rdma -a 10.154.0.61 -s 4420
-sudo nvme connect -t rdma -n nvme-eris101 -a 10.154.0.61 -s 4420
-```
+   * Prerequisites  
+   ```
+   # If nvme-rdma is not loaded
+   modprobe nvme-rdma
+   ```
+
+   * Install nvmecli
+   ```
+   git clone https://github.com/linux-nvme/nvme-cli.git
+   cd nvme-cli
+   make
+   make install
+   ```
+
+   * Connect
+   ```
+   # Discover available subsystems on NVMF target.
+   sudo nvme discover -t rdma -a 10.154.0.61 -s 4420
+   
+   # Connect to the discovered subsystems
+   sudo nvme connect -t rdma -n nvme-eris101 -a 10.154.0.61 -s 4420
+   
+   # To check if it is connected
+   sudo nvme list
+   
+   # To disconnect
+   sudo nvme disconnect -d /dev/nvme2n1
+   ```
 
 ### Troubleshooting
 Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
