@@ -61,10 +61,19 @@ Lossy fabric (requires ECN)
    * Lossless RoCE: requires PFC or global pause, but recommend PFC
 
 - Terminology  
-source: https://community.mellanox.com/docs/DOC-2321  
+ref: https://community.mellanox.com/docs/DOC-2321  
    * RP (Reaction Point, injector): the end node that performs rate limitation to prevent congestion
    * NP (Notification Point): the end node that receives the packets from the injector and sends back notifications to the injector for indications regarding the congestion situation
    * CP (Congestion Point): the switch queue in which congestion happens
    * CNP (The RoCEv2 Congestion Notification Packet): The notification message an NP sends to the RP when it receives CE marked packets.
 
+IEEE 802.1Q
+   * Priority code point (PCP): 3bits
+
+Explicit Congestion Notification (ECN)
+   * ECN-Echo (ECE) and Congestion Window Reduced (CWR)
+     00 – Non ECN-Capable Transport, Non-ECT
+     10 – ECN Capable Transport, ECT(0)
+     01 – ECN Capable Transport, ECT(1)
+     11 – Congestion Encountered, CE.
 
