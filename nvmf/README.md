@@ -6,16 +6,26 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
 
 ### Configure NVMe over Fabrics
 Ref: <https://community.mellanox.com/docs/DOC-2504>
+
 - NVME Target Configuration
-```
-./setup-nvme-target.sh <target-address> <nvme-dev> <nvme-subsystem-name> <port-id>
-./setup-nvme-target.sh 10.154.0.61 /dev/nvme0n1 nvme-eris101 1	# for instance
-```
+   * Prerequisites  
+   ```
+   modprobe mlx5_core
+   modprobe nvmet
+   modprobe nvmet-rdma
+   ```
+   * Set up target
+   ```
+   ./setup-nvme-target.sh <target-address> <nvme-dev> <nvme-subsystem-name> <port-id>
+   ./setup-nvme-target.sh 10.154.0.61 /dev/nvme0n1 nvme-eris101 1	# for instance
+   
+   # To check
+   dmesg | grep "enabling port"
+   ```
 
 - NVMe Client (Initiator) Configuration
    * Prerequisites  
    ```
-   # If nvme-rdma is not loaded
    modprobe nvme-rdma
    ```
 
