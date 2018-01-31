@@ -23,8 +23,8 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
 
    # Set up subsystems (each of which is mapped to a nvme drive)
    #   - Usage: ./setup-nvmet-subsystem.sh <dev> <subnqn> <ns-num> <portid>
-   ./setup-nvmet-subsystem.sh /dev/nvme0n1 nvme0n1 10 1
-   ./setup-nvmet-subsystem.sh /dev/nvme1n1 nvme1n1 10 1
+   ./setup-nvmet-subsystem.sh /dev/nvme0n1 subsys0 10 1
+   ./setup-nvmet-subsystem.sh /dev/nvme1n1 subsys1 10 1
 
    # To check
    dmesg | grep "enabling port"
@@ -32,10 +32,10 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
   
    * Tear down target
    ```
-   # Remove subsystem
+   # Remove subsystems
    # Usage: ./teardown-nvmet-subsystem.sh <subnqn> <ns-num> <portid>
-   ./teardown-nvmet-subsystem.sh nvme0n1 10 1
-   ./teardown-nvmet-subsystem.sh nvme1n1 10 1
+   ./teardown-nvmet-subsystem.sh subsys0 10 1
+   ./teardown-nvmet-subsystem.sh subsys1 10 1
 
    # Remove port
    sudo rmdir /sys/kernel/config/nvmet/ports/<portid>
@@ -61,13 +61,15 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
    sudo nvme discover -t rdma -a 10.154.0.61 -s 4420
    
    # Connect to the discovered subsystems
-   sudo nvme connect -t rdma -n nvme-eris101 -a 10.154.0.61 -s 4420
+   sudo nvme connect -t rdma -n subsys0 -a 10.154.0.61 -s 4420
+   sudo nvme connect -t rdma -n subsys1 -a 10.154.0.61 -s 4420
    
    # To check if it is connected
    sudo nvme list
    
    # To disconnect
    sudo nvme disconnect -d /dev/nvme2n1
+   sudo nvme disconnect -d /dev/nvme3n1
    ```
 
 ### Troubleshooting
