@@ -17,10 +17,12 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
 
    * Set up target
    ```
-   # Usage: ./setup-nvmet-port.sh <traddr> <portid>
+   # Set up a port
+   #   - Usage: ./setup-nvmet-port.sh <traddr> <portid>
    ./setup-nvmet-port.sh 10.154.0.61 1
 
-   # Usage: ./setup-nvmet-subsystem.sh <dev> <subnqn> <ns-num> <portid>
+   # Set up subsystems (each of which is mapped to a nvme drive)
+   #   - Usage: ./setup-nvmet-subsystem.sh <dev> <subnqn> <ns-num> <portid>
    ./setup-nvmet-subsystem.sh /dev/nvme0n1 nvme0n1 10 1
    ./setup-nvmet-subsystem.sh /dev/nvme1n1 nvme1n1 10 1
 
