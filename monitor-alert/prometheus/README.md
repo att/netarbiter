@@ -6,7 +6,7 @@ Ref: <http://docs.ceph.com/docs/master/mgr/prometheus>
 ```
 ceph mgr module enable prometheus
 ```
-By default the module will accept HTTP requests on port 9283
+By default the module will accept HTTP requests on port 9283.
 
 
 ### Promethues helm chart
@@ -41,6 +41,16 @@ server:
 
   service:
     type: NodePort 
+
+## Prometheus server ConfigMap entries
+##
+serverFiles:
+  prometheus.yml:
+    scrape_configs:
+      - job_name: prometheus
+        static_configs:
+          - targets:
+            - 10.22.1.102:9283
 ```
 
 - Run
