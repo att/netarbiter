@@ -1,4 +1,4 @@
-# Prometheus
+# Prometheus in Containers
 
 ### Ceph exporter
 Ref: <http://docs.ceph.com/docs/master/mgr/prometheus>
