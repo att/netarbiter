@@ -1,5 +1,6 @@
 # Prometheus  
 Author: Hee Won Lee <knowpd@research.att.com>
+Ref: <https://github.com/kubernetes/charts/tree/master/stable/prometheus>
 
 ### Ceph exporter
 Ref: <http://docs.ceph.com/docs/master/mgr/prometheus>
@@ -11,12 +12,7 @@ By default the module will accept HTTP requests on port 9283.
 
 
 ### Promethues helm chart
-- Download
-```
-git clone https://github.com/kubernetes/charts.git
-```
-
-- Configure `charts/stable/prometheus/values.yaml`
+- Configure `charts/prometheus/values.yaml`
 ```
 alertmanager:
   ## If false, alertmanager will not be installed
@@ -57,7 +53,7 @@ serverFiles:
 - Run
 ```
 helm delete --purge my-prometheus
-helm install --name my-prometheus charts/stable/prometheus --namespace ceph
+helm install --name my-prometheus charts/prometheus --namespace ceph
 
 # To check
 kubectl exec -it -n ceph --container prometheus-server my-prometheus-prometheus-server-9bd889998-v2gjj -- /bin/sh
