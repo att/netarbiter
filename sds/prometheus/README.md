@@ -1,4 +1,5 @@
-# Prometheus and Ceph Exporter
+# Prometheus  
+Author: Hee Won Lee <knowpd@research.att.com>
 
 ### Ceph exporter
 Ref: <http://docs.ceph.com/docs/master/mgr/prometheus>
