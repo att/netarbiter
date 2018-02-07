@@ -18,4 +18,4 @@ Browse to `http://<server_ip>:3000/login`  and log in with the username `admin` 
 After login on your browser, go to `Dashboards/Import` and import [grafana-dashboard-fio-sample.json](grafana-dashboard-fio-sample.json).
 
 ### Prometheus
-Refer to [prometheus/README.md](./prometheus/README.md)
+Refer to [Prometheus.md](./Prometheus.md)
