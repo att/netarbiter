@@ -64,13 +64,19 @@ kubectl exec -it -n ceph --container prometheus-server my-prometheus-prometheus-
 
 - Access
 ```
-# Find access IP and port
-kubectl get svc -n ceph
+# Find port
+$ kubectl get svc -n ceph
 NAME                              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
-ceph-exporter                     ClusterIP   None            <none>        9128/TCP       3h
-ceph-mon                          ClusterIP   None            <none>        6789/TCP       3h
 my-prometheus-prometheus-server   NodePort    10.103.24.186   <none>        80:30241/TCP   20m
+
+# Find IP address of AWS
+$ kubectl get pods -n ceph -o wide
+NAME                                              READY     STATUS    RESTARTS   AGE       IP               NODE
+my-prometheus-prometheus-server-9bd889998-v2gjj   2/2       Running   2          22h       192.168.85.70    ip-10-22-1-103
 ```
-Now you can browse at 10.103.24.186:30241.
+
+Using ip-10-22-1-103, go to AWS console and find IPv4 Public IP.
+
+Now you can browse at 54.210.122.185:30241.
 
 
