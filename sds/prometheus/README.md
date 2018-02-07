@@ -1,5 +1,5 @@
 # Prometheus  
-Author: Hee Won Lee <knowpd@research.att.com>
+Author: Hee Won Lee <knowpd@research.att.com>  
 Ref: <https://github.com/kubernetes/charts/tree/master/stable/prometheus>
 
 ### Ceph exporter
