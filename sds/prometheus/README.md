@@ -1,6 +1,5 @@
 # Prometheus  
 Author: Hee Won Lee <knowpd@research.att.com>  
-Ref: <https://github.com/kubernetes/charts/tree/master/stable/prometheus>
 
 ### Ceph exporter
 Ref: <http://docs.ceph.com/docs/master/mgr/prometheus>
@@ -12,6 +11,8 @@ By default the module will accept HTTP requests on port 9283.
 
 
 ### Promethues helm chart
+Ref: <https://github.com/kubernetes/charts/tree/master/stable/prometheus>
+
 - Configure `charts/prometheus/values.yaml`
 ```
 alertmanager:
