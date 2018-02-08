@@ -43,17 +43,18 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
 
 - NVMe Client (Initiator) Configuration
    * Prerequisites 
-      - Download `MLNX_OFED_LINUX-4.2-1.0.0.0-ubuntu16.04-x86_64.tgz` from <http://www.mellanox.com/page/products_dyn?product_family=26>
+      - Download `MLNX_OFED_LINUX-4.2-1.0.0.0-ubuntu16.04-x86_64.tgz` at <http://www.mellanox.com/page/products_dyn?product_family=26>
       ```
       tar xzvf MLNX_OFED_LINUX-4.2-1.0.0.0-ubuntu16.04-x86_64.tgz
       cd MLNX_OFED_LINUX-4.2-1.0.0.0-ubuntu16.04-x86_64
       sudo ./mlnxofedinstall --add-kernel-support --with-nvmf --force
       sudo /etc/init.d/openibd restart
-      Note: In order to load the new nvme-rdma and nvmet-rdma modules, the nvme module must be reloaded.
-      
+
+      # Note: 
+      #   - In order to load the new nvme-rdma and nvmet-rdma modules, the nvme module must be reloaded.
+      #   - You may need to reboot.
       sudo modprobe -rv nvme
       sudo modprobe nvme
-      # Note: you may need to reboot if it does not work.
       ```
       - Install `nvme-rdma` 
       ```
