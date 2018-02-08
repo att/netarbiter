@@ -8,7 +8,8 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
 Ref: <https://community.mellanox.com/docs/DOC-2504>
 
 - Prerequisites   
-   Install `MLNX_OFED_LINUX-4.2-1.0.0.0-ubuntu16.04-x86_64.tgz` from <http://www.mellanox.com/page/products_dyn?product_family=26>
+   Install `MLNX_OFED_LINUX-4.2-1.0.0.0-ubuntu16.04-x86_64.tgz`.  
+   You can find the file at <http://www.mellanox.com/page/products_dyn?product_family=26>  
    ```
    tar xzvf MLNX_OFED_LINUX-4.2-1.0.0.0-ubuntu16.04-x86_64.tgz
    cd MLNX_OFED_LINUX-4.2-1.0.0.0-ubuntu16.04-x86_64
