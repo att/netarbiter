@@ -29,6 +29,7 @@ Ref: <https://docs.openstack.org/swift/latest/deployment_guide.html#>
 
 ### Create and distribut initial rings
 Ref: <https://docs.openstack.org/swift/latest/install/initial-rings.html>  
+First of all, change to the `/etc/swift` directory.  
 
 * Create account ring
 ```
@@ -36,7 +37,6 @@ Ref: <https://docs.openstack.org/swift/latest/install/initial-rings.html>
 # Note:
 #   - swift-ring-builder <builder_file> create <part_power> <replicas> <min_part_hours>
 #   - We have 8 drivers, and 800 (8*100) < 2^10. Hence, part_power = 10.  
-cd /etc/swift
 swift-ring-builder account.builder create 10 3 1
 
 # Add each storage node to the ring:
