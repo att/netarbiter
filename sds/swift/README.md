@@ -2,10 +2,17 @@ Swift
 =====
 Maintainer: Hee Won Lee <knowpd@research.att.com>
 
+### Prerequisites
+1. SQL database
+Refer to <https://docs.openstack.org/install-guide/environment-sql-database-ubuntu.html>
+
+2. Keystone
+Refer to <https://docs.openstack.org/keystone/pike/install/keystone-install-ubuntu.html>
+
 ## Deployment Guide
 Ref: <https://docs.openstack.org/swift/latest/deployment_guide.html#>
 
-### Deployment Options
+Deployment Options
 * Proxy Services:  
    - CPU and network I/O intensive
    - scale overall API throughput by adding more Proxies.
