@@ -12,7 +12,7 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 ## Deployment Guide
 Ref: <https://docs.openstack.org/swift/latest/deployment_guide.html#>
 
-Deployment Options
+### Deployment Options
 * Proxy Services:  
    - CPU and network I/O intensive
    - scale overall API throughput by adding more Proxies.
@@ -22,8 +22,7 @@ Deployment Options
    - Disk and network I/O intensive
    - scale out horizontally as storage servers are added.
 
-## Ring Creation
-### Ring Preparation Guide
+### Preparing Ring
 1. Determine the number of partitions that will be in the ring.
    - We recommend that there be a minimum of 100 partitions per drive to insure even distribution across the drives.
    - A good starting point might be to figure out the maximum number of drives the cluster will contain, and then multiply by 100, and then round up to the nearest power of two.
