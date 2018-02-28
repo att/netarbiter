@@ -23,7 +23,7 @@ tabase 'keystone\t# by hlee'")
 ```
 
 - Cause  
-In `/etc/keystone/keystone.conf`, `by hlee` caused the error.
+In `/etc/keystone/keystone.conf`, my comment (`by hlee`) caused the error.
 ```
 [database]
 connection = mysql+pymysql://keystone:keystone123@controller/keystone	# by hlee
@@ -31,4 +31,4 @@ provider = fernet	# by hlee
 ```
 
 - Solution  
-In `/etc/keystone/keystone.conf`, do not make any comment at the end of each line
+In `/etc/keystone/keystone.conf`, do not make any comment at the end of each line.
