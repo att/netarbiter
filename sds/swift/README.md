@@ -10,7 +10,7 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
    - Refer to <https://docs.openstack.org/keystone/pike/install/keystone-install-ubuntu.html>
 
 ## Deployment Guide
-Ref: <https://docs.openstack.org/swift/latest/deployment_guide.html#>
+Ref: <https://docs.openstack.org/swift/latest/deployment_guide.html>
 
 ### Deployment Options
 * Proxy Services:  
