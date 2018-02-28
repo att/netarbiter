@@ -34,8 +34,9 @@ Ref: <https://docs.openstack.org/swift/latest/deployment_guide.html>
 3. Determine how many zones the cluster should have. 
    - Recommendation: 5 or above
 
-### Create and distribut initial rings
+## Create and distribut initial rings
 Ref: <https://docs.openstack.org/swift/latest/install/initial-rings.html>  
+
 First of all, change to the `/etc/swift` directory.  
 
 * Create account ring
@@ -106,3 +107,8 @@ swift-ring-builder object.builder
 # Rebalance the ring:
 swift-ring-builder object.builder rebalance
 ```
+
+## Troubleshoot   
+
+Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
+
