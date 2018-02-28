@@ -2,12 +2,12 @@ Swift
 =====
 Maintainer: Hee Won Lee <knowpd@research.att.com>
 
-### Prerequisites
-1. SQL database
-Refer to <https://docs.openstack.org/install-guide/environment-sql-database-ubuntu.html>
+## Prerequisites
+1. Install SQL database  
+   - Refer to <https://docs.openstack.org/install-guide/environment-sql-database-ubuntu.html>
 
-2. Keystone
-Refer to <https://docs.openstack.org/keystone/pike/install/keystone-install-ubuntu.html>
+2. Install Keystone  
+   - Refer to <https://docs.openstack.org/keystone/pike/install/keystone-install-ubuntu.html>
 
 ## Deployment Guide
 Ref: <https://docs.openstack.org/swift/latest/deployment_guide.html#>
@@ -22,7 +22,8 @@ Deployment Options
    - Disk and network I/O intensive
    - scale out horizontally as storage servers are added.
 
-### Preparing the Ring
+## Ring Creation
+### Ring Preparation Guide
 1. Determine the number of partitions that will be in the ring.
    - We recommend that there be a minimum of 100 partitions per drive to insure even distribution across the drives.
    - A good starting point might be to figure out the maximum number of drives the cluster will contain, and then multiply by 100, and then round up to the nearest power of two.
