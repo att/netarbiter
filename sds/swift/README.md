@@ -3,10 +3,13 @@ Swift
 Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 ## Prerequisites
-1. Install SQL database  
+1. Update Openstack packages for Ubuntu  
+   - Refer to <https://docs.openstack.org/install-guide/environment-packages-ubuntu.html>
+
+2. Install SQL database  
    - Refer to <https://docs.openstack.org/install-guide/environment-sql-database-ubuntu.html>
 
-2. Install Keystone  
+3. Install Keystone  
    - Refer to <https://docs.openstack.org/keystone/pike/install/keystone-install-ubuntu.html>
 
 ## Install Swift
