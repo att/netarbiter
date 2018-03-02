@@ -109,6 +109,17 @@ Copy the `account.ring.gz`, `container.ring.gz`, and `object.ring.gz` files to t
 ## Finalize installation  
 Refer to <https://docs.openstack.org/swift/pike/install/finalize-installation-ubuntu-debian.html>
 
+On the controller node and any other nodes running the proxy service, restart the Object Storage proxy service including its dependencies:  
+```
+sudo service memcached restart
+sudo service swift-proxy restart
+```
+
+On the storage nodes, start the Object Storage services:  
+```
+sudo swift-init all start
+```
+
 ## Deployment Guide
 Ref: <https://docs.openstack.org/swift/pike/deployment_guide.html>
 
