@@ -100,6 +100,9 @@ swift-ring-builder object.builder
 swift-ring-builder object.builder rebalance
 ```
 
+## Finalize installation  
+Refer to <https://docs.openstack.org/swift/pike/install/finalize-installation-ubuntu-debian.html>
+
 ## Deployment Guide
 Ref: <https://docs.openstack.org/swift/pike/deployment_guide.html>
 
