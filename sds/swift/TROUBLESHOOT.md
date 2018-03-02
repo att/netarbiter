@@ -3,7 +3,7 @@ Troubleshoot
 Contributors:   
   - Hee Won Lee <knowpd@research.att.com>
 
-## Problem: 
+## Problem 
 - Symptom    
 ```
 # su -s /bin/sh -c "keystone-manage db_sync" keystone
@@ -32,3 +32,20 @@ provider = fernet	# by hlee
 
 - Solution  
 In `/etc/keystone/keystone.conf`, do not make any comment at the end of each line.
+
+
+### Problem  
+- Symptom:  
+```
+$ apt update
+...
+"GPG error: http://linux.dell.com/repo/community/ubuntu trusty Release: The following signatures couldn't be verified because the public key is not available"
+```
+
+- Solution:
+Ref: <https://www.dell.com/community/General/Ubuntu-update-manager-failing-with-Dell-repository/m-p/3891784>  
+```
+gpg --keyserver pool.sks-keyservers.net --recv-key 1285491434D8786F
+gpg -a --export 1285491434D8786F | apt-key add -
+apt-get updat
+```
