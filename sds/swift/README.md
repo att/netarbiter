@@ -17,6 +17,12 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 ### Install controller node
 Refer to <https://docs.openstack.org/swift/latest/install/controller-install-ubuntu.html>
 
+After `openstack user create --domain default --password-prompt swift`, you will need the following:
+```
+openstack project create --domain default --description "Service Project" service
+# Refer to <https://docs.openstack.org/mitaka/install-guide-obs/keystone-users.html>
+```
+
 ### Install storage nodes
 Refere to <https://docs.openstack.org/swift/latest/install/storage-install-ubuntu-debian.html>
 
