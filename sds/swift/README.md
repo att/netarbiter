@@ -123,3 +123,6 @@ Ref: <https://docs.openstack.org/swift/latest/deployment_guide.html>
 
 Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 
+## References  
+1. Restart an OpenStack service:  
+<https://docs.openstack.org/fuel-docs/latest/userdocs/fuel-user-guide/troubleshooting/restart-service.html>
