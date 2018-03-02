@@ -23,7 +23,7 @@ Refer to <https://docs.openstack.org/swift/pike/install/controller-install-ubunt
    openstack project create --domain default --description "Service Project" service
    # Refer to <https://docs.openstack.org/mitaka/install-guide-obs/keystone-users.html>
    ```
-   - `memcached`, by default, runs on 127.0.0.1. Change it to `0.0.0.0` in `/etc/memcached.conf` and restart by `service memcached restart`.
+   - The `memcached` daemon, by default, runs on 127.0.0.1. Change it to `0.0.0.0` in `/etc/memcached.conf` and restart the daemon by running `service memcached restart`.
 
 
 ### Install storage nodes
