@@ -18,12 +18,12 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 Refer to <https://docs.openstack.org/swift/pike/install/controller-install-ubuntu.html>
 
 * Note
-   - After `openstack user create --domain default --password-prompt swift`, you will need the following:
+   - After running `openstack user create --domain default --password-prompt swift`, you need the following:
    ```
    openstack project create --domain default --description "Service Project" service
    # Refer to <https://docs.openstack.org/mitaka/install-guide-obs/keystone-users.html>
    ```
-   - `memcached` by default runs on 127.0.0.1. Change it to `0.0.0.0` in `/etc/memcached.conf` and restart by `service memcached restart`.
+   - `memcached`, by default, runs on 127.0.0.1. Change it to `0.0.0.0` in `/etc/memcached.conf` and restart by `service memcached restart`.
 
 
 ### Install storage nodes
