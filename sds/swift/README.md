@@ -120,6 +120,18 @@ On the storage nodes, start the Object Storage services:
 sudo swift-init all start
 ```
 
+## Verify operation
+Refer to <https://docs.openstack.org/swift/pike/install/verify.html>
+```
+. demo-openrc		# OR . admin-openrc
+swift stat
+openstack container create container1
+openstack object create container1 myfile.txt
+openstack object list container1
+openstack object save container1 myfile.txt
+```
+
+
 ## Deployment Guide
 Ref: <https://docs.openstack.org/swift/pike/deployment_guide.html>
 
@@ -152,3 +164,15 @@ Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 ## References  
 1. Restart an OpenStack service:  
 <https://docs.openstack.org/fuel-docs/latest/userdocs/fuel-user-guide/troubleshooting/restart-service.html>
+
+2. admin-openrc
+```
+export OS_PROJECT_DOMAIN_NAME=Default
+export OS_USER_DOMAIN_NAME=Default
+export OS_PROJECT_NAME=admin
+export OS_USERNAME=admin
+export OS_PASSWORD=admin123
+export OS_AUTH_URL=http://controller:35357/v3
+export OS_IDENTITY_API_VERSION=3
+export OS_IMAGE_API_VERSION=2
+```
