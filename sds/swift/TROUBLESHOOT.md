@@ -34,7 +34,7 @@ provider = fernet	# by hlee
 In `/etc/keystone/keystone.conf`, do not make any comment at the end of each line.
 
 
-### Problem  
+## Problem  
 - Symptom:  
 ```
 $ apt update
@@ -48,4 +48,19 @@ Ref: <https://www.dell.com/community/General/Ubuntu-update-manager-failing-with-
 gpg --keyserver pool.sks-keyservers.net --recv-key 1285491434D8786F
 gpg -a --export 1285491434D8786F | apt-key add -
 apt-get updat
+```
+
+## Problem
+- Symptom:  
+```
+$ apt update
+The repository 'http://ppa.launchpad.net/ubuntu-lxc/lxd-stable/ubuntu xenial Release' does not have a Release file.h
+```
+
+- Solution: 
+Ref: <https://ubuntuforums.org/showthread.php?t=2324228> 
+Disable/remove the lxc ppa, as it does not exist for 16.04.
+```
+sudo rm /etc/apt/sources.list.d/ubuntu-lxc-ubuntu-lxd-stable-xenial.list
+sudo rm /etc/apt/sources.list.d/ubuntu-lxc-ubuntu-lxd-stable-xenial.list.save
 ```
