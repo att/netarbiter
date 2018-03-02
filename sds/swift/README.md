@@ -15,7 +15,7 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 ## Install Swift
 
 ### Install controller node
-Refer to <https://docs.openstack.org/swift/latest/install/controller-install-ubuntu.html>
+Refer to <https://docs.openstack.org/swift/pike/install/controller-install-ubuntu.html>
 
 After `openstack user create --domain default --password-prompt swift`, you will need the following:
 ```
