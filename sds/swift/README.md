@@ -24,10 +24,10 @@ openstack project create --domain default --description "Service Project" servic
 ```
 
 ### Install storage nodes
-Refere to <https://docs.openstack.org/swift/latest/install/storage-install-ubuntu-debian.html>
+Refere to <https://docs.openstack.org/swift/pike/install/storage-install-ubuntu-debian.html>
 
 ### Create initial rings
-Ref: <https://docs.openstack.org/swift/latest/install/initial-rings.html>  
+Ref: <https://docs.openstack.org/swift/pike/install/initial-rings.html>  
 
 First of all, change to the `/etc/swift` directory.  
 
@@ -101,7 +101,7 @@ swift-ring-builder object.builder rebalance
 ```
 
 ## Deployment Guide
-Ref: <https://docs.openstack.org/swift/latest/deployment_guide.html>
+Ref: <https://docs.openstack.org/swift/pike/deployment_guide.html>
 
 ### Deployment Options
 * Proxy Services:  
