@@ -34,6 +34,18 @@ provider = fernet	# by hlee
 In `/etc/keystone/keystone.conf`, do not make any comment at the end of each line.
 
 
+## Problem:
+- Symptom
+```
+# keystone-manage credential_setup --keystone-user keystone --keystone-group keystone
+usage: keystone-manage [bootstrap|db_sync|db_version|domain_config_upload|fernet_rotate|fernet_setup|mapping_populate|mapping_purge|mapping_engine|pki_setup|saml_idp_metadata|ssl_setup|token_flush]
+keystone-manage: error: argument command: invalid choice: 'credential_setup' (choose from 'bootstrap', 'db_sync', 'db_version', 'domain_config_upload', 'fernet_rotate', 'fernet_setup', 'mapping_populate', 'mapping_purge', 'mapping_engine', 'pki_setup', 'saml_idp_metadata', 'ssl_setup', 'token_flush')
+```
+- Solution
+Ref: <https://bugs.launchpad.net/openstack-manuals/+bug/1688653>
+In Newton and Ocata the credential\_setup should be a valid option. Type keystone-manage --version to understand which version of the keystone-manage tool you are trying to use. If it is 10.0.2, for example, that is the Newton version.
+
+
 ## Problem  
 - Symptom:  
 ```
@@ -49,6 +61,7 @@ gpg --keyserver pool.sks-keyservers.net --recv-key 1285491434D8786F
 gpg -a --export 1285491434D8786F | apt-key add -
 apt-get updat
 ```
+
 
 ## Problem
 - Symptom:  
