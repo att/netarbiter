@@ -161,6 +161,11 @@ Ref: <https://docs.openstack.org/swift/pike/deployment_guide.html>
 
 Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
 
+For debugging, take a look at syslog:
+```
+tail -f /var/log/syslog
+```
+
 ## References  
 1. Restart an OpenStack service:  
 <https://docs.openstack.org/fuel-docs/latest/userdocs/fuel-user-guide/troubleshooting/restart-service.html>
