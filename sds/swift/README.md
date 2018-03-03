@@ -14,6 +14,9 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 ## Install Swift
 
+### Configure networking
+Refer to <https://docs.openstack.org/swift/pike/install/environment-networking.html>
+
 ### Install controller node
 Refer to <https://docs.openstack.org/swift/pike/install/controller-install-ubuntu.html>
 
