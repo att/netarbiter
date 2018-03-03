@@ -130,7 +130,23 @@ openstack object create container1 myfile.txt
 openstack object list container1
 openstack object save container1 myfile.txt
 ```
-
+After saving `myfile.txt`, the service status is as follows:  
+```
+$ swift stat
+                        Account: AUTH_2bccc882410f47f2b6e443ff6652d412
+                     Containers: 1
+                        Objects: 1
+                          Bytes: 32
+Containers in policy "policy-0": 1
+   Objects in policy "policy-0": 1
+     Bytes in policy "policy-0": 32
+    X-Account-Project-Domain-Id: default
+         X-Openstack-Request-Id: txdc5c3855393c425ea47d4-005a9ab810
+                    X-Timestamp: 1520025972.57070
+                     X-Trans-Id: txdc5c3855393c425ea47d4-005a9ab810
+                   Content-Type: text/plain; charset=utf-8
+                  Accept-Ranges: bytes
+```
 
 ## Deployment Guide
 Ref: <https://docs.openstack.org/swift/pike/deployment_guide.html>
