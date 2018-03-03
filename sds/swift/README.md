@@ -3,7 +3,7 @@ Swift
 Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 ## Prerequisites
-1. Update Openstack packages for Ubuntu  
+1. Upgrade Openstack packages to OpenStack Pike  
    - Refer to <https://docs.openstack.org/install-guide/environment-packages-ubuntu.html>
 
 2. Install SQL database  
