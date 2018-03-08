@@ -35,7 +35,14 @@ In `conf/swift-config-test.xml`, edit authentication info. An example is as foll
       --os-project-domain-name Default --os-user-domain-name Default --os-project-name admin \
       --os-username admin --os-password admin123 list 
       ```
-      - The `region` name (i.e., "RegionOne") is case-sensitive; you can check it by running `$ openstack endpoint list`.
+      - The `region` name (i.e., "RegionOne") is case-sensitive; you can check it by running `$ openstack endpoint list`. When using "regionOne", I encountered the following error:
+      ```
+      2018-03-08 15:36:54,423 [INFO] [Log4jLogManager] - will append log to file /home/knowpd/pkg/0.4.2.c4/log/mission/ME754B5714.log
+      2018-03-08 15:36:55,050 [INFO] [NoneStorage] - performing PUT at /mycontainers1
+      2018-03-08 15:36:55,051 [ERROR] [AbstractOperator] - worker 1 fail to perform operation mycontainers1
+      com.intel.cosbench.api.storage.StorageException: java.lang.IllegalStateException: Target host must not be null, or set in parameters.
+      	at com.intel.cosbench.api.swift.SwiftStorage.createContainer(SwiftStorage.java:188)
+      ```
 3. Submit the workload.
 ```
 ./cli.sh submit conf/swift-config-test.xml 
