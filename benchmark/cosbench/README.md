@@ -24,7 +24,7 @@ chmod +x *.sh
 cp conf/swift-config-sample.xml conf/swift-config-test.xml
 ```
 2. Edit `conf/swift-config-test.xml`.  
-For keystone, use v2; cosbench does not support v3.
+For `auth_rul`, use Keystone v2; COSBench does not support Keystone v3.
 ```
   <auth type="keystone" config="username=admin;password=admin123;tenant_name=admin;auth_url=http://voyager5:5000/v2.0;service=swift;region=RegionOne" />
 ```
