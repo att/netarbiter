@@ -8,17 +8,15 @@ sudo apt install openjdk-8-jre
 ```
 ## Install
 1. Download `v0.4.2 release candidate 4`
-   - Note:  be caustious that other verions may not work. 
+   - Note on 3/8/2018:  Other versions may not work. 
 ```
-# Download `v0.4.2 release candidate 4`
-#   - Be caustious that other verions may not work. 
 curl -LO https://github.com/intel-cloud/cosbench/releases/download/v0.4.2.c4/0.4.2.c4.zip
 unzip 0.4.2.c4.zip
 cd 0.4.2.c4
 chmod +x *.sh
 ./start-all.sh
 ```
-2. Browse `http://yourip:19088/controller`.
+2. Browse `http://domain:19088/controller` or `http://ipaddr:19088/controller`.
 
 
 
