@@ -19,7 +19,7 @@ chmod +x *.sh
 2. Browse `http://domain:19088/controller`.
 
 ## Run
-1. Prepare your conf file.
+1. Prepare a workload file.
 ```
 cp conf/swift-config-sample.xml conf/swift-config-test.xml
 ```
@@ -31,7 +31,7 @@ For `auth_url`, use Keystone v2; COSBench does not support Keystone v3.
    * Note: 
       - The `region` name (i.e., "RegionOne") is case-sensitive.
       - You can check Resion by running `$ openstack endpoint list`
-3. Submit the file.
+3. Submit the workload.
 ```
 ./cli.sh submit conf/swift-config-test.xml 
 ```
