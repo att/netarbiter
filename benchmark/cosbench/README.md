@@ -16,7 +16,16 @@ cd 0.4.2.c4
 chmod +x *.sh
 ./start-all.sh
 ```
-2. Browse `http://domain:19088/controller` or `http://ipaddr:19088/controller`.
+2. Browse `http://domain:19088/controller`.
 
-
-
+## Run
+1. Prepare your conf file.
+```
+cp conf/swift-config-sample.xml conf/swift-config-test.xml
+```
+2. Edit `conf/swift-config-test.xml`.
+3. Submit the file.
+```
+./cli.sh submit conf/swift-config-test.xml 
+```
+4. To find the result, browse `http://domain:19088/controller`.
