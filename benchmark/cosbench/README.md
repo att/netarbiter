@@ -24,12 +24,12 @@ chmod +x *.sh
 cp conf/swift-config-sample.xml conf/swift-config-test.xml
 ```
 2. Define a workload.   
-In `conf/swift-config-test.xml`, edit authentication info:
+In `conf/swift-config-test.xml`, edit authentication info. An example is as follows:
 ```
 <auth type="keystone" config="username=admin;password=admin123;tenant_name=admin;auth_url=http://voyager5:5000/v2.0;service=swift;region=RegionOne" />
 ```
    * Note: 
-      - For `auth_url`, use Keystone v2; COSBench does not support Keystone v3. The above example is for the following:
+      - For `auth_url`, use Keystone v2; COSBench does not support Keystone v3. The above example is a translation from:
       ```
       swift --os-auth-url http://voyager5:35357/v3 --auth-version 3 \
       --os-project-domain-name Default --os-user-domain-name Default --os-project-name admin \
