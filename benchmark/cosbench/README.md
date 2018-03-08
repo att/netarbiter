@@ -31,7 +31,7 @@ In `conf/swift-config-test.xml`, edit authentication info. An example is as foll
    * Note: 
       - For `auth_url`, use Keystone v2; COSBench does not support Keystone v3. The above example is a translation from:
       ```
-      swift --os-auth-url http://voyager5:35357/v3 --auth-version 3 \
+      swift --os-auth-url http://voyager5:5000/v3 --auth-version 3 \
       --os-project-domain-name Default --os-user-domain-name Default --os-project-name admin \
       --os-username admin --os-password admin123 list 
       ```
