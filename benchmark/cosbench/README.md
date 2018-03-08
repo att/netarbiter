@@ -19,7 +19,7 @@ chmod +x *.sh
 2. Browse `http://domain:19088/controller`.
 
 ## Run
-1. Prepare a workload file.
+1. Prepare a workload configuration file.
 ```
 cp conf/swift-config-sample.xml conf/swift-config-test.xml
 ```
