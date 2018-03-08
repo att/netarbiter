@@ -153,10 +153,14 @@ Containers in policy "policy-0": 1
 
 ## Connect from client
 ```
-swift --os-auth-url http://voyager5:35357/v3 --os-identity-api-version 3 --os-project-domain-name Default  --os-user-domain-name Default --os-project-name admin  --os-username admin --os-password admin123 list
+swift --os-auth-url http://voyager5:35357/v3 --os-identity-api-version 3 \
+--os-project-domain-name Default --os-user-domain-name Default --os-project-name admin \
+--os-username admin --os-password admin123 list
 
 # OR
-swift --os-auth-url http://voyager5:35357/v3 --auth-version 3 --os-project-domain-name Default  --os-user-domain-name Default --os-project-name admin  --os-username admin --os-password admin123 list 
+swift --os-auth-url http://voyager5:35357/v3 --auth-version 3 \
+--os-project-domain-name Default --os-user-domain-name Default --os-project-name admin \
+--os-username admin --os-password admin123 list 
 ```
 
 ## Deployment Guide
