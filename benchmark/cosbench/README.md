@@ -23,7 +23,14 @@ chmod +x *.sh
 ```
 cp conf/swift-config-sample.xml conf/swift-config-test.xml
 ```
-2. Edit `conf/swift-config-test.xml`.
+2. Edit `conf/swift-config-test.xml`.  
+For keystone, use v2; cosbench does not support v3.
+```
+  <auth type="keystone" config="username=admin;password=admin123;tenant_name=admin;auth_url=http://voyager5:5000/v2.0;service=swift;region=RegionOne" />
+# Note: 
+#   - "RegionOne" is case-sensitive.
+#   - You can check Resion by running `$ openstack endpoint list`
+```
 3. Submit the file.
 ```
 ./cli.sh submit conf/swift-config-test.xml 
