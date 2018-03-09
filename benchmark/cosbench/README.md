@@ -43,6 +43,7 @@ In `conf/swift-config-test.xml`, edit authentication info. An example is as foll
       com.intel.cosbench.api.storage.StorageException: java.lang.IllegalStateException: Target host must not be null, or set in parameters.
       	at com.intel.cosbench.api.swift.SwiftStorage.createContainer(SwiftStorage.java:188)
       ```
+      Ref: <https://github.com/intel-cloud/cosbench/issues/282>
 3. Submit the workload.
 ```
 ./cli.sh submit conf/swift-config-test.xml 
