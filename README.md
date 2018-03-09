@@ -12,8 +12,10 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 * [NVMe over Fabrics/RoCE](./nvmf)
 
-* [ATTBench](./attbench)
-
 * [Openstack Swift](./sds/swift)
+
+* [ATTBench](./benchmark/attbench)
+
+* [COSBench](./benchmark/cosbench)
 
 * [Multi-site Network Emulation](./multisite-netemu)
