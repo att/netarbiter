@@ -48,4 +48,4 @@ In `conf/swift-config-test.xml`, edit authentication info. An example is as foll
 ```
 ./cli.sh submit conf/swift-config-test.xml 
 ```
-4. To find the result, browse `http://domain:19088/controller`.
+4. To find the result, browse `http://<server_ip>:19088/controller`.
