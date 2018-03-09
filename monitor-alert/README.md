@@ -78,7 +78,7 @@ Restart the Telegraf service:
 sudo systemctl restart telegraf
 ```
 
-### Prometheus
+## Prometheus
 ### Install 
 Ref: <https://prometheus.io/docs/prometheus/latest/getting_started>
 
