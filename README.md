@@ -14,8 +14,8 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 * [Openstack Swift](./sds/swift)
 
-* [ATTBench](./benchmark/attbench)
-
 * [COSBench](./benchmark/cosbench)
+
+* [ATTBench](./benchmark/attbench)
 
 * [Multi-site Network Emulation](./multisite-netemu)
