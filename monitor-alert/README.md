@@ -60,6 +60,10 @@ To set up a username and password in InfluxDB
 > show users
 ```
 
+### More Info  
+Refer to [InfluxDB\_HOWTO.md](./InfluxDB_HOWTO.md)
+
+
 ## Telegraf
 ### Install
 ```
@@ -77,6 +81,10 @@ Restart the Telegraf service:
 ```
 sudo systemctl restart telegraf
 ```
+
+### More Info  
+Refer to [Telegraf\_HOWTO.md](./Telegraf_HOWTO.md)
+
 
 ## Prometheus
 ### Install 
@@ -119,7 +127,3 @@ Now restart `prometheus`:
 ./prometheus --config.file=prometheus.yml
 ```
 
-## Notes
-[1] Find more information in [InfluxDB\_HOWTO.md](./InfluxDB_HOWTO.md)  
-
-[2] Find more information in [Telegraf\_HOWTO.md](./Telegraf_HOWTO.md)
