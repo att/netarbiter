@@ -120,5 +120,6 @@ Now restart `prometheus`:
 ```
 
 ## Notes
-[1] Find more information in [InfluxDB\_HOWTO.md](./InfluxDB_HOWTO.md)
+[1] Find more information in [InfluxDB\_HOWTO.md](./InfluxDB_HOWTO.md)  
+
 [2] Find more information in [Telegraf\_HOWTO.md](./Telegraf_HOWTO.md)
