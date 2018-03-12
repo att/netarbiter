@@ -3,7 +3,8 @@ Troubleshoot
 Contributors:
   - Hee Won Lee <knowpd@research.att.com>
 
-## Problem: [Swift Authentication] How to find `token` and `storage_url` for `<storage type="swift" config="token=...;storage_url=..." />`.
+## Problem: [Swift Authentication]  
+- Problem Description:  How to find `token` and `storage_url` for `<storage type="swift" config="token=...;storage_url=..." />`.
 - Solution  
 You can find endpoint url (i.e., `http://controller:8080/v1/AUTH_2bccc882410f47f2b6e443ff6652d412`) by
 ```
