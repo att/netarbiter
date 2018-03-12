@@ -90,3 +90,8 @@ cp conf/swift-config-sample.xml conf/swift-config-test.xml
 ./cli.sh submit conf/swift-config-test.xml 
 ```
 4. To find the result, browse `http://<server_ip>:19088/controller`.
+
+
+## Troubleshoot   
+
+Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
