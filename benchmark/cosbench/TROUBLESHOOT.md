@@ -89,6 +89,3 @@ container1
 container2
 container3
 ```
-Note that you can replace `controller` with `<proxy-server-ip>` to change the access point.
-
-
