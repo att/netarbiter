@@ -81,7 +81,8 @@ $ openstack token issue
 +------------+---------------------------------------------------+
 ```
 
-Now you can accee swift by `storage-url` and `auth-token` as follows:
+Now you can accee swift by `storage-url` and `auth-token`.
+   - Note that you can replace `controller` with `<proxy-server-ip>` to change the access point.
 ```
 $ swift --os-storage-url http://<proxy-server-ip>:8080/v1/AUTH_2bccc882410f47f2b6e443ff6652d412 --os-auth-token gAAAAABaovyZMxKGDN--jkOFyT1JLQtZLxEXm99i...-Yb8Epc list
 container1
