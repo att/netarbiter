@@ -16,7 +16,7 @@ cd 0.4.2.c4
 chmod +x *.sh
 ./start-all.sh
 ```
-2. Browse `http://domain:19088/controller`.
+2. Browse `http://<server-ip>:19088/controller`.
 
 ## Run
 1. Prepare a workload configuration file.
