@@ -77,3 +77,14 @@ Disable/remove the lxc ppa, as it does not exist for 16.04.
 sudo rm /etc/apt/sources.list.d/ubuntu-lxc-ubuntu-lxd-stable-xenial.list
 sudo rm /etc/apt/sources.list.d/ubuntu-lxc-ubuntu-lxd-stable-xenial.list.save
 ```
+
+## Problem: authtoken expiry unlimited
+- Solution:  
+Ref: <https://ask.openstack.org/en/question/81383/authtoken-expiry-unlimited/>
+You can change the expiry duration longer. You can change it in `keystone.conf` : 
+```
+[token] 
+expiration=8640000
+``` 
+Then restart the keystone by `service apache2 restart`. 
+
