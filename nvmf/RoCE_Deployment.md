@@ -14,7 +14,7 @@ Lossless fabric (requires PFC)
    # Set up
    ./setup-nic-lossless-layer3.sh <interface> <device>
    ```
-   Refer to ([output sample](OUTPUTSAMPLE.setup-nic-lossless-layer3.sh.md).
+   Refer to [output sample](OUTPUTSAMPLE.setup-nic-lossless-layer3.sh.md).
 
 - Switch (advanced mode): [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode (advanced mode)](https://community.mellanox.com/docs/DOC-2884)
    * For basic mode, refer to [Lossless RoCE Configuration for MLNX-OS Switches in DSCP-Based QoS Mode](https://community.mellanox.com/docs/DOC-3017)
