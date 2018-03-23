@@ -1,5 +1,5 @@
 ```
-$ ./setup-nic-lossless-layer3.sh eth4 mlx5_2                                                                [9/1840]
+$ ./setup-nic-lossless-layer3.sh eth4 mlx5_2 
 + INTERFACE=eth4
 + DEVICE=mlx5_2
 + mlnx_qos -i eth4 --trust dscp
