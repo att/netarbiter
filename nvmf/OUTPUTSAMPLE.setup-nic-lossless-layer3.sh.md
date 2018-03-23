@@ -1,3 +1,4 @@
+```
 $ ./setup-nic-lossless-layer3.sh eth4 mlx5_2                                                                [9/1840]
 + INTERFACE=eth4
 + DEVICE=mlx5_2
@@ -70,3 +71,4 @@ tc: 6 ratelimit: unlimited, tsa: vendor
          priority:  6
 tc: 7 ratelimit: unlimited, tsa: vendor
          priority:  7
+```
