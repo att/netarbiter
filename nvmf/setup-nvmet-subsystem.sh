@@ -33,6 +33,8 @@ sudo bash -c "echo 1 > $SUBSYSTEM_PATH/attr_allow_any_host"
 
 if [ $OFFLOAD_ENABLE == "yes" ]; then
   sudo bash -c "echo 1 > $SUBSYSTEM_PATH/attr_offload"
+elif [ $OFFLOAD_ENABLE == "no" ]; then
+  sudo bash -c "echo 0 > $SUBSYSTEM_PATH/attr_offload"
 fi
 
 sudo mkdir -p $SUBSYSTEM_PATH/namespaces/$NS_NUM

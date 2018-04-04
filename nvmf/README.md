@@ -49,7 +49,8 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
    ./setup-nvmet-port.sh 10.154.0.61 1
 
    # Set up subsystems (each of which is mapped to a nvme drive)
-   #   - Usage: ./setup-nvmet-subsystem.sh <dev> <subnqn> <ns-num> <portid>
+   #   - Usage: ./setup-nvmet-subsystem.sh <dev> <subnqn> <ns-num> <portid> [offload-enable]
+   #               offload-enable: yes (default) or no 
    ./setup-nvmet-subsystem.sh /dev/nvme0n1 subsys0 10 1
    ./setup-nvmet-subsystem.sh /dev/nvme1n1 subsys1 10 1
 
