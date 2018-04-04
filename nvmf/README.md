@@ -20,6 +20,9 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
    #   - You may need to reboot.
    sudo modprobe -rv nvme
    sudo modprobe nvme
+
+   sudo modprobe nvmet
+   sudo modprobe nvmet-rdma
    ```
 
    * For target offload  
