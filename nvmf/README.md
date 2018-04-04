@@ -8,7 +8,7 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
 Ref: <https://community.mellanox.com/docs/DOC-2504>
 
 - Prerequisites   
-   Install [MLNX_OFED_LINUX-4.2-1.0.0.0-ubuntu16.04-x86_64.tgz](http://www.mellanox.com/page/products_dyn?product_family=26): 
+   * Install [MLNX_OFED_LINUX-4.3-1.0.1.0-ubuntu16.04-x86_64.tgz](http://www.mellanox.com/page/products_dyn?product_family=26): 
    ```
    tar xzvf MLNX_OFED_LINUX-4.2-1.0.0.0-ubuntu16.04-x86_64.tgz
    cd MLNX_OFED_LINUX-4.2-1.0.0.0-ubuntu16.04-x86_64
@@ -20,6 +20,18 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
    #   - You may need to reboot.
    sudo modprobe -rv nvme
    sudo modprobe nvme
+   ```
+
+   * For target offload  
+   Ref: <https://community.mellanox.com/docs/DOC-2918>
+   ```
+   sudo modprobe -rv nvme
+   sudo modprobe nvme
+   sudo modprobe nvme num_p2p_queues=1
+
+   sudo modprobe nvmet
+   sudo modprobe nvmet-rdma
+   sudo modprobe nvmet_rdma offload_mem_start=0xf00000000 offload_mem_size=2048 offload_buffer_size=256
    ```
 
 - NVME Target Configuration
@@ -53,7 +65,11 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
    ./teardown-nvmet-subsystem.sh subsys1 10 1
 
    # Remove port
-   sudo rmdir /sys/kernel/config/nvmet/ports/<portid>
+   # Usage: sudo rmdir /sys/kernel/config/nvmet/ports/<portid>
+   sudo rmdir /sys/kernel/config/nvmet/ports/1
+
+   # [Optional] Remove kernel modules
+   sudo modprobe -rv nvmet_rdma
    ```
 
 - NVMe Client (Initiator) Configuration
