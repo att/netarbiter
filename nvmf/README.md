@@ -33,6 +33,7 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
    sudo modprobe nvmet-rdma
    sudo modprobe nvmet_rdma offload_mem_start=0xf00000000 offload_mem_size=2048 offload_buffer_size=256
    ```
+     - Note: Currently, an offloaded subsystem can be associated with only one namespace.
 
 - NVME Target Configuration
    * Insert modules
