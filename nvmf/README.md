@@ -25,8 +25,7 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
    * For target offload  
    Ref: <https://community.mellanox.com/docs/DOC-2918>
    ```
-   sudo modprobe -rv nvme
-   sudo modprobe nvme
+   sudo modprobe -rv nvmet_rdma
    sudo modprobe nvme num_p2p_queues=1
 
    sudo modprobe nvmet
@@ -68,10 +67,6 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
    # Remove port
    # Usage: sudo rmdir /sys/kernel/config/nvmet/ports/<portid>
    sudo rmdir /sys/kernel/config/nvmet/ports/1
-
-   # [Optional] Remove kernel modules
-   sudo modprobe -rv nvmet_rdma
-   ```
 
 - NVMe Client (Initiator) Configuration
    * Insert a module
