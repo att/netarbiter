@@ -11,7 +11,7 @@ if [[ "$#" -ne 3 ]]; then
     exit 1
 fi
 
-set -x
+set -xe
 
 SUBNQN=$1
 NS_NUM=$2		# namespace number is similar to lun.

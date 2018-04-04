@@ -10,7 +10,7 @@ if [[ "$#" -ne 2 ]]; then
     exit 1
 fi
 
-set -x
+set -xe
 
 INTERFACE=$1
 DEVICE=$2

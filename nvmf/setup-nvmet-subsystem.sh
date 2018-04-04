@@ -3,7 +3,7 @@
 # Created on 11/11/2017
 # Ref: https://community.mellanox.com/docs/DOC-2504
 
-if [[ "$#" -le 4 ]]; then
+if [[ "$#" -lt 4 ]]; then
     echo "Usage: $0 <dev> <subnqn> <ns-num> <portid> [offload-enable]"
     echo "  dev (nvme device):             e.g. /dev/nvme0n1"
     echo "  subnqn (nvmet subsystem name): e.g. nvme0n1"
@@ -11,13 +11,14 @@ if [[ "$#" -le 4 ]]; then
     echo "  portid:                        e.g. 1"
     echo "  offload-enable:                yes (default) or no "
     echo ""
-    echo "  * Note: When there are multiple nvme drives in a host, while ns-num and"
-    echo "         portid can be shared, subnqn should be unique (i.e., subnqn per drive)."
+    echo "  * Note: "
+    echo "     - When there are multiple nvme drives in a host, while ns-num and portid"
+    echo "      can be shared, subnqn should be unique (i.e., subnqn per drive)."
+    echo "     - Currently, an offloaded subsystem can be associated with only one namespace."
     exit 1
 fi
 
-set -x
-set -e
+set -xe
 
 DEV=$1
 SUBNQN=$2
