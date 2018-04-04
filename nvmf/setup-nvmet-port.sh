@@ -21,7 +21,7 @@ PORT_PATH=/sys/kernel/config/nvmet/ports/$PORTID
 #sudo modprobe mlx5_core
 #sudo modprobe nvmet
 #sudo modprobe nvmet-rdma
-sudo modprobe nvme-rdma
+#sudo modprobe nvme-rdma
 
 # Set up port
 sudo mkdir -p $PORT_PATH
