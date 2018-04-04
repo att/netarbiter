@@ -18,7 +18,7 @@ PORTID=$2
 PORT_PATH=/sys/kernel/config/nvmet/ports/$PORTID
 
 # Prerequisites
-sudo modprobe mlx5_core
+#sudo modprobe mlx5_core
 #sudo modprobe nvmet
 #sudo modprobe nvmet-rdma
 sudo modprobe nvme-rdma

@@ -5,7 +5,10 @@ Author: Hee Won Lee <knowpd@research.att.com>
 Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
 
 ### Configure NVMe over Fabrics
-Ref: <https://community.mellanox.com/docs/DOC-2504>
+* Ref: <https://community.mellanox.com/docs/DOC-2504>
+* Target Offload
+   - Ref: <https://community.mellanox.com/docs/DOC-2918>
+   - Currently, an offloaded subsystem can be associated with only one namespace.
 
 - Prerequisites   
    * Install [MLNX_OFED_LINUX-4.3-1.0.1.0-ubuntu16.04-x86_64.tgz](http://www.mellanox.com/page/products_dyn?product_family=26): 
@@ -21,28 +24,22 @@ Ref: <https://community.mellanox.com/docs/DOC-2504>
    sudo modprobe -rv nvme
    sudo modprobe nvme
 
-   sudo modprobe nvmet
-   sudo modprobe nvmet-rdma
-   ```
-
-   * For target offload  
-   Ref: <https://community.mellanox.com/docs/DOC-2918>
-   ```
+   # For target offload, run:
    sudo modprobe -rv nvmet_rdma
    sudo modprobe nvme num_p2p_queues=1
-
-   sudo modprobe nvmet
-   sudo modprobe nvmet-rdma
-   sudo modprobe nvmet_rdma offload_mem_start=0xf00000000 offload_mem_size=2048 offload_buffer_size=256
    ```
-      - Note: Currently, an offloaded subsystem can be associated with only one namespace.
 
 - NVME Target Configuration
    * Insert modules
    ```
-   modprobe mlx5_core
-   modprobe nvmet
-   modprobe nvmet-rdma
+   sudo modprobe mlx5_core
+   sudo modprobe nvmet
+   sudo modprobe nvmet-rdma
+
+   # For target offload, additionally run the following command.
+   # In this example, set the start address to 0XF00000000 (60GB) and allocating 256MB 
+   # for each offload context (total chunks N=8).
+   sudo modprobe nvmet_rdma offload_mem_start=0xf00000000 offload_mem_size=2048 offload_buffer_size=256
    ```
 
    * Set up target
