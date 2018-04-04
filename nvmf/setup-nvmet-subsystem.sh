@@ -9,7 +9,7 @@ if [[ "$#" -le 4 ]]; then
     echo "  subnqn (nvmet subsystem name): e.g. nvme0n1"
     echo "  ns-num (namespace num):        e.g. 10"
     echo "  portid:                        e.g. 1"
-    echo "  offload-enable:  yes (default) or no "
+    echo "  offload-enable:                yes (default) or no "
     echo ""
     echo "  * Note: When there are multiple nvme drives in a host, while ns-num and"
     echo "         portid can be shared, subnqn should be unique (i.e., subnqn per drive)."
