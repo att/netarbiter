@@ -33,6 +33,7 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
    # Test: e.g., when device is `nvme0n1`
    #   - Usage: `cat /sys/block/<nvme_device>/device/num_p2p_queues`
    cat /sys/block/nvme0n1/device/num_p2p_queues
+   cat /sys/block/nvme1n1/device/num_p2p_queues
    ```
 
 - NVME Target Configuration
