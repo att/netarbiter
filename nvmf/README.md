@@ -30,7 +30,7 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
    sudo modprobe -rv nvme
    sudo modprobe nvme num_p2p_queues=1
 
-   # Test: e.g., when device is `nvme0n1`
+   # Test when you have two nvme devices: `nvme0n1` and `nvme1n1`
    #   - Usage: `cat /sys/block/<nvme_device>/device/num_p2p_queues`
    cat /sys/block/nvme0n1/device/num_p2p_queues
    cat /sys/block/nvme1n1/device/num_p2p_queues
