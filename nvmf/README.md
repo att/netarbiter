@@ -27,6 +27,9 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
    # For target offload, run:
    sudo modprobe -rv nvmet_rdma
    sudo modprobe nvme num_p2p_queues=1
+   # For test, run: `cat /sys/block/<nvme_device>/device/num_p2p_queues`
+   # Example: when device is nvme0n1,
+   cat /sys/block/nvme0n1/device/num_p2p_queues
    ```
 
 - NVME Target Configuration
