@@ -25,7 +25,7 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
    sudo modprobe nvme
 
    # For target offload, run:
-   sudo modprobe -rv nvmet_rdma
+   sudo modprobe -rv nvme
    sudo modprobe nvme num_p2p_queues=1
    # For test, run: `cat /sys/block/<nvme_device>/device/num_p2p_queues`
    # Example: when device is nvme0n1,
@@ -71,6 +71,10 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
    # Remove port
    # Usage: sudo rmdir /sys/kernel/config/nvmet/ports/<portid>
    sudo rmdir /sys/kernel/config/nvmet/ports/1
+ 
+   # Remove modules
+   sudo modprobe -rv nvmet_rdma
+   ```
 
 - NVMe Client (Initiator) Configuration
    * Insert a module
