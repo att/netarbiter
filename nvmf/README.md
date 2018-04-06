@@ -8,7 +8,9 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
 * Ref: <https://community.mellanox.com/docs/DOC-2504>
 * Target Offload
    - Ref: <https://community.mellanox.com/docs/DOC-2918>
-   - Currently, an offloaded subsystem can be associated with only one namespace.
+   - Note:
+      - Currently, an offloaded subsystem can be associated with only one namespace. 
+      - An offloaded port is restricted to have one subsytem enabled
 
 - Prerequisites   
    * Install [MLNX_OFED_LINUX-4.3-1.0.1.0-ubuntu16.04-x86_64.tgz](http://www.mellanox.com/page/products_dyn?product_family=26): 
