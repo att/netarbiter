@@ -8,7 +8,7 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
 * Ref: <https://community.mellanox.com/docs/DOC-2504>
 * Target Offload
    - Ref: <https://community.mellanox.com/docs/DOC-2918>
-   - Note:
+   - Notes:
       - Currently, an offloaded subsystem can be associated with only one namespace. 
       - An offloaded port is restricted to have one subsytem enabled
 
