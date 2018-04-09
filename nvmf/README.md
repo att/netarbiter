@@ -55,6 +55,13 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
    #    - set mem=124928M (=122G=122*1024M for kernel usage) memmap=124928M boot parameters,
    #    - set the start address to 0X1F00000000 (124GB) and allocating 256MB for each offload context (total chunks N=8).
    sudo modprobe nvmet_rdma offload_mem_start=0x1f00000000 offload_mem_size=2048 offload_buffer_size=256
+   # Check if it changed:
+   # Before:
+      $ cat /proc/meminfo |grep MemTotal
+      MemTotal:       131911904 kB		--> 125GB
+   # After:
+      $ cat /proc/meminfo |grep MemTotal
+      MemTotal:       123654376 kB		--> 117GB
    ```
 
    * Set up target
