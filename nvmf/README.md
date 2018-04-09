@@ -46,9 +46,15 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
    sudo modprobe nvmet-rdma
 
    # For target offload, additionally run the following command.
-   # In this example, set the start address to 0XF00000000 (60GB) and allocating 256MB 
-   # for each offload context (total chunks N=8).
+   # Example 1: a system with 64GB RAM, 
+   #    - set mem=59392M (=58G=58*1024 for kernel usage) memmap=59392M boot parameters,
+   #    - set the start address to 0XF00000000 (60GB) and allocating 256MB for each offload context (total chunks N=8).
    sudo modprobe nvmet_rdma offload_mem_start=0xf00000000 offload_mem_size=2048 offload_buffer_size=256
+
+   # Example 2: a system with 128GB RAM, 
+   #    - set mem=124928M (=122G=122*1024M for kernel usage) memmap=124928M boot parameters,
+   #    - set the start address to 0X1F00000000 (124GB) and allocating 256MB for each offload context (total chunks N=8).
+   sudo modprobe nvmet_rdma offload_mem_start=0x1f00000000 offload_mem_size=2048 offload_buffer_size=256
    ```
 
    * Set up target
