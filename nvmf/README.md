@@ -53,6 +53,9 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
 
    # Example 2: a system with 128GB RAM, 
    #    - set mem=124928M (=122G=122*1024M for kernel usage) memmap=124928M boot parameters,
+         $ cat /etc/default/grub
+         GRUB_CMDLINE_LINUX_DEFAULT="mem=124928M memmap=124928M"
+         $ sudo reboot  
    #    - set the start address to 0X1F00000000 (124GB) and allocating 256MB for each offload context (total chunks N=8).
    sudo modprobe nvmet_rdma offload_mem_start=0x1f00000000 offload_mem_size=2048 offload_buffer_size=256
    # Check if it changed:
