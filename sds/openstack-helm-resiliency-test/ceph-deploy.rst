@@ -1,10 +1,10 @@
-==========
-Resiliency
-==========
+===============
+Resiliency Test
+===============
 
-==========
-Resiliency
-==========
+==============================
+Resiliency Test on Ceph-Deploy
+==============================
 
 Case1: Fail to Create Deployment
 =================================
