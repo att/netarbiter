@@ -3,7 +3,7 @@ Resiliency
 ==========
 
 Case1: Fail to Create Deployment
-================================
+=================================
 
 Prior Steps: Create the Persistent Volume Claim
 -----------------------------------------------
