@@ -2,8 +2,8 @@
 Resiliency Test on Ceph-Deploy
 ==============================
 
-Case1: Fail to Create Deployment
-=================================
+Case: Fail to Create RBD Volume and Attach
+==========================================
 
 Prior Steps: Create the Persistent Volume Claim
 -----------------------------------------------
@@ -128,5 +128,12 @@ Exit monitor pod, clean up and re-create the deployment for creating rbd volume 
   mariadb-1                        1/1       Running   0          41m
   mariadb-2                        1/1       Running   0          41m
 
-Case2: TBA
+
+Case: TBA
 ==========
+
+Symptom
+-------
+
+Solution
+--------
