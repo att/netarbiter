@@ -3,9 +3,12 @@ Resiliency Test on Ceph Deploy
 ==============================
 
 Case 1: Fail To Create Deployment (Create RBD Volume and Attach)
-----------------------------------------------------------------
+================================================================
 
-.. Prior Steps::
+Prior Steps: Create the Persistent Volume Claim
+-----------------------------------------------
+
+.. code-block:: shell
   
   ...
   $ kubectl create -f pvc-sample.yaml -n openstack
@@ -16,6 +19,9 @@ Case 1: Fail To Create Deployment (Create RBD Volume and Attach)
   mysql-data-mariadb-1   Bound     pvc-02708ba4-3f4b-11e8-8a90-d4ae52a3acc1   5Gi        RWO            general        29m
   mysql-data-mariadb-2   Bound     pvc-02717a39-3f4b-11e8-8a90-d4ae52a3acc1   5Gi        RWO            general        29m
   pvc-sample             Bound     pvc-1b299ed4-3f4f-11e8-8a90-d4ae52a3acc1   20Gi       RWO            general        9s
+
+Symptom: When creating RBD Volume and Attach
+--------------------------------------------
 
 .. code-block:: shell
   
@@ -79,8 +85,13 @@ Case 1: Fail To Create Deployment (Create RBD Volume and Attach)
     Normal   SuccessfulMountVolume  2m    kubelet, voyager3  MountVolume.SetUp succeeded for volume "default-token-2xnhf"
     Warning  FailedMount            43s   kubelet, voyager3  Unable to mount volumes for pod "deploy-sample-67589b7c8d-qfwzb_openstack(410a2feb-3f4f-11e8-8a90-d4ae52a3acc1)": timeout expired waiting for volumes to attach/mount for pod "openstack"/"deploy-sample-67589b7c8d-qfwzb". list of unattached/unmounted volumes=[vol-sample]
 
-.. Solution::
-  Check ``Ceph Heath`` from monitor pod:
+Solution:
+-----------------------------------------------
+
+Check ``Ceph Heath`` from monitor pod:
+
+.. code-block:: shell
+
   $ kshell ceph-mon-8tml7 -n ceph
   root@voyager3:/# ceph -s
                 cluster:
@@ -88,7 +99,11 @@ Case 1: Fail To Create Deployment (Create RBD Volume and Attach)
                   health: HEALTH_WARN
                           too few PGs per OSD (22 < min 30)
                           mon voyager1 is low on available space
-  Checked that ``pg_num`` and ``pgp_num`` is 64 set for pool rbd. We have 24 OSDs which requires 24*100/3=800 placement groups.
+  
+Checked that ``pg_num`` and ``pgp_num`` is 64 set for pool rbd. We have 24 OSDs which requires 24*100/3=800 placement groups.
+
+.. code-block:: shell
+
   Set pg_num and pgp_num to 800: 
   root@voyager3:/# ceph osd pool set rbd pg_num 800
   root@voyager3:/# ceph osd pool set rbd pgp_num 800
@@ -97,7 +112,11 @@ Case 1: Fail To Create Deployment (Create RBD Volume and Attach)
                   id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
                   health: HEALTH_WARN
                           mon voyager1 is low on available space
-  Exit monitor pod, clean up and re-create the deployment for creating rbd volume and attach:
+
+Exit monitor pod, clean up and re-create the deployment for creating rbd volume and attach:
+
+.. code-block:: shell
+
   $ kubectl delete deploy deploy-sample -n openstack
   $ kubectl delete -f pvc-sample.yaml -n openstack
   $ kubectl create -f pvc-sample.yaml -n openstack
