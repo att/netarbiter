@@ -7,6 +7,7 @@ Case: Fail to Create RBD Volume and Attach
 
 Prior Steps: Create the Persistent Volume Claim
 -----------------------------------------------
+Prepare ``pvc-sample.yaml`` and ``deploy-sample.yaml`` for creating the RBD volume and attach it to a pod.
 
 .. code-block:: shell
 
@@ -26,6 +27,7 @@ Prior Steps: Create the Persistent Volume Claim
 
 .. code-block:: shell
 
+  $ cat deploy-sample.yaml
   apiVersion: extensions/v1beta1
   kind: Deployment
   metadata:
