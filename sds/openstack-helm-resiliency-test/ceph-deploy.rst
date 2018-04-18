@@ -2,12 +2,8 @@
 Resiliency
 ==========
 
-==
-HI
-==
-
-Case 1: Fail To Create Deployment (Create RBD Volume and Attach)
-================================================================
+Fail to Create Deployment
+=========================
 
 Prior Steps: Create the Persistent Volume Claim
 -----------------------------------------------
