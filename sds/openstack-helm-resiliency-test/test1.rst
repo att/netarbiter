@@ -5,7 +5,6 @@ Once the host has been configured the repos containing the OpenStack-Helm charts
 should be cloned onto each node in the cluster:
 
 .. code-block:: shell
-
    #!/bin/bash
     set -xe
 
