@@ -5,10 +5,10 @@ Resiliency Test on Ceph Deploy
 Case 1: Fail To Create Deployment (Create RBD Volume and Attach)
 ================================================================
 
-hello morning
-
 Prior Steps: Create the Persistent Volume Claim
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------------------
+
+hi
 
 .. code-block:: shell
   
@@ -23,7 +23,9 @@ Prior Steps: Create the Persistent Volume Claim
   pvc-sample             Bound     pvc-1b299ed4-3f4f-11e8-8a90-d4ae52a3acc1   20Gi       RWO            general        9s
 
 Symptom: When creating RBD Volume and Attach
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------------
+
+hi
 
 .. code-block:: shell
   
@@ -87,8 +89,8 @@ Symptom: When creating RBD Volume and Attach
     Normal   SuccessfulMountVolume  2m    kubelet, voyager3  MountVolume.SetUp succeeded for volume "default-token-2xnhf"
     Warning  FailedMount            43s   kubelet, voyager3  Unable to mount volumes for pod "deploy-sample-67589b7c8d-qfwzb_openstack(410a2feb-3f4f-11e8-8a90-d4ae52a3acc1)": timeout expired waiting for volumes to attach/mount for pod "openstack"/"deploy-sample-67589b7c8d-qfwzb". list of unattached/unmounted volumes=[vol-sample]
 
-Solution:
-~~~~~~~~~
+Solution
+--------
 
 Check ``Ceph Heath`` from monitor pod:
 
