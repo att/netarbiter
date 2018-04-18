@@ -140,7 +140,7 @@ Check ``Ceph Heath`` from monitor pod:
 .. code-block:: shell
 
   $ kshell ceph-mon-8tml7 -n ceph
-  root@voyager3:/# ceph -s
+  (mon-pod):/# ceph -s
                 cluster:
                   id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
                   health: HEALTH_WARN
@@ -149,12 +149,12 @@ Check ``Ceph Heath`` from monitor pod:
   
 Checked that ``pg_num`` and ``pgp_num`` is 64 set for pool rbd. We have 24 OSDs which requires 24*100/3=800 placement groups.
 
-.. code-block:: shell
+.. code-block:: 
 
   Set pg_num and pgp_num to 800: 
-  root@voyager3:/# ceph osd pool set rbd pg_num 800
-  root@voyager3:/# ceph osd pool set rbd pgp_num 800
-  root@voyager3:/# ceph -s
+  (mon-pod):/# ceph osd pool set rbd pg_num 800
+  (mon-pod):/# ceph osd pool set rbd pgp_num 800
+  (mon-pod):/# ceph -s
                 cluster:
                   id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
                   health: HEALTH_WARN
