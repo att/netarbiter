@@ -1,12 +1,12 @@
-==============================
-Resiliency Test on Ceph-Deploy
-==============================
+================
+Resiliency Tests
+================
 
 Case: Fail to Create RBD Volume and Attach
 ==========================================
 
-Prior Steps: Create the Persistent Volume Claim
------------------------------------------------
+Symptom: When creating RBD Volume and Attach
+--------------------------------------------
 Prepare ``pvc-sample.yaml`` and ``deploy-sample.yaml`` for creating an RBD volume and attach it to a pod.
 
 .. code-block:: shell
@@ -69,9 +69,6 @@ Prepare ``pvc-sample.yaml`` and ``deploy-sample.yaml`` for creating an RBD volum
   mysql-data-mariadb-1   Bound     pvc-02708ba4-3f4b-11e8-8a90-d4ae52a3acc1   5Gi        RWO            general        29m
   mysql-data-mariadb-2   Bound     pvc-02717a39-3f4b-11e8-8a90-d4ae52a3acc1   5Gi        RWO            general        29m
   pvc-sample             Bound     pvc-1b299ed4-3f4f-11e8-8a90-d4ae52a3acc1   20Gi       RWO            general        9s
-
-Symptom: When creating RBD Volume and Attach
---------------------------------------------
 
 .. code-block:: shell
   
