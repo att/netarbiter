@@ -1,5 +1,5 @@
 ==============================
-Resiliency Test on Ceph Deploy
+Resiliency
 ==============================
 
 Case 1: Fail To Create Deployment (Create RBD Volume and Attach)
