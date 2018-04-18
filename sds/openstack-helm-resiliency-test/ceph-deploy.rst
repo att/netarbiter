@@ -16,10 +16,6 @@ cluster for use with OpenStack-Helm. For simplicity however we will describe
 deployment using the OpenStack-Helm gate scripts to bring up a reference cluster
 using KubeADM and Ansible.
 
-OpenStack-Helm Infra KubeADM deployment
----------------------------------------
-
-On the master node install the latest versions of Git, CA Certs & Make if necessary
 
 
 
