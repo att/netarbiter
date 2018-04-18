@@ -6,6 +6,7 @@ Case 1: Fail To Create Deployment (Create RBD Volume and Attach)
 ----------------------------------------------------------------
 
 .. Prior Steps::
+  
   ...
   $ kubectl create -f pvc-sample.yaml -n openstack
   persistentvolumeclaim "pvc-sample" created
@@ -17,6 +18,7 @@ Case 1: Fail To Create Deployment (Create RBD Volume and Attach)
   pvc-sample             Bound     pvc-1b299ed4-3f4f-11e8-8a90-d4ae52a3acc1   20Gi       RWO            general        9s
 
 .. code-block:: shell
+  
   $ kubectl create -f deploy-sample.yaml -n openstack
   deployment "deploy-sample" created
   $ kubectl get pods -n openstack
