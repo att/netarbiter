@@ -2,14 +2,14 @@
 Resiliency Tests
 ================
 
-Case: Fail to Create RBD Volume and Attach
-==========================================
+Case: Fail to Create RBD Volume and Attach to a Pod
+===================================================
 
-Symptom: When creating RBD Volume and Attach
---------------------------------------------
+Symptom:
+--------
 Prepare ``pvc-sample.yaml`` and ``deploy-sample.yaml`` for creating an RBD volume and attach it to a pod.
 
-.. code-block:: shell
+.. code-block::
 
   $ cat pvc-sample.yaml
   ---
@@ -25,7 +25,7 @@ Prepare ``pvc-sample.yaml`` and ``deploy-sample.yaml`` for creating an RBD volum
       requests:
         storage: 20G
 
-.. code-block:: shell
+.. code-block::
 
   $ cat deploy-sample.yaml
   apiVersion: extensions/v1beta1
@@ -59,7 +59,7 @@ Prepare ``pvc-sample.yaml`` and ``deploy-sample.yaml`` for creating an RBD volum
               claimName: pvc-sample
 
  
-.. code-block:: shell
+.. code-block::
 
   $ kubectl create -f pvc-sample.yaml -n openstack
   persistentvolumeclaim "pvc-sample" created
@@ -70,7 +70,7 @@ Prepare ``pvc-sample.yaml`` and ``deploy-sample.yaml`` for creating an RBD volum
   mysql-data-mariadb-2   Bound     pvc-02717a39-3f4b-11e8-8a90-d4ae52a3acc1   5Gi        RWO            general        29m
   pvc-sample             Bound     pvc-1b299ed4-3f4f-11e8-8a90-d4ae52a3acc1   20Gi       RWO            general        9s
 
-.. code-block:: shell
+.. code-block::
   
   $ kubectl create -f deploy-sample.yaml -n openstack
   deployment "deploy-sample" created
@@ -137,7 +137,7 @@ Solution
 
 Check ``Ceph Heath`` from monitor pod:
 
-.. code-block:: shell
+.. code-block::
 
   $ kshell ceph-mon-8tml7 -n ceph
   (mon-pod):/# ceph -s
@@ -162,7 +162,7 @@ Checked that ``pg_num`` and ``pgp_num`` is 64 set for pool rbd. We have 24 OSDs 
 
 Exit monitor pod, clean up and re-create the deployment for creating rbd volume and attach:
 
-.. code-block:: shell
+.. code-block:: 
 
   $ kubectl delete deploy deploy-sample -n openstack
   $ kubectl delete -f pvc-sample.yaml -n openstack
