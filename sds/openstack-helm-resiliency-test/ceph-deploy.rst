@@ -2,12 +2,6 @@
 Multinode
 =========
 
-Overview
-========
-
-In order to drive towards a production-ready Openstack solution, our
-goal is to provide containerized
-
 
 ==============================
 Resiliency Test on Ceph Deploy
