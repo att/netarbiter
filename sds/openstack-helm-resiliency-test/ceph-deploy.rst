@@ -9,8 +9,56 @@ Prior Steps: Create the Persistent Volume Claim
 -----------------------------------------------
 
 .. code-block:: shell
-  
-  ...
+
+  $ cat pvc-sample.yaml
+  ---
+  kind: PersistentVolumeClaim
+  apiVersion: v1
+  metadata:
+    name: pvc-sample
+    annotations:
+      volume.beta.kubernetes.io/storage-class: general
+  spec:
+    accessModes: [ "ReadWriteOnce" ]
+    resources:
+      requests:
+        storage: 20G
+
+.. code-block:: shell
+
+  apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    name: deploy-sample
+  spec:
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: deploy-sample
+        namespace: default
+      spec:
+        #hostNetwork: true 
+        #dnsPolicy: ClusterFirstWithHostNet
+        containers:
+          - name: deploy-sample
+            image: docker.io/knowpd/ceph:kubectl-ubuntu-16.04
+            imagePullPolicy: Always
+            args:
+              - /bin/bash
+            stdin: true
+            tty: true
+            volumeMounts:
+              - name: vol-sample
+                mountPath: /mnt/myvol
+        volumes:
+          - name: vol-sample
+            persistentVolumeClaim:
+              claimName: pvc-sample
+
+ 
+.. code-block:: shell
+
   $ kubectl create -f pvc-sample.yaml -n openstack
   persistentvolumeclaim "pvc-sample" created
   $ kubectl get pvc -n openstack
