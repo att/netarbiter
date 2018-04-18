@@ -6,7 +6,7 @@ should be cloned onto each node in the cluster:
 
 .. code-block:: shell
 
-    #!/bin/bash
+   #!/bin/bash
     set -xe
 
     chown -R ubuntu: /opt
