@@ -1,7 +1,3 @@
-===============
-Resiliency Test
-===============
-
 ==============================
 Resiliency Test on Ceph-Deploy
 ==============================
@@ -131,3 +127,6 @@ Exit monitor pod, clean up and re-create the deployment for creating rbd volume 
   mariadb-0                        1/1       Running   0          41m
   mariadb-1                        1/1       Running   0          41m
   mariadb-2                        1/1       Running   0          41m
+
+Case2: TBA
+==========
