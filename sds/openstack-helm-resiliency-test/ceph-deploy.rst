@@ -2,13 +2,15 @@
 Resiliency
 ==========
 
+==========
+Resiliency
+==========
+
 Fail to Create Deployment
 =========================
 
 Prior Steps: Create the Persistent Volume Claim
 -----------------------------------------------
-
-hi
 
 .. code-block:: shell
   
@@ -24,8 +26,6 @@ hi
 
 Symptom: When creating RBD Volume and Attach
 --------------------------------------------
-
-hi
 
 .. code-block:: shell
   
