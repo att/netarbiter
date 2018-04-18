@@ -16,7 +16,7 @@ Case 1: Fail To Create Deployment (Create RBD Volume and Attach)
   mysql-data-mariadb-2   Bound     pvc-02717a39-3f4b-11e8-8a90-d4ae52a3acc1   5Gi        RWO            general        29m
   pvc-sample             Bound     pvc-1b299ed4-3f4f-11e8-8a90-d4ae52a3acc1   20Gi       RWO            general        9s
 
-.. note::
+.. code-block:: shell
   $ kubectl create -f deploy-sample.yaml -n openstack
   deployment "deploy-sample" created
   $ kubectl get pods -n openstack
