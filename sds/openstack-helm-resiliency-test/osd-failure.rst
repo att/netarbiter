@@ -37,6 +37,7 @@ To bring down 6 OSDs (out of 24), we identify the OSD processes and kill them fr
       osd: 24 osds: 18 up, 24 in
 
 In the mean time, we monitor the status of Ceph and noted that it takes about 30 seconds for the 6 OSDs to recover from ``down`` to ``up``.
+The reason is that Kubernetes automatically restarts OSD pods whenever they are killed.
 
 .. code-block::
 
