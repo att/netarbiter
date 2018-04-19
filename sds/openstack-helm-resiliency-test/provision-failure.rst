@@ -2,8 +2,8 @@
 Provisioning Failure
 ====================
 
-Case: Fail to Create RBD Volume and Attach to a Pod
-===================================================
+Case: Fail to Attach a RBD volume to a Pod
+==========================================
 
 Symptom:
 --------
