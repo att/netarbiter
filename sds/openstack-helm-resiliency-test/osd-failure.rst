@@ -2,7 +2,7 @@
 OSD Failure
 ===========
 
-We have 24 OSDs in this Ceph cluster, 6 OSDs on each of the 4 hosts. This is to test the scenario when some of the OSDs are down.
+We have 24 OSDs in this Ceph cluster, 6 OSDs on each of the 4 hosts. This is to test a scenario when some of the OSDs are down.
 
 To bring down 6 OSDs (out of 24), we identify the OSD processes and kill them from a storage host (not a pod).
  
