@@ -14,7 +14,7 @@ Communication
 
 Software Failures
 -----------------
-* `Deployment Failures <./ceph-deploy.rst>`_
+* `Deployment Failure <./deployment-failure.rst>`_
 * `OSD failure <./osd-failure.rst>`_
 * `Monitor failure <./monitor-failure.rst>`_
 
