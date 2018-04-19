@@ -1,6 +1,6 @@
-==================
-Deployment Failure
-==================
+====================
+Provisioning Failure
+====================
 
 Case: Fail to Create RBD Volume and Attach to a Pod
 ===================================================
