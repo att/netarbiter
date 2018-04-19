@@ -168,7 +168,7 @@ Exit monitor pod, clean up and re-create the deployment for creating rbd volume 
   $ kubectl delete -f pvc-sample.yaml -n openstack
   $ kubectl create -f pvc-sample.yaml -n openstack
   $ kubectl create -f deploy-sample.yaml -n openstack
-  $  kubectl get pods -n openstack
+  $ kubectl get pods -n openstack
   NAME                             READY     STATUS    RESTARTS   AGE
   deploy-sample-67589b7c8d-sp9vv   1/1       Running   0          34s
   mariadb-0                        1/1       Running   0          41m
