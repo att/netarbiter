@@ -14,7 +14,7 @@ Communication
 
 Software Failures
 -----------------
-* `Deployment Failure <./deployment-failure.rst>`_
+* `Deployment failure <./deployment-failure.rst>`_
 * `OSD failure <./osd-failure.rst>`_
 * `Monitor failure <./monitor-failure.rst>`_
 
