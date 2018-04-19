@@ -14,7 +14,7 @@ Communication
 
 Deployment/Operations Failures
 ------------------------------
-* Deployment Failures
+* `Deployment Failures<./ceph-deploy.rst>`
 
 Software Failures
 -----------------
