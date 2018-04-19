@@ -12,12 +12,9 @@ Communication
 * Post your issues at <https://github.com/att/netarbiter/issues>
 * Email Hee Won Lee <knowpd@research.att.com> or Yu Xiang <yxiang@research.att.com>
 
-Deployment/Operations Failures
-------------------------------
-* `Deployment Failures <./ceph-deploy.rst>`_
-
 Software Failures
 -----------------
+* `Deployment Failures <./ceph-deploy.rst>`_
 * `OSD failure <./osd-failure.rst>`_
 * `Monitor failure <./monitor-failure.rst>`_
 
