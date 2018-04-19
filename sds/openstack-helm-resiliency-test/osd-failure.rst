@@ -19,8 +19,6 @@ To bring down 6 OSDs (out of 24), we identify the OSD processes and kill them fr
   
   $ sudo kill -9 44587 44627 44720 44735 44806 44896 
 
-In the mean time, we monitor the status of Ceph and noted that it takes about 30 seconds for the 6 OSDs to recover from ``down`` to ``up``.
-
 .. code-block::
 
   (osd-pod):/# ceph -s
@@ -37,6 +35,8 @@ In the mean time, we monitor the status of Ceph and noted that it takes about 30
       mon: 3 daemons, quorum voyager1,voyager2,voyager3
       mgr: voyager4(active)
       osd: 24 osds: 18 up, 24 in
+
+In the mean time, we monitor the status of Ceph and noted that it takes about 30 seconds for the 6 OSDs to recover from ``down`` to ``up``.
 
 .. code-block::
 
