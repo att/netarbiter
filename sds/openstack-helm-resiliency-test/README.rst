@@ -14,13 +14,15 @@ Communication
 
 Deployment/Operations Failures
 ------------------------------
-
 * `Deployment Failures <./ceph-deploy.rst>`_
 
 Software Failures
 -----------------
-* OSD down, K8s node down, Journal down, Monitor down
+* `OSD failure <./osd-failure.rst>`_
+* `Monitor failure <./monitor-failure.rst>`_
 
 Hardware Failures
 -----------------
-* Disk down, Host down, Journal SSD down
+* `Disk failure <./disk-failure.rst>`_
+* `Journal SSD failure <./journal-sdd-failure.rst>`_ 
+* `Host failure <./host-failure.rst>`_
