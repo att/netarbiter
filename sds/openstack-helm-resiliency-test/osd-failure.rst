@@ -19,4 +19,32 @@ We have 24 OSDs, 6 OSDs on each of the 4 nodes.
   
   (osd-pod):/# kill -9 44587 44627 44720 44735 44806 44896 
 
+.. code-block::
 
+  (osd-pod):/# ceph -s
+    cluster:
+      id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
+      health: HEALTH_WARN
+              6 osds down
+              1 host (6 osds) down
+              Reduced data availability: 8 pgs inactive, 58 pgs peering
+              Degraded data redundancy: 141/1002 objects degraded (14.072%), 133 pgs degraded
+              mon voyager1 is low on available space
+   
+    services:
+      mon: 3 daemons, quorum voyager1,voyager2,voyager3
+      mgr: voyager4(active)
+      osd: 24 osds: 18 up, 24 in
+
+.. code-block::
+
+  (osd-pod):/# ceph -s
+    cluster:
+      id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
+      health: HEALTH_WARN
+              mon voyager1 is low on available space
+   
+    services:
+      mon: 3 daemons, quorum voyager1,voyager2,voyager3
+      mgr: voyager4(active)
+      osd: 24 osds: 24 up, 24 in
