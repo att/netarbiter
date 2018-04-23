@@ -2,6 +2,9 @@
 OSD Failure
 ===========
 
+Case: OSD processes are killed
+==============================
+
 We have 24 OSDs in this Ceph cluster, 6 OSDs on each of the 4 hosts. This is to test a scenario when some of the OSDs are down.
 
 To bring down 6 OSDs (out of 24), we identify the OSD processes and kill them from a storage host (not a pod).
@@ -21,7 +24,7 @@ To bring down 6 OSDs (out of 24), we identify the OSD processes and kill them fr
 
 .. code-block::
 
-  (osd-pod):/# ceph -s
+  (mon-pod):/# ceph -s
     cluster:
       id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
       health: HEALTH_WARN
@@ -41,7 +44,7 @@ The reason is that Kubernetes automatically restarts OSD pods whenever they are 
 
 .. code-block::
 
-  (osd-pod):/# ceph -s
+  (mon-pod):/# ceph -s
     cluster:
       id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
       health: HEALTH_WARN
@@ -51,3 +54,36 @@ The reason is that Kubernetes automatically restarts OSD pods whenever they are 
       mon: 3 daemons, quorum voyager1,voyager2,voyager3
       mgr: voyager4(active)
       osd: 24 osds: 24 up, 24 in
+
+Case: A OSD pod is deleted
+==========================
+
+
+.. code-block::
+
+  root@voyager3:/# ceph -s
+    cluster:
+      id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
+      health: HEALTH_WARN
+              1 osds down
+              Degraded data redundancy: 43/945 objects degraded (4.550%), 35 pgs degraded, 109 pgs undersized
+              mon voyager1 is low on available space
+   
+    services:
+      mon: 3 daemons, quorum voyager1,voyager2,voyager3
+      mgr: voyager4(active)
+      osd: 24 osds: 23 up, 24 in
+
+.. code-block::
+
+  (mon-pod):/# ceph -s
+    cluster:
+      id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
+      health: HEALTH_WARN
+              mon voyager1 is low on available space
+   
+    services:
+      mon: 3 daemons, quorum voyager1,voyager2,voyager3
+      mgr: voyager4(active)
+      osd: 24 osds: 24 up, 24 in
+
