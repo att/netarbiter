@@ -57,6 +57,42 @@ To bring down 2 Monitor processes (out of 3), we identify two Monitor processes 
 
 We monitored the status of Ceph when the Monitor processes are killed and noted that the symptoms are similar to when 1 Monior process is killed: 
 
-- It takes longer (about 70 seconds) for the killed Monitor processes to recover from ``down`` to ``up``.
+- It takes longer (about 1 minute) for the killed Monitor processes to recover from ``down`` to ``up``.
   
-- The status of the pods (where the two Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` ->`` Running`` and this recovery process takes about 70 seconds.
+- The status of the pods (where the two Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` ->`` Running`` and this recovery process takes about 1 minute.
+
+
+Case: 3 out of 3 Monitor Processes are Down
+===========================================
+
+This is to test a scenario when 3 out of 3 Monitor processes are down.
+To bring down 3 Monitor processes (out of 3), we identify all 3 Monitor processes and kill them from the 3 monitor hosts (not pods).
+
+We monitored the status of Ceph when the Monitor processes are killed and noted that the symptoms are similar to when 1 Monior process is killed:
+
+.. code-block::
+
+  $ kubectl get pods -n ceph -o wide | grep ceph-mon 
+  NAME                                       READY     STATUS    RESTARTS   AGE
+  ceph-mon-8tml7                             0/1       Error     4          10d
+  ceph-mon-kstf8                             0/1       Error     4          10d
+  ceph-mon-z4sl9                             0/1       Error     7          10d
+
+.. code-block::
+
+  $ kubectl get pods -n ceph -o wide | grep ceph-mon
+  NAME                                       READY     STATUS               RESTARTS   AGE
+  ceph-mon-8tml7                             0/1       CrashLoopBackOff     4          10d
+  ceph-mon-kstf8                             0/1       Error                4          10d
+  ceph-mon-z4sl9                             0/1       CrashLoopBackOff     7          10d
+
+
+.. code-block::
+
+  $ kubectl get pods -n ceph -o wide | grep ceph-mon 
+  NAME                                       READY     STATUS    RESTARTS   AGE
+  ceph-mon-8tml7                             0/1       Running   5          10d
+  ceph-mon-kstf8                             0/1       Running   5          10d
+  ceph-mon-z4sl9                             0/1       Running   8          10d
+
+The status of the pods (where the three Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` -> `` Running`` and this recovery process takes about 1 minute.
