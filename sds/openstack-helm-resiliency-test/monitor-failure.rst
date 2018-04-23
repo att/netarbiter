@@ -59,7 +59,7 @@ We monitored the status of Ceph when the Monitor processes are killed and noted 
 
 - It takes longer (about 1 minute) for the killed Monitor processes to recover from ``down`` to ``up``.
   
-- The status of the pods (where the two Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` ->``Running`` and this recovery process takes about 1 minute.
+- The status of the pods (where the two Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` -> ``Running`` and this recovery process takes about 1 minute.
 
 
 Case: 3 out of 3 Monitor Processes are Down
