@@ -95,4 +95,4 @@ We monitored the status of Ceph when the Monitor processes are killed and noted 
   ceph-mon-kstf8                             0/1       Running   5          10d
   ceph-mon-z4sl9                             0/1       Running   8          10d
 
-The status of the pods (where the three Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` -> `` Running`` and this recovery process takes about 1 minute.
+The status of the pods (where the three Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` -> ``Running`` and this recovery process takes about 1 minute.
