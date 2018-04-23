@@ -2,10 +2,12 @@
 OSD Failure
 ===========
 
+We have 24 OSDs in this Ceph cluster, 6 OSDs on each of the 4 hosts.
+
 Case: OSD processes are killed
 ==============================
 
-We have 24 OSDs in this Ceph cluster, 6 OSDs on each of the 4 hosts. This is to test a scenario when some of the OSDs are down.
+This is to test a scenario when some of the OSDs are down.
 
 To bring down 6 OSDs (out of 24), we identify the OSD processes and kill them from a storage host (not a pod).
  
@@ -58,6 +60,7 @@ The reason is that Kubernetes automatically restarts OSD pods whenever they are 
 Case: A OSD pod is deleted
 ==========================
 
+This is to test a scenario when an OSD pod is deleted by ``kubectl delete $OSD_POD_NAME``. 
 
 .. code-block::
 
@@ -87,3 +90,4 @@ Case: A OSD pod is deleted
       mgr: voyager4(active)
       osd: 24 osds: 24 up, 24 in
 
+In the mean time, we monitor the status of Ceph and noted that it takes about 90 seconds for the OSD running in deleted pod to recover from ``down`` to ``up``, and the deleted OSD pod status changed as follows: ``Terminating`` -> ``Init:1/3`` -> ``Init:2/3`` -> ``Init:3/3`` -> ``Running``, and this process taks about 90 seconds. The reason is that Kubernetes automatically restarts OSD pods whenever they are deleted. 
