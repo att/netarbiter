@@ -2,7 +2,7 @@
 Monitor Failure
 ===============
 
-We have 3 Monitors, one on each Monitor hosts. 24 OSDs in this Ceph cluster, 6 OSDs on each of the 4 storage hosts (3 out of 4 hosts are labeled as both Monitor and Storage hosts).
+We have 3 Monitors in this Ceph cluster, one on each of the 3 Monitor hosts.
 
 Case: 1 out of 3 Monitor Processes is Down
 ==========================================
