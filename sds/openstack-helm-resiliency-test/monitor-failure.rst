@@ -59,5 +59,3 @@ We monitored the status of Ceph when the Monitor processes are killed and noted 
 - It takes longer (about 70 seconds) for the killed Monitor processes to recover from ``down`` to ``up``.
   
 - The status of the pods (where the two Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` ->`` Running`` and this recovery process takes about 70 seconds.
-  
-- The reason is that Kubernetes automatically restarts pods whenever they are killed.
