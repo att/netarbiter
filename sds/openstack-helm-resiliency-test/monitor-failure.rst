@@ -6,6 +6,7 @@ We have 3 Monitors in this Ceph cluster, one on each of the 3 Monitor hosts.
 
 Case: 1 out of 3 Monitor Processes is Down
 ==========================================
+
 This is to test a scenario when 1 out of 3 Monitor processes is down.
 
 To bring down 1 Monitor process (out of 3), we identify a Monitor process and kill it from the monitor host (not a pod).
@@ -47,3 +48,13 @@ In the mean time, we monitored the status of Ceph and noted that it takes about 
       osd: 24 osds: 24 up, 24 in
 
 We also monitored the status of the Monitor pod through ``kubectl get pods -n ceph``, and the status of the pod (where a Monitor process is killed) changed as follows: ``Running`` -> ``Error`` -> `` Running`` and this recovery process takes about 24 seconds.
+
+Case: 2 out of 3 Monitor Processes are Down
+===========================================
+
+This is to test a scenario when 2 out of 3 Monitor processes are down.
+To bring down 2 Monitor processes (out of 3), we identify two Monitor processes and kill them from the 2 monitor hosts (not a pod).
+we monitored the status of Ceph when the Monitor processes are killed and noted that the symptoms are the same as when 1 Monior process is killed: 
+It takes longer (about 70 seconds) for the killed Monitor processes to recover from ``down`` to ``up``.
+The status of the pods (where the two Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` ->`` Running`` and this recovery process takes about 70 seconds.
+The reason is that Kubernetes automatically restarts pods whenever they are killed.
