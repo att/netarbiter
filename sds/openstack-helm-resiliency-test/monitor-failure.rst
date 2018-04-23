@@ -54,6 +54,7 @@ Case: 2 out of 3 Monitor Processes are Down
 
 This is to test a scenario when 2 out of 3 Monitor processes are down.
 To bring down 2 Monitor processes (out of 3), we identify two Monitor processes and kill them from the 2 monitor hosts (not a pod).
+
 We monitored the status of Ceph when the Monitor processes are killed and noted that the symptoms are similar to when 1 Monior process is killed: 
 
 - It takes longer (about 70 seconds) for the killed Monitor processes to recover from ``down`` to ``up``.
