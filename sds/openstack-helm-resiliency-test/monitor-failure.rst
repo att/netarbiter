@@ -47,7 +47,7 @@ In the mean time, we monitored the status of Ceph and noted that it takes about 
       mgr: voyager4(active)
       osd: 24 osds: 24 up, 24 in
 
-We also monitored the status of the Monitor pod through ``kubectl get pods -n ceph``, and the status of the pod (where a Monitor process is killed) changed as follows: ``Running`` -> ``Error`` -> `` Running`` and this recovery process takes about 24 seconds.
+We also monitored the status of the Monitor pod through ``kubectl get pods -n ceph``, and the status of the pod (where a Monitor process is killed) changed as follows: ``Running`` -> ``Error`` -> ``Running`` and this recovery process takes about 24 seconds.
 
 Case: 2 out of 3 Monitor Processes are Down
 ===========================================
@@ -59,7 +59,7 @@ We monitored the status of Ceph when the Monitor processes are killed and noted 
 
 - It takes longer (about 1 minute) for the killed Monitor processes to recover from ``down`` to ``up``.
   
-- The status of the pods (where the two Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` ->`` Running`` and this recovery process takes about 1 minute.
+- The status of the pods (where the two Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` ->``Running`` and this recovery process takes about 1 minute.
 
 
 Case: 3 out of 3 Monitor Processes are Down
@@ -68,7 +68,7 @@ Case: 3 out of 3 Monitor Processes are Down
 This is to test a scenario when 3 out of 3 Monitor processes are down.
 To bring down 3 Monitor processes (out of 3), we identify all 3 Monitor processes and kill them from the 3 monitor hosts (not pods).
 
-We monitored the status of Ceph Monitor pods and noted that the symptoms are similar to when 1 Monior process is killed:
+We monitored the status of Ceph Monitor pods and noted that the symptoms are similar to when 1 or 2 Monior processes are killed:
 
 .. code-block::
 
@@ -91,8 +91,8 @@ We monitored the status of Ceph Monitor pods and noted that the symptoms are sim
 
   $ kubectl get pods -n ceph -o wide | grep ceph-mon 
   NAME                                       READY     STATUS    RESTARTS   AGE
-  ceph-mon-8tml7                             0/1       Running   5          10d
-  ceph-mon-kstf8                             0/1       Running   5          10d
-  ceph-mon-z4sl9                             0/1       Running   8          10d
+  ceph-mon-8tml7                             1/1       Running   5          10d
+  ceph-mon-kstf8                             1/1       Running   5          10d
+  ceph-mon-z4sl9                             1/1       Running   8          10d
 
 The status of the pods (where the three Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` -> ``Running`` and this recovery process takes about 1 minute.
