@@ -20,4 +20,4 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 * [Multi-site Network Emulation](./multisite-netemu)
 
-* [Resiliency Tests for OpenStack-Helm/Ceph](./sds/openstack-helm-resiliency-test)
+* [Resiliency Tests for OpenStack-Helm/Ceph](./sds/openstack-helm-ceph-resiliency-test)
