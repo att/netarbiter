@@ -68,7 +68,7 @@ Case: 3 out of 3 Monitor Processes are Down
 This is to test a scenario when 3 out of 3 Monitor processes are down.
 To bring down 3 Monitor processes (out of 3), we identify all 3 Monitor processes and kill them from the 3 monitor hosts (not pods).
 
-We monitored the status of Ceph when the Monitor processes are killed and noted that the symptoms are similar to when 1 Monior process is killed:
+We monitored the status of Ceph Monitor pods and noted that the symptoms are similar to when 1 Monior process is killed:
 
 .. code-block::
 
