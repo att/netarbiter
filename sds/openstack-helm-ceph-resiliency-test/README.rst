@@ -14,7 +14,7 @@ Communication
 
 .. _Hee Won Lee: knowpd@research.att.com
 
-.. _Yu Lim Lee: yxiang@research.att.com
+.. _Yu Xiang: yxiang@research.att.com
 
 Software Failure
 ----------------
