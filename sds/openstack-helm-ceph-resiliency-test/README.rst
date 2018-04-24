@@ -5,7 +5,7 @@ Resiliency Tests for OpenStack-Helm/Ceph
 Mission
 -------
 
-The goal of resiliency tests for OpenStack-Helm/Ceph is to provide the symptoms and solutions for the problems that happen due to software and/or hardward failures. Our resiliency test is of a limited scope to Ceph among mutiple OpenStack-Helm compoments.
+The goal of resiliency tests for OpenStack-Helm/Ceph is to provide the symptoms and solutions for the problems that happen due to software and/or hardward failures. Our resiliency test is of a limited scope to Ceph among various OpenStack-Helm compoments.
 
 Communication
 -------------
