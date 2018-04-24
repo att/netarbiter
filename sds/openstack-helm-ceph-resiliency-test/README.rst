@@ -12,14 +12,14 @@ Communication
 * Post your issues at <https://github.com/att/netarbiter/issues>
 * Email Hee Won Lee <knowpd@research.att.com> or Yu Xiang <yxiang@research.att.com>
 
-Software Failures
------------------
+Software Resiliency 
+-------------------
 * `Provisioning failure <./provision-failure.rst>`_
 * `OSD failure <./osd-failure.rst>`_
 * `Monitor failure <./monitor-failure.rst>`_
 
-Hardware Failures
------------------
+Hardware Resiliency
+-------------------
 * `Disk failure <./disk-failure.rst>`_
 * `Journal SSD failure <./journal-sdd-failure.rst>`_ 
 * `Host failure <./host-failure.rst>`_
