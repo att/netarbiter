@@ -9,7 +9,7 @@ The goal of resiliency tests for OpenStack-Helm/Ceph is to provide the symptoms 
 
 Communication
 -------------
-* Post your issues at https://github.com/att/netarbiter/issues
+* Post your issues at https://github.com/att/netarbiter/issues.
 * Email `Hee Won Lee`_ or `Yu Xiang`_.
 
 .. _Hee Won Lee: knowpd@research.att.com
