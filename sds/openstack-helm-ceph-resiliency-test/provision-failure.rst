@@ -176,11 +176,3 @@ Exit monitor pod, clean up and re-create the deployment for creating rbd volume 
   mariadb-2                        1/1       Running   0          41m
 
 
-Case: TBA
-==========
-
-Symptom
--------
-
-Solution
---------
