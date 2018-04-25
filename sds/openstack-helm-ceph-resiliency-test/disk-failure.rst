@@ -74,34 +74,25 @@ Solution:
 
 To recover the disk failure on ``/dev/sdd`` and bring back the failed OSD, excecute the following procedure:
 
-1. Zap the disk
+1. Zap the disk:
 
 .. code-block:: 
 
   $ sudo ceph-disk zap /dev/sdd
 
-2. Idenfiy the name of the OSD pod associated with the disk failure 
+2. Idenfiy the name of the OSD pod associated with the disk failure: 
 
 .. code-block:: 
 
   $ kubectl get pods -n ceph
 
-3. Delete the OSD pod associated with the disk failure
+3. Delete the OSD pod associated with the disk failure:
 
 .. code-block:: 
 
   $ kubectl delete pod ceph-osd-default-83945928-z4wn7 -n ceph
 
-4. Monitor the Ceph status
-
-.. code-block:: 
-
-  $ sudo ceph-disk zap /dev/sdd
-
-.. code-block:: shell
-
-  $ kubectl get pods -n ceph
-  $ kubectl delete pod ceph-osd-default-83945928-z4wn7 -n ceph
+4. Monitor the Ceph status:
 
 .. code-block::
 
@@ -138,7 +129,8 @@ To recover the disk failure on ``/dev/sdd`` and bring back the failed OSD, excec
       client:   5333 B/s rd, 3538 kB/s wr, 0 op/s rd, 7 op/s wr
       recovery: 14637 kB/s, 0 keys/s, 4 objects/s
 
-When ``kubectl get pods -n Ceph`` shows all OSD pods in ``Running`` status, we noticed that a new OSD is created and the oringial OSD associated with the disk failure is still in crushmap. This may be becasue when an OSD pod is terminited, it is also inicated again automaticly, and this iniciates a new OSD in the Ceph cluster. 
+5. Clean up the failed OSD from the Ceph cluster.
+When ``kubectl get pods -n ceph`` shows all OSD pods in ``Running`` status, we noticed that a new OSD is created and the oringial OSD associated with the disk failure is still in crushmap. 
 
 .. code-block::
 
@@ -197,7 +189,7 @@ When ``kubectl get pods -n Ceph`` shows all OSD pods in ``Running`` status, we n
   22   hdd  1.81999         osd.22        up  1.00000 1.00000 
   23   hdd  1.81999         osd.23        up  1.00000 1.00000 
 
-To keep the original Ceph cluster status, the failed OSD (e.g., OSD id = 9) should be removed:
+Remove the failed OSD (e.g., OSD id = 9):
 
 .. code-block::
 
@@ -205,7 +197,7 @@ To keep the original Ceph cluster status, the failed OSD (e.g., OSD id = 9) shou
   (mon-pod):/# ceph auth del osd.9
   (mon-pod):/# ceph osd rm 9
 
-Then validate Ceph status:
+Validate Ceph status:
 
 .. code-block::
 
