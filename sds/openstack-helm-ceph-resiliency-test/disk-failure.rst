@@ -200,24 +200,21 @@ Remove the failed OSD (e.g., OSD id = 9):
 
 Validate Ceph status:
 
-.. code-block::
+.. code-block:: 
 
   (mon-pod):/# ceph -s
     cluster:
       id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
-      health: HEALTH_ERR
-              1 scrub errors
-              Possible data damage: 1 pg inconsistent
+      health: HEALTH_WARN
               mon voyager1 is low on available space
-   
+      
     services:
       mon: 3 daemons, quorum voyager1,voyager2,voyager3
       mgr: voyager4(active)
       osd: 24 osds: 24 up, 24 in
-   
+      
     data:
       pools:   18 pools, 918 pgs
       objects: 318 objects, 978 MB
       usage:   5625 MB used, 44672 GB / 44678 GB avail
-      pgs:     917 active+clean
-               1   active+clean+inconsistent
+      pgs:     918 active+clean
