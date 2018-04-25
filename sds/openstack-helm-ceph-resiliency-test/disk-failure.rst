@@ -2,15 +2,15 @@
 Disk Failure
 ============
 
-Case: A Disk is Down
+Case: A Disk Fails
 ====================
 
 Symptom: 
 --------
 
-This is to test a scenario when a disk are down.
+This is to test a scenario when a disk failure happens.
 
-To bring down a disk (e.g., /dev/sdd) out of 24 disks, we run ``dd if=/dev/zero of=/dev/sdd`` from a storage host (not a pod).
+To bring down a disk (e.g., ``/dev/sdd``) out of 24 disks, we run ``dd if=/dev/zero of=/dev/sdd`` from a storage host (not a pod). We monitored the ceph status in the mean time and noticed one OSD which has ``/dev/sdd`` as a backend is down. 
 
 .. code-block::
 
@@ -72,7 +72,11 @@ To bring down a disk (e.g., /dev/sdd) out of 24 disks, we run ``dd if=/dev/zero 
 Solution:
 ---------
 
-Idenfiy a OSD pod name associated with a disk failure.
+To recover the disk failure on ``/dev/sdd`` and bring back the failed OSD, excecute the following procedure:
+1. Zap the disk ``/dev/sdd``
+2. Idenfiy the name of the OSD pod associated with the disk failure 
+3. Delete the OSD pod associated with the disk failure
+4. Monitor the Ceph status
 
 .. code-block::
   $ sudo ceph-disk zap /dev/sdd
@@ -115,6 +119,8 @@ Idenfiy a OSD pod name associated with a disk failure.
     io:
       client:   5333 B/s rd, 3538 kB/s wr, 0 op/s rd, 7 op/s wr
       recovery: 14637 kB/s, 0 keys/s, 4 objects/s
+
+When ``kubectl get pods -n Ceph`` shows all OSD pods in ``Running`` status, we noticed that a new OSD is created and the oringial OSD associated with the disk failure is still in crushmap. This may be becasue when an OSD pod is terminited, it is also inicated again automaticly, and this iniciates a new OSD in the Ceph cluster. 
 
 .. code-block::
 
@@ -172,6 +178,16 @@ Idenfiy a OSD pod name associated with a disk failure.
   21   hdd  1.81999         osd.21        up  1.00000 1.00000 
   22   hdd  1.81999         osd.22        up  1.00000 1.00000 
   23   hdd  1.81999         osd.23        up  1.00000 1.00000 
+
+To keep the original Ceph cluster status, the failed OSD (e.g., OSD id = 9) should be removed:
+
+.. code-block::
+
+  (mon-pod):/# ceph osd crush remove osd.9
+  (mon-pod):/# ceph auth del osd.9
+  (mon-pod):/# ceph osd rm 9
+
+Then validate Ceph status:
 
 .. code-block::
 
