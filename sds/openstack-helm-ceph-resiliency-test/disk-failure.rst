@@ -75,15 +75,16 @@ Solution:
 To recover the disk failure on ``/dev/sdd`` and bring back the failed OSD, excecute the following procedure:
 
 1. Zap the disk ``/dev/sdd``
-
-.. code-block:: 
-  $ sudo ceph-disk zap /dev/sdd
-
 2. Idenfiy the name of the OSD pod associated with the disk failure 
 3. Delete the OSD pod associated with the disk failure
 4. Monitor the Ceph status
 
+.. code-block:: 
+
+  $ sudo ceph-disk zap /dev/sdd
+
 .. code-block:: shell
+
   $ kubectl get pods -n ceph
   $ kubectl delete pod ceph-osd-default-83945928-z4wn7 -n ceph
 
