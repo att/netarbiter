@@ -130,7 +130,8 @@ To recover the disk failure on ``/dev/sdd`` and bring back the failed OSD, excec
       recovery: 14637 kB/s, 0 keys/s, 4 objects/s
 
 5. Clean up the failed OSD from the Ceph cluster.
-When ``kubectl get pods -n ceph`` shows all OSD pods in ``Running`` status, we noticed that a new OSD is created and the oringial OSD associated with the disk failure is still in crushmap. 
+
+   When ``kubectl get pods -n ceph`` shows all OSD pods in ``Running`` status, we noticed that a new OSD is created and the oringial OSD associated with the disk failure is still in crushmap. 
 
 .. code-block::
 
