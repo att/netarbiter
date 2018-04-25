@@ -12,10 +12,9 @@ The goal of our resiliency tests for `OpenStack-Helm/Ceph <https://github.com/op
    - Our focus lies on resiliency for various failure scenarioes but not on performance or stress testing.
    - We assume that you are knowledgeable about `Ceph <http://docs.ceph.com/docs/master/>`_ and `Kubernetes <https://kubernetes.io/docs/concepts/>`_.
 
-Communication
--------------
-* Post your issues at https://github.com/att/netarbiter/issues.
-* Email `Hee Won Lee`_ or `Yu Xiang`_.
+* Communication
+   - Post your issues at https://github.com/att/netarbiter/issues.
+   - Email `Hee Won Lee`_ or `Yu Xiang`_.
 
 .. _Hee Won Lee: knowpd@research.att.com
 .. _Yu Xiang: yxiang@research.att.com
