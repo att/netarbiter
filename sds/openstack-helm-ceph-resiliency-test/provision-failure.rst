@@ -5,8 +5,8 @@ Volume Provisioning Failure
 Case: Fail to Attach a RBD volume to a Pod
 ==========================================
 
-Symptom: ``Unable to mount volumes for pod``
---------------------------------------------
+Symptom: "Unable to mount volumes for pod"
+------------------------------------------
 Prepare ``pvc-sample.yaml`` and ``deploy-sample.yaml`` for creating an RBD volume and attach it to a pod.
 
 .. code-block::
