@@ -7,7 +7,9 @@ Refer to [RoCE_Deployment.md](./RoCE_Deployment.md)
 ### Configure NVMe over Fabrics
 * Ref: <https://community.mellanox.com/docs/DOC-2504>
 * Target Offload
-   - Ref: <https://community.mellanox.com/docs/DOC-2918>
+   - Ref: 
+      - <https://community.mellanox.com/docs/DOC-2918>
+      - <https://community.mellanox.com/docs/DOC-2906>
    - Notes:
       - Currently, an offloaded subsystem can be associated with only one namespace. 
       - An offloaded port is restricted to have one subsytem enabled
