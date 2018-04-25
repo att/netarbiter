@@ -190,7 +190,7 @@ To recover the disk failure on ``/dev/sdd`` and bring back the failed OSD, excec
   22   hdd  1.81999         osd.22        up  1.00000 1.00000 
   23   hdd  1.81999         osd.23        up  1.00000 1.00000 
 
-Remove the failed OSD (e.g., OSD id = 9):
+   Remove the failed OSD (e.g., OSD id = 9):
 
 .. code-block::
 
@@ -198,7 +198,7 @@ Remove the failed OSD (e.g., OSD id = 9):
   (mon-pod):/# ceph auth del osd.9
   (mon-pod):/# ceph osd rm 9
 
-Validate Ceph status:
+   Validate Ceph status:
 
 .. code-block::
 
