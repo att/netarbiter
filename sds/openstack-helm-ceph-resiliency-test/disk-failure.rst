@@ -10,7 +10,7 @@ Symptom:
 
 This is to test a scenario when a disk failure happens.
 
-To bring down a disk (e.g., ``/dev/sdd``) out of 24 disks, we run ``dd if=/dev/zero of=/dev/sdd`` from a storage host (not a pod). We monitored the ceph status in the mean time and noticed one OSD which has ``/dev/sdd`` as a backend is down. 
+To bring down a disk (e.g., ``/dev/sdd``) out of 24 disks, we run ``dd if=/dev/zero of=/dev/sdd`` from a storage host (not a pod). We monitor the ceph status in the mean time and notice one OSD which has ``/dev/sdd`` as a backend is down. 
 
 .. code-block::
 
@@ -73,10 +73,14 @@ Solution:
 ---------
 
 To recover the disk failure on ``/dev/sdd`` and bring back the failed OSD, excecute the following procedure:
-1. Zap the disk ``/dev/sdd``
-2. Idenfiy the name of the OSD pod associated with the disk failure 
-3. Delete the OSD pod associated with the disk failure
-4. Monitor the Ceph status
+
+   1. Zap the disk ``/dev/sdd``
+
+   2. Idenfiy the name of the OSD pod associated with the disk failure 
+
+   3. Delete the OSD pod associated with the disk failure
+
+   4. Monitor the Ceph status
 
 .. code-block::
   $ sudo ceph-disk zap /dev/sdd
