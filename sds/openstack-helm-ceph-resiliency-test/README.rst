@@ -8,7 +8,7 @@ Mission
 The goal of our resiliency tests for `OpenStack-Helm/Ceph <https://github.com/openstack/openstack-helm/tree/master/ceph>`_ is to provide the symptoms and solutions for the problems that occur due to software/hardward failure. 
 
 * Caveats: 
-   - This resiliency tests are of a limited scope to Ceph among various components of `OpenStack-Helm <https://github.com/openstack/openstack-helm>`_ 
+   - This resiliency tests are of a limited scope to Ceph among various components of `OpenStack-Helm <https://github.com/openstack/openstack-helm>`_.
    - Our focus lies on resiliency for various failure scenarioes but not on performance or stress testing.
    - We assume that you are knowledgeable about `Ceph <http://docs.ceph.com/docs/master/>`_ and `Kubernetes <https://kubernetes.io/docs/concepts/>`_.
 
