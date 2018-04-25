@@ -1,10 +1,6 @@
 ========================================
 Resiliency Tests for OpenStack-Helm/Ceph
 ========================================
-Contributers:  `Hee Won Lee`_ and `Yu Xiang`_.
-
-.. _Hee Won Lee: knowpd@research.att.com
-.. _Yu Xiang: yxiang@research.att.com
 
 Mission
 =======
@@ -28,10 +24,8 @@ Hardware Failure
 * `Journal SSD failure <./journal-sdd-failure.rst>`_ 
 * `Host failure <./host-failure.rst>`_
 
-Note
-====
 Communication
--------------
+=============
 * Post your issues at https://github.com/att/netarbiter/issues.
 * Email `Hee Won Lee`_ or `Yu Xiang`_.
 
