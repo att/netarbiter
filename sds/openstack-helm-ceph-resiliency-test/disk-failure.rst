@@ -74,13 +74,13 @@ Solution:
 
 To recover the disk failure on ``/dev/sdd`` and bring back the failed OSD, excecute the following procedure:
 
-   1. Zap the disk ``/dev/sdd``
+1. Zap the disk ``/dev/sdd``
 
-   2. Idenfiy the name of the OSD pod associated with the disk failure 
+2. Idenfiy the name of the OSD pod associated with the disk failure 
 
-   3. Delete the OSD pod associated with the disk failure
+3. Delete the OSD pod associated with the disk failure
 
-   4. Monitor the Ceph status
+4. Monitor the Ceph status
 
 .. code-block::
   $ sudo ceph-disk zap /dev/sdd
