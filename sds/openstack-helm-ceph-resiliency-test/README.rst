@@ -14,9 +14,9 @@ The goal of our resiliency tests for `OpenStack-Helm/Ceph <https://github.com/op
 
 Software Failure
 ================
-* `Provisioning failure <./provision-failure.rst>`_
-* `OSD failure <./osd-failure.rst>`_
 * `Monitor failure <./monitor-failure.rst>`_
+* `OSD failure <./osd-failure.rst>`_
+* `Provisioning failure <./provision-failure.rst>`_
 
 Hardware Failure
 ================
