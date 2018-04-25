@@ -7,7 +7,7 @@ Case: A Disk is Down
 
 This is to test a scenario when a disk are down.
 
-To bring down a disk (out of 24), we run ``dd if=/dev/zero of=/dev/sdd`` from a storage host (not a pod).
+To bring down a disk (e.g., /dev/sdd) out of 24 disks, we run ``dd if=/dev/zero of=/dev/sdd`` from a storage host (not a pod).
 
 .. code-block::
 
