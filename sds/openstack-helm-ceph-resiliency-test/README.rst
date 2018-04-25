@@ -16,7 +16,7 @@ Software Failure
 ================
 * `Monitor failure <./monitor-failure.rst>`_
 * `OSD failure <./osd-failure.rst>`_
-* `Provisioning failure <./provision-failure.rst>`_
+* `Miscellaneous failure <./miscellaneous-failure.rst>`_
 
 Hardware Failure
 ================

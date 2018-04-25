@@ -1,6 +1,6 @@
-===========================
-Volume Provisioning Failure
-===========================
+======================
+Miscellaneous Failures
+======================
 
 Case: Fail to Attach a RBD volume to a Pod
 ==========================================
@@ -221,7 +221,10 @@ Find and reapir the inconsistent placement group:
 
   (mon-pod):/# ceph pg repair 1.242
   instructing pg 1.242 on osd.11 to repair
-  root@voyager3:/# ceph -s
+
+.. code-block:: 
+
+  (mon-pod):/# ceph -s
     cluster:
       id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
       health: HEALTH_WARN
