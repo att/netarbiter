@@ -72,3 +72,57 @@ This is to test a scenario when a disk failure happens.
       usage:   5626 MB used, 44672 GB / 44678 GB avail
       pgs:     918 active+clean
 
+Recover the deleted node
+------------------------
+
+1. Create the token in master node:
+
+.. code-block::
+
+  $ sudo kubeadm token create --description eternity --ttl 0
+  $ sudo kubeadm token list
+
+2. Use the token to re-join the k8s cluster on the worker node:
+
+.. code-block::
+
+  $ sudo kubeadm join --token 712081.15a0cad313a3f96c 135.207.240.41:6443 --discovery-token-unsafe-skip-ca-verification
+
+3. Add Ceph storage and Ceph manager labels to the re-joined node:
+
+.. code-block::
+
+  $ kubectl label node voyager4 ceph-osd=enabled
+  $ kubectl label node voyager4 ceph-mgr=enabled
+
+4. Check if the delted node is shown ``Ready`` in k8s cluster.
+
+.. code-block::
+
+  $ kubectl get nodes
+  NAME       STATUS    ROLES     AGE       VERSION
+  voyager1   Ready     master    17d       v1.9.3
+  voyager2   Ready     <none>    17d       v1.9.3
+  voyager3   Ready     <none>    17d       v1.9.3
+  voyager4   Ready     <none>    11m       v1.9.3
+
+5. Check Ceph status in one of the Ceph monitors. All impacted Ceph components(manager, OSDs) on the deleted node are automatically recovered.
+
+.. code-block::
+
+  (mon-pod):/# ceph -s
+  cluster:
+    id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
+    health: HEALTH_WARN
+            mon voyager1 is low on available space
+
+  services:
+    mon: 3 daemons, quorum voyager1,voyager2,voyager3
+    mgr: voyager4(active)
+    osd: 24 osds: 24 up, 24 in
+
+  data:
+    pools:   18 pools, 918 pgs
+    objects: 320 objects, 971 MB
+    usage:   5651 MB used, 44672 GB / 44678 GB avail
+    pgs:     918 active+clean
