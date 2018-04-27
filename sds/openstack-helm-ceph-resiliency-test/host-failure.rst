@@ -6,6 +6,11 @@ Case: A K8s worker node (where ceph mgr is running) is deleted
 ==============================================================
 
 
+.. code-block::
+
+  $ kubectl drain voyager4 --delete-local-data --force --ignore-daemonsets
+  $ kubectl delete node voyager4
+
 Symptom: 
 --------
 
