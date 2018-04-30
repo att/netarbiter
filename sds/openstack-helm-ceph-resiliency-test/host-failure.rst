@@ -4,13 +4,12 @@ Host Failure
 
 Case: A K8s worker node (where ceph mgr is running) is deleted
 ==============================================================
-This is to test a scenario when a worker node is delted from a k8s cluster. Here the k8s cluster have 4 nodes and we are removing the one where Ceph manger is running (voyager4).
+This is to test a scenario when a worker node is deleted from a k8s cluster. Here the k8s cluster have 4 nodes and we are removing one node where Ceph manager is running (voyager4).
 
 .. code-block::
 
   $ kubectl drain voyager4 --delete-local-data --force --ignore-daemonsets
   $ kubectl delete node voyager4
-
 
 Symptom: 
 --------
@@ -72,12 +71,12 @@ The impact of the deleted node on the Ceph cluster is shown as below:
       usage:   5626 MB used, 44672 GB / 44678 GB avail
       pgs:     918 active+clean
 
-Recover the deleted node
-------------------------
+Recovery
+--------
 
-The following procedures are excuted to re-join the deleted node to k8s cluster:
+Excute the following procedure to re-join the deleted node to k8s cluster:
 
-1. Create the token in master node (if the original token is expired):
+1. Create a token in master node (if the original token was expired):
 
 .. code-block::
 
@@ -97,7 +96,7 @@ The following procedures are excuted to re-join the deleted node to k8s cluster:
   $ kubectl label node voyager4 ceph-osd=enabled
   $ kubectl label node voyager4 ceph-mgr=enabled
 
-4. Check if the delted node (voyager4) is shown as ``Ready`` in k8s cluster.
+4. Check if the deleted node (voyager4) is shown as ``Ready`` in k8s cluster.
 
 .. code-block::
 
@@ -108,7 +107,7 @@ The following procedures are excuted to re-join the deleted node to k8s cluster:
   voyager3   Ready     <none>    17d       v1.9.3
   voyager4   Ready     <none>    11m       v1.9.3
 
-5. Check Ceph status in one of the Ceph monitors. All impacted Ceph components(manager, OSDs) on the deleted node are automatically recovered.
+5. Check Ceph status in one of the Ceph monitors. All impacted Ceph components(mgr, osd) on the deleted node are automatically recovered.
 
 .. code-block::
 
