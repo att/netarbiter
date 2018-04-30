@@ -4,17 +4,17 @@ Host Failure
 
 Case: A K8s worker node (where ceph mgr is running) is deleted
 ==============================================================
-
+This is to test a scenario when a worker node is delted from a k8s cluster. Here the k8s cluster have 4 nodes and we are removing the one where Ceph manger is running (voyager4).
 
 .. code-block::
 
   $ kubectl drain voyager4 --delete-local-data --force --ignore-daemonsets
   $ kubectl delete node voyager4
 
+
 Symptom: 
 --------
-
-This is to test a scenario when a disk failure happens.
+The impact of the deleted node on the Ceph cluster is shown as below:
 
 .. code-block::
 
@@ -75,7 +75,9 @@ This is to test a scenario when a disk failure happens.
 Recover the deleted node
 ------------------------
 
-1. Create the token in master node:
+The following procedures are excuted to re-join the deleted node to k8s cluster:
+
+1. Create the token in master node (if the original token is expired):
 
 .. code-block::
 
@@ -95,7 +97,7 @@ Recover the deleted node
   $ kubectl label node voyager4 ceph-osd=enabled
   $ kubectl label node voyager4 ceph-mgr=enabled
 
-4. Check if the delted node is shown ``Ready`` in k8s cluster.
+4. Check if the delted node (voyager4) is shown as ``Ready`` in k8s cluster.
 
 .. code-block::
 
