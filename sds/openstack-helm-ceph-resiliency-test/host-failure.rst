@@ -127,3 +127,78 @@ Excute the following procedure to re-join the deleted node to k8s cluster:
     objects: 320 objects, 971 MB
     usage:   5651 MB used, 44672 GB / 44678 GB avail
     pgs:     918 active+clean
+
+
+
+Case: A K8s worker node (where ceph mgr is running) is deleted
+==============================================================
+
+This is to test a scenario when a worker node is deleted from a k8s cluster. Here the k8s cluster have 4 nodes and we are removing one node where Ceph manager is running (voyager4).
+
+.. code-block::
+
+  $ kubectl drain voyager4 --delete-local-data --force --ignore-daemonsets
+  $ kubectl delete node voyager4
+
+Symptom: 
+--------
+The impact of the deleted node on the Ceph cluster is shown as below:
+
+.. code-block::
+  root@voyager1:/# ceph osd tree
+  ID CLASS WEIGHT   TYPE NAME         STATUS REWEIGHT PRI-AFF 
+  -1       43.67981 root default                              
+  -2       10.91995     host voyager1                         
+   0   hdd  1.81999         osd.0         up  1.00000 1.00000 
+   1   hdd  1.81999         osd.1         up  1.00000 1.00000 
+   3   hdd  1.81999         osd.3         up  1.00000 1.00000 
+   4   hdd  1.81999         osd.4         up  1.00000 1.00000 
+   6   hdd  1.81999         osd.6         up  1.00000 1.00000 
+  24   hdd  1.81999         osd.24        up  1.00000 1.00000 
+  -9       10.91995     host voyager2                         
+  14   hdd  1.81999         osd.14        up  1.00000 1.00000 
+  16   hdd  1.81999         osd.16        up  1.00000 1.00000 
+  17   hdd  1.81999         osd.17        up  1.00000 1.00000 
+  18   hdd  1.81999         osd.18        up  1.00000 1.00000 
+  19   hdd  1.81999         osd.19        up  1.00000 1.00000 
+  20   hdd  1.81999         osd.20        up  1.00000 1.00000 
+  -5       10.91995     host voyager3                         
+   2   hdd  1.81999         osd.2       down  1.00000 1.00000 
+   5   hdd  1.81999         osd.5       down  1.00000 1.00000 
+   7   hdd  1.81999         osd.7       down  1.00000 1.00000 
+   8   hdd  1.81999         osd.8       down  1.00000 1.00000 
+  10   hdd  1.81999         osd.10      down  1.00000 1.00000 
+  11   hdd  1.81999         osd.11      down  1.00000 1.00000 
+  -7       10.91995     host voyager4                         
+  12   hdd  1.81999         osd.12        up  1.00000 1.00000 
+  13   hdd  1.81999         osd.13        up  1.00000 1.00000 
+  15   hdd  1.81999         osd.15        up  1.00000 1.00000 
+  21   hdd  1.81999         osd.21        up  1.00000 1.00000 
+  22   hdd  1.81999         osd.22        up  1.00000 1.00000 
+  23   hdd  1.81999         osd.23        up  1.00000 1.00000 
+
+.. code-block::
+
+  root@voyager1:/# ceph -s
+    cluster:
+      id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
+      health: HEALTH_WARN
+              6 osds down
+              1 host (6 osds) down
+              Degraded data redundancy: 251/945 objects degraded (26.561%), 208 pgs degraded, 702 pgs undersized
+              mon voyager1 is low on available space
+              1/3 mons down, quorum voyager1,voyager2
+   
+    services:
+      mon: 3 daemons, quorum voyager1,voyager2, out of quorum: voyager3
+      mgr: voyager4(active)
+      osd: 24 osds: 18 up, 24 in
+   
+    data:
+      pools:   18 pools, 918 pgs
+      objects: 315 objects, 966 MB
+      usage:   5654 MB used, 44672 GB / 44678 GB avail
+      pgs:     251/945 objects degraded (26.561%)
+               494 active+undersized
+               216 active+clean
+               208 active+undersized+degraded
