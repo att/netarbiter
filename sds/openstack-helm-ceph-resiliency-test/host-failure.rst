@@ -164,84 +164,8 @@ In case you additionally encouter the following error:
     pgs:     918 active+clean
 
 
-
-Case: A K8s worker node (where ceph mgr is running) is deleted
-==============================================================
-
-This is to test a scenario when a worker node is deleted from a k8s cluster. Here the k8s cluster have 4 nodes and we are removing one node where Ceph manager is running (voyager4).
-
-.. code-block::
-
-  $ kubectl drain voyager4 --delete-local-data --force --ignore-daemonsets
-  $ kubectl delete node voyager4
-
-Symptom: 
---------
-The impact of the deleted node on the Ceph cluster is shown as below:
-
-.. code-block::
-  root@voyager1:/# ceph osd tree
-  ID CLASS WEIGHT   TYPE NAME         STATUS REWEIGHT PRI-AFF 
-  -1       43.67981 root default                              
-  -2       10.91995     host voyager1                         
-   0   hdd  1.81999         osd.0         up  1.00000 1.00000 
-   1   hdd  1.81999         osd.1         up  1.00000 1.00000 
-   3   hdd  1.81999         osd.3         up  1.00000 1.00000 
-   4   hdd  1.81999         osd.4         up  1.00000 1.00000 
-   6   hdd  1.81999         osd.6         up  1.00000 1.00000 
-  24   hdd  1.81999         osd.24        up  1.00000 1.00000 
-  -9       10.91995     host voyager2                         
-  14   hdd  1.81999         osd.14        up  1.00000 1.00000 
-  16   hdd  1.81999         osd.16        up  1.00000 1.00000 
-  17   hdd  1.81999         osd.17        up  1.00000 1.00000 
-  18   hdd  1.81999         osd.18        up  1.00000 1.00000 
-  19   hdd  1.81999         osd.19        up  1.00000 1.00000 
-  20   hdd  1.81999         osd.20        up  1.00000 1.00000 
-  -5       10.91995     host voyager3                         
-   2   hdd  1.81999         osd.2       down  1.00000 1.00000 
-   5   hdd  1.81999         osd.5       down  1.00000 1.00000 
-   7   hdd  1.81999         osd.7       down  1.00000 1.00000 
-   8   hdd  1.81999         osd.8       down  1.00000 1.00000 
-  10   hdd  1.81999         osd.10      down  1.00000 1.00000 
-  11   hdd  1.81999         osd.11      down  1.00000 1.00000 
-  -7       10.91995     host voyager4                         
-  12   hdd  1.81999         osd.12        up  1.00000 1.00000 
-  13   hdd  1.81999         osd.13        up  1.00000 1.00000 
-  15   hdd  1.81999         osd.15        up  1.00000 1.00000 
-  21   hdd  1.81999         osd.21        up  1.00000 1.00000 
-  22   hdd  1.81999         osd.22        up  1.00000 1.00000 
-  23   hdd  1.81999         osd.23        up  1.00000 1.00000 
-
-.. code-block::
-
-  root@voyager1:/# ceph -s
-    cluster:
-      id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
-      health: HEALTH_WARN
-              6 osds down
-              1 host (6 osds) down
-              Degraded data redundancy: 251/945 objects degraded (26.561%), 208 pgs degraded, 702 pgs undersized
-              mon voyager1 is low on available space
-              1/3 mons down, quorum voyager1,voyager2
-   
-    services:
-      mon: 3 daemons, quorum voyager1,voyager2, out of quorum: voyager3
-      mgr: voyager4(active)
-      osd: 24 osds: 18 up, 24 in
-   
-    data:
-      pools:   18 pools, 918 pgs
-      objects: 315 objects, 966 MB
-      usage:   5654 MB used, 44672 GB / 44678 GB avail
-      pgs:     251/945 objects degraded (26.561%)
-               494 active+undersized
-               216 active+clean
-               208 active+undersized+degraded
-
-
 Case: Two K8s worker nodes (where ceph-mon & ceph-mgr are running) are deleted
 ==============================================================================
-
 
 Symptom: 
 --------
@@ -377,6 +301,7 @@ Recovery:
   $ kubectl label node voyager4 ceph-osd=enabled
 
 4. Check if 6 osds are back up (i.e., from 12 up to 18 up):
+
 .. code-block::
 
   root@voyager1:/# ceph -s
@@ -429,12 +354,14 @@ Recovery:
 
 7. Check if ceph-mgr is Running  
 (before)  
+
 .. code-block::
 
   $ kubectl get pods -n ceph |grep ceph-mgr
   ceph-mgr-7c66bd658-mhww8                   0/1       Pending   0          23h
 
 (after)  
+
 .. code-block::
   $ kubectl get pods -n ceph |grep ceph-mgr
   ceph-mgr-7c66bd658-mhww8                   1/1       Running   0          23h
@@ -447,6 +374,7 @@ Recovery:
   $ kubectl label node voyager4 ceph-osd=enabled 
 
 9. Check if all 24 osds are up:
+
 .. code-block::
 
   root@voyager1:/# ceph -s
