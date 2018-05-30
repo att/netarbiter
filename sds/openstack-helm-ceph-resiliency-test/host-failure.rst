@@ -256,6 +256,7 @@ Recovery:
   $ kubectl label node voyager3 ceph-mon=enabled 
 
 3. Check if 3 mon daemons are in quorum:
+
 .. code-block::
 
   (mon-pod):/# ceph -s  
