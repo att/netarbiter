@@ -89,6 +89,41 @@ Excute the following procedure to re-join the deleted node to k8s cluster:
 
   $ sudo kubeadm join --token 712081.15a0cad313a3f96c 135.207.240.41:6443 --discovery-token-unsafe-skip-ca-verification
 
+In case you encounter the following error:
+
+.. code-block::
+
+  $ sudo kubeadm join --token 712081.15a0cad313a3f96c 135.207.240.41:6443 --discovery-token-unsafe-skip-ca-verification
+  [preflight] Running pre-flight checks.
+          [WARNING FileExisting-crictl]: crictl not found in system path
+  [preflight] Some fatal errors occurred:
+          [ERROR Port-10250]: Port 10250 is in use
+          [ERROR FileAvailable--etc-kubernetes-pki-ca.crt]: /etc/kubernetes/pki/ca.crt already exists
+          [ERROR FileAvailable--etc-kubernetes-kubelet.conf]: /etc/kubernetes/kubelet.conf already exists
+  [preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+
+then run:
+
+.. code-block::
+
+  $ sudo kubeadm reset
+
+In case you additionally encouter the following error:
+
+.. code-block::
+
+  $ sudo kubeadm join --token 712081.15a0cad313a3f96c 135.207.240.41:6443 --discovery-token-unsafe-skip-
+  ca-verification
+  [preflight] Running pre-flight checks.
+          [WARNING FileExisting-crictl]: crictl not found in system path
+  [preflight] Some fatal errors occurred:
+          [ERROR Swap]: running with swap on is not supported. Please disable swap
+  [preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+
+.. code-block::
+
+  $ sudo swapoff -a    
+
 3. Add Ceph storage and Ceph manager labels to the re-joined node:
 
 .. code-block::
