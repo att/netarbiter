@@ -112,8 +112,7 @@ In case you additionally encouter the following error:
 
 .. code-block::
 
-  $ sudo kubeadm join --token 712081.15a0cad313a3f96c 135.207.240.41:6443 --discovery-token-unsafe-skip-
-  ca-verification
+  $ sudo kubeadm join --token 712081.15a0cad313a3f96c 135.207.240.41:6443 --discovery-token-unsafe-skip-ca-verification
   [preflight] Running pre-flight checks.
           [WARNING FileExisting-crictl]: crictl not found in system path
   [preflight] Some fatal errors occurred:
