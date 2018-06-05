@@ -305,7 +305,8 @@ Recovery:
 
 .. code-block::
 
-  root@voyager1:/# ceph -s
+  (mon-pod):/# ceph -s
+
     cluster:
       id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
       health: HEALTH_WARN
@@ -378,7 +379,7 @@ Recovery:
 
 .. code-block::
 
-  root@voyager1:/# ceph -s
+  (mon-pod):/# ceph -s
     cluster:
       id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
       health: HEALTH_WARN
@@ -404,6 +405,8 @@ Recovery:
 Case: Two K8s worker nodes (each has one ceph-mon running) are deleted
 ======================================================================
 
+Symptom:
+--------
 .. code-block::
 
   $ kubectl drain voyager2 --delete-local-data --force --ignore-daemonsets
@@ -413,44 +416,54 @@ Case: Two K8s worker nodes (each has one ceph-mon running) are deleted
 
 .. code-block::
 
-root@voyager1:/# ceph -s
-2018-06-05 21:11:55.785848 7fd263070700  0 monclient(hunting): authenticate timed out after 300
-2018-06-05 21:11:55.785911 7fd263070700  0 librados: client.admin authentication error (110) Connection timed out
-[errno 110] error connecting to the cluster
+  (mon-pod):/# ceph -s
+  2018-06-05 21:11:55.785848 7fd263070700  0 monclient(hunting): authenticate timed out after 300
+  2018-06-05 21:11:55.785911 7fd263070700  0 librados: client.admin authentication error (110) Connection timed out
+  [errno 110] error connecting to the cluster
 
 
+Recovery:
+---------
+In worker node
 .. code-block::
 
   $ sudo kubeadm join --token 712081.15a0cad313a3f96c 135.207.240.41:6443 --discovery-token-unsafe-skip-ca-verification
+  $ sudo kubeadm reset
+
+In master node:
+.. code-block::
+
+  $ kubectl label node voyager2 ceph-mon=enabled
+
 
 .. code-block::
 
-root@voyager2:/# ceph -s
-  cluster:
-    id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
-    health: HEALTH_WARN
-            12 osds down
-            2 hosts (12 osds) down
-            Reduced data availability: 489 pgs inactive, 42 pgs down, 4 pgs incomplete
-            Degraded data redundancy: 267/801 objects degraded (33.333%), 218 pgs degraded, 872 pgs undersized
-            10 slow requests are blocked > 32 sec
-            mon voyager1 is low on available space
- 
-  services:
-    mon: 2 daemons, quorum voyager1,voyager2
-    mgr: voyager4(active)
-    osd: 24 osds: 12 up, 24 in
- 
-  data:
-    pools:   18 pools, 918 pgs
-    objects: 267 objects, 818 MB
-    usage:   5393 MB used, 44672 GB / 44678 GB avail
-    pgs:     53.268% pgs not active
-             267/801 objects degraded (33.333%)
-             340 active+undersized
-             314 undersized+peered
-             129 undersized+degraded+peered
-             89  active+undersized+degraded
-             42  down
-             2   creating+incomplete
-             2   incomplete
+  (mon-pod):/# ceph -s
+    cluster:
+      id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
+      health: HEALTH_WARN
+              12 osds down
+              2 hosts (12 osds) down
+              Reduced data availability: 489 pgs inactive, 42 pgs down, 4 pgs incomplete
+              Degraded data redundancy: 267/801 objects degraded (33.333%), 218 pgs degraded, 872 pgs undersized
+              10 slow requests are blocked > 32 sec
+              mon voyager1 is low on available space
+   
+    services:
+      mon: 2 daemons, quorum voyager1,voyager2
+      mgr: voyager4(active)
+      osd: 24 osds: 12 up, 24 in
+   
+    data:
+      pools:   18 pools, 918 pgs
+      objects: 267 objects, 818 MB
+      usage:   5393 MB used, 44672 GB / 44678 GB avail
+      pgs:     53.268% pgs not active
+               267/801 objects degraded (33.333%)
+               340 active+undersized
+               314 undersized+peered
+               129 undersized+degraded+peered
+               89  active+undersized+degraded
+               42  down
+               2   creating+incomplete
+               2   incomplete
