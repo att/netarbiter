@@ -409,12 +409,15 @@ This is to test a scenario when two worker nodes (voayger2 and voyager3, each of
 
 Symptom:
 --------
+1. Delete two woker nodes:
 .. code-block::
 
   $ kubectl drain voyager2 --delete-local-data --force --ignore-daemonsets
   $ kubectl delete node voyager2
   $ kubectl drain voyager3 --delete-local-data --force --ignore-daemonsets
   $ kubectl delete node voyager3  
+
+2. Now you cannot check ceph status any longer:
 
 .. code-block::
 
@@ -426,14 +429,14 @@ Symptom:
 
 Recovery:
 ---------
-1. In worker node,  use the token to re-join the k8s cluster on the worker node (e.g. voyager3):
+1. Rejoin a worker node (e.g. voyager2) to the K8s cluster. In the worker node, run the following:
 
 .. code-block::
 
   $ sudo kubeadm join --token 712081.15a0cad313a3f96c 135.207.240.41:6443 --discovery-token-unsafe-skip-ca-verification
   $ sudo kubeadm reset
 
-2. In master node, add the ceph-mon label to the re-joined k8s node (e.g. voyager2)
+2. In the master node, add the ceph-mon label to the re-joined k8s node (e.g. voyager2)
 
 .. code-block::
 
