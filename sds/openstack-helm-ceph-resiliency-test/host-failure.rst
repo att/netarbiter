@@ -405,6 +405,8 @@ Recovery:
 Case: Two K8s worker nodes (each has one ceph-mon running) are deleted
 ======================================================================
 
+This is to test a scenario when two worker nodes (voayger2 and voyager3, each of which has a ceph-mon running) are deleted from a k8s cluster. 
+
 Symptom:
 --------
 .. code-block::
@@ -424,18 +426,20 @@ Symptom:
 
 Recovery:
 ---------
-In worker node
+1. In worker node,  use the token to re-join the k8s cluster on the worker node (e.g. voyager3):
+
 .. code-block::
 
   $ sudo kubeadm join --token 712081.15a0cad313a3f96c 135.207.240.41:6443 --discovery-token-unsafe-skip-ca-verification
   $ sudo kubeadm reset
 
-In master node:
+2. In master node, add the ceph-mon label to the re-joined k8s node (e.g. voyager2)
+
 .. code-block::
 
   $ kubectl label node voyager2 ceph-mon=enabled
 
-
+3. Check the ceph cluster status in one of the running monitor pods:
 .. code-block::
 
   (mon-pod):/# ceph -s
