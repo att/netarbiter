@@ -476,3 +476,50 @@ Recovery:
                42  down
                2   creating+incomplete
                2   incomplete
+
+
+Case: One work node where ceph-mgr is running is rebooted
+=========================================================
+
+Symptom:
+--------
+
+.. code-block::
+
+  $ kubectl get pods -n ceph
+  NAME                                       READY     STATUS     RESTARTS   AGE
+  ceph-cephfs-provisioner-56cd9948c5-k9ffj   1/1       Running    0          54d
+  ceph-cephfs-provisioner-56cd9948c5-zpk2p   1/1       Running    0          54d
+  ceph-mds-679f98dd45-t6mdw                  0/1       Pending    0          54d
+  ceph-mgr-7c66bd658-46lj4                   0/1       Pending    0          17m
+  ceph-mgr-7c66bd658-mhww8                   1/1       Unknown    0          7d
+  ceph-mon-95m6q                             1/1       Running    1          22h
+  ceph-mon-check-74b98c966b-9nfqt            1/1       Running    0          23h
+  ceph-mon-kstf8                             1/1       Running    7          54d
+  ceph-mon-lswj8                             1/1       Running    1          38m
+  ceph-osd-default-64779b8c-2v24h            1/1       NodeLost   0          28m
+  ceph-osd-default-64779b8c-6gg7n            1/1       Running    0          41m
+  ceph-osd-default-64779b8c-7gr6m            1/1       Running    0          38m
+  ceph-osd-default-64779b8c-jdrj4            1/1       Running    4          54d
+  ceph-osd-default-6ea9de2c-8782v            1/1       Running    0          38m
+  ceph-osd-default-6ea9de2c-fszc7            1/1       Running    0          41m
+  ceph-osd-default-6ea9de2c-jr87m            1/1       NodeLost   0          28m
+  ceph-osd-default-6ea9de2c-vhg69            1/1       Running    4          54d
+  ceph-osd-default-7544b6da-2pp2j            1/1       NodeLost   0          28m
+  ceph-osd-default-7544b6da-79x27            1/1       Running    0          41m
+  ceph-osd-default-7544b6da-bnqgq            1/1       Running    0          35d
+  ceph-osd-default-7544b6da-s5xt4            1/1       Running    0          38m
+  ceph-osd-default-7cfc44c1-7g8vm            1/1       Running    0          41m
+  ceph-osd-default-7cfc44c1-9nm4l            1/1       NodeLost   0          28m
+  ceph-osd-default-7cfc44c1-hcdmc            1/1       Running    0          35d
+  ceph-osd-default-7cfc44c1-t2dth            1/1       Running    0          38m
+  ceph-osd-default-83945928-4zzkk            1/1       Running    0          35d
+  ceph-osd-default-83945928-6jzvp            1/1       NodeLost   0          28m
+  ceph-osd-default-83945928-ts42z            1/1       Running    0          38m
+  ceph-osd-default-83945928-xwlln            1/1       Running    0          41m
+  ceph-osd-default-f9249fa9-2m5kx            1/1       Running    0          41m
+  ceph-osd-default-f9249fa9-4z46n            1/1       NodeLost   0          25m
+  ceph-osd-default-f9249fa9-86ldq            1/1       Running    0          35d
+  ceph-osd-default-f9249fa9-gr5zn            1/1       Running    0          38m
+  ceph-rbd-provisioner-69c59fb6f6-5zlnp      1/1       Running    0          54d
+  ceph-rbd-provisioner-69c59fb6f6-6dwxj      1/1       Running    0          54d
