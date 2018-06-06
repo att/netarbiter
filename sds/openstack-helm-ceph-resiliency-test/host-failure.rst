@@ -410,6 +410,7 @@ This is to test a scenario when two worker nodes (voayger2 and voyager3, each of
 Symptom:
 --------
 1. Delete two woker nodes:
+
 .. code-block::
 
   $ kubectl drain voyager2 --delete-local-data --force --ignore-daemonsets
