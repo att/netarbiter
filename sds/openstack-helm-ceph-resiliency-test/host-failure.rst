@@ -440,6 +440,7 @@ Recovery:
   $ kubectl label node voyager2 ceph-mon=enabled
 
 3. Check the ceph cluster status in one of the running monitor pods:
+
 .. code-block::
 
   (mon-pod):/# ceph -s
