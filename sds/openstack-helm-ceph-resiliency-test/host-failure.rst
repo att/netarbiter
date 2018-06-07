@@ -538,6 +538,7 @@ After reboot, the node appears in k8s cluster automatically, but the status is `
 
 Recovery:
 ---------
+Disable swap, and then the kubelet process in the work node will restart. Now the node status will change to ``Ready``. Also, Ceph pods will be restarted automatically; ceph status recovers.  
 
 .. code-block::
 
