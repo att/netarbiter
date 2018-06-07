@@ -481,9 +481,21 @@ Recovery:
 Case: One work node where ceph-mgr is running is rebooted
 =========================================================
 
+
 Symptom:
 --------
 
+After reboot, the node appears in k8s cluster automatically, but the status is ``NotReady``.
+
+.. code-block::
+
+  $ kubectl get nodes
+  NAME       STATUS     ROLES     AGE       VERSION
+  voyager1   Ready      master    57d       v1.9.3
+  voyager2   Ready      <none>    1d        v1.9.3
+  voyager3   Ready      <none>    22h       v1.9.3
+  voyager4   NotReady   <none>    8d        v1.9.3
+ 
 .. code-block::
 
   $ kubectl get pods -n ceph
@@ -523,3 +535,41 @@ Symptom:
   ceph-osd-default-f9249fa9-gr5zn            1/1       Running    0          38m
   ceph-rbd-provisioner-69c59fb6f6-5zlnp      1/1       Running    0          54d
   ceph-rbd-provisioner-69c59fb6f6-6dwxj      1/1       Running    0          54d
+
+Recovery:
+---------
+
+.. code-block::
+
+  $sudo swapoff -a
+
+.. code-block::
+
+  $ kubectl get nodes
+  NAME       STATUS     ROLES     AGE       VERSION
+  voyager1   Ready      master    57d       v1.9.3
+  voyager2   Ready      <none>    1d        v1.9.3
+  voyager3   Ready      <none>    22h       v1.9.3
+  voyager4   Ready      <none>    8d        v1.9.3
+
+.. code-block::
+  
+  (mon-pod):/# ceph -s
+  cluster:
+    id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
+    health: HEALTH_WARN
+            Reduced data availability: 46 pgs inactive, 46 pgs incomplete
+            mon voyager1 is low on available space
+ 
+  services:
+    mon: 3 daemons, quorum voyager1,voyager2,voyager3
+    mgr: voyager4(active, starting)
+    osd: 24 osds: 24 up, 24 in
+ 
+  data:
+    pools:   18 pools, 918 pgs
+    objects: 283 objects, 851 MB
+    usage:   5462 MB used, 44672 GB / 44678 GB avail
+    pgs:     5.011% pgs not active
+             872 active+clean
+             46  incomplete
