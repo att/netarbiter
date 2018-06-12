@@ -149,7 +149,7 @@ git commit --amend
 git review
 ```
 
-(Case B) If the gerrit upstream server is ahead of you,
+(Case B) If the gerrit upstream server is ahead of you:
 ```
 git rebase -i gerrit/master
 git add <file>
