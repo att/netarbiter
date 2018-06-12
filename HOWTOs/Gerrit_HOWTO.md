@@ -141,14 +141,23 @@ git review -s		# or git review --setup
 $ git review -d 566381
 ```
 
-7. Add a new comit to the current patch set:
+7. (Case A) Add a new comit to the current patch set:
 ```
 ## Edit files
 git add <file>
 git commit --amend
 git review
 ```
-(optional) To create a new patch set, run `git commit` instead of `git commit --amend`:
+
+(Case B) If the gerrit upstream server is ahead of you,
+```
+git rebase -i gerrit/master
+git add <file>
+git commit --amend
+git review
+```
+
+(Case C) To create a new patch set, run `git commit` instead of `git commit --amend`:
 ```
 ## Edit files
 git add <file>
@@ -158,3 +167,16 @@ git review
 
 Note:
    - Bug reports for a project are generally tracked on Launchpad at <https://bugs.launchpad.net/openstack-helm>
+
+## Troubleshooting
+### Symptom
+```
+youraccount@yourhost:~/mycode/566381/openstack-helm/doc/source/testing/ceph-resiliency$ git review
+Errors running git reset --hard a7dcc0ff44b6193ace1b6f61080736808bd4e90b
+fatal: Unable to read current working directory: No such file or directory
+```
+### Solution
+Run `git review` in a parent directory as follows: 
+```
+youraccount@yourhost:~/mycode/566381/openstack-helm/doc/source$ git review
+```
