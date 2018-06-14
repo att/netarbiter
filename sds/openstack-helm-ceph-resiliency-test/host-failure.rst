@@ -590,8 +590,8 @@ After reboot, the nodes appears in k8s cluster automatically, but the status is 
   NAME       STATUS    ROLES     AGE       VERSION
   voyager1   Ready     master    65d       v1.9.3
   voyager2   Ready     <none>    8d        v1.9.3
-  voyager3   Ready     <none>    7d        v1.9.3
-  voyager4   Ready     <none>    15d       v1.9.3 
+  voyager3   NotReady     <none>    7d        v1.9.3
+  voyager4   NotReady     <none>    15d       v1.9.3 
 
 Ceph status in monitor shows two hosts are down. 
 
