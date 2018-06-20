@@ -4,7 +4,7 @@ Host Failure
 
 Case: A K8s worker node (where ceph mgr is running) is deleted
 ==============================================================
-This is to test a scenario when a worker node is deleted from a k8s cluster. Here the k8s cluster have 4 nodes and we are removing one node where Ceph manager is running (voyager4).
+This is to test a scenario when a worker node is deleted from a k8s cluster. Here the k8s cluster has 4 nodes and we are removing one node where Ceph manager is running (voyager4).
 
 .. code-block::
 
@@ -142,7 +142,7 @@ In case you additionally encouter the following error:
   voyager3   Ready     <none>    17d       v1.9.3
   voyager4   Ready     <none>    11m       v1.9.3
 
-5. Check Ceph status in one of the Ceph monitors. All impacted Ceph components(mgr, osd) on the deleted node are automatically recovered.
+5. Check Ceph status. All impacted Ceph components(mgr, osd) on the deleted node are automatically recovered.
 
 .. code-block::
 
