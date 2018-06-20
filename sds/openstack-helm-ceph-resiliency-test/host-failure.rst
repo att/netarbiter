@@ -434,8 +434,8 @@ Recovery:
 
 .. code-block::
 
-  $ sudo kubeadm join --token 712081.15a0cad313a3f96c 135.207.240.41:6443 --discovery-token-unsafe-skip-ca-verification
   $ sudo kubeadm reset
+  $ sudo kubeadm join --token 712081.15a0cad313a3f96c 135.207.240.41:6443 --discovery-token-unsafe-skip-ca-verification
 
 2. In the master node, add the ceph-mon label to the re-joined k8s node (e.g. voyager2)
 
