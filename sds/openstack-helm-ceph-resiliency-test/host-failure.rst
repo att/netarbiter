@@ -142,7 +142,7 @@ In case you additionally encouter the following error:
   voyager3   Ready     <none>    17d       v1.9.3
   voyager4   Ready     <none>    11m       v1.9.3
 
-5. Check Ceph status. All impacted Ceph components(mgr, osd) on the deleted node are automatically recovered.
+5. Check Ceph status in one of the running monitor pods. All impacted Ceph components(mgr, osd) on the deleted node are automatically recovered.
 
 .. code-block::
 
