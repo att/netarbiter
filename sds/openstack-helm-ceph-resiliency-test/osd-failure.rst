@@ -2,6 +2,13 @@
 OSD Failure
 ===========
 
+Test Environment:
+
+- Cluster size: 4 host machines
+- Kubernetes 1.9.3
+- Ceph 12.2.3
+- OpenStack-Helm commit 28734352741bae228a4ea4f40bcacc33764221eb
+
 We have 24 OSDs in this Ceph cluster, 6 OSDs on each of the 4 hosts.
 
 Case: OSD processes are killed

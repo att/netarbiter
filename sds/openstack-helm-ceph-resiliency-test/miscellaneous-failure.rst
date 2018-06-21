@@ -2,6 +2,13 @@
 Miscellaneous Failures
 ======================
 
+Test Environment:
+
+- Cluster size: 4 host machines
+- Kubernetes 1.9.3
+- Ceph 12.2.3
+- OpenStack-Helm commit 28734352741bae228a4ea4f40bcacc33764221eb
+
 Case: Fail to Attach a RBD volume to a Pod
 ==========================================
 

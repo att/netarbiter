@@ -2,6 +2,13 @@
 Host Failure
 ============
 
+Test Environment:
+
+- Cluster size: 4 host machines
+- Kubernetes 1.9.3
+- Ceph 12.2.3
+- OpenStack-Helm commit 28734352741bae228a4ea4f40bcacc33764221eb
+
 Case: A K8s worker node (where ceph mgr is running) is deleted
 ==============================================================
 This is to test a scenario when a worker node is deleted from a k8s cluster. Here the k8s cluster has 4 nodes and we are removing one node where Ceph manager is running (voyager4).
