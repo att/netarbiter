@@ -6,6 +6,7 @@ Test Environment
 ================
 
 - Cluster size: 4 host machines
+- Number of disks: 24 (= 6 disks per host * 4 hosts)
 - Kubernetes 1.9.3
 - Ceph 12.2.3
 - OpenStack-Helm commit 28734352741bae228a4ea4f40bcacc33764221eb
