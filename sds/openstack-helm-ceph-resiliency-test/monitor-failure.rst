@@ -2,6 +2,12 @@
 Monitor Failure
 ===============
 
+Test Environment:
+- Cluster size: 4 host machines
+- Kubernetes 1.9.3
+- Ceph 12.2.3
+- OpenStack-Helm commit 28734352741bae228a4ea4f40bcacc33764221eb
+
 We have 3 Monitors in this Ceph cluster, one on each of the 3 Monitor hosts.
 
 Case: 1 out of 3 Monitor Processes is Down
@@ -96,3 +102,52 @@ We monitored the status of Ceph Monitor pods and noted that the symptoms are sim
   ceph-mon-z4sl9                             1/1       Running   8          10d
 
 The status of the pods (where the three Monitor processes are killed) changed as follows: ``Running`` -> ``Error`` -> ``CrashLoopBackOff`` -> ``Running`` and this recovery process takes about 1 minute.
+
+
+
+Case: Create additional Monitor Process
+=======================================
+
+We delete a K82 worker node where a Monitor pod is running.
+
+.. code-block::
+
+  $ kubectl get pods -n ceph |grep ceph-mon
+  ceph-mon-kstf8                             0/1       Running   6          18d
+  ceph-mon-rh2s2                             0/1       Running   1          14m
+  ceph-mon-z4sl9                             0/1       Running   8          18d
+
+.. code-block::
+
+  $ kubectl get pods -n ceph |grep ceph-mon
+  ceph-mon-kstf8                             1/1       Running   6          18d
+  ceph-mon-rh2s2                             1/1       Running   1          14m
+  ceph-mon-z4sl9                             1/1       Running   8          18d
+  
+  
+.. code-block::
+
+  root@voyager2:/# ceph -s
+    cluster:
+      id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
+      health: HEALTH_WARN
+              6 osds down
+              1 host (6 osds) down
+              Degraded data redundancy: 251/945 objects degraded (26.561%), 208 pgs degraded, 702 pgs undersized
+              mon voyager1 is low on available space
+   
+    services:
+      mon: 3 daemons, quorum voyager1,voyager2,voyager4
+      mgr: voyager4(active)
+      osd: 24 osds: 18 up, 24 in
+   
+    data:
+      pools:   18 pools, 918 pgs
+      objects: 315 objects, 966 MB
+      usage:   5654 MB used, 44672 GB / 44678 GB avail
+      pgs:     251/945 objects degraded (26.561%)
+               494 active+undersized
+               216 active+clean
+               208 active+undersized+degraded
+
+It took about 9 minutes.
