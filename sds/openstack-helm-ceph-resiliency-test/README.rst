@@ -12,12 +12,6 @@ The goal of our resiliency tests for `OpenStack-Helm/Ceph <https://github.com/op
    - Our focus lies on resiliency for various failure scenarioes but not on performance or stress testing.
    - We assume that you are knowledgeable about `Ceph <http://docs.ceph.com/docs/master/>`_ and `Kubernetes <https://kubernetes.io/docs/concepts/>`_.
 
-Environment
-===========
-- Kubernetes 1.9.3
-- Ceph 12.2.3
-- Ceph Helm Chart 0.1.0
-
 Software Failure
 ================
 * `Monitor failure <./monitor-failure.rst>`_
