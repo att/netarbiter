@@ -8,7 +8,7 @@ Test Environment
 - Cluster size: 4 host machines
 - Number of disks: 24 (= 6 disks per host * 4 hosts)
 - Kubernetes version: 1.10.5 
-- Ceph version: v12.2.3
+- Ceph version: 12.2.3
 - OpenStack-Helm commit 25e50a34c66d5db7604746f4d2e12acbdd6c1459
 
 Case: One work node where ceph-mon & ceph-mgr is running is rebooted
