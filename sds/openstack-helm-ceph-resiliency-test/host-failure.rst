@@ -28,7 +28,9 @@ After reboot (node voyager3), the node status changes to ``NotReady``.
   voyager3   NotReady   <none>    21h       v1.10.5
   voyager4   Ready      <none>    21h       v1.10.5
 
-Ceph status shows that ceph-mon running on ``voyager3`` becomes out of quorum and ceph-mgr (originally running on ``voyager3``) now runs on ``voyager4``. Six osds running on ``voyager3`` are down; i.e., 18 osds are up out of 24 osds.
+Ceph status shows that ceph-mon running on ``voyager3`` becomes out of quorum 
+and ceph-mgr (originally running on ``voyager3``) now runs on ``voyager4``. 
+Also, six osds running on ``voyager3`` are down; i.e., 18 osds are up out of 24 osds.
 
 .. code-block:: console
 
