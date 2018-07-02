@@ -141,11 +141,21 @@ git review -s		# or git review --setup
 $ git review -d 566381
 ```
 
-7. (Case A) Add a new comit to the current patch set:
+7. 
+(Case A) Add a new comit to the current patch set:
 ```
-## Edit files
-git add <file>
-git commit --amend
+# Checkout latest code: 
+git review -d 566381
+
+# Make your changes
+
+# Add your changes: 
+git add <files>
+
+# Commit your changes: 
+git commit -- amend
+
+# Push your changes: 
 git review
 ```
 
