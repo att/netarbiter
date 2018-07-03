@@ -62,7 +62,9 @@ Also, six osds running on ``voyager3`` are down; i.e., 18 osds are up out of 24 
 
 Recovery:
 ---------
-The node status of ``voyager3`` changes to ``Ready`` after the node is up again. Also, Ceph pods are restarted automatically. Ceph status shows that the monitor running on ``voyager3`` is now in quorum.
+The node status of ``voyager3`` changes to ``Ready`` after the node is up again. 
+Also, Ceph pods are restarted automatically. 
+Ceph status shows that the monitor running on ``voyager3`` is now in quorum.
 
 .. code-block:: console
 
