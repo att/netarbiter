@@ -109,7 +109,7 @@ To replace the failed OSD, excecute the following procedure:
   (mon-pod):/# ceph auth del osd.2
   (mon-pod):/# ceph osd rm 2
 
-4. You can find that Ceph is healthy with a lost OSD (i.e., a total of 23 OSDs):
+You can find that Ceph is healthy with a lost OSD (i.e., a total of 23 OSDs):
 
 .. code-block:: console
 
@@ -133,26 +133,26 @@ To replace the failed OSD, excecute the following procedure:
       usage:   2551 MB used, 42814 GB / 42816 GB avail
       pgs:     182 active+clean
 
-5. Clean up the failed OSD:
+4. Clean up the failed OSD:
 
 .. code-block:: console
 
   (voyager4)$ rm -rf /var/lib/openstack-helm/ceph/journal1/osd/journal-sdh/*
 
-6. After replacing/restoring a storage drive associated with the failed OSD,
+5. After replacing/restoring a storage drive associated with the failed OSD,
 destroy ceph-related information on it:
 
 .. code-block:: console
 
   (voyager4)$ parted /dev/sdh mklabel msdos
 
-7. Start a new OSD pod on ``voyager4``:
+6. Start a new OSD pod on ``voyager4``:
 
 .. code-block:: console
 
   $ kubectl label nodes voyager4 --overwrite ceph_maintenance_window=inactive
 
-8. Validate the Ceph status (i.e., a total of 24 OSDs):
+Validate the Ceph status (i.e., a total of 24 OSDs):
 
 .. code-block:: console
 
