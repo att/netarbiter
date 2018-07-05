@@ -7,9 +7,9 @@ Test Environment
 
 - Cluster size: 4 host machines
 - Number of disks: 24 (= 6 disks per host * 4 hosts)
-- Kubernetes 1.9.3
-- Ceph 12.2.3
-- OpenStack-Helm commit 28734352741bae228a4ea4f40bcacc33764221eb
+- Kubernetes version: 1.10.5
+- Ceph version: 12.2.3
+- OpenStack-Helm commit 25e50a34c66d5db7604746f4d2e12acbdd6c1459
 
 Case: A Disk Fails
 ====================
@@ -18,7 +18,8 @@ Symptom:
 --------
 
 This is to test a scenario when a disk failure happens.
-We monitor the ceph status and notice one OSD (osd.2) on voyager4  which has ``/dev/sdh`` as a backend is down. 
+We monitor the ceph status and notice one OSD (osd.2) on voyager4 
+which has ``/dev/sdh`` as a backend is down. 
 
 .. code-block::
 
@@ -80,23 +81,26 @@ We monitor the ceph status and notice one OSD (osd.2) on voyager4  which has ``/
 Solution:
 ---------
 
-After restoring/replacing the failed disk, excecute the following procedure to replace the failed OSD:
+To replace the failed OSD, excecute the following procedure:
 
-1. Disable osd pod on host::
+1. From the Kubernetes cluster, remove the failed OSD pod, which is running on ``voyager4``:
 
 .. code-block:: console
 
   $ kubectl label nodes --all ceph_maintenance_window=inactive
   $ kubectl label nodes voyager4 --overwrite ceph_maintenance_window=active
+  $ kubectl patch -n ceph ds ceph-osd-default-64779b8c -p='{"spec":{"template":{"spec":{"nodeSelector":{"ceph-osd":"enabled","ceph_maintenance_window":"inactive"}}}}}'
 
-2. Obtain the yaml file of the OSD daemonset and identify the device (/dev/sdh) associated with the failed OSD:
+(Tip) To find the daemonset associated with a failed OSD, check out the followings:
 
 .. code-block:: console
 
-  $ kubectl get ds ceph-osd-default-64779b8c -n ceph -o yaml
-  $ kubectl patch -n ceph ds ceph-osd-default-64779b8c -p='{"spec":{"template":{"spec":{"nodeSelector":{"ceph-osd":"enabled","ceph_maintenance_window":"inactive"}}}}}'
+  (voyager4)$ ps -ef|grep /usr/bin/ceph-osd
+  (voyager1)$ kubectl get ds -n ceph
+  (voyager1)$ kubectl get ds <daemonset-name> -n ceph -o yaml
 
-3. Remove the failed OSD:
+
+3. Remove the failed OSD from the Ceph cluster:
 
 .. code-block:: console
 
@@ -105,7 +109,7 @@ After restoring/replacing the failed disk, excecute the following procedure to r
   (mon-pod):/# ceph auth del osd.2
   (mon-pod):/# ceph osd rm 2
 
-4. Monitor the Ceph status:
+4. You can find that Ceph is healthy with a lost OSD (i.e., a total of 23 OSDs):
 
 .. code-block:: console
 
@@ -129,20 +133,26 @@ After restoring/replacing the failed disk, excecute the following procedure to r
       usage:   2551 MB used, 42814 GB / 42816 GB avail
       pgs:     182 active+clean
 
-5. Clean up the failed OSD from the Ceph cluster.
+5. Clean up the failed OSD.
 
 .. code-block:: console
 
   (voyager4)$ rm -rf /var/lib/openstack-helm/ceph/journal1/osd/journal-sdh/*
-  (voyager4)$ parted /dev/sdh mklabel msdos
 
-6. Re-enable the OSD pod on node:
+6. After replacing/restoring a storage drive associated with the failed OSD, 
+destroy ceph-related information on it:
 
 .. code-block:: console
 
-  $ kubectl label nodes rdm8r003o001 --overwrite ceph_maintenance_window=inactive
+  (voyager4)$ parted /dev/sdh mklabel msdos
 
-Validate Ceph status:
+7. Start a new OSD pod on ``voyager4``:
+
+.. code-block:: console
+
+  $ kubectl label nodes voyager4 --overwrite ceph_maintenance_window=inactive
+
+8. Validate the Ceph status (i.e., a total of 24 OSDs):
 
 .. code-block:: console
 
