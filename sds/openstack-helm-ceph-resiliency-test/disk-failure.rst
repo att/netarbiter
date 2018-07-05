@@ -133,27 +133,22 @@ Note: To find the daemonset associated with a failed OSD, check out the followin
       usage:   2551 MB used, 42814 GB / 42816 GB avail
       pgs:     182 active+clean
 
-5. Clean up the failed OSD:
+5. Replace/restore a storage drive associated with the failed OSD with a new one
+
+6. Clean up the failed OSD:
 
 .. code-block:: console
 
   (voyager4)$ rm -rf /var/lib/openstack-helm/ceph/journal1/osd/journal-sdh/*
-
-
-6. Destroy ceph-related information on a storage drive associated with the failed OSD,
-if it has been previously used as an OSD backend:
-
-.. code-block:: console
-
   (voyager4)$ parted /dev/sdh mklabel msdos
 
-7. Start a new OSD pod on ``voyager4``:
+8. Start a new OSD pod on ``voyager4``:
 
 .. code-block:: console
 
   $ kubectl label nodes voyager4 --overwrite ceph_maintenance_window=inactive
 
-8. Validate the Ceph status (i.e., a total of 24 OSDs):
+9. Validate the Ceph status (i.e., a total of 24 OSDs):
 
 .. code-block:: console
 
