@@ -21,7 +21,7 @@ This is to test a scenario when a disk failure happens.
 We monitor the ceph status and notice one OSD (osd.2) on voyager4
 which has ``/dev/sdh`` as a backend is down.
 
-.. code-block::
+.. code-block:: console
 
   (mon-pod):/# ceph -s
     cluster:
@@ -43,7 +43,7 @@ which has ``/dev/sdh`` as a backend is down.
       usage:   2548 MB used, 42814 GB / 42816 GB avail
       pgs:     182 active+clean
 
-.. code-block::
+.. code-block:: console
 
   (mon-pod):/# ceph osd tree
   ID CLASS WEIGHT   TYPE NAME         STATUS REWEIGHT PRI-AFF
