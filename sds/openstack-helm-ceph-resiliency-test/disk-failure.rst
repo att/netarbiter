@@ -19,9 +19,30 @@ Symptom:
 
 This is to test a scenario when a disk failure happens.
 
-To bring down a disk (e.g., ``/dev/sdd``) out of 24 disks, we run ``dd if=/dev/zero of=/dev/sdd`` from a storage host (not a pod). We monitor the ceph status in the mean time and notice one OSD which has ``/dev/sdd`` as a backend is down. 
+To bring down a disk (e.g., ``/dev/sdh``) out of 24 disks, we run ``dd if=/dev/zero of=/dev/sdd`` from a storage host (not a pod). We monitor the ceph status in the mean time and notice one OSD which has ``/dev/sdh`` as a backend is down. 
 
 .. code-block::
+
+  (mon-pod):/# ceph -s
+    cluster:
+      id:     9d4d8c61-cf87-4129-9cef-8fbf301210ad
+      health: HEALTH_WARN
+              too few PGs per OSD (23 < min 30)
+              mon voyager1 is low on available space
+   
+    services:
+      mon: 3 daemons, quorum voyager1,voyager2,voyager3
+      mgr: voyager1(active), standbys: voyager3
+      mds: cephfs-1/1/1 up  {0=mds-ceph-mds-65bb45dffc-cslr6=up:active}, 1 up:standby
+      osd: 24 osds: 23 up, 23 in
+      rgw: 2 daemons active
+   
+    data:
+      pools:   18 pools, 182 pgs
+      objects: 240 objects, 3359 bytes
+      usage:   2548 MB used, 42814 GB / 42816 GB avail
+      pgs:     182 active+clean
+  
 
   (mon-pod):/# ceph -s
     cluster:
@@ -49,39 +70,40 @@ To bring down a disk (e.g., ``/dev/sdd``) out of 24 disks, we run ``dd if=/dev/z
   (mon-pod):/# ceph osd tree
   ID CLASS WEIGHT   TYPE NAME         STATUS REWEIGHT PRI-AFF 
   -1       43.67981 root default                              
-  -2       10.91995     host voyager1                         
-   0   hdd  1.81999         osd.0         up  1.00000 1.00000 
-   1   hdd  1.81999         osd.1         up  1.00000 1.00000 
-   3   hdd  1.81999         osd.3         up  1.00000 1.00000 
-   4   hdd  1.81999         osd.4         up  1.00000 1.00000 
-   6   hdd  1.81999         osd.6         up  1.00000 1.00000 
-   9   hdd  1.81999         osd.9       down        0 1.00000 
-  -9       10.91995     host voyager2                         
-  14   hdd  1.81999         osd.14        up  1.00000 1.00000 
-  16   hdd  1.81999         osd.16        up  1.00000 1.00000 
-  17   hdd  1.81999         osd.17        up  1.00000 1.00000 
-  18   hdd  1.81999         osd.18        up  1.00000 1.00000 
-  19   hdd  1.81999         osd.19        up  1.00000 1.00000 
-  20   hdd  1.81999         osd.20        up  1.00000 1.00000 
-  -5       10.91995     host voyager3                         
-   2   hdd  1.81999         osd.2         up  1.00000 1.00000 
+  -9       10.91995     host voyager1                         
    5   hdd  1.81999         osd.5         up  1.00000 1.00000 
-   7   hdd  1.81999         osd.7         up  1.00000 1.00000 
-   8   hdd  1.81999         osd.8         up  1.00000 1.00000 
+   6   hdd  1.81999         osd.6         up  1.00000 1.00000 
   10   hdd  1.81999         osd.10        up  1.00000 1.00000 
-  11   hdd  1.81999         osd.11        up  1.00000 1.00000 
-  -7       10.91995     host voyager4                         
-  12   hdd  1.81999         osd.12        up  1.00000 1.00000 
-  13   hdd  1.81999         osd.13        up  1.00000 1.00000 
-  15   hdd  1.81999         osd.15        up  1.00000 1.00000 
+  17   hdd  1.81999         osd.17        up  1.00000 1.00000 
+  19   hdd  1.81999         osd.19        up  1.00000 1.00000 
   21   hdd  1.81999         osd.21        up  1.00000 1.00000 
+  -3       10.91995     host voyager2                         
+   1   hdd  1.81999         osd.1         up  1.00000 1.00000 
+   4   hdd  1.81999         osd.4         up  1.00000 1.00000 
+  11   hdd  1.81999         osd.11        up  1.00000 1.00000 
+  13   hdd  1.81999         osd.13        up  1.00000 1.00000 
+  16   hdd  1.81999         osd.16        up  1.00000 1.00000 
+  18   hdd  1.81999         osd.18        up  1.00000 1.00000 
+  -2       10.91995     host voyager3                         
+   0   hdd  1.81999         osd.0         up  1.00000 1.00000 
+   3   hdd  1.81999         osd.3         up  1.00000 1.00000 
+  12   hdd  1.81999         osd.12        up  1.00000 1.00000 
+  20   hdd  1.81999         osd.20        up  1.00000 1.00000 
   22   hdd  1.81999         osd.22        up  1.00000 1.00000 
   23   hdd  1.81999         osd.23        up  1.00000 1.00000 
+  -4       10.91995     host voyager4                         
+   2   hdd  1.81999         osd.2       down        0 1.00000 
+   7   hdd  1.81999         osd.7         up  1.00000 1.00000 
+   8   hdd  1.81999         osd.8         up  1.00000 1.00000 
+   9   hdd  1.81999         osd.9         up  1.00000 1.00000 
+  14   hdd  1.81999         osd.14        up  1.00000 1.00000 
+  15   hdd  1.81999         osd.15        up  1.00000 1.00000
+
 
 Solution:
 ---------
 
-To recover the disk failure on ``/dev/sdd`` and bring back the failed OSD, excecute the following procedure:
+To recover the disk failure on ``/dev/sdh`` and bring back the failed OSD, excecute the following procedure:
 
 1. Zap the disk:
 
@@ -107,97 +129,28 @@ To recover the disk failure on ``/dev/sdd`` and bring back the failed OSD, excec
 
   (mon-pod):/# ceph -s
     cluster:
-      id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
-      health: HEALTH_ERR
-              1 scrub errors
-              Reduced data availability: 15 pgs inactive, 6 pgs peering
-              Possible data damage: 1 pg inconsistent
-              Degraded data redundancy: 60/951 objects degraded (6.309%), 35 pgs degraded
+      id:     9d4d8c61-cf87-4129-9cef-8fbf301210ad
+      health: HEALTH_WARN
+              too few PGs per OSD (23 < min 30)
               mon voyager1 is low on available space
-  
+   
     services:
       mon: 3 daemons, quorum voyager1,voyager2,voyager3
-      mgr: voyager4(active)
-      osd: 25 osds: 24 up, 24 in; 1 remapped pgs
-  
+      mgr: voyager1(active), standbys: voyager3
+      mds: cephfs-1/1/1 up  {0=mds-ceph-mds-65bb45dffc-cslr6=up:active}, 1 up:standby
+      osd: 23 osds: 23 up, 23 in
+      rgw: 2 daemons active
+   
     data:
-      pools:   18 pools, 918 pgs
-      objects: 317 objects, 972 MB
-      usage:   5704 MB used, 44672 GB / 44678 GB avail
-      pgs:     12.309% pgs not active
-               60/951 objects degraded (6.309%)
-               796 active+clean
-               56  activating
-               30  peering
-               27  activating+degraded
-               5   active+recovery_wait+degraded
-               3   active+recovering+degraded
-               1   active+clean+inconsistent
-  
-    io:
-      client:   5333 B/s rd, 3538 kB/s wr, 0 op/s rd, 7 op/s wr
-      recovery: 14637 kB/s, 0 keys/s, 4 objects/s
+      pools:   18 pools, 182 pgs
+      objects: 240 objects, 3359 bytes
+      usage:   2551 MB used, 42814 GB / 42816 GB avail
+      pgs:     182 active+clean
 
 5. Clean up the failed OSD from the Ceph cluster.
 
    When ``kubectl get pods -n ceph`` shows all OSD pods in ``Running`` status, we noticed that a new OSD is created and the oringial OSD associated with the disk failure is still in crushmap. 
 
-.. code-block::
-
-  (mon-pod):/# ceph -s
-    cluster:
-      id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
-      health: HEALTH_ERR
-              1 scrub errors
-              Possible data damage: 1 pg inconsistent
-              mon voyager1 is low on available space
-  
-    services:
-      mon: 3 daemons, quorum voyager1,voyager2,voyager3
-      mgr: voyager4(active)
-      osd: 25 osds: 24 up, 24 in
-  
-    data:
-      pools:   18 pools, 918 pgs
-      objects: 318 objects, 975 MB
-      usage:   5622 MB used, 44672 GB / 44678 GB avail
-      pgs:     917 active+clean
-               1   active+clean+inconsistent
-
-.. code-block::
-
-  (mon-pod):/# ceph osd tree
-  ID CLASS WEIGHT   TYPE NAME         STATUS REWEIGHT PRI-AFF 
-  -1       45.49980 root default                              
-  -2       12.73994     host voyager1                         
-   0   hdd  1.81999         osd.0         up  1.00000 1.00000 
-   1   hdd  1.81999         osd.1         up  1.00000 1.00000 
-   3   hdd  1.81999         osd.3         up  1.00000 1.00000 
-   4   hdd  1.81999         osd.4         up  1.00000 1.00000 
-   6   hdd  1.81999         osd.6         up  1.00000 1.00000 
-   9   hdd  1.81999         osd.9       down        0 1.00000 
-  24   hdd  1.81999         osd.24        up  1.00000 1.00000 
-  -9       10.91995     host voyager2                         
-  14   hdd  1.81999         osd.14        up  1.00000 1.00000 
-  16   hdd  1.81999         osd.16        up  1.00000 1.00000 
-  17   hdd  1.81999         osd.17        up  1.00000 1.00000 
-  18   hdd  1.81999         osd.18        up  1.00000 1.00000 
-  19   hdd  1.81999         osd.19        up  1.00000 1.00000 
-  20   hdd  1.81999         osd.20        up  1.00000 1.00000 
-  -5       10.91995     host voyager3                         
-   2   hdd  1.81999         osd.2         up  1.00000 1.00000 
-   5   hdd  1.81999         osd.5         up  1.00000 1.00000 
-   7   hdd  1.81999         osd.7         up  1.00000 1.00000 
-   8   hdd  1.81999         osd.8         up  1.00000 1.00000 
-  10   hdd  1.81999         osd.10        up  1.00000 1.00000 
-  11   hdd  1.81999         osd.11        up  1.00000 1.00000 
-  -7       10.91995     host voyager4                         
-  12   hdd  1.81999         osd.12        up  1.00000 1.00000 
-  13   hdd  1.81999         osd.13        up  1.00000 1.00000 
-  15   hdd  1.81999         osd.15        up  1.00000 1.00000 
-  21   hdd  1.81999         osd.21        up  1.00000 1.00000 
-  22   hdd  1.81999         osd.22        up  1.00000 1.00000 
-  23   hdd  1.81999         osd.23        up  1.00000 1.00000 
 
 Remove the failed OSD (e.g., OSD id = 9):
 
@@ -213,17 +166,20 @@ Validate Ceph status:
 
   (mon-pod):/# ceph -s
     cluster:
-      id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
+      id:     9d4d8c61-cf87-4129-9cef-8fbf301210ad
       health: HEALTH_WARN
+              too few PGs per OSD (22 < min 30)
               mon voyager1 is low on available space
-      
+   
     services:
       mon: 3 daemons, quorum voyager1,voyager2,voyager3
-      mgr: voyager4(active)
+      mgr: voyager1(active), standbys: voyager3
+      mds: cephfs-1/1/1 up  {0=mds-ceph-mds-65bb45dffc-cslr6=up:active}, 1 up:standby
       osd: 24 osds: 24 up, 24 in
-      
+      rgw: 2 daemons active
+   
     data:
-      pools:   18 pools, 918 pgs
-      objects: 318 objects, 978 MB
-      usage:   5625 MB used, 44672 GB / 44678 GB avail
-      pgs:     918 active+clean
+      pools:   18 pools, 182 pgs
+      objects: 240 objects, 3359 bytes
+      usage:   2665 MB used, 44675 GB / 44678 GB avail
+      pgs:     182 active+clean
