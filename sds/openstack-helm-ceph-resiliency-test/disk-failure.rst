@@ -92,12 +92,14 @@ After restoring/replacing the failed disk, excecute the following procedure to r
 2. Obtain the yaml file of the OSD daemonset and identify the device (/dev/sdh) associated with the failed OSD:
 
 .. code-block:: console
+
   $ kubectl get ds ceph-osd-default-64779b8c -n ceph -o yaml
   $ kubectl patch -n ceph ds ceph-osd-default-64779b8c -p='{"spec":{"template":{"spec":{"nodeSelector":{"ceph-osd":"enabled","ceph_maintenance_window":"inactive"}}}}}'
 
 3. Remove the failed OSD:
 
 .. code-block:: console
+
   (mon-pod):/# ceph osd lost 2
   (mon-pod):/# ceph osd crush remove osd.2
   (mon-pod):/# ceph auth del osd.2
@@ -105,7 +107,7 @@ After restoring/replacing the failed disk, excecute the following procedure to r
 
 4. Monitor the Ceph status:
 
-.. code-block::
+.. code-block:: console
 
   (mon-pod):/# ceph -s
     cluster:
@@ -129,18 +131,20 @@ After restoring/replacing the failed disk, excecute the following procedure to r
 
 5. Clean up the failed OSD from the Ceph cluster.
 
-.. code-block::
+.. code-block:: console
+
   (voyager4)$ rm -rf /var/lib/openstack-helm/ceph/journal1/osd/journal-sdh/*
   (voyager4)$ parted /dev/sdh mklabel msdos
 
 6. Re-enable the OSD pod on node:
 
-.. code-block::
+.. code-block:: console
+
   $ kubectl label nodes rdm8r003o001 --overwrite ceph_maintenance_window=inactive
 
 Validate Ceph status:
 
-.. code-block:: 
+.. code-block:: console
 
   (mon-pod):/# ceph -s
     cluster:
