@@ -139,8 +139,9 @@ Note: To find the daemonset associated with a failed OSD, check out the followin
 
   (voyager4)$ rm -rf /var/lib/openstack-helm/ceph/journal1/osd/journal-sdh/*
 
-6. After replacing/restoring a storage drive associated with the failed OSD,
-destroy ceph-related information on it:
+
+6. Destroy ceph-related information on a storage drive associated with the failed OSD,
+if it has been previously used as an OSD backend:
 
 .. code-block:: console
 
