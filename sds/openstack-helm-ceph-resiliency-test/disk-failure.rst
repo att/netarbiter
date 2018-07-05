@@ -18,8 +18,7 @@ Symptom:
 --------
 
 This is to test a scenario when a disk failure happens.
-
-To bring down a disk (e.g., ``/dev/sdh``) out of 24 disks, we run ``dd if=/dev/zero of=/dev/sdd`` from a storage host (not a pod). We monitor the ceph status in the mean time and notice one OSD which has ``/dev/sdh`` as a backend is down. 
+We monitor the ceph status and notice one OSD (osd.2) on voyager4  which has ``/dev/sdh`` as a backend is down. 
 
 .. code-block::
 
@@ -43,28 +42,6 @@ To bring down a disk (e.g., ``/dev/sdh``) out of 24 disks, we run ``dd if=/dev/z
       usage:   2548 MB used, 42814 GB / 42816 GB avail
       pgs:     182 active+clean
   
-
-  (mon-pod):/# ceph -s
-    cluster:
-      id:     fd366aef-b356-4fe7-9ca5-1c313fe2e324
-      health: HEALTH_ERR
-              1 scrub errors
-              Possible data damage: 1 pg inconsistent
-              mon voyager1 is low on available space
-   
-    services:
-      mon: 3 daemons, quorum voyager1,voyager2,voyager3
-      mgr: voyager4(active)
-      osd: 24 osds: 23 up, 23 in
-   
-    data:
-      pools:   18 pools, 918 pgs
-      objects: 320 objects, 982 MB
-      usage:   5501 MB used, 42811 GB / 42816 GB avail
-      pgs:     917 active+clean
-               1   active+clean+inconsistent
-
-
 .. code-block::
 
   (mon-pod):/# ceph osd tree
@@ -103,25 +80,28 @@ To bring down a disk (e.g., ``/dev/sdh``) out of 24 disks, we run ``dd if=/dev/z
 Solution:
 ---------
 
-To recover the disk failure on ``/dev/sdh`` and bring back the failed OSD, excecute the following procedure:
+After restoring/replacing the failed disk, excecute the following procedure to replace the failed OSD:
 
-1. Zap the disk:
+1. Disable osd pod on host::
 
-.. code-block:: 
+.. code-block:: console
 
-  $ sudo ceph-disk zap /dev/sdd
+  $ kubectl label nodes --all ceph_maintenance_window=inactive
+  $ kubectl label nodes voyager4 --overwrite ceph_maintenance_window=active
 
-2. Idenfiy the name of the OSD pod associated with the disk failure: 
+2. Obtain the yaml file of the OSD daemonset and identify the device (/dev/sdh) associated with the failed OSD:
 
-.. code-block:: 
+.. code-block:: console
+  $ kubectl get ds ceph-osd-default-64779b8c -n ceph -o yaml
+  $ kubectl patch -n ceph ds ceph-osd-default-64779b8c -p='{"spec":{"template":{"spec":{"nodeSelector":{"ceph-osd":"enabled","ceph_maintenance_window":"inactive"}}}}}'
 
-  $ kubectl get pods -n ceph
+3. Remove the failed OSD:
 
-3. Delete the OSD pod associated with the disk failure:
-
-.. code-block:: 
-
-  $ kubectl delete pod ceph-osd-default-83945928-z4wn7 -n ceph
+.. code-block:: console
+  (mon-pod):/# ceph osd lost 2
+  (mon-pod):/# ceph osd crush remove osd.2
+  (mon-pod):/# ceph auth del osd.2
+  (mon-pod):/# ceph osd rm 2
 
 4. Monitor the Ceph status:
 
@@ -149,16 +129,14 @@ To recover the disk failure on ``/dev/sdh`` and bring back the failed OSD, excec
 
 5. Clean up the failed OSD from the Ceph cluster.
 
-   When ``kubectl get pods -n ceph`` shows all OSD pods in ``Running`` status, we noticed that a new OSD is created and the oringial OSD associated with the disk failure is still in crushmap. 
+.. code-block::
+  (voyager4)$ rm -rf /var/lib/openstack-helm/ceph/journal1/osd/journal-sdh/*
+  (voyager4)$ parted /dev/sdh mklabel msdos
 
-
-Remove the failed OSD (e.g., OSD id = 9):
+6. Re-enable the OSD pod on node:
 
 .. code-block::
-
-  (mon-pod):/# ceph osd crush remove osd.9
-  (mon-pod):/# ceph auth del osd.9
-  (mon-pod):/# ceph osd rm 9
+  $ kubectl label nodes rdm8r003o001 --overwrite ceph_maintenance_window=inactive
 
 Validate Ceph status:
 
