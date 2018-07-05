@@ -133,7 +133,7 @@ Note: To find the daemonset associated with a failed OSD, check out the followin
       usage:   2551 MB used, 42814 GB / 42816 GB avail
       pgs:     182 active+clean
 
-5. Replace/restore a physical storage drive associated with the failed OSD with a new one.
+5. Replace/restore a physical storage drive associated with the failed OSD.
 
 6. Clean up the failed OSD:
 
