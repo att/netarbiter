@@ -154,3 +154,58 @@ We delete a K82 worker node where a Monitor pod is running.
                208 active+undersized+degraded
 
 It took about 9 minutes.
+
+Case: Monitor database is destroyed
+===================================                                                                                                                                                      Tue Jul 10 18:27:54 2018
+
+  cluster:
+    id:     9d4d8c61-cf87-4129-9cef-8fbf301210ad
+    health: HEALTH_WARN
+            too few PGs per OSD (22 < min 30)
+            mon voyager1 is low on available space
+            1/3 mons down, quorum voyager1,voyager2
+
+  services:
+    mon: 3 daemons, quorum voyager1,voyager2, out of quorum: voyager3
+    mgr: voyager1(active), standbys: voyager3
+    mds: cephfs-1/1/1 up  {0=mds-ceph-mds-65bb45dffc-cslr6=up:active}, 1 up:standby
+    osd: 24 osds: 24 up, 24 in
+    rgw: 2 daemons active
+
+  data:
+    pools:   18 pools, 182 pgs
+    objects: 240 objects, 3359 bytes
+    usage:   2675 MB used, 44675 GB / 44678 GB avail
+    pgs:     182 active+clean
+
+ubuntu@voyager1:~$ kubectl get pods -n ceph -o wide|grep mon
+ceph-mon-4gzzw                             1/1       Running            0          6d        135.207.240.42    voyager2
+ceph-mon-6bbs6                             0/1       CrashLoopBackOff   5          6d        135.207.240.43    voyager3
+ceph-mon-check-d85994946-pm4jx             1/1       Running            0          6d        192.168.255.51    voyager2
+ceph-mon-keyring-generator-ncp4c           0/1       Completed          0          6d        192.168.197.233   voyager3
+ceph-mon-qgc7p 
+
+$ kubectl logs ceph-mon-6bbs6 -n ceph
++ ceph-mon --setuser ceph --setgroup ceph --cluster ceph -i voyager3 --inject-monmap /etc/ceph/monmap-ceph --keyring /etc/ceph/ceph.mon.keyring --mon-data /var/lib/ceph/mon/ceph-voyager3
+2018-07-10 18:30:04.546200 7f4ca9ed4f00 -1 rocksdb: Invalid argument: /var/lib/ceph/mon/ceph-voyager3/store.db: does not exist (create_if_missing is false)
+2018-07-10 18:30:04.546214 7f4ca9ed4f00 -1 error opening mon data directory at '/var/lib/ceph/mon/ceph-voyager3': (22) Invalid argument
+
+root@voyager2:/# ceph -s
+  cluster:
+    id:     9d4d8c61-cf87-4129-9cef-8fbf301210ad
+    health: HEALTH_WARN
+            too few PGs per OSD (22 < min 30)
+            mon voyager1 is low on available space
+ 
+  services:
+    mon: 3 daemons, quorum voyager1,voyager2,voyager3
+    mgr: voyager1(active), standbys: voyager3
+    mds: cephfs-1/1/1 up  {0=mds-ceph-mds-65bb45dffc-cslr6=up:active}, 1 up:standby
+    osd: 24 osds: 24 up, 24 in
+    rgw: 2 daemons active
+ 
+  data:
+    pools:   18 pools, 182 pgs
+    objects: 240 objects, 3359 bytes
+    usage:   2675 MB used, 44675 GB / 44678 GB avail
+    pgs:     182 active+clean
