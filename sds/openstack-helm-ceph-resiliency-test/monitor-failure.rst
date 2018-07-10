@@ -110,8 +110,12 @@ The status of the pods (where the three Monitor processes are killed) changed as
 Case: Monitor database is destroyed
 ===================================
 
+We intentionlly destroy the monitor database by removing /var/lib/openstack-helm/ceph/mon/mon/ceph-voyager3/store.db.
+
 Symptom:
 --------
+
+We monitor the ceph status from mon-pod, the monitor running on voyager3 (where monitor database is removed from) is out of quorum, and monitor pod (voyager3) status stays in Running -> Error -> CrashLoopBackOff while keeps restarting.
 
 .. code-block::
 
@@ -141,7 +145,9 @@ Symptom:
   $ kubectl get pods -n ceph -o wide|grep ceph-mon
   ceph-mon-4gzzw                             1/1       Running            0          6d        135.207.240.42    voyager2
   ceph-mon-6bbs6                             0/1       CrashLoopBackOff   5          6d        135.207.240.43    voyager3
-  ceph-mon-qgc7p 
+  ceph-mon-qgc7p                             1/1       Running            0          6d        135.207.240.41    voyager1
+
+We check the logs of the failed mon-pod, it shows mon-pod process cannot be running as ``/var/lib/ceph/mon/ceph-voyager3/store.db`` is missing.
 
 .. code-block::
 
@@ -152,6 +158,8 @@ Symptom:
 
 Recovery:
 ---------
+
+Remove the entire ceph monitor data director on voyager3, and ceph will re-create the monitor database.
 
 .. code-block::
 
