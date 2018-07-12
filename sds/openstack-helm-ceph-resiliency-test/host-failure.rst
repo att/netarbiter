@@ -100,8 +100,12 @@ Ceph status shows that the monitor running on ``voyager3`` is now in quorum.
 Case: One host machine where ceph-mon is running is down 
 ========================================================
 
+This is for the case when a host machine (where ceph-mon is running) is down.
+
 Symptom:
 --------
+
+After the host is down (node voyager3), the node status changes to ``NotReady``.
 
 .. code-block:: console
 
@@ -111,6 +115,10 @@ Symptom:
   voyager2   Ready      <none>    14d       v1.10.5
   voyager3   NotReady   <none>    14d       v1.10.5
   voyager4   Ready      <none>    14d       v1.10.5
+
+Ceph status shows that ceph-mon running on ``voyager3`` becomes out of quorum.
+Also, six osds running on ``voyager3`` are down; i.e., 18 osds are up out of 24 osds.
+Some placement groups becomes degraded and undersized.
 
 .. code-block:: console
 
@@ -143,6 +151,8 @@ Symptom:
                  48  active+clean
                  8   active+undersized+degraded
 
+ceph-mon and ceph-osd pods status shows as ``NodeLost``.
+
 .. code-block:: console
 
   $ kubectl get pods -n ceph -o wide|grep voyager3                                        Thu Jul 12 13:21:18 2018
@@ -155,8 +165,14 @@ Symptom:
   ceph-osd-default-83945928-b95qs            1/1       NodeLost    2          8d        135.207.240.43   voyager3
   ceph-osd-default-f9249fa9-n7p4v            1/1       NodeLost    3          8d        135.207.240.43   voyager3
 
+Ceph waits about 10min to start rebalancing with one node lost. 
+
 Recovery:
 ---------
+
+The node status of ``voyager3`` changes to ``Ready`` after the node is up again.
+Also, Ceph pods are restarted automatically.
+Ceph status shows that the monitor running on ``voyager3`` is now in quorum.
 
 .. code-block:: console
 
