@@ -221,7 +221,7 @@ and 6 osds gets back up (i.e., a total of 24 osds are up).
       usage:   2699 MB used, 44675 GB / 44678 GB avail
       pgs:     182 active+clean
 
-Also, the pod status of ceph-mon and ceph-osd change from ``NodeLost`` back to ``Running``.
+Also, the pod status of ceph-mon and ceph-osd changes from ``NodeLost`` back to ``Running``.
 
 .. code-block:: console
 
