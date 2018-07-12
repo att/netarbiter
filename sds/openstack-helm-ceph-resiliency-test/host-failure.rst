@@ -97,7 +97,7 @@ Ceph status shows that the monitor running on ``voyager3`` is now in quorum.
       usage:   2635 MB used, 44675 GB / 44678 GB avail
       pgs:     182 active+clean
 
-Case: One host machine where ceph-mon is running is down 
+Case: A host machine where ceph-mon is running is down 
 ========================================================
 
 This is for the case when a host machine (where ceph-mon is running) is down.
