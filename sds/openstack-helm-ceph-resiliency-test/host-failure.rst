@@ -155,7 +155,7 @@ The pod status of ceph-mon and ceph-osd shows as ``NodeLost``.
 
 .. code-block:: console
 
-  $ kubectl get pods -n ceph -o wide|grep voyager3                                        Thu Jul 12 13:21:18 2018
+  $ kubectl get pods -n ceph -o wide|grep voyager3
   ceph-mgr-55f68d44b8-hncrq                  1/1       Unknown     6          8d        135.207.240.43   voyager3
   ceph-mon-6bbs6                             1/1       NodeLost    8          8d        135.207.240.43   voyager3
   ceph-osd-default-64779b8c-lbkcd            1/1       NodeLost    1          6d        135.207.240.43   voyager3
