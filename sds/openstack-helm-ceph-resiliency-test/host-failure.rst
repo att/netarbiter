@@ -151,7 +151,7 @@ Some placement groups becomes degraded and undersized.
                  48  active+clean
                  8   active+undersized+degraded
 
-ceph-mon and ceph-osd pods status shows as ``NodeLost``.
+The pod status of ceph-mon and ceph-osd shows as ``NodeLost``.
 
 .. code-block:: console
 
@@ -165,14 +165,39 @@ ceph-mon and ceph-osd pods status shows as ``NodeLost``.
   ceph-osd-default-83945928-b95qs            1/1       NodeLost    2          8d        135.207.240.43   voyager3
   ceph-osd-default-f9249fa9-n7p4v            1/1       NodeLost    3          8d        135.207.240.43   voyager3
 
-Ceph waits about 10min to start rebalancing with one node lost. 
+After 10+ miniutes, Ceph starts rebalancing with one node lost (i.e., 6 osds down)
+and the status stablizes with 18 osds. 
+
+.. code-block:: console
+
+  (mon-pod):/# ceph -s 
+    cluster:
+      id:     9d4d8c61-cf87-4129-9cef-8fbf301210ad
+      health: HEALTH_WARN
+              mon voyager1 is low on available space
+              1/3 mons down, quorum voyager1,voyager2
+   
+    services:
+      mon: 3 daemons, quorum voyager1,voyager2, out of quorum: voyager3
+      mgr: voyager1(active), standbys: voyager2
+      mds: cephfs-1/1/1 up  {0=mds-ceph-mds-65bb45dffc-cslr6=up:active}, 1 up:standby
+      osd: 24 osds: 18 up, 18 in
+      rgw: 2 daemons active
+   
+    data:
+      pools:   18 pools, 182 pgs
+      objects: 240 objects, 3359 bytes
+      usage:   2025 MB used, 33506 GB / 33508 GB avail
+      pgs:     182 active+clean
+
 
 Recovery:
 ---------
 
 The node status of ``voyager3`` changes to ``Ready`` after the node is up again.
 Also, Ceph pods are restarted automatically.
-Ceph status shows that the monitor running on ``voyager3`` is now in quorum.
+The Ceph status shows that the monitor running on ``voyager3`` is now in quorum
+and 6 osds gets back up (i.e., a total of 24 osds are up).
 
 .. code-block:: console
 
@@ -196,6 +221,7 @@ Ceph status shows that the monitor running on ``voyager3`` is now in quorum.
       usage:   2699 MB used, 44675 GB / 44678 GB avail
       pgs:     182 active+clean
 
+Also, the pod status of ceph-mon and ceph-osd change from ``NodeLost`` back to ``Running``.
 
 .. code-block:: console
 
