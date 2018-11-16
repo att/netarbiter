@@ -24,7 +24,7 @@ src/redis-server
 
 ## YCSB Test 
 Refer to `ycsb-0.15.0/redis-binding/README.md`  
-Workload file: workloada-redis(./workloada-redis)
+Workload file: [workloada-redis](workloada-redis)
 ```
 # Load
 bin/ycsb load redis -s -P workloads/workloada-redis -p threadcount=24
@@ -36,7 +36,7 @@ bin/ycsb run redis -s -P workloads/workloada-redis -p threadcount=24 > output-re
 Aerospike test
 --------------
 Refer to `ycsb-0.15.0/aerospike-binding/README.md`  
-Workload file: workloada-aerospike(./workloada-aerospike)
+Workload file: [workloada-aerospike](workloada-aerospike)
 
 ### YCSB Test: namespace - ram
 ```
