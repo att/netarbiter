@@ -2,15 +2,13 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 ### Projects
 
-* [Ceph-Container/Helm](./sds/ceph-docker/examples/helm)
+* [Kubeadm-installed Kubernetes](./install-kubeadm)
 
-* [Kubeadm-managed Kubernetes](./install-kubeadm)
+* [NVMe over Fabrics/RoCE](./nvmf)
 
 * Monitor & Alert
    - [Grafana, InfluxDB, Telegraf, Prometheus](./monitor-alert)
    - [Prometheus/Helm](./sds/prometheus)
-
-* [NVMe over Fabrics/RoCE](./nvmf)
 
 * [Openstack Swift](./swift)
 
@@ -19,3 +17,5 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 * [ATTBench](./benchmark/attbench)
 
 * [Multi-site Network Emulation](./multisite-netemu)
+
+* [Ceph-Container/Helm](./sds/ceph-docker/examples/helm)
