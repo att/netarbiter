@@ -12,7 +12,7 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 * [NVMe over Fabrics/RoCE](./nvmf)
 
-* [Openstack Swift](./sds/swift)
+* [Openstack Swift](./swift)
 
 * [COSBench](./benchmark/cosbench)
 
