@@ -46,6 +46,8 @@ function kubeadm_init_flannel {
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
   
   # Install flannel
-  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.0/Documentation/kube-flannel.yml
+  sudo sysctl net.bridge.bridge-nf-call-iptables=1
+  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
+  #kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.0/Documentation/kube-flannel.yml
 }
 
