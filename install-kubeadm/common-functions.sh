@@ -1,6 +1,7 @@
 #!/bin/bash
 # Author: Hee Won Lee <knowpd@research.att.com>
 # Created on 10/20/2017
+# Modified on 1/30/2019
 
 set -x
 
@@ -19,35 +20,14 @@ deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF'
   sudo apt-get update
   sudo apt-get install -y --allow-unauthenticated kubeadm$VERSION kubelet$VERSION kubectl$VERSION
+}
+
+# Make kubectl work for your non-root user
+function make_kubectl_work {
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
   # Install kshell
   sudo cp ./kshell /usr/local/bin
 }
-
-# Initialize your master with calico
-function kubeadm_init_calico {
-  sudo kubeadm init --pod-network-cidr=192.168.0.0/16
-  mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
-  
-  # Install calico
-  kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
-  kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
-  #kubectl apply -f https://docs.projectcalico.org/v3.0/getting-started/kubernetes/installation/hosted/kubeadm/1.7/calico.yaml
-  #kubectl apply -f https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
-}
-
-# Initialize your master with flannel
-function kubeadm_init_flannel {
-  sudo kubeadm init --pod-network-cidr=10.244.0.0/16
-  mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
-  
-  # Install flannel
-  sudo sysctl net.bridge.bridge-nf-call-iptables=1
-  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
-  #kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.0/Documentation/kube-flannel.yml
-}
-

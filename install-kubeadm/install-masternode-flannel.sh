@@ -5,7 +5,7 @@
 
 if [[ "$#" -ne 1 ]]; then
     echo "Usage: $0 <kubernetes-version>"
-    echo "  kubernetes-version:    e.g. 1.7.6-00, 1.8.2-00, 1.13.2-00"
+    echo "  kubernetes-version:    e.g. latest, 1.7.6-00, 1.8.2-00, 1.13.2-00"
     echo ""
     echo "Note:"
     echo "  You can find available versions at:"
@@ -33,9 +33,17 @@ else
   install_kubexxx $KUBERNETES_VERSION
 fi
 
-# kubeadm init and install flannel
-kubeadm_init_flannel
+# kubeadm init for flannel
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
-# Schedule a pod on the master
+# Make kubectl work for your non-root user
+make_kubectl_work
+
+# Install flannel
+sudo sysctl net.bridge.bridge-nf-call-iptables=1
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
+#kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.0/Documentation/kube-flannel.yml
+
+# Allow scheduling pods on master
 kubectl taint nodes --all node-role.kubernetes.io/master-
 
