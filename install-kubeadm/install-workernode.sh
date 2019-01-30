@@ -3,7 +3,7 @@
 # Created on 10/20/2017
 if [[ "$#" -ne 1 ]]; then
     echo "Usage: $0 <kubernetes-version>"
-    echo "  kubernetes-version:    e.g. latest, 1.7.5-00, 1.7.6-00, 1.8.2-00, 1.9.3-00, 1.13.2-00"
+    echo "  kubernetes-version:    e.g. 1.7.5-00, 1.7.6-00, 1.8.2-00, 1.9.3-00, 1.13.2-00"
     echo ""
     echo "Note:"
     echo "  You can find available versions at:"
