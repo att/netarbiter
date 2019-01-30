@@ -2,7 +2,6 @@
 Contributors:
    - Hee Won Lee <knowpd@research.att.com>  
    - Yu Xiang <yxiang@research.att.com> 
-   - Jon Wright <jrw@research.att.com> 
 
 ## Updates
 - 01/10/2018: Upgraded Calico version from v2.6 to v3.0
