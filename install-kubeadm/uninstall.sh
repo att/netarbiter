@@ -4,5 +4,6 @@
 
 set -x
 
+sudo service kubelet stop
 sudo kubeadm reset
 sudo apt-get purge -y kubelet kubectl
