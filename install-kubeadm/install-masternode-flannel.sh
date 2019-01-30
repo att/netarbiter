@@ -5,7 +5,7 @@
 
 if [[ "$#" -ne 1 ]]; then
     echo "Usage: $0 <kubernetes-version>"
-    echo "  kubernetes-version:    e.g. latest, 1.7.6-00, 1.8.2-00, etc. "
+    echo "  kubernetes-version:    e.g. latest, 1.7.6-00, 1.8.2-00, 1.13.2-00"
     echo ""
     echo "Note:"
     echo "  You can find available versions at:"
