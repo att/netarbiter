@@ -73,6 +73,28 @@ In master/work nodes, run:
 ./uninstall.sh
 ```
 
+## (Optional) Install helm  
+In the master node, install the helm client
+```
+# install the helm client
+./install-helm.sh
+
+# Install tiller (the helm serverside component) in the currently-running Kubernetes
+helm init                    # or helm init --upgrade
+
+# Start a local chart repository server that serves charts from a local directory
+# By default, it will scan all of the charts in '$HELM_HOME/repository/local' 
+# and serve those over the local IPv4 TCP port (default '127.0.0.1:8879').
+helm serve &
+```
+
+To delete and reinstall tiller
+```
+kubectl delete deployment tiller-deploy --namespace kube-system
+helm init
+```
+
+
 ## Troubleshoot   
 
 Refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md)
