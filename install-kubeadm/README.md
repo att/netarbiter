@@ -79,8 +79,12 @@ In the master node, install the helm client
 # install the helm client
 ./install-helm.sh
 
+# Set up RBAC
+kubectl create -f rbac-config.yaml
+
 # Install tiller (the helm serverside component) in the currently-running Kubernetes
-helm init                    # or helm init --upgrade
+#   For upgrade, run `helm init --upgrade`
+helm init --service-account tiller
 
 # Start a local chart repository server that serves charts from a local directory
 #   By default, it will scan all of the charts in '$HELM_HOME/repository/local' 
