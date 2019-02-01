@@ -18,4 +18,4 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 * [Multi-site Network Emulation](./multisite-netemu)
 
-* [Ceph-Container/Helm](./sds/ceph-docker/examples/helm)
+* [Ceph Helm Chart](./helm-charts/ceph-docker/examples/helm)
