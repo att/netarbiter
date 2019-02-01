@@ -83,8 +83,8 @@ In the master node, install the helm client
 helm init                    # or helm init --upgrade
 
 # Start a local chart repository server that serves charts from a local directory
-# By default, it will scan all of the charts in '$HELM_HOME/repository/local' 
-# and serve those over the local IPv4 TCP port (default '127.0.0.1:8879').
+#   By default, it will scan all of the charts in '$HELM_HOME/repository/local' 
+#   and serve those over the local IPv4 TCP port (default '127.0.0.1:8879').
 helm serve &
 ```
 
