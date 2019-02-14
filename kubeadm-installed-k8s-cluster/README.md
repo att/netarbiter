@@ -1,4 +1,4 @@
-# Kubeadm-managed Kubernetes
+# Kubeadm-installed Kubernetes Cluster
 Contributors:
    - Hee Won Lee <knowpd@research.att.com>  
    - Yu Xiang <yxiang@research.att.com> 
