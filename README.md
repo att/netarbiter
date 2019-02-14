@@ -2,7 +2,7 @@ Maintainer: Hee Won Lee <knowpd@research.att.com>
 
 ### Projects
 
-* [Kubeadm-installed Kubernetes](./install-kubeadm)
+* [Kubeadm-installed Kubernetes Cluster](./kubeadm-installed-k8s-cluster)
 
 * [NVMe over Fabrics/RoCE](./nvmf)
 
