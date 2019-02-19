@@ -1,21 +1,11 @@
-Maintainer: Hee Won Lee <knowpd@research.att.com>  
+## What is NetArbiter?
 
-### Projects
+NetArbiter allows you to deploy Kubernetes/OpenStack clusters for each site and then stitch the graphically distributed sites in a single network domain.  
+The features are as follows:  
+- You can emulate network latency and bandwidth between applications deployed over multiple sites
+- You can set up low-latency storage networking: NVMe over Fabrics
+- You can easily install Kubernetes cluster using Kubeadm
+- You can easily install Swift and Ceph (containerized)
+- You can monitor the system: Grafana, InfluxDB, Telegraf, Prometheus
+- You can do bechmark tests: YCSB, COSBench
 
-* [Kubeadm-installed Kubernetes Cluster](./kubeadm-installed-k8s-cluster)
-
-* [NVMe over Fabrics/RoCE](./nvmf)
-
-* Monitor & Alert
-   - [Grafana, InfluxDB, Telegraf, Prometheus](./monitor-alert)
-   - [Prometheus/Helm](./sds/prometheus)
-
-* [Openstack Swift](./swift)
-
-* [COSBench](./benchmark/cosbench)
-
-* [ATTBench](./benchmark/attbench)
-
-* [Multi-site Network Emulation](./multisite-netemu)
-
-* [Ceph Helm Chart](./helm-charts/ceph-docker/examples/helm)
