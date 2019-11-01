@@ -72,8 +72,9 @@ Refer to [InfluxDB\_HOWTO.md](./InfluxDB_HOWTO.md)
 
 ### Configure
 Edit `/etc/telegraf/telegraf.conf`.
-In `[[outputs.influxdb]]` section, uncomment the username and password lines and make sure their values match those which you set in InfluxDB:
+In `[[outputs.influxdb]]` section, uncomment urls, username and password lines and make sure their values match those which you set in InfluxDB:
 ```
+  urls = ["http://your-influxdb-server-domain-or-ip:8086"]
   username = "influx"
   password = "influx_pw"
 ```
