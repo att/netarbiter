@@ -21,6 +21,12 @@ After login on your browser, go to `Dashboards/Import` and import [grafana-dashb
 ./install-influxdb.sh latest
 ```
 
+### Uninstall
+Run `apt remove/purge` or `dpkg -r influxdb`, as `install-influxdb.sh` uses `dpkg`
+```
+sudo apt remove influxdb
+```
+
 ### Create user/password  
 Authorization is only enforced once you’ve enabled authentication. By default, authentication is disabled, all credentials are silently ignored, and all users have all privileges.
 
