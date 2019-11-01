@@ -24,7 +24,7 @@ After login on your browser, go to `Dashboards/Import` and import [grafana-dashb
 ### Uninstall
 Run `apt remove/purge` or `dpkg -r influxdb`, as `install-influxdb.sh` uses `dpkg`
 ```
-sudo apt remove influxdb
+sudo apt purge influxdb
 ```
 
 ### Create user/password  
