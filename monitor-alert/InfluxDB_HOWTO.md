@@ -117,7 +117,7 @@ ref: <https://docs.influxdata.com/influxdb/v1.7/query_language/database_manageme
 
 
 ### Authentication and Authorization  
-ref <https://docs.influxdata.com/influxdb/v1.7/query_language/authentication_and_authorization>
+ref <https://docs.influxdata.com/influxdb/v1.3/query_language/authentication_and_authorization>
 
 Authorization is only enforced once you’ve enabled authentication. By default, authentication is disabled, all credentials are silently ignored, and all users have all privileges.  
 
