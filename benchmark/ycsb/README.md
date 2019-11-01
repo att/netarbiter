@@ -3,7 +3,7 @@ YCSB
 
 Install
 -------
-Ref: https://github.com/brianfrankcooper/YCSB
+ref: <https://github.com/brianfrankcooper/YCSB>
 ```
 curl -O --location https://github.com/brianfrankcooper/YCSB/releases/download/0.15.0/ycsb-0.15.0.tar.gz
 tar xfvz ycsb-0.15.0.tar.gz
@@ -71,53 +71,22 @@ Workload file: [workloada-cassandra](workloada-cassandra)
 ```
 $ cqlsh
 cqlsh> create keyspace ycsb
-   ...         WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor': 1 };
-
+    WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor': 1 };
+cqlsh> use ycsb;
 cqlsh:ycsb> create table usertable (
-        ...         y_id varchar primary key,
-        ...         field0 varchar,
-        ...         field1 varchar,
-        ...         field2 varchar,
-        ...         field3 varchar,
-        ...         field4 varchar,
-        ...         field5 varchar,
-        ...         field6 varchar,
-        ...         field7 varchar,
-        ...         field8 varchar,
-        ...         field9 varchar);
+        y_id varchar primary key,
+        field0 varchar,
+        field1 varchar,
+        field2 varchar,
+        field3 varchar,
+        field4 varchar,
+        field5 varchar,
+        field6 varchar,
+        field7 varchar,
+        field8 varchar,
+        field9 varchar); 
 
-cqlsh:ycsb> describe tables
 
-usertable
-
-cqlsh:ycsb> describe usertable
-
-CREATE TABLE ycsb.usertable (
-    y_id text PRIMARY KEY,
-    field0 text,
-    field1 text,
-    field2 text,
-    field3 text,
-    field4 text,
-    field5 text,
-    field6 text,
-    field7 text,
-    field8 text,
-    field9 text
-) WITH bloom_filter_fp_chance = 0.01
-    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
-    AND comment = ''
-    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
-    AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
-    AND crc_check_chance = 1.0
-    AND dclocal_read_repair_chance = 0.1
-    AND default_time_to_live = 0
-    AND gc_grace_seconds = 864000
-    AND max_index_interval = 2048
-    AND memtable_flush_period_in_ms = 0
-    AND min_index_interval = 128
-    AND read_repair_chance = 0.0
-    AND speculative_retry = '9jjk9PERCENTILE';
 ```
 
 ### YCSB Test
