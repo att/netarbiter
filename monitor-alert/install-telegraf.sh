@@ -1,11 +1,13 @@
 #!/bin/bash
 # Author: Hee Won Lee <knowpd@research.att.com>
-# Created on 11/28/2017
+# Updates:
+#   - 11/1/2019: Telegraf version 1.12.4-1
+#   - 11/28/2017: Created
 # Tested on Ubuntu 16.04
 
 if [[ "$#" -ne 1 ]]; then
     echo "Usage: $0 <version>"
-    echo "  version:    e.g. latest, 1.5.3-1, 1.4.4-1"
+    echo "  version:    e.g. latest, 1.12.4-1, 1.5.3-1, 1.4.4-1"
     exit 1
 fi
 
@@ -14,7 +16,7 @@ set -x
 VERSION=$1
 
 if [[ "$1" == "latest" ]]; then
-  VERSION=1.5.3-1			# 3/23/2018
+  VERSION="1.12.4-1"
 fi
 
 curl -LO https://dl.influxdata.com/telegraf/releases/telegraf_${VERSION}_amd64.deb
