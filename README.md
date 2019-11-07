@@ -7,6 +7,5 @@ NetArbiter allows you to deploy Kubernetes/OpenStack clusters for each site and 
 - You can set up low-latency storage networking: NVMe over Fabrics
 - You can easily install Kubernetes cluster using Kubeadm
 - You can easily install Swift and Ceph (containerized)
-- You can monitor the system: Grafana, InfluxDB, Telegraf, Prometheus
 - You can run bechmark tests: YCSB, COSBench
 
