@@ -4,6 +4,7 @@ Contributors:
    - Yu Xiang <yxiang@research.att.com> 
 
 ## Updates
+- 01/20/2020: Updates for Kubernetes version 1.16.5-00
 - 01/10/2018: Upgraded Calico version from v2.6 to v3.0
    * Modified files:  common-functions.sh
    * Kubernetes version 1.9+ requires this update. Without this update, you may encounter status `ContainerCreating` for your kube-dns container.
@@ -12,16 +13,16 @@ Contributors:
 ### In master node:
 1. Assuming you are in a clean state (i.e., no docker, kubectl, kubelet, or kubeadm), install a master node by:  
 ```
-./install-masternode-calico.sh latest
+./install-masternode-flannel.sh latest
 # Note:
 #   - Instead of `latest`, you can install a specific Kubernetes version (e.g., 1.7.5-00, 1.8.2-00, etc).
 #     Find available versions at:
 #     https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages
 #
 #   - If you install K8s on AWS, GCE or Azure, you may encounter a nameserver issue with Calico [1].
-#     Different from Calico (based on L3), Flannel (based on L2)  works without any additional 
-#     configuration. Instead of Calico, you can use flannel by:
-#     ./install-masternode-flannel.sh latest
+#     Different from Calico (based on L3), Flannel (based on L2)  works without any additional configuration. 
+#     Instead of flannel, you can use calico by:
+#     ./install-masternode-calico.sh latest
 
 # To check if your master node is "Ready"
 #   (it may take a minute to get to the "Ready" status)
