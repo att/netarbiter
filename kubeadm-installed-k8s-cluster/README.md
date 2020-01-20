@@ -1,7 +1,6 @@
 # Kubeadm-installed Kubernetes Cluster
 Contributors:
    - Hee Won Lee <knowpd@research.att.com>  
-   - Yu Xiang <yxiang@research.att.com> 
 
 ## Updates
 - 01/20/2020: Updates for Kubernetes version 1.16.5-00
