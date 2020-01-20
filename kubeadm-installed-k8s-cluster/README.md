@@ -3,7 +3,7 @@ Contributors:
    - Hee Won Lee <knowpd@research.att.com>  
 
 ## Updates
-- 01/20/2020: Updates for Kubernetes version 1.16.5-00
+- 01/20/2020: Updates for Kubernetes version 1.16.5-00, helm version 2.16.1
 - 01/10/2018: Upgraded Calico version from v2.6 to v3.0
    * Modified files:  common-functions.sh
    * Kubernetes version 1.9+ requires this update. Without this update, you may encounter status `ContainerCreating` for your kube-dns container.
@@ -79,11 +79,13 @@ In the master node, install the helm client
 # install the helm client
 ./install-helm.sh
 
-# Set up RBAC
-kubectl create -f rbac-config.yaml
-
 # Install tiller (the helm serverside component) in the currently-running Kubernetes
-#   For upgrade, run `helm init --upgrade`
+# ref: <https://rancher.com/docs/rancher/v2.x/en/installation/options/helm2/helm-init/>
+# Note: 
+#   - The following three steps are for helm version 2 
+#   - TODO: find the other way for helm version 3
+kubectl -n kube-system create serviceaccount tiller
+kubectl create clusterrolebinding tiller --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 helm init --service-account tiller
 
 # Start a local chart repository server that serves charts from a local directory

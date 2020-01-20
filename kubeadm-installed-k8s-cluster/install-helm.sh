@@ -11,7 +11,7 @@
 
 set -x
 
-VERSION=2.14.3	# previous: 2.9.1, 2.12.3
+VERSION=2.16.1		# previous: 2.9.1, 2.12.3
 # You can find a new version at https://github.com/helm/helm/releases
 
 # Download a binary version
